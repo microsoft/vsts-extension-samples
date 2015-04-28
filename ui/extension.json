@@ -1,5 +1,5 @@
 ﻿{
-    "namespace": "samples.ui2",
+    "namespace": "samples.ui",
     "version": "0.0.1",
     "name": "UI Controls (Sample)",
     "description": "Explore different UI controls, including menus, toolbars, custom controls, and more.",
