@@ -15,7 +15,7 @@
                 "title": "View associated items",
                 "handler": "main.viewAssociatedItems",
                 "group": "actions",
-                "handlerUri": "launch.html"
+                "uri": "launch.html"
             }
         ],
         "vss.web#hubs": [

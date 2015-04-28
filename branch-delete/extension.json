@@ -11,12 +11,11 @@
     "contributions": {    
         "vss.code.web#gitBranchesTreeActions": [
             {
-                "id": "branch-delete",
+                "id": "deleteBranchMenu",
                 "title": "Delete...",
                 "icon": "images/delete.png",
-                "handler": "main.deleteBranch",
                 "group": "actions",
-                "handlerUri": "main.html"
+                "uri": "main.html"
             }
         ]
     }

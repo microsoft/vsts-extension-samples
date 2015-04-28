@@ -1,8 +1,8 @@
-window.main = (function () {
+var deleteBranchMenu = (function () {
     "use strict";
 
     return {
-        deleteBranch: function (sourceItemContext) {
+        execute: function (sourceItemContext) {
             var url = sourceItemContext.url;
             if (url && confirm("Are you sure you want to delete the branch '" + sourceItemContext.friendlyName + "'?")) {
 
@@ -38,3 +38,5 @@ window.main = (function () {
         }
     };
 } ());
+
+VSS.register("deleteBranchMenu", deleteBranchMenu);

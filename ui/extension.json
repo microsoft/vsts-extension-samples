@@ -59,9 +59,8 @@
                 "id": "compareMenu",
                 "title": "Compare...",
                 "icon": "images/show-properties.png",
-                "handler": "compareMenu.execute",
                 "group": "actions",
-                "handlerUri": "menu-contributions.html"
+                "uri": "menu-contributions.html"
             }
         ],
         "#controls": [
