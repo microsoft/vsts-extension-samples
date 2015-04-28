@@ -1,0 +1,18 @@
+{
+    "namespace": "samples.public-events",
+    "version": "0.0.1",
+    "name": "Team Calendar US Public Events (Sample)",
+    "description": "See public United States events and holidays on the Team Calendar extension for Visual Studio Online.",
+    "provider": {
+        "name": "Microsoft and the community"
+    },
+    "baseUri": "https://localhost",
+    "contributions": {
+        "Microsoft.calendar#eventSources": [
+            {
+                "id": "publicEvents",
+                "uri": "out/main.html"
+            }
+        ]
+    }
+}

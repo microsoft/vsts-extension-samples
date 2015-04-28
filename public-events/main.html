@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Public Events</title>
+    <script src="sdk/Scripts/VSS.SDK.js"></script>
+</head>
+<body>
+    <script type="text/javascript">
+        VSS.init({
+            explicitNotifyLoaded: true,
+            setupModuleLoader: true,
+            moduleLoaderConfig: {
+                paths: {
+                    "PublicEvents/": "/out/scripts/PublicEvents/"
+                }
+            }
+        });
+        VSS.require([
+            "PublicEvents/PublicEventsSource"
+        ], function (PubEvents) {
+            VSS.register("publicEvents", function (context) {
+                return new PubEvents.PublicEventsService();
+            });
+            VSS.notifyLoadSucceeded();
+        });
+    </script>
+</body>
+</html>
