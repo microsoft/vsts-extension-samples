@@ -1,0 +1,58 @@
+﻿{
+    "namespace": "samples.ui",
+    "version": "0.0.1",
+    "name": "UI Controls (Sample)",
+    "description": "Explore different UI controls, including menus, toolbars, custom controls, and more.",
+    "provider": {
+        "name": "Microsoft and the community"
+    },
+    "baseUri": "https://localhost",
+    "icon": "https://localhost/images/fabrikam-logo.png",
+    "contributions": {
+        "vss.web#hubGroups.project": [
+            {
+                "id": "menu.contribution",
+                "name": "Sample Menus",
+                "order": 100
+            }
+        ],
+        "vss.web#hubs": [
+            {
+                "id": "projectGroup.menu",
+                "name": "Simple",
+                "groupId": "menu.contribution",
+                "order": 100,
+                "uri": "menu.html",
+                "usesSdk": true,
+                "fullPage": false
+            }, 
+			{
+                "id": "projectGroup.controlmenu",
+                "name": "Custom Control",
+                "groupId": "menu.contribution",
+                "order": 100,
+                "uri": "menu-control.html",
+                "usesSdk": true,
+                "fullPage": false
+            }, 
+			{
+                "id": "projectGroup.dropdown",
+                "name": "Dropdown",
+                "groupId": "menu.contribution",
+                "order": 100,
+                "uri": "menu-dropdown.html",
+                "usesSdk": true,
+                "fullPage": false
+            },
+			{
+                "id": "projectGroup.context",
+                "name": "Context",
+                "groupId": "menu.contribution",
+                "order": 100,
+                "uri": "menu-context.html",
+                "usesSdk": true,
+                "fullPage": false
+            }
+        ]
+    }
+}

@@ -1,0 +1,23 @@
+﻿{
+    "namespace": "samples.branch-delete",
+    "version": "0.0.1",
+    "name": "Branch Delete (Sample)",
+    "description": "Clean up old or unneeded Git branches right from within Visual Studio Online.",
+    "provider": {
+        "name": "Microsoft and the community"
+    },
+    "icon": "https://localhost/images/fabrikam-logo.png",
+    "baseUri": "https://localhost",
+    "contributions": {    
+        "vss.code.web#gitBranchesTreeActions": [
+            {
+                "id": "branch-delete",
+                "title": "Delete...",
+                "icon": "images/delete.png",
+                "handler": "main.deleteBranch",
+                "group": "actions",
+                "handlerUri": "main.html"
+            }
+        ]
+    }
+}

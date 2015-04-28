@@ -1,0 +1,20 @@
+﻿<html>
+<head>
+    <title>Web Context</title>
+    <script type="text/javascript" src="sdk/scripts/VSS.SDK.js"></script>
+    <script type="text/javascript">VSS.init();</script>
+</head>
+<body style="padding-left: 10px; padding-top: 10px; overflow-y: auto;">
+    
+    <h3>Web Context</h3>
+    <pre id="context-display" style=""></pre>
+
+    <script type="text/javascript">
+        // Show context info when ready
+        VSS.ready(function () {
+            var context = VSS.getWebContext();
+            document.getElementById("context-display").innerText = JSON.stringify(context, null, 4);
+        });
+    </script>
+</body>
+</html>

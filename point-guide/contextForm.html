@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contribution context form</title>
+</head>
+<body style="background-color:inherit">
+
+<div id="grid-container"></div>
+
+<script src="sdk/scripts/VSS.SDK.js"></script>
+<script type="text/javascript">
+    VSS.init({
+        explicitNotifyLoaded: true, 
+        setupModuleLoader: true
+    });
+    
+    VSS.require(["VSS/Controls", "VSS/Controls/Grids"], function (Controls, Grids) {
+        
+        var properties = VSS.getConfiguration().properties || {};
+            
+        var dataSource = [];
+        Object.keys(properties).forEach(function(key) {
+            dataSource.push({key: key, value: JSON.stringify(properties[key])});
+        });
+        
+        Controls.create(Grids.Grid, $("#grid-container"), {
+            height: "500px",
+            source: dataSource,
+            columns: [
+                { text: "Property key", index: "key", width: 150 },
+                { text: "Property value", index: "value", width: 600 }
+            ]
+        });
+        
+        VSS.notifyLoadSucceeded();
+    });
+
+</script>
+</body>
+</html>
