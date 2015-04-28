@@ -1,5 +1,5 @@
 ﻿{
-    "namespace": "samples.ui",
+    "namespace": "samples.ui2",
     "version": "0.0.1",
     "name": "UI Controls (Sample)",
     "description": "Explore different UI controls, including menus, toolbars, custom controls, and more.",
@@ -53,6 +53,28 @@
                 "usesSdk": true,
                 "fullPage": false
             }
+        ],
+        "vss.code.web#sourceItemActions": [
+            {
+                "id": "compareMenu",
+                "title": "Compare...",
+                "icon": "images/show-properties.png",
+                "handler": "compareMenu.execute",
+                "group": "actions",
+                "handlerUri": "menu-contributions.html"
+            }
+        ],
+        "#controls": [
+            {
+                "id": "compareToForm",
+                "uri": "compareToForm.html"
+            }
         ]
+    },
+    "contributionPoints": {
+        "controls": {
+            "type": "vss.web#control",
+            "description": "Provider of contribution controls."
+        }
     }
 }
