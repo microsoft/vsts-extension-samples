@@ -15,9 +15,8 @@
                 "text": "Custom source item action",
                 "title": "vss.code.web#sourceItemActions",
                 "icon": "images/show-properties.png",
-                "handler": "main.contributionAction",
                 "group": "actions",
-                "handlerUri": "main.html"
+                "uri": "main.html"
             }
         ],
         "vss.code.web#sourceGridItemActions": [
@@ -26,9 +25,13 @@
                 "text": "Custom source grid item action",
                 "title": "vss.code.web#sourceGridItemActions",
                 "icon": "images/show-properties.png",
-                "handler": "main.contributionAction",
                 "group": "actions",
-                "handlerUri": "main.html"
+                "uri": "main.html"
+            },
+            {
+                "id": "sourceGridDynamicMenu",
+                "group": "actions",
+                "uri": "main.html"
             }
         ],
         "vss.code.web#sourceTreeItemActions": [
@@ -37,9 +40,8 @@
                 "text": "Custom source tree item action",
                 "title": "vss.code.web#sourceTreeItemActions",
                 "icon": "images/show-properties.png",
-                "handler": "main.contributionAction",
                 "group": "actions",
-                "handlerUri": "main.html"
+                "uri": "main.html"
             }
         ],
         "vss.code.web#changeExplorerActions": [
@@ -48,9 +50,8 @@
                 "text": "Custom change explorer action",
                 "title": "vss.code.web#changeExplorerActions",
                 "icon": "images/show-properties.png",
-                "handler": "main.contributionAction",
                 "group": "actions",
-                "handlerUri": "main.html"
+                "uri": "main.html"
             }
         ],
         "vss.code.web#changeListSummaryItemActions": [
@@ -59,9 +60,8 @@
                 "text": "Custom change list summary item action",
                 "title": "vss.code.web#changeListSummaryItemActions",
                 "icon": "images/show-properties.png",
-                "handler": "main.contributionAction",
                 "group": "actions",
-                "handlerUri": "main.html"
+                "uri": "main.html"
             }
         ],
         "vss.code.web#gitBranchActions": [
@@ -70,9 +70,8 @@
                 "text": "Custom Git branch action",
                 "title": "vss.code.web#gitBranchActions",
                 "icon": "images/show-properties.png",
-                "handler": "main.contributionAction",
                 "group": "actions",
-                "handlerUri": "main.html"
+                "uri": "main.html"
             }
         ],
         "vss.code.web#gitBranchesGridActions": [
@@ -81,9 +80,8 @@
                 "text": "Custom Git branches grid action",
                 "title": "vss.code.web#gitBranchesGridActions",
                 "icon": "images/show-properties.png",
-                "handler": "main.contributionAction",
                 "group": "actions",
-                "handlerUri": "main.html"
+                "uri": "main.html"
             }
         ],
         "vss.code.web#gitBranchesTreeActions": [
@@ -92,9 +90,8 @@
                 "text": "Custom Git branches tree action",
                 "title": "vss.code.web#gitBranchesTreeActions",
                 "icon": "images/show-properties.png",
-                "handler": "main.contributionAction",
                 "group": "actions",
-                "handlerUri": "main.html"
+                "uri": "main.html"
             }
         ],
         "vss.build.web#completedBuildActions": [
@@ -103,9 +100,8 @@
                 "text": "Custom completed build action",
                 "title": "vss.build.web#completedBuildActions",
                 "icon": "images/show-properties.png",
-                "handler": "main.contributionAction",
                 "group": "actions",
-                "handlerUri": "main.html"
+                "uri": "main.html"
             }
         ],
         "vss.build.web#buildDefinitionActions": [
@@ -114,9 +110,8 @@
                 "text": "Custom build definition action",
                 "title": "vss.build.web#buildDefinitionActions",
                 "icon": "images/show-properties.png",
-                "handler": "main.contributionAction",
                 "group": "actions",
-                "handlerUri": "main.html"
+                "uri": "main.html"
             }
         ],
         "vss.work.web#workItemActions": [
@@ -126,8 +121,7 @@
                 "title": "vss.work.web#workItemActions",
                 "toolbarText": "Custom action 1",
                 "icon": "images/show-properties.png",
-                "handler": "main.contributionAction",
-                "handlerUri": "main.html"
+                "uri": "main.html"
             }
         ],
         "vss.work.web#workItemToolbarActions": [
@@ -137,9 +131,8 @@
                 "title": "vss.work.web#workItemToolbarActions",
                 "toolbarText": "Custom action 2",
                 "icon": "images/show-properties.png",
-                "handler": "main.contributionAction",
                 "group": "actions",
-                "handlerUri": "main.html"
+                "uri": "main.html"
             }
         ],
         "vss.work.web#backlogItemActions": [
@@ -148,9 +141,8 @@
                 "text": "Custom backlog item action",
                 "title": "vss.work.web#backlogItemActions",
                 "icon": "images/show-properties.png",
-                "handler": "main.contributionAction",
                 "group": "actions",
-                "handlerUri": "main.html"
+                "uri": "main.html"
             }
         ],
         "vss.work.web#queryActions": [
@@ -159,9 +151,8 @@
                 "text": "Custom query action",
                 "title": "vss.work.web#queryActions",
                 "icon": "images/show-properties.png",
-                "handler": "main.contributionAction",
                 "group": "actions",
-                "handlerUri": "main.html"
+                "uri": "main.html"
             }
         ],
         "vss.test.web#testRunActions": [
@@ -170,9 +161,8 @@
                 "text": "Custom test run action",
                 "title": "vss.test.web#testRunActions",
                 "icon": "images/show-properties.png",
-                "handler": "main.contributionAction",
                 "group": "actions",
-                "handlerUri": "main.html"
+                "uri": "main.html"
             }
         ],
         "vss.test.web#testRunGridActions": [
@@ -181,9 +171,8 @@
                 "text": "Custom test run grid action",
                 "title": "vss.test.web#testRunGridActions",
                 "icon": "images/show-properties.png",
-                "handler": "main.contributionAction",
                 "group": "actions",
-                "handlerUri": "main.html"
+                "uri": "main.html"
             }
         ],
         "vss.web#hubGroups.project": [
