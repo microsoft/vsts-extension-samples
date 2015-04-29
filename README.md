@@ -28,9 +28,13 @@ This repo contains samples to help jump-start you in your development of [Extens
 
 ### Branch delete
 
+![image](branch-delete/images/delete-action-screenshot.png)
+
 Clean up old or unneeded Git branches right from within Visual Studio Online.
 
 ## Contribution point guide
+
+![image](point-guide/images/context-menu-screenshot.png)
 
 Discover all the places (called contribution points) in Visual Studio Online you can extend, including hubs, toolbars, and context menus, and more.
  
@@ -40,9 +44,11 @@ Demonstrates advanced extension concepts like AMD loading, using UI controls, hi
 
 ## UI
 
+![image](ui/images/menu-dropdown.png)
+
 Explore different UI controls, including menus, toolbars, custom controls, and more.
 
-## Public Events
+## Public events (for Team Calendar)
 
 Adds an event source to the [Team Calendar extension](https://github.com/Microsoft/vso-team-calendar) for public holidays. Note that this sample contributes *to another extension* rather than core Visual Studio Online.
 
