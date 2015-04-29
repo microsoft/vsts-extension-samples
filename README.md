@@ -13,15 +13,17 @@ This repo contains samples to help jump-start you in your development of [Extens
 ### Steps
 
 1. Clone this repo
-2. Browse to the extension you are interested in trying
-3. Copy the extension manifest file (`extension.json`) to `extension-me.json`
-  * You can name this file anything, but extension-me.json is already included in the .gitignore
-4. Update this extension manifest file:
+2. Browse to the folder of the extension you are interested in trying
+3. Publish the contents of the extension to a local or cloud web server
+ * The root of the extension should be at the root of the web server, for example: https://myserver/images/fabrikam-logo.png
+4. Copy the extension manifest file (`extension.json`) to something like `extension-me.json`
+ * You do not need to re-deploy/re-publish after updating this file
+5. Update this extension manifest file:
   1. Update the `namespace` field to a globally-unique value. For example: ```johnsmith.samples.build-inspector```
-  2. Update the `baseUri` field URL (including port) based on where you plan to deploy/publish the static content contained in the sample folder
+  2. Update the `baseUri` field to be the fully-qualified URL to the root of your web server, for example: `https://myserver`
 6. Install the extension into your Visual Studio Online account
   1. Navigate to ```https://youraccount.visualstudio.com/_admin/_ext``` (replace youraccount with your real account name)
-  2. Click **Install** and browse to your extension manifest file (extension-me.json)
+  2. Click **Install** and browse to your manifest file, for example extension-me.json
   3. Click **OK**
 
 ## What's available
