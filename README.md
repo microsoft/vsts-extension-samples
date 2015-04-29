@@ -46,7 +46,7 @@ Demonstrates advanced extension concepts like AMD loading, using UI controls, hi
 
 ### UI
 
-![image](ui/images/menu-dropdown.png)
+![image](ui/images/menu-dropdown2.png)
 
 Explore different UI controls, including menus, toolbars, custom controls, and more.
 
