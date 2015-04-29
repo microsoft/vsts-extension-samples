@@ -13,7 +13,7 @@ This repo contains samples to help jump-start you in your development of [Extens
 ### Steps
 
 1. Clone this repo
-2. Browse to the extension you are interested in trying ([available sample](#available)]
+2. Browse to the extension you are interested in trying
 3. Copy the extension manifest file (`extension.json`) to `extension-me.json`
   * You can name this file anything, but extension-me.json is already included in the .gitignore
 4. Update this extension manifest file:
