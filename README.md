@@ -42,3 +42,7 @@ Demonstrates advanced extension concepts like AMD loading, using UI controls, hi
 
 Explore different UI controls, including menus, toolbars, custom controls, and more.
 
+## Public Events
+
+Adds an event source to the [Team Calendar extension](https://github.com/Microsoft/vso-team-calendar) for public holidays. Note that this sample contributes *to another extension* rather than core Visual Studio Online.
+
