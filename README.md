@@ -34,23 +34,23 @@ This repo contains samples to help jump-start you in your development of [Extens
 
 Clean up old or unneeded Git branches right from within Visual Studio Online.
 
-## Contribution point guide
+### Contribution point guide
 
 ![image](point-guide/images/context-menu-screenshot.png)
 
 Discover all the places (called contribution points) in Visual Studio Online you can extend, including hubs, toolbars, and context menus, and more.
  
-## Build inspector
+### Build inspector
 
 Demonstrates advanced extension concepts like AMD loading, using UI controls, history, and more. This sample is written in TypeScript and must be built before it can be installed. Open readme.md for instructions.
 
-## UI
+### UI
 
-![image](ui/images/menu-dropdown2.png)
+![image](ui/images/menu-dropdown.png)
 
 Explore different UI controls, including menus, toolbars, custom controls, and more.
 
-## Public events (for Team Calendar)
+### Public events (for Team Calendar)
 
 Adds an event source to the [Team Calendar extension](https://github.com/Microsoft/vso-team-calendar) for public holidays. Note that this sample contributes *to another extension* rather than core Visual Studio Online.
 
