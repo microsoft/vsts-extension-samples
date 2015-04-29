@@ -18,7 +18,7 @@ This repo contains samples to help jump-start you in your development of [Extens
   * You can name this file anything, but extension-me.json is already included in the .gitignore
 4. Update this extension manifest file:
   1. Update the `namespace` field to a globally-unique value. For example: ```johnsmith.samples.build-inspector```
-  2. Update the `baseUri` field URL (including port) based on where you plan to deploy/publsh the static content contained in the sample folder
+  2. Update the `baseUri` field URL (including port) based on where you plan to deploy/publish the static content contained in the sample folder
 6. Install the extension into your Visual Studio Online account
   1. Navigate to ```https://youraccount.visualstudio.com/_admin/_ext``` (replace youraccount with your real account name)
   2. Click **Install** and browse to your extension manifest file (extension-me.json)
@@ -32,7 +32,7 @@ Clean up old or unneeded Git branches right from within Visual Studio Online.
 
 ## Contribution point guide
 
-Discover all the places (called contribution points) in Visual Studio Online you can extend, including hubs, toolbars, and context menus, and more.",
+Discover all the places (called contribution points) in Visual Studio Online you can extend, including hubs, toolbars, and context menus, and more.
  
 ## Build inspector
 
