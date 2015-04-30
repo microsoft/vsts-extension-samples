@@ -74,21 +74,11 @@
                 "uri": "main.html"
             }
         ],
-        "vss.code.web#gitBranchesGridActions": [
+        "vss.code.web#gitBranchDiffActions": [
             {
                 "id": "showProperties",
-                "text": "Custom Git branches grid action",
+                "text": "Custom Git branch diff action",
                 "title": "vss.code.web#gitBranchesGridActions",
-                "icon": "images/show-properties.png",
-                "group": "actions",
-                "uri": "main.html"
-            }
-        ],
-        "vss.code.web#gitBranchesTreeActions": [
-            {
-                "id": "showProperties",
-                "text": "Custom Git branches tree action",
-                "title": "vss.code.web#gitBranchesTreeActions",
                 "icon": "images/show-properties.png",
                 "group": "actions",
                 "uri": "main.html"
