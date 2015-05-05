@@ -1,7 +1,6 @@
-/// <reference path='../VSS/References/VSS-Common.d.ts' />
-/// <reference path='../VSS/VSS.SDK.d.ts' />
+/// <reference path='../ref/VSS.d.ts' />
 
-import Work_Contracts = require("Admin/Scripts/Generated/Tfs.Work.Contracts");
+import Work_Contracts = require("TFS/Work/Contracts");
 
 /**
 * Interface for a calendar event provider
