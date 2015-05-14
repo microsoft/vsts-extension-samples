@@ -13,7 +13,6 @@
             {
                 "id": "showCommits",
                 "title": "View associated items",
-                "handler": "main.viewAssociatedItems",
                 "group": "actions",
                 "uri": "launch.html"
             }
