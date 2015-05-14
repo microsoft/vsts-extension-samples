@@ -1,6 +1,6 @@
 /// <reference path="../References/VSS-Common.d.ts" />
+import CommonControls = require("VSS/Controls/Common");
 import Controls = require("VSS/Controls");
-import ControlsCommon = require("VSS/Controls/Common");
 export declare class TreeDataSource extends Controls.BaseDataSource {
     root: any;
     constructor(options?: any);
@@ -236,7 +236,7 @@ export declare class TreeView extends Controls.BaseControl {
     private _getFirstTabbableChild(nodeElement);
     private _setNodeElementExpandState(nodeElement, expand, hasChildren?);
 }
-export declare class ComboTreeDropPopup extends ControlsCommon.ComboListDropPopup {
+export declare class ComboTreeDropPopup extends CommonControls.ComboListDropPopup {
     dataSource: TreeDataSource;
     constructor(options?: any);
     /**
@@ -249,7 +249,7 @@ export declare class ComboTreeDropPopup extends ControlsCommon.ComboListDropPopu
     _onItemClick(e?: any, itemIndex?: any, $target?: any, $li?: any): boolean;
     _getSelectedNode(): any;
 }
-export declare class ComboTreeBehavior extends ControlsCommon.ComboListBehavior {
+export declare class ComboTreeBehavior extends CommonControls.ComboListBehavior {
     constructor(combo: any, options?: any);
     canType(): boolean;
     /**
@@ -269,7 +269,7 @@ export declare class ComboTreeBehavior extends ControlsCommon.ComboListBehavior 
     keyUp(e?: JQueryEventObject): any;
     _createDataSource(): Controls.BaseDataSource;
 }
-export declare class SearchComboTreeBehavior extends ControlsCommon.ComboListBehavior {
+export declare class SearchComboTreeBehavior extends CommonControls.ComboListBehavior {
     private hitText;
     private selectedHitIndex;
     private originalNodes;

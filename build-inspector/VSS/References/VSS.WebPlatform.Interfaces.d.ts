@@ -18,6 +18,11 @@ interface IVssAjaxOptions {
     * App id to use to scope the auth token to. An unscoped token is generated if no app id is provided.
     */
     appId?: string;
+
+    /**
+     * If true, textStatus and jqXHR are added to the success callback. In this case, spread (instead of then) needs to be used (default false).
+     */
+    useAjaxResult?: boolean;
 }
 
 /**
@@ -123,3 +128,4 @@ interface IPromise<T> {
     then<U>(onFulfill: (value: T) => U | void, onReject?: (reason: any) => IPromise<U> | void): IPromise<U>;
     then<U>(onFulfill: (value: T) => U | void, onReject?: (reason: any) => U | void): IPromise<U>;
 }
+

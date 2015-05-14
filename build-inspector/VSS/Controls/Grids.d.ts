@@ -1,8 +1,8 @@
 /// <reference path="../References/VSS-Common.d.ts" />
-import Search = require("VSS/Search");
 import Controls = require("VSS/Controls");
-import ControlsData = require("VSS/Controls/Data");
+import Data = require("VSS/Controls/Data");
 import Menus = require("VSS/Controls/Menus");
+import Search = require("VSS/Search");
 /**
  * @publicapi
  */
@@ -90,7 +90,7 @@ export interface IGridOptions {
      * Type of the formatter which is used for retrieving the content from the grid
      * Used in beginTableFormat, called when triggering a copy action
      */
-    formatterType?: new (grid: GridO<any>, options?: any) => ControlsData.ITableFormatter;
+    formatterType?: new (grid: GridO<any>, options?: any) => Data.ITableFormatter;
 }
 export interface IGridContextMenu {
     /**
@@ -672,28 +672,28 @@ export declare class GridO<TOptions extends IGridOptions> extends Controls.Contr
      * @return
      */
     _onFocus(e?: JQueryEventObject): any;
-    _onKeyPress(e?: JQueryEventObject): any;
+    _onKeyPress(e?: JQueryKeyEventObject): any;
     /**
      * @param e
      * @return
      */
-    _onKeyDown(e?: JQueryEventObject): any;
-    _onBackSpaceKey(e?: JQueryEventObject): void;
-    _onUpKey(e?: JQueryEventObject, bounds?: any): void;
-    _onDownKey(e?: JQueryEventObject, bounds?: any): void;
-    _onRightKey(e?: JQueryEventObject): void;
-    _onLeftKey(e?: JQueryEventObject): void;
-    _onPageUpPageDownKey(e?: JQueryEventObject, bounds?: any): void;
-    _getRowsPerPage(e?: JQueryEventObject): number;
-    _onHomeKey(e?: JQueryEventObject, bounds?: any): void;
-    _onEndKey(e?: JQueryEventObject, bounds?: any): void;
-    _onTabKey(e?: JQueryEventObject): void;
-    _onEscapeKey(e?: JQueryEventObject): void;
+    _onKeyDown(e?: JQueryKeyEventObject): any;
+    _onBackSpaceKey(e?: JQueryKeyEventObject): void;
+    _onUpKey(e?: JQueryKeyEventObject, bounds?: any): void;
+    _onDownKey(e?: JQueryKeyEventObject, bounds?: any): void;
+    _onRightKey(e?: JQueryKeyEventObject): void;
+    _onLeftKey(e?: JQueryKeyEventObject): void;
+    _onPageUpPageDownKey(e?: JQueryKeyEventObject, bounds?: any): void;
+    _getRowsPerPage(e?: BaseJQueryEventObject): number;
+    _onHomeKey(e?: JQueryKeyEventObject, bounds?: any): void;
+    _onEndKey(e?: JQueryKeyEventObject, bounds?: any): void;
+    _onTabKey(e?: JQueryKeyEventObject): void;
+    _onEscapeKey(e?: JQueryKeyEventObject): void;
     /**
      * @param e
      * @return
      */
-    _onKeyUp(e?: JQueryEventObject): any;
+    _onKeyUp(e?: JQueryKeyEventObject): any;
     /**
      * Enables raising the custom event with the provided event name.
      *
@@ -717,7 +717,7 @@ export declare class GridO<TOptions extends IGridOptions> extends Controls.Contr
      * current selection is available to the client for processing.
      * @param errorCallback
      */
-    beginFormatTable(operationCompleteCallback: IResultCallback, errorCallback?: IErrorCallback, formatterType?: new (grid: GridO<TOptions>, options?: any) => ControlsData.ITableFormatter, options?: any): void;
+    beginFormatTable(operationCompleteCallback: IResultCallback, errorCallback?: IErrorCallback, formatterType?: new (grid: GridO<TOptions>, options?: any) => Data.ITableFormatter, options?: any): void;
     _createElement(): void;
     _addSpacingElements(): void;
     _createFocusElement(): JQuery;
@@ -949,12 +949,12 @@ export declare class GridO<TOptions extends IGridOptions> extends Controls.Contr
      * @param e
      * @return
      */
-    _onEnterKey(e?: JQueryEventObject, bounds?: any): any;
+    _onEnterKey(e?: JQueryKeyEventObject, bounds?: any): any;
     /**
      * @param e
      * @return
      */
-    _onDeleteKey(e?: JQueryEventObject): any;
+    _onDeleteKey(e?: JQueryKeyEventObject): any;
     /**
      * @param e
      * @return
@@ -970,7 +970,7 @@ export declare class GridO<TOptions extends IGridOptions> extends Controls.Contr
     afterOnToggle(rowInfo: any): void;
     private _folderToggled(rowInfo);
     private _raiseToggleEvent(rowInfo, isExpanded);
-    copySelectedItems(formatterType?: new (grid: GridO<TOptions>, options?: any) => ControlsData.ITableFormatter, copyAsHtml?: boolean, options?: any): void;
+    copySelectedItems(formatterType?: new (grid: GridO<TOptions>, options?: any) => Data.ITableFormatter, copyAsHtml?: boolean, options?: any): void;
     _ensureRowDrawn(dataIndex: any): boolean;
     /**
      * Ensures that all data objects in the selection have been downloaded and are available to process.

@@ -1,6 +1,6 @@
 /// <reference path="References/VSS-Common.d.ts" />
-import WebApi_RestClient = require("VSS/WebApi/RestClient");
 import Contracts_Platform = require("VSS/Common/Contracts/Platform");
+import WebApi_RestClient = require("VSS/WebApi/RestClient");
 /**
 * A connection to a particular TeamFoundation host
 */
@@ -63,7 +63,7 @@ export declare class VssConnection {
     * @param serviceInstanceId Unique identifier of the VSO service to get the url for
     * @param hostType The type of host to get the url for
     */
-    beginGetServiceUrl(serviceInstanceId: string, hostType?: Contracts_Platform.ContextHostType): JQueryPromise<string>;
+    beginGetServiceUrl(serviceInstanceId: string, hostType?: Contracts_Platform.ContextHostType): IPromise<string>;
     private _isSameOrigin(serviceUrl);
 }
 /**

@@ -218,7 +218,7 @@ export declare class Contribution {
      * @param any Object containing key-value pairs to replace the template strings
      * @return JQueryPromise<string> Promise that will be resolved with the value of the property after replacements are made.
      */
-    beginGetTemplateProperty(propertyName: string, replacementObject: any): JQueryPromise<string>;
+    beginGetTemplateProperty(propertyName: string, replacementObject: any): IPromise<string>;
     /**
      * Gets the requested property value with templated strings filled in by values in the given object.  It will
      * attempt to append on baseUrl property if it is available and it is needed.
@@ -226,7 +226,7 @@ export declare class Contribution {
      * @param any Object containing key-value pairs to replace the template strings
      * @return JQueryPromise<string> Promise that will be resolved with the value of the property after replacements are made.
      */
-    beginGetTemplateUriProperty(propertyName: string, replacementObject: any): JQueryPromise<string>;
+    beginGetTemplateUriProperty(propertyName: string, replacementObject: any): IPromise<string>;
     private _processTemplate(propertyValue, replacementObject);
     private handleAsyncReplacements(value, asyncIndex, asyncStopIndex, deferred);
     /**

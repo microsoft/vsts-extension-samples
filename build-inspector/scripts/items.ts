@@ -3,8 +3,8 @@
 
 import AssociatedItemsView = require("Scripts/AssociatedItemsView");
 import VSS_Service = require("VSS/Service");
-import TFS_Build_Contracts = require("Build/Scripts/Generated/TFS.Build2.Contracts");
-import TFS_Build_WebApi = require("Build/Scripts/Generated/TFS.Build2.WebApi");
+import TFS_Build_Contracts = require("TFS/Build/Contracts");
+import TFS_Build_Client = require("TFS/Build/RestClient");
 
 // Parse the query string from iframe
 var query = <IDictionaryStringTo<string>>{};
@@ -30,11 +30,12 @@ if (buildUri) {
 }
 
 if (buildId > 0) {
-    var buildClient = VSS_Service.getCollectionClient(TFS_Build_WebApi.BuildHttpClient);
+    var buildClient = VSS_Service.getCollectionClient(TFS_Build_Client.BuildHttpClient);
+    var context = VSS.getWebContext();
+
+	// We need the project to fetch the associated commits
     // Fetch the build to load
-    buildClient.getBuild(buildId).then((build: TFS_Build_Contracts.Build) => {
-		// We need the project to fetch the associated commits
-		var context = VSS.getWebContext();
+    buildClient.getBuild(buildId, context.project.id).then((build: TFS_Build_Contracts.Build) => {
 		
         // Fetch the build associated commit nodes
         buildClient.getBuildCommits(context.project.name, buildId).then(function (associatedChanges) {

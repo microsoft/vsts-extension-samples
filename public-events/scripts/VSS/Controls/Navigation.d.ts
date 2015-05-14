@@ -1,6 +1,6 @@
 /// <reference path="../References/VSS-Common.d.ts" />
+import CommonControls = require("VSS/Controls/Common");
 import Controls = require("VSS/Controls");
-import ControlsCommon = require("VSS/Controls/Common");
 import Menus = require("VSS/Controls/Menus");
 /**
  * Creates a high-level view object for a given page which captures page/hash navigations,
@@ -300,7 +300,7 @@ export declare class TabbedNavigationView extends NavigationView {
     showError(error: any): void;
     showErrorContent(title: any, $contentHtml: any, messageType: any, expand: any): void;
     showInformationTab(title: string, description: string): void;
-    appendInformationContent(caption: string, collapsed: boolean): ControlsCommon.InformationAreaControl;
+    appendInformationContent(caption: string, collapsed: boolean): CommonControls.InformationAreaControl;
     appendSectionTitle(content: string): void;
     appendSectionSummary(content: string): void;
     appendElement(element: JQuery): void;

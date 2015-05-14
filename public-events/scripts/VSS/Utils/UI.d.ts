@@ -202,10 +202,22 @@ export interface SelectionRange {
     startNodeOffset: number;
     endNodeOffset: number;
 }
+export interface IBrowserInformation {
+    msie?: boolean;
+    chrome?: boolean;
+    safari?: boolean;
+    mozilla?: boolean;
+    webkit?: boolean;
+    version?: string;
+}
 export declare module BrowserCheckUtils {
     function isFirefox(): boolean;
     function isChrome(): boolean;
-    function isIE(): number;
+    function isMozilla(): boolean;
+    function isMsie(): boolean;
+    function isIE(): boolean;
+    function getVersion(): string;
+    function isIEVersion(version: number): boolean;
     function isLessThanOrEqualToIE9(): boolean;
     function isLessThanOrEqualToIE8(): boolean;
 }

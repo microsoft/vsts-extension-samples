@@ -9,15 +9,18 @@ export declare class FileContainerHttpClient extends VSS_WebApi.VssHttpClient {
      * @param {number} containerId
      * @param {string} itemPath
      * @param {string} scope - A guid representing the scope of the container. This is often the project id.
-     * @return IPromise<void>
+     * @return IPromise<Contracts.FileContainerItem>
      */
-    createItem(containerId: number, itemPath: string, scope?: string): IPromise<void>;
+    createItem(containerId: number, itemPath: string, scope?: string): IPromise<Contracts.FileContainerItem>;
     /**
+     * Creates the specified items in in the referenced container.
+     *
      * @param {VSS_Common_Contracts.VssJsonCollectionWrapperV<Contracts.FileContainerItem[]>} items
      * @param {number} containerId
-     * @return IPromise<void>
+     * @param {string} scope - A guid representing the scope of the container. This is often the project id.
+     * @return IPromise<Contracts.FileContainerItem[]>
      */
-    createItems(items: VSS_Common_Contracts.VssJsonCollectionWrapperV<Contracts.FileContainerItem[]>, containerId: number): IPromise<void>;
+    createItems(items: VSS_Common_Contracts.VssJsonCollectionWrapperV<Contracts.FileContainerItem[]>, containerId: number, scope?: string): IPromise<Contracts.FileContainerItem[]>;
     /**
      * Deletes the specified items in a container.
      *
@@ -45,7 +48,7 @@ export declare class FileContainerHttpClient extends VSS_WebApi.VssHttpClient {
      * @param {string} format - If specified, this overrides the HTTP Accept request header to return either 'json' or 'zip'.  If $format is specified, then api-version should also be specified as a query parameter.
      * @param {string} downloadFileName - If specified and returning other than JSON format, then this download name will be used (else defaults to itemPath)
      * @param {boolean} includeDownloadTickets
-     * @return IPromise<void>
+     * @return IPromise<Contracts.FileContainerItem[]>
      */
-    getItems(containerId: number, scope?: string, itemPath?: string, metadata?: boolean, format?: string, downloadFileName?: string, includeDownloadTickets?: boolean): IPromise<void>;
+    getItems(containerId: number, scope?: string, itemPath?: string, metadata?: boolean, format?: string, downloadFileName?: string, includeDownloadTickets?: boolean): IPromise<Contracts.FileContainerItem[]>;
 }

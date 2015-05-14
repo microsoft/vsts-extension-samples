@@ -148,3 +148,4 @@ export declare var IdentityPicker_IdCardDepartment: string;
 export declare var IdentityPicker_IdCardJobTitle: string;
 export declare var IdentityPicker_IdCardManager: string;
 export declare var IdentityPicker_IdCardOffice: string;
+export declare var IdentityPicker_ShowContactCardTitle: string;

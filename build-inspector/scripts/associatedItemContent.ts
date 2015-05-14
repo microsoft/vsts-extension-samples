@@ -4,7 +4,7 @@
 import VSS_Core = require("VSS/Utils/Core");
 import VSS_Service = require("VSS/Service");
 import Controls = require("VSS/Controls");
-import GitHttpClient = require("VersionControl/Scripts/Generated/TFS.VersionControl.Git.WebApi");
+import GitHttpClient = require("TFS/VersionControl/GitRestClient");
 
 export interface AssociatedItemContentOptions {
     associatedItem: any;

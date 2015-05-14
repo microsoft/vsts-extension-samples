@@ -1,22 +1,22 @@
 /// <reference path="../../References/jquery.d.ts" />
 /// <reference path="../../References/VSS-Common.d.ts" />
-import Common = require("VSS/Controls/Common");
+import CommonControls = require("VSS/Controls/Common");
 import Controls = require("VSS/Controls");
-import RestClient = require("VSS/Identities/Picker/RestClient");
-import Services = require("VSS/Identities/Picker/Services");
-export interface IIdentityPickerDropdownOptions extends Services.IIdentityServiceOptions {
-    /**
-    *   scope - one or more of Authority (AAD) or Account
-    **/
-    identityType?: Services.IdentityType;
+import Identities_Picker_RestClient = require("VSS/Identities/Picker/RestClient");
+import Identities_Picker_Services = require("VSS/Identities/Picker/Services");
+export interface IIdentityPickerDropdownOptions extends Identities_Picker_Services.IIdentityServiceOptions {
     /**
     *   type of identities - one or more of User or Group
     **/
-    identityScope?: Services.IdentityScope;
+    identityType?: Identities_Picker_Services.IIdentityType;
     /**
-    *   default identities to initialise the dropdown with
+    *   scope - one or more of AAD, Local
     **/
-    items?: RestClient.IIdentity[];
+    operationScope?: Identities_Picker_Services.IOperationScope;
+    /**
+    *   default identities to initialize the dropdown with
+    **/
+    items?: Identities_Picker_RestClient.IIdentity[];
     /**
     *   restrict displayed identities in dropdown
     **/
@@ -24,8 +24,30 @@ export interface IIdentityPickerDropdownOptions extends Services.IIdentityServic
     /**
     *   what action (usually in parent) should execute when an item in this dropdown is selected
     **/
-    onItemSelect?: (identity: RestClient.IIdentity) => any;
+    onItemSelect?: (identity: Identities_Picker_RestClient.IIdentity) => any;
+    /**
+    *   whether to display the contact card icon for each identity in the dropdown. Default false.
+    **/
+    showContactCard?: boolean;
+    /**
+    *   the width of the dropdown control. Default is max(positioningElement width, 400px)
+    **/
+    width?: number;
+    /**
+    *   the vertex of the dropdown which coincides with the baseAlign (horizontal-vertical). See UI.Positioning for details. Default is "left-top"
+    **/
+    elementAlign?: string;
+    /**
+    *   the vertex of the base element used as a reference for positioning (horizontal-vertical). See UI.Positioning for details. Default is "left-bottom"
+    **/
+    baseAlign?: string;
+    tfsContext?: any;
     coreCssClass?: string;
+    /**
+    *   an element, or a function which returns an element, to be used for determining the alignment and width of the dropdown control.
+    *   Refer to the width, elementAlign, and baseAlign options. Default is the container
+    **/
+    positioningElement?: JQuery | (() => JQuery);
 }
 export declare class IdentityPickerDropdownControl extends Controls.Control<IIdentityPickerDropdownOptions> {
     private static MIN_WIDTH;
@@ -38,17 +60,17 @@ export declare class IdentityPickerDropdownControl extends Controls.Control<IIde
     private _$searchStatus;
     private _indexToItemMap;
     private _searchActive;
-    private _query;
+    private _prefix;
     private _isVisible;
     private _identityType;
-    private _identityScope;
+    private _operationScope;
     constructor(options?: IIdentityPickerDropdownOptions);
     initializeOptions(options?: IIdentityPickerDropdownOptions): void;
     initialize(): void;
     /**
-    * Set the query but do not expect an update to the list
+    * Set the prefix but do not expect an update to the list
     **/
-    updateQuery(query: string): void;
+    updatePrefix(prefix: string): void;
     /**
     * Returns true if the dropdown is currently being shown
     **/
@@ -56,8 +78,8 @@ export declare class IdentityPickerDropdownControl extends Controls.Control<IIde
     /**
     * Get Identities
     */
-    getIdentities(prefix: string, successCallback?: (data?: RestClient.QueryTokenResultModel) => any, errorCallback?: (errorData?: any) => any): void;
-    updateIdentities(items: RestClient.IIdentity[], keepIndex?: boolean): void;
+    getIdentities(prefix: string, successCallback?: (data?: Identities_Picker_RestClient.QueryTokenResultModel) => any, errorCallback?: (errorData?: any) => any): void;
+    updateIdentities(items: Identities_Picker_RestClient.IIdentity[], keepIndex?: boolean): void;
     /**
     * Show the dropdown
     **/
@@ -76,6 +98,7 @@ export declare class IdentityPickerDropdownControl extends Controls.Control<IIde
     * Set the position of this control with respect to its parent
     **/
     private setPosition();
+    private getPositioningElement();
     /**
     * Show the status indicator till all users are loaded
     **/
@@ -89,7 +112,9 @@ export declare class IdentityPickerDropdownControl extends Controls.Control<IIde
     private _prevPage();
     private _nextItem();
     private _prevItem();
-    getSelectedItem(): RestClient.IIdentity;
+    getSelectedIndex(): number;
+    getSelectedItem(): Identities_Picker_RestClient.IIdentity;
+    private _highlightPrefix(textValue);
     /**
     * Create the li that shall represent an user item
     **/
@@ -97,10 +122,10 @@ export declare class IdentityPickerDropdownControl extends Controls.Control<IIde
     private _render();
     private _loadNextPage(force?);
 }
-export declare class IdCardDialog extends Common.ModalDialog {
+export declare class IdCardDialog extends CommonControls.ModalDialog {
     static IDCARD_LOADED_EVENT: string;
     private _identityType;
-    private _identityScope;
+    private _operationScope;
     private _$idCardDialog;
     constructor(options?: any);
     initializeOptions(options?: any): void;
@@ -109,25 +134,25 @@ export declare class IdCardDialog extends Common.ModalDialog {
     private _getIdentitiesSuccess(data);
     private _getThumbnailFailure(data);
     private _getThumbnailSuccess(thumbnails);
-    private _orderAttributes(user);
-    private _displayIdCard(user, attributes);
+    private _orderAttributes(identity);
+    private _displayIdCard(identity, attributes);
     private _onCloseClick(e?);
     private _onCancelClick(e?);
     private _createIdentityImageElement(tfsContext, identityId, size);
 }
-export interface IIdentityPickerSearchOptions extends Services.IIdentityServiceOptions {
-    /**
-    *   scope - one or more of Authority (AAD) or Account
-    **/
-    identityType?: Services.IdentityType;
+export interface IIdentityPickerSearchOptions extends Identities_Picker_Services.IIdentityServiceOptions {
     /**
     *   type of identities - one or more of User or Group
     **/
-    identityScope?: Services.IdentityScope;
+    identityType?: Identities_Picker_Services.IIdentityType;
+    /**
+    *   scope - one or more of AAD, Local
+    **/
+    operationScope?: Identities_Picker_Services.IOperationScope;
     /**
     *   default identities to initialise the dropdown with
     **/
-    items?: RestClient.IIdentity[];
+    items?: Identities_Picker_RestClient.IIdentity[];
     /**
     *   parent Jquery object
     **/
@@ -144,6 +169,14 @@ export interface IIdentityPickerSearchOptions extends Services.IIdentityServiceO
     *   what action (usually in parent) should execute when an item in this dropdown is selected
     **/
     onItemSelect?: any;
+    /**
+    *   whether to display the contact card icon for each identity in the dropdown. Default false.
+    **/
+    showContactCard?: boolean;
+    /**
+    *   whether to style the search control with a triangle that displays the MRU on click or not. Default false.
+    **/
+    showMruTriangle?: boolean;
     tfsContext?: any;
     coreCssClass?: string;
 }
@@ -156,7 +189,7 @@ export declare class IdentityPickerSearchControl extends Controls.Control<IIdent
     static SEARCH_FINISHED_EVENT: string;
     private _identityPickerDropdown;
     private _identityType;
-    private _identityScope;
+    private _operationScope;
     private _selectedItems;
     private _unresolvedItems;
     private _$input;
@@ -164,6 +197,10 @@ export declare class IdentityPickerSearchControl extends Controls.Control<IIdent
     private _$focusedOn;
     private _typingTimer;
     private _doneTypingInterval;
+    private _containerHeight;
+    private _elementMargin;
+    private _scrollBarWidth;
+    private _triangleWidth;
     constructor(options?: IIdentityPickerSearchOptions);
     initialize(): void;
     getIdentitySearchResult(): IdentitySearchResult;
@@ -176,6 +213,8 @@ export declare class IdentityPickerSearchControl extends Controls.Control<IIdent
     private _fireDataSourceFallback();
     private _fireDataSourceReevaluate();
     private _onInputChange(e?);
+    private _onInputClick(e?);
+    private _onDropClick(e?);
     private _onInputBlur(e?);
     private _onInputKeyDown(e?);
     private _onInputKeyUp(e?);
@@ -194,6 +233,6 @@ export declare class IdentityPickerSearchControl extends Controls.Control<IIdent
     private _unresolveItem(token);
 }
 export interface IdentitySearchResult {
-    resolvedIdentities: RestClient.IIdentity[];
+    resolvedIdentities: Identities_Picker_RestClient.IIdentity[];
     unresolvedIdentities: string[];
 }

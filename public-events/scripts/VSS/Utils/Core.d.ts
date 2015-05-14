@@ -876,6 +876,7 @@ export declare module GUIDUtils {
 }
 export declare function unpackIntegerArray(array: number[]): number[];
 export declare function getCookie(cookieName: string): string;
+export declare function tryParseMSJSON(data: any, secure: boolean): any;
 export declare function parseMSJSON(data: any, secure: boolean): any;
 export declare function stringifyMSJSON(object: any): string;
 /**

@@ -1,9 +1,27 @@
+/**
+* Container class for changed identities
+*/
 export interface ChangedIdentities {
+    /**
+    * Changed Identities
+    */
     identities: Identity[];
+    /**
+    * Last Identity SequenceId
+    */
     sequenceContext: ChangedIdentitiesContext;
 }
+/**
+* Context class for changed identities
+*/
 export interface ChangedIdentitiesContext {
+    /**
+    * Last Group SequenceId
+    */
     groupSequenceId: number;
+    /**
+    * Last Identity SequenceId
+    */
     identitySequenceId: number;
 }
 export interface CreateGroupsInfo {
@@ -41,6 +59,9 @@ export declare enum GroupScopeType {
     TeamProject = 2,
 }
 export interface Identity {
+    /**
+    * The custom display name for the identity (if any). Setting this property to an empty string will clear the existing custom display name. Setting this property to null will not affect the existing persisted value (since null values do not get sent over the wire or to the database)
+    */
     customDisplayName: string;
     descriptor: IdentityDescriptor;
     id: string;
@@ -52,6 +73,9 @@ export interface Identity {
     members: IdentityDescriptor[];
     metaTypeId: number;
     properties: any;
+    /**
+    * The display name for the identity as specified by the source identity provider.
+    */
     providerDisplayName: string;
     resourceVersion: number;
     uniqueUserId: number;
@@ -63,8 +87,17 @@ export interface IdentityBatchInfo {
     propertyNames: string[];
     queryMembership: QueryMembership;
 }
+/**
+* An Identity descriptor is a wrapper for the identity type (Windows SID, Passport) along with a unique identifier such as the SID or PUID.
+*/
 export interface IdentityDescriptor {
+    /**
+    * The unique identifier for this identity, not exceeding 256 chars, which will be persisted.
+    */
     identifier: string;
+    /**
+    * Type of descriptor (for example, Windows, Passport, etc.).
+    */
     identityType: string;
 }
 export declare enum IdentityMetaType {
@@ -83,13 +116,37 @@ export interface IdentityScope {
     securingHostId: string;
 }
 export declare enum IdentitySearchFilter {
+    /**
+    * NT account name (domain\alias)
+    */
     AccountName = 0,
+    /**
+    * Display name
+    */
     DisplayName = 1,
+    /**
+    * Find project admin group
+    */
     AdministratorsGroup = 2,
+    /**
+    * Find the identity using the identifier
+    */
     Identifier = 3,
+    /**
+    * Email address
+    */
     MailAddress = 4,
+    /**
+    * A general search for an identity.
+    */
     General = 5,
+    /**
+    * Alternate login username
+    */
     Alias = 6,
+    /**
+    * Find identity using Domain/TenantId
+    */
     Domain = 7,
 }
 export interface IdentitySelf {
@@ -114,12 +171,38 @@ export interface IdentityUpdateData {
     index: number;
     updated: boolean;
 }
+export interface JsonPatchOperationData<T> {
+    op: string;
+    path: string;
+    value: T;
+}
+export interface MruIdentitiesUpdateData extends JsonPatchOperationData<string[]> {
+}
 export declare enum QueryMembership {
+    /**
+    * Query will not return any membership data
+    */
     None = 0,
+    /**
+    * Query will return only direct membership data
+    */
     Direct = 1,
+    /**
+    * Query will return expanded membership data
+    */
     Expanded = 2,
+    /**
+    * Query will return expanded up membership data (parents only)
+    */
     ExpandedUp = 3,
+    /**
+    * Query will return expanded down membership data (children only)
+    */
     ExpandedDown = 4,
+}
+export declare enum ReadIdentitiesOptions {
+    None = 0,
+    FilterIllegalMemberships = 1,
 }
 export interface ReadOnlyIdentityDescriptor extends IdentityDescriptor {
     identifier: string;
@@ -216,6 +299,12 @@ export declare var TypeInfo: {
     IdentityUpdateData: {
         fields: any;
     };
+    JsonPatchOperationData: {
+        fields: any;
+    };
+    MruIdentitiesUpdateData: {
+        fields: any;
+    };
     QueryMembership: {
         enumValues: {
             "none": number;
@@ -223,6 +312,12 @@ export declare var TypeInfo: {
             "expanded": number;
             "expandedUp": number;
             "expandedDown": number;
+        };
+    };
+    ReadIdentitiesOptions: {
+        enumValues: {
+            "none": number;
+            "filterIllegalMemberships": number;
         };
     };
     ReadOnlyIdentityDescriptor: {

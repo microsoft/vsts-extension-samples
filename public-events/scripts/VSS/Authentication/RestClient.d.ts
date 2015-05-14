@@ -6,5 +6,5 @@ export declare class AuthenticationHttpClient extends VSS_WebApi.VssHttpClient {
      * @param {Contracts.WebSessionToken} sessionToken
      * @return IPromise<Contracts.WebSessionToken>
      */
-    postSessionToken(sessionToken: Contracts.WebSessionToken): IPromise<Contracts.WebSessionToken>;
+    createSessionToken(sessionToken: Contracts.WebSessionToken): IPromise<Contracts.WebSessionToken>;
 }

@@ -1,7 +1,7 @@
 /// <reference path="References/VSS-Common.d.ts" />
 /// <reference path="References/VSS.SDK.Interfaces.d.ts" />
 /// <reference path="References/q.d.ts" />
-import ControlsCommon = require("VSS/Controls/Common");
+import CommonControls = require("VSS/Controls/Common");
 /**
 * Class which manages showing dialogs in the parent frame
 */
@@ -19,9 +19,10 @@ export declare class HostDialogService implements IHostDialogService {
 /**
 * Represents a dialog which hosts an ExternalPart.
 */
-export declare class ExternalDialog extends ControlsCommon.ModalDialog implements IExternalDialog {
+export declare class ExternalDialog extends CommonControls.ModalDialog implements IExternalDialog {
     private _loadingPromise;
     private _contribution;
+    initializeOptions(options?: any): void;
     initialize(): void;
     /**
     * Gets an object registered in the dialog's contribution control.
@@ -36,7 +37,7 @@ export declare class ExternalDialog extends ControlsCommon.ModalDialog implement
 /**
 * Class which manages history of the parent frame
 */
-export declare class HostHistoryManager {
+export declare class HostHistoryManager implements IHostHistoryService {
     /**
     * Add a callback to be invoked each time the hash navigation has changed
     *
@@ -47,6 +48,10 @@ export declare class HostHistoryManager {
     * Gets the current hash.
     */
     getHash(): any;
+    /**
+     * Reloads the parent frame
+     */
+    reload(): void;
     /**
     * Sets the provided hash from the hosted content.
     */

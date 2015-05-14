@@ -212,3 +212,105 @@ interface IHostDialogService {
     */
     openDialog(contribution: IContribution, dialogOptions: IHostDialogOptions, contributionConfig?: Object, postContent?: Object): IPromise<IExternalDialog>;
 }
+
+/**
+* Service which allows interaction with the browser history of the host frame
+*/
+interface IHostHistoryService {
+    
+    /**
+    * Add a callback to be invoked each time the hash navigation has changed
+    *
+    * @param callback Method invoked on each navigation hash change
+    */
+    onHashChanged(callback: (hash: string) => void);
+
+    /**
+    * Gets the current hash.
+    *
+    * @return Hash part of the host page's url (url following #)
+    */
+    getHash(): string;
+
+    /**
+    * Sets the provided hash from the hosted content.
+    *
+    * @param hash The new hash string to 
+    */
+    setHash(hash: string);
+}
+
+/**
+* Iterface for a registered object that contributes menu item(s)
+*/
+interface IContributedMenuSource {
+
+    /**
+    * Get an array of menu items for the given context
+    *
+    * @param context Menu-specific context information
+    * @return Array of menu items or a promise for the array
+    */
+    getMenuItems(context: any): IContributedMenuItem[] | IPromise<IContributedMenuItem[]>;
+
+    /**
+    * Handle a menu item from this menu source being clicked. This is only invoked when the
+    * contributed menu item does not have an "action" method.
+    *
+    * @param actionContext Menu-specific context information
+    */
+    execute(actionContext: any);
+}
+
+/**
+* An individual contributed menu item
+*/
+interface IContributedMenuItem {
+
+    /**
+    * Menu-item specific identifier
+    */
+    id?: string;
+
+    /**
+    * Text to display in the menu item
+    */
+    text?: string;
+
+    /**
+    * Tooltip to display for the menu item
+    */
+    title?: string;
+
+    /**
+    * Set to true if this menu item is just a separator
+    */
+    separator?: boolean;
+
+    /**
+    * Set to true if this menu item should be disabled
+    */
+    disabled?: boolean;
+
+    /**
+    * Url to an icon image or css class for the image cell
+    */
+    icon?: string;
+
+    /**
+    * If this menu item has a sub menu, these are the contributed child items
+    */
+    childItems?: IContributedMenuItem[];
+
+    /**
+    * Id of the menu group that this item should be placed in.
+    */
+    groupId?: string;
+
+    /**
+    * Method invoked when the menu item is clicked.
+    *
+    * @param actionContext Menu-specific context information
+    */
+    action?: (actionContext: any) => void;
+}

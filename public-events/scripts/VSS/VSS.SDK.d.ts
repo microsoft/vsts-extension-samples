@@ -57,6 +57,8 @@ declare module XDM {
     class XDMChannel implements IXDMChannel {
         private static _nextChannelId;
         private static MAX_XDM_DEPTH;
+        private static WINDOW_TYPES_TO_SKIP_SERIALIZATION;
+        private static JQUERY_TYPES_TO_SKIP_SERIALIZATION;
         private _nextMessageId;
         private _deferreds;
         private _postToWindow;
@@ -94,6 +96,7 @@ declare module XDM {
         private _error(messageObj, errorObj, handshakeToken);
         private _success(messageObj, result, handshakeToken);
         private _sendRpcMessage(message);
+        private _shouldSkipSerialization(obj);
         private _customSerializeObject(obj, parentObjects?, nextCircularRefId?, depth?);
         private _registerProxyFunction(func, context);
         private _customDeserializeObject(obj, circularRefs?);

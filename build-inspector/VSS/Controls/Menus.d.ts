@@ -1,5 +1,5 @@
 /// <reference path="../References/VSS-Common.d.ts" />
-import Contribution_Services = require("VSS/Contributions/Services");
+/// <reference path="../References/VSS.SDK.Interfaces.d.ts" />
 import Controls = require("VSS/Controls");
 export declare var menuManager: any;
 export declare enum MenuItemState {
@@ -166,6 +166,9 @@ export declare class MenuItem extends MenuBase<MenuItemOptions> {
     private _onDropClick(e?);
     private _onKeyDown(e);
 }
+export interface MenuContributionProviderOptions {
+    defaultTextToTitle?: boolean;
+}
 export interface MenuOptions extends MenuBaseOptions {
     suppressInitContributions: boolean;
     contributionPoints: string[];
@@ -183,8 +186,9 @@ export declare class Menu<TOptions extends MenuOptions> extends MenuBase<TOption
     private _skipUpdateMenuItemStates;
     private _positioningRoutine;
     private _pinElement;
-    private _contributions;
-    private _contributionPoints;
+    private _menuContributionProvider;
+    protected _contributedItems: IContributedMenuItem[];
+    protected _contributionProviderOptions: MenuContributionProviderOptions;
     _menuItems: any;
     _selectedItem: any;
     _visible: boolean;
@@ -195,33 +199,12 @@ export declare class Menu<TOptions extends MenuOptions> extends MenuBase<TOption
      * @param options
      */
     constructor(options?: any);
-    initializeContributions(): void;
-    private _contributionsFetchedCallback(contributions);
-    /**
-     * Loads all contributions for each contribution point associated with this menu.
-     * As each contribution list is loaded (one list per point), its menu items are added.
-     * @return JQueryPromise that is resolved when all contributions are fetched.
-     */
-    refreshContributions(): IPromise<Contribution_Services.Contribution[]>;
-    private _initializeItemsSource();
-    injectContributions(contributions: Contribution_Services.Contribution[]): void;
-    protected _getPropertyRpcPromises(contribution: Contribution_Services.Contribution): [string, JQueryPromise<string>][];
-    protected _getAssociatedMenuItemPromise(contribution: Contribution_Services.Contribution): JQueryPromise<MenuItem>;
-    _appendContributionMenuItems(sourceItems: MenuItem[], contributionItems: MenuItem[]): void;
-    protected _getContributionContext(): any;
-    private _contributionToMenuItem(contribution);
-    protected _getContributionId(contribution: Contribution_Services.Contribution): string;
-    protected _beginGetContributionPropertyRpc(contribution: Contribution_Services.Contribution, propertyKey: string, context: any, defaultValue: any): JQueryPromise<any>;
-    private _getContributionRpc(contribution);
-    /**
-     * Sets the context info for a contribution callback.
-     */
-    setContextInfo(context: any): void;
     /**
      * @param options
      */
     initializeOptions(options?: any): void;
     initialize(): void;
+    private _initializeItemsSource();
     _decorate(): void;
     /**
      * Gets the item which has the specified id
@@ -246,6 +229,8 @@ export declare class Menu<TOptions extends MenuOptions> extends MenuBase<TOption
     getCommandState(commandId: string, context: any): MenuItemState;
     updateCommandStates(commands: ICommand[]): void;
     updateItems(items: any): void;
+    protected _updateItemsWithContributions(items: any, contributedMenuItems: IContributedMenuItem[]): void;
+    protected _updateCombinedSource(items: any): void;
     /**
      * Create a list from itemsSource to reflect the order of items after grouping is done.
      * Groups of items come before all ungrouped items.
@@ -354,6 +339,9 @@ export declare class Menu<TOptions extends MenuOptions> extends MenuBase<TOption
     _onParentScroll(e?: any): void;
     private _onMouseDown(e?);
     private _blockBlurUntilTimeout();
+    refreshContributedItems(): void;
+    private _refreshContributedMenuItems();
+    private _getContributionContext();
 }
 export interface MenuOwnerOptions extends MenuOptions {
     showIcon: boolean;
@@ -463,8 +451,6 @@ export declare class MenuBarO<TOptions extends MenuBarOptions> extends MenuOwner
      * @return
      */
     selectRight(options?: any): boolean;
-    protected _getPropertyRpcPromises(contribution: Contribution_Services.Contribution): [string, JQueryPromise<string>][];
-    protected _beginGetContributionPropertyRpc(contribution: Contribution_Services.Contribution, propertyKey: string, context: any, defaultValue: any): JQueryPromise<any>;
 }
 export declare class MenuBar extends MenuBarO<MenuBarOptions> {
     /**
@@ -488,7 +474,6 @@ export declare class PopupMenuO<TOptions extends PopupMenuOptions> extends MenuO
     private _floating;
     private _escapeFocusReceiver;
     private _popupPinElement;
-    private _popupCalledPromise;
     private _onHide;
     _hidden: boolean;
     constructor(options?: TOptions);
@@ -502,8 +487,9 @@ export declare class PopupMenuO<TOptions extends PopupMenuOptions> extends MenuO
     _getMenuItemType(): any;
     _decorate(): void;
     popup(focusElement: any, pinElement: any): void;
-    protected _getAssociatedMenuItemPromise(contribution: Contribution_Services.Contribution): JQueryPromise<MenuItem>;
-    _appendContributionMenuItems(sourceItems: MenuItem[], contributionItems: MenuItem[]): void;
+    private _showPopupMenu();
+    protected _updateItemsWithContributions(items: any, contributedMenuItems: IContributedMenuItem[]): void;
+    protected _updateCombinedSource(items: any): void;
     /**
      * @param options
      * @return

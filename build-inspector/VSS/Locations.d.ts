@@ -1,4 +1,5 @@
 /// <reference path="References/VSS-Common.d.ts" />
+/// <reference path="References/q.d.ts" />
 import Contracts_Platform = require("VSS/Common/Contracts/Platform");
 /**
 * Options for generating content urls
@@ -127,4 +128,4 @@ export declare function getCachedServiceLocation(serviceInstanceId: string, host
 * @param webContext The original context to get the url for
 * @return Promise that resolves to the location string
 */
-export declare function beginGetServiceLocation(serviceInstanceId: string, hostType: Contracts_Platform.ContextHostType, webContext?: Contracts_Platform.WebContext): JQueryPromise<string>;
+export declare function beginGetServiceLocation(serviceInstanceId: string, hostType: Contracts_Platform.ContextHostType, webContext?: Contracts_Platform.WebContext): IPromise<string>;

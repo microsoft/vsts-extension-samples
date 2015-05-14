@@ -1,6 +1,6 @@
 /// <reference path="../References/VSS-Common.d.ts" />
-import Contribution_Services = require("VSS/Contributions/Services");
 import Contributions_Contracts = require("VSS/Contributions/Contracts");
+import Contributions_Services = require("VSS/Contributions/Services");
 import Controls = require("VSS/Controls");
 /**
 * Common interface between internal and external contribution hosts
@@ -106,7 +106,7 @@ export declare class ExternalContentHost extends Controls.Control<ExternalConten
     * @param methodName Name of the RPC method to invoke via XDM
     * @param params Arguments to pass to the method
     */
-    invokeMethod(methodName: string, params?: any[]): JQueryPromise<any>;
+    invokeMethod(methodName: string, params?: any[]): IPromise<any>;
     /**
      * Get the host control object which the VSS.SDK can interact with to
      * for initial handshake, resizinig, etc.
@@ -142,7 +142,7 @@ export declare class InternalContentHost extends Controls.Control<ContributionHo
 * @param usePooledBackgroundHost: Set to true if the host will not be shown in the UI and we want to re-use an existing pooled host that points to the same endpoint.
 * @return IExtensionHost
 */
-export declare function createExtensionHost<TControlInterface>($container: JQuery, uri: string, contribution: Contribution_Services.Contribution, initialConfig?: any, postContent?: any): IExtensionHost;
+export declare function createExtensionHost<TControlInterface>($container: JQuery, uri: string, contribution: Contributions_Services.Contribution, initialConfig?: any, postContent?: any): IExtensionHost;
 /**
 * Instantiate a contributed control through an internal or external contribution host.
 *
@@ -150,7 +150,7 @@ export declare function createExtensionHost<TControlInterface>($container: JQuer
 * @param url The url of the contribution content
 * @return IExtensionHost
 */
-export declare function getBackgroundHost<TControlInterface>(uri: string, contribution: Contribution_Services.Contribution): IExtensionHost;
+export declare function getBackgroundHost<TControlInterface>(uri: string, contribution: Contributions_Services.Contribution): IExtensionHost;
 /**
  * Manages a pool of hosts (iframes) used for making RPCs to various app implementations
  */
@@ -172,7 +172,7 @@ export declare class BackgroundHostPool {
     * @param postContent: Optional data to post to the contribution url. If not specified, a GET is performed. (ignored if using a cached host)
     * @return AppHost
     */
-    getHost(uri: string, contribution: Contribution_Services.Contribution, initialConfig?: any, postContent?: any): ExternalContentHost;
+    getHost(uri: string, contribution: Contributions_Services.Contribution, initialConfig?: any, postContent?: any): ExternalContentHost;
     /**
      * Creates a new host that is hidden in the UI (for RPCs)
      */

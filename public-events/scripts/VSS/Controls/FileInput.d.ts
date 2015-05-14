@@ -1,6 +1,6 @@
 /// <reference path="../References/VSS-Common.d.ts" />
-import Utils_Core = require("VSS/Utils/Core");
 import Controls = require("VSS/Controls");
+import Utils_Core = require("VSS/Utils/Core");
 /**
 * Options for the file input control.
 */

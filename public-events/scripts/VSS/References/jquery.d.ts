@@ -1154,7 +1154,6 @@ interface JQueryStatic {
     widget: any;
     jqplot: any;
     connection: any;
-    browser: any;
 
     /*******************************************************************************
     * END TFS Customizations

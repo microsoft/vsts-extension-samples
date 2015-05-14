@@ -4,7 +4,7 @@
 var showCommitsMenu = (function () {
     "use strict";
     return {
-        viewAssociatedItems: function (actionContext) {
+        execute: function (actionContext) {
             // Get the Web Context to create the uri to navigate to
             var vsoContext = VSS.getWebContext();
 

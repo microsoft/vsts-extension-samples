@@ -1,6 +1,6 @@
 /// <reference path="../References/VSS-Common.d.ts" />
+import CommonControls = require("VSS/Controls/Common");
 import Controls = require("VSS/Controls");
-import ControlsCommon = require("VSS/Controls/Common");
 import Grids = require("VSS/Controls/Grids");
 export declare class CellEditor extends Controls.BaseControl {
     constructor(options: any);
@@ -72,7 +72,7 @@ export declare class ComboCellEditor extends CellEditor {
     initialize(): void;
     _populateUINodes(node: any, uiNode: any): any;
     _updateEditControl(values: string[], controlType: string): void;
-    getComboControl(): ControlsCommon.Combo;
+    getComboControl(): CommonControls.Combo;
     createIn(container: any): void;
     _attachEvents(): void;
     _detachEvents(): void;

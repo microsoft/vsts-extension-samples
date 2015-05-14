@@ -41,7 +41,7 @@ export declare module HubsContextManager {
     function getDefaultHubNavigationView(): HubNavigationView;
     function addHub(hub: Hub): void;
     function addHubGroup(hubGroup: HubGroup): void;
-    function getSelectedHub(): JQueryPromise<Hub>;
+    function getSelectedHub(): IPromise<Hub>;
 }
 /**
 * Control that renders the hubs/navigation area at the top of a page

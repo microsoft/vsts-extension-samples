@@ -1,6 +1,6 @@
 /// <reference path="../References/VSS-Common.d.ts" />
-import Service = require("VSS/Service");
 import Contracts_Platform = require("VSS/Common/Contracts/Platform");
+import Service = require("VSS/Service");
 export interface IArtifactData {
     uri?: string;
     tool: string;

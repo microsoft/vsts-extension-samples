@@ -1,6 +1,6 @@
 /// <reference path="../References/VSS-Common.d.ts" />
-import Utils_Core = require("VSS/Utils/Core");
 import Controls = require("VSS/Controls");
+import Utils_Core = require("VSS/Utils/Core");
 import Validation = require("VSS/Controls/Validation");
 export declare class ToastNotification extends Controls.BaseControl {
     private _messageArea;
@@ -1090,6 +1090,35 @@ export declare class Splitter extends Controls.BaseControl {
     private _handleBarDoubleClick(e?);
     _dispose(): void;
 }
+/**
+ * Recommended structure for an item in a CheckboxList control.
+ * Not enforced - you may supply raw string items if preferred.
+ */
+export interface ICheckboxListItem {
+    /**
+     * The item's identifier or representative value.
+     */
+    value: any;
+    /**
+     * The item's display text. Ignored if 'content' is supplied.
+     */
+    text?: string;
+    /**
+     * Custom display element to render instead of 'text'.
+     */
+    content?: JQuery;
+    /**
+     * The item's tooltip.
+     */
+    title?: string;
+    /**
+     * Whether the item is checked.
+     */
+    checked: boolean;
+}
+/**
+ * Presents a list view of items, with checkboxes for each item.
+ */
 export declare class CheckboxList extends Controls.BaseControl {
     static enhancementTypeName: string;
     private _items;
@@ -1101,13 +1130,13 @@ export declare class CheckboxList extends Controls.BaseControl {
      */
     initializeOptions(options?: any): void;
     initialize(): void;
-    enableElement(enabled: any): void;
-    setItems(items: any): void;
+    enableElement(enabled: boolean): void;
+    setItems(items: any[]): void;
     getCheckedValues(): any[];
-    getCheckedItems(): any;
+    getCheckedItems(): any[];
     getUncheckedValues(): any[];
-    getUncheckedItems(): any;
-    setCheckedValues(values: any): void;
+    getUncheckedItems(): any[];
+    setCheckedValues(values: any[]): void;
     _initializeElement(): void;
     private _checkItemState(item, state);
     private _draw();

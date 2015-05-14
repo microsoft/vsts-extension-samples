@@ -10,6 +10,7 @@ export declare module AuthenticationResourceIds {
 }
 export declare module CommonIdentityPickerResourceIds {
     var IdentitiesLocationId: string;
+    var IdentityAvatarLocationId: string;
     var ServiceArea: string;
     var IdentitiesResource: string;
 }
@@ -28,9 +29,6 @@ export declare module FeatureAvailabilityResourceIds {
     var FeatureFlagsLocationId: string;
     var AreaId: string;
     var FeatureAvailabilityAreaName: string;
-}
-export declare module IdentityPickerResourceVersions {
-    var PreviewVersion: number;
 }
 export declare module LocationResourceIds {
     var ConnectionData: string;
@@ -57,7 +55,7 @@ export declare module ServiceInstanceTypes {
     var ServiceHooks: string;
     var ServiceHooks: string;
     var Search: string;
-    var CodeInsights: string;
+    var CodeAnalysis: string;
     var DevTestLabs: string;
     var SPSString: string;
     var TFSString: string;

@@ -381,6 +381,6 @@ declare module knockout {
 
 }
 
-declare module 'VSS/3rdParty/knockout' {
+declare module 'knockout' {
     export = knockout;
 }

@@ -40,5 +40,5 @@ export declare class FeatureAvailabilityHttpClient extends VSS_WebApi.VssHttpCli
      * @param {string} userEmail
      * @return IPromise<Contracts.FeatureFlag>
      */
-    patchFeatureFlag(state: Contracts.FeatureFlagPatch, name: string, userEmail?: string): IPromise<Contracts.FeatureFlag>;
+    updateFeatureFlag(state: Contracts.FeatureFlagPatch, name: string, userEmail?: string): IPromise<Contracts.FeatureFlag>;
 }

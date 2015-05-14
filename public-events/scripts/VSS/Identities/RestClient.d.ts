@@ -1,13 +1,14 @@
 import Contracts = require("VSS/Identities/Contracts");
 import VSS_Common_Contracts = require("VSS/WebApi/Contracts");
+import VSS_DelegatedAuthorization_Contracts = require("VSS/DelegatedAuthorization/Contracts");
 import VSS_WebApi = require("VSS/WebApi/RestClient");
 export declare class IdentitiesHttpClient extends VSS_WebApi.VssHttpClient {
     constructor(rootRequestPath: string);
     /**
      * @param {any} container
-     * @return IPromise<void>
+     * @return IPromise<Contracts.Identity[]>
      */
-    createGroups(container: any): IPromise<void>;
+    createGroups(container: any): IPromise<Contracts.Identity[]>;
     /**
      * @param {string} groupId
      * @return IPromise<void>
@@ -25,9 +26,9 @@ export declare class IdentitiesHttpClient extends VSS_WebApi.VssHttpClient {
      * @param {number} identitySequenceId
      * @param {number} groupSequenceId
      * @param {string} scopeId
-     * @return IPromise<void>
+     * @return IPromise<Contracts.ChangedIdentities>
      */
-    getIdentityChanges(identitySequenceId: number, groupSequenceId: number, scopeId?: string): IPromise<void>;
+    getIdentityChanges(identitySequenceId: number, groupSequenceId: number, scopeId?: string): IPromise<Contracts.ChangedIdentities>;
     /**
      * @param {string} descriptors
      * @param {string} identityIds
@@ -36,9 +37,10 @@ export declare class IdentitiesHttpClient extends VSS_WebApi.VssHttpClient {
      * @param {Contracts.QueryMembership} queryMembership
      * @param {string} properties
      * @param {boolean} includeRestrictedVisibility
+     * @param {Contracts.ReadIdentitiesOptions} options
      * @return IPromise<Contracts.Identity[]>
      */
-    readIdentities(descriptors?: string, identityIds?: string, searchFilter?: string, filterValue?: string, queryMembership?: Contracts.QueryMembership, properties?: string, includeRestrictedVisibility?: boolean): IPromise<Contracts.Identity[]>;
+    readIdentities(descriptors?: string, identityIds?: string, searchFilter?: string, filterValue?: string, queryMembership?: Contracts.QueryMembership, properties?: string, includeRestrictedVisibility?: boolean, options?: Contracts.ReadIdentitiesOptions): IPromise<Contracts.Identity[]>;
     /**
      * @param {string} scopeId
      * @param {Contracts.QueryMembership} queryMembership
@@ -50,14 +52,14 @@ export declare class IdentitiesHttpClient extends VSS_WebApi.VssHttpClient {
      * @param {string} identityId
      * @param {Contracts.QueryMembership} queryMembership
      * @param {string} properties
-     * @return IPromise<void>
+     * @return IPromise<Contracts.Identity>
      */
-    readIdentity(identityId: string, queryMembership?: Contracts.QueryMembership, properties?: string): IPromise<void>;
+    readIdentity(identityId: string, queryMembership?: Contracts.QueryMembership, properties?: string): IPromise<Contracts.Identity>;
     /**
      * @param {VSS_Common_Contracts.VssJsonCollectionWrapperV<Contracts.Identity[]>} identities
-     * @return IPromise<void>
+     * @return IPromise<Contracts.IdentityUpdateData[]>
      */
-    updateIdentities(identities: VSS_Common_Contracts.VssJsonCollectionWrapperV<Contracts.Identity[]>): IPromise<void>;
+    updateIdentities(identities: VSS_Common_Contracts.VssJsonCollectionWrapperV<Contracts.Identity[]>): IPromise<Contracts.IdentityUpdateData[]>;
     /**
      * @param {Contracts.Identity} identity
      * @param {string} identityId
@@ -66,36 +68,36 @@ export declare class IdentitiesHttpClient extends VSS_WebApi.VssHttpClient {
     updateIdentity(identity: Contracts.Identity, identityId: string): IPromise<void>;
     /**
      * @param {Contracts.FrameworkIdentityInfo} frameworkIdentityInfo
-     * @return IPromise<void>
+     * @return IPromise<Contracts.Identity>
      */
-    createIdentity(frameworkIdentityInfo: Contracts.FrameworkIdentityInfo): IPromise<void>;
+    createIdentity(frameworkIdentityInfo: Contracts.FrameworkIdentityInfo): IPromise<Contracts.Identity>;
     /**
      * @param {Contracts.IdentityBatchInfo} batchInfo
-     * @return IPromise<void>
+     * @return IPromise<Contracts.Identity[]>
      */
-    readIdentityBatch(batchInfo: Contracts.IdentityBatchInfo): IPromise<void>;
+    readIdentityBatch(batchInfo: Contracts.IdentityBatchInfo): IPromise<Contracts.Identity[]>;
     /**
      * @param {string} scopeId
-     * @return IPromise<void>
+     * @return IPromise<Contracts.IdentitySnapshot>
      */
-    getIdentitySnapshot(scopeId: string): IPromise<void>;
+    getIdentitySnapshot(scopeId: string): IPromise<Contracts.IdentitySnapshot>;
     /**
-     * @return IPromise<void>
+     * @return IPromise<Contracts.IdentitySelf>
      */
-    getSelf(): IPromise<void>;
+    getSelf(): IPromise<Contracts.IdentitySelf>;
     /**
      * @param {string} containerId
      * @param {string} memberId
-     * @return IPromise<void>
+     * @return IPromise<boolean>
      */
-    addMember(containerId: string, memberId: string): IPromise<void>;
+    addMember(containerId: string, memberId: string): IPromise<boolean>;
     /**
      * @param {string} containerId
      * @param {string} memberId
      * @param {Contracts.QueryMembership} queryMembership
-     * @return IPromise<void>
+     * @return IPromise<Contracts.IdentityDescriptor>
      */
-    readMember(containerId: string, memberId: string, queryMembership?: Contracts.QueryMembership): IPromise<void>;
+    readMember(containerId: string, memberId: string, queryMembership?: Contracts.QueryMembership): IPromise<Contracts.IdentityDescriptor>;
     /**
      * @param {string} containerId
      * @param {Contracts.QueryMembership} queryMembership
@@ -105,16 +107,16 @@ export declare class IdentitiesHttpClient extends VSS_WebApi.VssHttpClient {
     /**
      * @param {string} containerId
      * @param {string} memberId
-     * @return IPromise<void>
+     * @return IPromise<boolean>
      */
-    removeMember(containerId: string, memberId: string): IPromise<void>;
+    removeMember(containerId: string, memberId: string): IPromise<boolean>;
     /**
      * @param {string} memberId
      * @param {string} containerId
      * @param {Contracts.QueryMembership} queryMembership
-     * @return IPromise<void>
+     * @return IPromise<Contracts.IdentityDescriptor>
      */
-    readMemberOf(memberId: string, containerId: string, queryMembership?: Contracts.QueryMembership): IPromise<void>;
+    readMemberOf(memberId: string, containerId: string, queryMembership?: Contracts.QueryMembership): IPromise<Contracts.IdentityDescriptor>;
     /**
      * @param {string} memberId
      * @param {Contracts.QueryMembership} queryMembership
@@ -124,9 +126,9 @@ export declare class IdentitiesHttpClient extends VSS_WebApi.VssHttpClient {
     /**
      * @param {Contracts.CreateScopeInfo} info
      * @param {string} scopeId
-     * @return IPromise<void>
+     * @return IPromise<Contracts.IdentityScope>
      */
-    createScope(info: Contracts.CreateScopeInfo, scopeId: string): IPromise<void>;
+    createScope(info: Contracts.CreateScopeInfo, scopeId: string): IPromise<Contracts.IdentityScope>;
     /**
      * @param {string} scopeId
      * @return IPromise<void>
@@ -134,14 +136,14 @@ export declare class IdentitiesHttpClient extends VSS_WebApi.VssHttpClient {
     deleteScope(scopeId: string): IPromise<void>;
     /**
      * @param {string} scopeId
-     * @return IPromise<void>
+     * @return IPromise<Contracts.IdentityScope>
      */
-    getScopeById(scopeId: string): IPromise<void>;
+    getScopeById(scopeId: string): IPromise<Contracts.IdentityScope>;
     /**
      * @param {string} scopeName
-     * @return IPromise<void>
+     * @return IPromise<Contracts.IdentityScope>
      */
-    getScopeByName(scopeName: string): IPromise<void>;
+    getScopeByName(scopeName: string): IPromise<Contracts.IdentityScope>;
     /**
      * @param {Contracts.IdentityScope} renameScope
      * @param {string} scopeId
@@ -149,12 +151,12 @@ export declare class IdentitiesHttpClient extends VSS_WebApi.VssHttpClient {
      */
     renameScope(renameScope: Contracts.IdentityScope, scopeId: string): IPromise<void>;
     /**
-     * @return IPromise<void>
+     * @return IPromise<VSS_DelegatedAuthorization_Contracts.AccessTokenResult>
      */
-    getSignoutToken(): IPromise<void>;
+    getSignoutToken(): IPromise<VSS_DelegatedAuthorization_Contracts.AccessTokenResult>;
     /**
      * @param {string} tenantId
-     * @return IPromise<void>
+     * @return IPromise<Contracts.TenantInfo>
      */
-    getTenant(tenantId: string): IPromise<void>;
+    getTenant(tenantId: string): IPromise<Contracts.TenantInfo>;
 }

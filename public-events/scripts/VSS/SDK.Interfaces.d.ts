@@ -74,6 +74,17 @@ interface ContributionContext {
     serviceUrl: string;
 }
 
+interface ContributionPath {
+    pathType: ContributionPathType;
+    value: string;
+}
+
+declare enum ContributionPathType {
+    Default = 0,
+    Resource = 1,
+    Bundle = 2,
+}
+
 interface CoreReferencesContext {
     scripts: JavascriptFileReference[];
     stylesheets: StylesheetReference[];
@@ -176,6 +187,7 @@ interface MicrosoftAjaxConfig {
 
 interface ModuleLoaderConfiguration {
     baseUrl: string;
+    contributionPaths: { [key: string]: ContributionPath; };
     paths: { [key: string]: string; };
     shim: { [key: string]: ModuleLoaderShimConfiguration; };
 }

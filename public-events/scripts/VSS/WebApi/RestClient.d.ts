@@ -1,5 +1,8 @@
 /// <reference path="../References/VSS-Common.d.ts" />
+/// <reference path="../References/q.d.ts" />
+import Q = require("q");
 import Serialization = require("VSS/Serialization");
+import WebApi_Contracts = require("VSS/WebApi/Contracts");
 /**
 * Parameters for sending a WebApi request
 */
@@ -92,30 +95,38 @@ export declare class VssHttpClient {
      * Sets a promise that is waited on before any requests are issued. Can be used to asynchronously
      * set the request url and auth token manager.
      */
-    _setInitializationPromise(promise: JQueryPromise<any>): void;
+    _setInitializationPromise(promise: IPromise<any>): void;
     /**
     * Issue a request to a VSS REST endpoint.
     *
     * @param requestParams request options
-    *
-    * @returns JQuery Promise for the response
+    * @param useAjaxResult If true, textStatus and jqXHR are added to the success callback. In this case, spread (instead of then) needs to be used
+    * @returns Q Promise for the response
     */
-    _beginRequest<T>(requestParams: VssApiResourceRequestParams): JQueryPromise<T>;
+    _beginRequest<T>(requestParams: VssApiResourceRequestParams, useAjaxResult?: boolean): IPromise<T>;
+    /**
+    * Issue a request to a VSS REST endpoint and makes sure the result contains jqXHR. Use spread to access jqXHR.
+    *
+    * @param requestParams request options
+    * @returns Q Promise for the response
+    */
+    _beginRequestWithAjaxResult<T>(requestParams: VssApiResourceRequestParams): Q.Promise<T>;
     /**
      * Issue an AJAX request. This is a wrapper around jquery's ajax method that handles VSS authentication
      * and triggers events that can be listened to by other modules.
      *
      * @param requestUrl Url to send the request to
      * @param ajaxOptions jQuery.ajax options
+     * @param useAjaxResult If true, textStatus and jqXHR are added to the success callback. In this case, spread (instead of then) needs to be used.
      */
-    _issueAjaxRequest(requestUrl: string, ajaxOptions: JQueryAjaxSettings): JQueryPromise<any>;
+    _issueAjaxRequest(requestUrl: string, ajaxOptions: JQueryAjaxSettings, useAjaxResult?: boolean): IPromise<any>;
     /**
      * Gets information about an API resource location (route template, supported versions, etc.)
      *
      * @param area resource area name
      * @param locationId Guid of the location to get
      */
-    _beginGetLocation(area: string, locationId: string): JQueryPromise<any>;
+    _beginGetLocation(area: string, locationId: string): IPromise<WebApi_Contracts.ApiResourceLocation>;
     private beginGetAreaLocations(area);
     private getRequestUrl(location, routeValues, queryParams?);
     private replaceRouteValues(routeTemplate, routeValues);

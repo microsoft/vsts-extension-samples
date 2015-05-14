@@ -57,6 +57,15 @@ export interface ContributionContext {
     scriptModules: string[];
     serviceUrl: string;
 }
+export interface ContributionPath {
+    pathType: ContributionPathType;
+    value: string;
+}
+export declare enum ContributionPathType {
+    Default = 0,
+    Resource = 1,
+    Bundle = 2,
+}
 export interface CoreReferencesContext {
     scripts: JavascriptFileReference[];
     stylesheets: StylesheetReference[];
@@ -147,6 +156,9 @@ export interface MicrosoftAjaxConfig {
 }
 export interface ModuleLoaderConfiguration {
     baseUrl: string;
+    contributionPaths: {
+        [key: string]: ContributionPath;
+    };
     paths: {
         [key: string]: string;
     };
@@ -280,6 +292,16 @@ export declare var TypeInfo: {
     };
     ContributionContext: {
         fields: any;
+    };
+    ContributionPath: {
+        fields: any;
+    };
+    ContributionPathType: {
+        enumValues: {
+            "default": number;
+            "resource": number;
+            "bundle": number;
+        };
     };
     CoreReferencesContext: {
         fields: any;

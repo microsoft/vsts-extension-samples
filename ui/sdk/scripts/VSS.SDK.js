@@ -1,6 +1,3 @@
-//----------------------------------------------------------
-// Copyright (C) Microsoft Corporation. All rights reserved.
-//----------------------------------------------------------
 ///<reference path='References/VSS-Common.d.ts' />
 ///<reference path='References/VSS.SDK.Interfaces.d.ts' />
 ///<reference path='SDK.Interfaces.d.ts' />
@@ -158,9 +155,6 @@ var XDM;
             if (lastDotIndex > 0) {
                 var objectName = fullMethodPath.substr(0, lastDotIndex);
                 var obj = this._registeredObjects[objectName];
-                if (!obj) {
-                    obj = window[objectName];
-                }
                 if (obj) {
                     var methodName = fullMethodPath.substr(lastDotIndex + 1);
                     var method = obj[methodName];
@@ -356,6 +350,23 @@ var XDM;
             var messageString = JSON.stringify(message);
             this._postToWindow.postMessage(messageString, this._targetOrigin || "*");
         };
+        XDMChannel.prototype._shouldSkipSerialization = function (obj) {
+            for (var i = 0, l = XDMChannel.WINDOW_TYPES_TO_SKIP_SERIALIZATION.length; i < l; i++) {
+                var instanceType = XDMChannel.WINDOW_TYPES_TO_SKIP_SERIALIZATION[i];
+                if (window[instanceType] && obj instanceof window[instanceType]) {
+                    return true;
+                }
+            }
+            if (window.jQuery) {
+                for (var i = 0, l = XDMChannel.JQUERY_TYPES_TO_SKIP_SERIALIZATION.length; i < l; i++) {
+                    var instanceType = XDMChannel.JQUERY_TYPES_TO_SKIP_SERIALIZATION[i];
+                    if (window.jQuery[instanceType] && obj instanceof window.jQuery[instanceType]) {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        };
         XDMChannel.prototype._customSerializeObject = function (obj, parentObjects, nextCircularRefId, depth) {
             var _this = this;
             if (parentObjects === void 0) { parentObjects = null; }
@@ -364,10 +375,25 @@ var XDM;
             if (!obj || depth > XDMChannel.MAX_XDM_DEPTH) {
                 return null;
             }
+            if (this._shouldSkipSerialization(obj)) {
+                return null;
+            }
             var serializeMember = function (parentObject, newObject, key) {
-                var item = parentObject[key];
+                var item;
+                try {
+                    item = parentObject[key];
+                }
+                catch (ex) {
+                }
+                var itemType = typeof item;
+                if (itemType === "undefined") {
+                    return;
+                }
                 // Check for a circular reference by looking at parent objects
-                var parentItemIndex = parentObjects.originalObjects.indexOf(item);
+                var parentItemIndex = -1;
+                if (itemType === "object") {
+                    parentItemIndex = parentObjects.originalObjects.indexOf(item);
+                }
                 if (parentItemIndex >= 0) {
                     // Circular reference found. Add reference to parent
                     var parentItem = parentObjects.newObjects[parentItemIndex];
@@ -379,7 +405,6 @@ var XDM;
                     };
                 }
                 else {
-                    var itemType = typeof item;
                     if (itemType === "function") {
                         var proxyFunctionId = _this._nextProxyFunctionId++;
                         newObject[key] = {
@@ -422,7 +447,16 @@ var XDM;
             else {
                 returnValue = {};
                 parentObjects.newObjects.push(returnValue);
-                for (var key in obj) {
+                var keys = [];
+                try {
+                    for (var key in obj) {
+                        keys.push(key);
+                    }
+                }
+                catch (ex) {
+                }
+                for (var i = 0, l = keys.length; i < l; i++) {
+                    var key = keys[i];
                     // Don't serialize properties that start with an underscore.
                     if (key && key[0] !== "_") {
                         serializeMember(obj, returnValue, key);
@@ -486,6 +520,14 @@ var XDM;
         };
         XDMChannel._nextChannelId = 1;
         XDMChannel.MAX_XDM_DEPTH = 100;
+        XDMChannel.WINDOW_TYPES_TO_SKIP_SERIALIZATION = [
+            "Node",
+            "Window",
+            "Event"
+        ];
+        XDMChannel.JQUERY_TYPES_TO_SKIP_SERIALIZATION = [
+            "jQuery"
+        ];
         return XDMChannel;
     })();
     XDM.XDMChannel = XDMChannel;
@@ -630,7 +672,7 @@ var VSS;
                 hostPageContext = handshakeData.pageContext;
                 hostPageContext.serviceInstanceId = null; // need to remove id from context, so we recognize that call is coming from a different service.
                 webContext = hostPageContext.webContext;
-                initialConfiguration = handshakeData.initialConfig;
+                initialConfiguration = handshakeData.initialConfig || {};
                 extensionContext = handshakeData.appContext;
                 // Place context so that child frames can pick it up correctly
                 window.__parentPageContext = hostPageContext;
@@ -801,17 +843,14 @@ var VSS;
     }
     VSS.resize = resize;
     // Does not work - was broken since removal of host-side endpoint a while back. HttpClients should be used instead.
-    // Left until CodeInsights\Service\Server\WebAccess\TfsExtensions\Scripts\CodeInsights.TfsExtensions.AdornmentProvider.ts
+    // Left until CodeAnalysis\Service\Server\WebAccess\TfsExtensions\Scripts\CodeAnalysis.TfsExtensions.AdornmentProvider.ts
     // removes its reference to it.
     function api(path, apiResourceScope, verb, headers, params, success, error) {
         throw new Error("Deprecated");
     }
     VSS.api = api;
     function setupAmdLoader() {
-        var rootUri = hostPageContext.webContext.account ? hostPageContext.webContext.account.uri : hostPageContext.webContext.host.uri;
-        if (rootUri[rootUri.length - 1] === "/") {
-            rootUri = rootUri.substr(0, rootUri.length - 1);
-        }
+        var hostRootUri = getRootUri(hostPageContext.webContext);
         // Place context so that VSS scripts pick it up correctly
         window.__vssPageContext = hostPageContext;
         // MS Ajax config needs to exist before loading MS Ajax library
@@ -821,7 +860,7 @@ var VSS;
             hostPageContext.coreReferences.stylesheets.forEach(function (stylesheet) {
                 if (stylesheet.isCoreStylesheet) {
                     var cssLink = document.createElement("link");
-                    cssLink.href = getAbsoluteUrl(stylesheet.url, rootUri);
+                    cssLink.href = getAbsoluteUrl(stylesheet.url, hostRootUri);
                     cssLink.rel = "stylesheet";
                     safeAppendToDom(cssLink, "head");
                 }
@@ -844,54 +883,93 @@ var VSS;
                         alreadyLoaded = !!(global.Sys && global.Sys.Browser);
                     }
                     if (!alreadyLoaded) {
-                        scripts.push({ source: getAbsoluteUrl(script.url, rootUri) });
+                        scripts.push({ source: getAbsoluteUrl(script.url, hostRootUri) });
                     }
                 }
             });
         }
+        // Define a new config for extension loader
+        var newConfig = {
+            baseUrl: extensionContext.baseUri,
+            contributionPaths: null,
+            paths: {},
+            shim: {}
+        };
+        // See whether any configuration specified initially. If yes, copy them to new config
+        if (initOptions.moduleLoaderConfig) {
+            if (initOptions.moduleLoaderConfig.baseUrl) {
+                newConfig.baseUrl = initOptions.moduleLoaderConfig.baseUrl;
+            }
+            // Copy paths
+            extendLoaderPaths(initOptions.moduleLoaderConfig, newConfig);
+            // Copy shim
+            extendLoaderShim(initOptions.moduleLoaderConfig, newConfig);
+        }
+        // Use some of the host config to support VSSF and TFS platform as well as some 3rd party libraries
         if (hostPageContext.moduleLoaderConfig) {
-            var loaderConfig = hostPageContext.moduleLoaderConfig;
-            if (loaderConfig) {
-                loaderConfig.baseUrl = getAbsoluteUrl(loaderConfig.baseUrl, rootUri);
-                if (loaderConfig.paths) {
-                    for (var key in loaderConfig.paths) {
-                        if (loaderConfig.paths.hasOwnProperty(key)) {
-                            loaderConfig.paths[key] = translateLoaderConfigUrl(loaderConfig.paths[key], rootUri, loaderConfig.baseUrl);
-                        }
+            // Copy host shim
+            extendLoaderShim(hostPageContext.moduleLoaderConfig, newConfig);
+            // Add contribution paths to new config
+            var contributionPaths = hostPageContext.moduleLoaderConfig.contributionPaths;
+            if (contributionPaths) {
+                for (var p in contributionPaths) {
+                    if (contributionPaths.hasOwnProperty(p)) {
+                        newConfig.paths[p] = hostRootUri + contributionPaths[p].value;
                     }
                 }
-                if (initOptions.moduleLoaderConfig) {
-                    var extensionBaseUrl = initOptions.moduleLoaderConfig.baseUrl || extensionContext.baseUri || "/";
-                    if (extensionBaseUrl[extensionBaseUrl.length - 1] !== "/") {
-                        extensionBaseUrl += "/";
-                    }
-                    if (initOptions.moduleLoaderConfig.paths) {
-                        for (var key in initOptions.moduleLoaderConfig.paths) {
-                            if (initOptions.moduleLoaderConfig.paths.hasOwnProperty(key)) {
-                                var value = initOptions.moduleLoaderConfig.paths[key];
-                                // Prepend the base url unless the path is absolute (http://) or rooted (starts with /)
-                                if (!value.match("^https?://") && value[0] !== "/") {
-                                    value = extensionBaseUrl + value;
-                                }
-                                loaderConfig.paths[key] = value;
-                            }
-                        }
-                    }
-                    if (initOptions.moduleLoaderConfig.shim) {
-                        for (var key in initOptions.moduleLoaderConfig.shim) {
-                            if (initOptions.moduleLoaderConfig.shim.hasOwnProperty(key)) {
-                                loaderConfig.shim[key] = initOptions.moduleLoaderConfig.shim[key];
-                            }
-                        }
-                    }
-                }
-                scripts.push({ content: "require.config(" + JSON.stringify(loaderConfig) + ");" });
             }
         }
+        scripts.push({ content: "require.config(" + JSON.stringify(newConfig) + ");" });
         addScriptElements(scripts, 0, function () {
             loaderConfigured = true;
             triggerReady();
         });
+    }
+    function extendLoaderPaths(source, target, pathTranslator) {
+        if (source.paths) {
+            if (!target.paths) {
+                target.paths = {};
+            }
+            for (var key in source.paths) {
+                if (source.paths.hasOwnProperty(key)) {
+                    var value = source.paths[key];
+                    if (pathTranslator) {
+                        value = pathTranslator(key, source.paths[key]);
+                    }
+                    if (value) {
+                        target.paths[key] = value;
+                    }
+                }
+            }
+        }
+    }
+    function extendLoaderShim(source, target) {
+        if (source.shim) {
+            if (!target.shim) {
+                target.shim = {};
+            }
+            for (var key in source.shim) {
+                if (source.shim.hasOwnProperty(key)) {
+                    target.shim[key] = source.shim[key];
+                }
+            }
+        }
+    }
+    function getRootUri(webContext) {
+        var hostContext = (webContext.account || webContext.host);
+        var rootUri = hostContext.uri;
+        var relativeUri = hostContext.relativeUri;
+        if (rootUri && relativeUri) {
+            // Ensure both relative and root paths end with a trailing slash before trimming the relative path.
+            if (rootUri[rootUri.length - 1] !== "/") {
+                rootUri += "/";
+            }
+            if (relativeUri[relativeUri.length - 1] !== "/") {
+                relativeUri += "/";
+            }
+            rootUri = rootUri.substr(0, rootUri.length - relativeUri.length);
+        }
+        return rootUri;
     }
     function addScriptElements(scripts, index, callback) {
         var _this = this;
