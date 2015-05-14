@@ -3,8 +3,8 @@
 
 var showCommitsMenu = (function () {
     "use strict";
-    return {
-        execute: function (actionContext) {
+    return <IContributedMenuSource>{
+        execute: function (actionContext: any): void {
             // Get the Web Context to create the uri to navigate to
             var vsoContext = VSS.getWebContext();
 
