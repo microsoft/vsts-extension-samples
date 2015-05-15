@@ -13,7 +13,7 @@
             {
                 "id": "showCommits",
                 "title": "View associated items",
-                "group": "actions",
+                "groupId": "actions",
                 "uri": "launch.html"
             }
         ],

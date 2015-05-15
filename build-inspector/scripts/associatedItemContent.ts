@@ -1,5 +1,4 @@
-﻿/// <reference path='../VSS/References/VSS-Common.d.ts' />
-/// <reference path='../VSS/VSS.SDK.d.ts' />
+﻿/// <reference path='ref/VSS.d.ts' />
 
 import VSS_Core = require("VSS/Utils/Core");
 import VSS_Service = require("VSS/Service");
