@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-=======
-/// <reference path='../ref/VSS.d.ts' />
-
-import Work_Contracts = require("TFS/Work/Contracts");
-
->>>>>>> master
 /**
 * Interface for a calendar event provider
 */
