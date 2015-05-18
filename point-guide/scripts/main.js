@@ -1,4 +1,4 @@
-window.main = (function () {
+var showPropertiesMenuProvider = (function () {
     "use strict";
     return {
         showPropertiesInDialog: function(properties, title) {
@@ -25,8 +25,52 @@ window.main = (function () {
                 dialogSvc.openDialog(controlContributionInfo, dialogOptions, contributionConfig);
             });
         },
-        contributionAction: function(actionContext) {
+        execute: function(actionContext) {
             this.showPropertiesInDialog(actionContext);
         }
     };
 }());
+
+VSS.register("showProperties", function (context) {
+    return showPropertiesMenuProvider;
+});
+
+VSS.register("sourceGridDynamicMenu", {
+    execute: function (actionArgs) {
+        alert("execute: " + (JSON.stringify(actionArgs) || "").substr(0, 100));
+    },
+    getMenuItems: function (context) {
+        var menuItems = [
+            {
+                title: "Sample: " + context.name,
+                action: function (actionContext) {
+                    alert("action: " + actionContext.name);
+                }
+            },
+            {
+                title: "Disabled parent item",
+                disabled: true
+            },
+            {
+                separator: true
+            },
+            {
+                title: "Parent menu",
+                childItems: [
+                    { title: "Child item 1" },
+                    { title: "Child item 2 - disabled", disabled: true },
+                    { title: "Child item 3"}
+                ]
+            },
+        ];
+        
+        if (context.name === "README.md") {
+            menuItems.push({ separator: true });
+            menuItems.push({
+                title: "Extra entry for README.md"
+            });
+        }
+        
+        return menuItems;
+    }
+});
