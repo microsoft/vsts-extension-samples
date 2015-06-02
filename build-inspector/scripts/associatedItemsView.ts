@@ -5,18 +5,21 @@ import Controls = require("VSS/Controls");
 import AssociatedItemsTree = require("Scripts/AssociatedItemsTree");
 import AssociatedItemsGrid = require("Scripts/AssociatedItemsGrid");
 import AssociatedItemContent = require("Scripts/AssociatedItemContent");
+import TFS_Build_Contracts = require("TFS/Build/Contracts");
+import TFS_Wit_Contracts = require("TFS/WorkItemTracking/Contracts");
 import TreeView = require("VSS/Controls/TreeView");
 
 export interface AssociatedItemsViewOptions {
-    build: any;
-    associatedNodes: any;
+    build: TFS_Build_Contracts.Build;
+    associatedWorkItems: TFS_Wit_Contracts.WorkItem[];
+    associatedChanges: TFS_Build_Contracts.Change[];
 }
 
 /**
  * This object will be used to manage the tree view, grid view, and item content views.  It will listen to 
  * hash changed on the url and response
  */
-export class AssociatedItemsView extends Controls.BaseControl {
+export class AssociatedItemsView extends Controls.Control<AssociatedItemsViewOptions> {
     private _treeView: AssociatedItemsTree.AssociatedItemsTree;
     private _commitGrid: AssociatedItemsGrid.AssociatedCommitsGrid;
     private _workItemGrid: AssociatedItemsGrid.AssociatedWorkItemsGrid;
@@ -68,10 +71,10 @@ export class AssociatedItemsView extends Controls.BaseControl {
             });
 
             // Check the initial hash
-            this.parseHash(historyService.getHash());
-                
-            // Update the views after parsing the hash
-            this._updateView();
+            historyService.getHash().then((hash: string) => { 
+                this.parseHash(hash);
+                this._updateView();
+            });
         });
     }
 
@@ -79,7 +82,17 @@ export class AssociatedItemsView extends Controls.BaseControl {
      * This is used to update the title on the hub content
      */
     private _setViewTitle(): void {
-        var title = this._currentAction === 'commit' ? 'Associated Commits for Build: ' : 'Associated Work Items for Build: ';
+        var title;
+        switch(this._currentAction) {
+            case "commit":
+                title = "Associated Commits for Build: ";
+                break;
+            case "workitem":
+                title = "Associated Work Items for Build: ";
+                break;
+            default:
+                title = "Overview for Build: ";
+        }
         if (this._options.build){
             this._element.find('.hub-title').text(title + this._options.build.buildNumber);
         } else {
@@ -99,7 +112,10 @@ export class AssociatedItemsView extends Controls.BaseControl {
         this.$workItemContentContainer.hide();
         this.$commitGridContainer.hide();
 
-        if (this._currentAction === 'commit' && this._currentId === 'commit') {
+        if (this._currentAction === "overview") {
+            this.$commitGridContainer.show();
+            this.$workItemGridContainer.show();
+        } else if (this._currentAction === 'commit' && this._currentId === 'commit') {
             this.$commitGridContainer.show();
         } else if (this._currentAction === 'workitem' && this._currentId === 'workitem') {
             this.$workItemGridContainer.show();
@@ -117,7 +133,7 @@ export class AssociatedItemsView extends Controls.BaseControl {
      */
     private _renderCommitContent(): void {
         if (!this._commitContent) {
-            this._commitContent = <AssociatedItemContent.AssociatedCommitContent>AssociatedItemContent.AssociatedCommitContent.enhance(AssociatedItemContent.AssociatedCommitContent, this.$commitContentContainer, {
+            this._commitContent = Controls.create(AssociatedItemContent.AssociatedCommitContent, this.$commitContentContainer, {
                 associatedItem: this._treeView.getSelectedNode().tag
             });
         } else {
@@ -130,7 +146,7 @@ export class AssociatedItemsView extends Controls.BaseControl {
      */
     private _renderWorkItemContent(): void {
         if (!this._workItemContent) {
-            this._workItemContent = <AssociatedItemContent.AssociatedWorkItemContent>AssociatedItemContent.AssociatedWorkItemContent.enhance(AssociatedItemContent.AssociatedWorkItemContent, this.$workItemContentContainer, {
+            this._workItemContent = Controls.create(AssociatedItemContent.AssociatedWorkItemContent, this.$workItemContentContainer, {
                 associatedItem: this._treeView.getSelectedNode().tag
             });
         } else {
@@ -139,12 +155,12 @@ export class AssociatedItemsView extends Controls.BaseControl {
     }
 
     private _renderGrid(): void {
-        this._commitGrid = <AssociatedItemsGrid.AssociatedCommitsGrid>AssociatedItemsGrid.AssociatedCommitsGrid.enhance(AssociatedItemsGrid.AssociatedCommitsGrid, this.$commitGridContainer, {
+        this._commitGrid = Controls.create(AssociatedItemsGrid.AssociatedCommitsGrid, this.$commitGridContainer, <AssociatedItemsGrid.AssociatedItemsGridOptions>{
             associatedChanges: this._options.associatedChanges
         });
 
-        this._workItemGrid = <AssociatedItemsGrid.AssociatedWorkItemsGrid>AssociatedItemsGrid.AssociatedWorkItemsGrid.enhance(AssociatedItemsGrid.AssociatedWorkItemsGrid, this.$workItemGridContainer, {
-            associatedNodes: [] // cannot get work items from V2 yet
+        this._workItemGrid = Controls.create(AssociatedItemsGrid.AssociatedWorkItemsGrid, this.$workItemGridContainer, <AssociatedItemsGrid.AssociatedItemsGridOptions>{
+            associatedWorkItems: this._options.associatedWorkItems
         });
     }
 
@@ -153,6 +169,11 @@ export class AssociatedItemsView extends Controls.BaseControl {
      */
     private _renderTree(): void {
         // create the root tree nodes
+
+        var overviewNode = new TreeView.TreeNode("Overview");
+        overviewNode.link = VSS_Host.urlHelper.getFragmentActionLink("overview");
+        overviewNode.id = AssociatedItemsTree.NodeItemType.overview;
+
         var commitNode = new TreeView.TreeNode("Commits");
         commitNode.link = VSS_Host.urlHelper.getFragmentActionLink("commit");
         commitNode.expanded = true;
@@ -164,24 +185,33 @@ export class AssociatedItemsView extends Controls.BaseControl {
         workItemsNode.expanded = true;
 
         // Process the build nodes to add to the appropriate root node
-        this._options.associatedChanges.forEach(function (c) {
-            var shortCommitId = c.id && c.id.length > 6 ? c.id.substr(0, 6) : c.id;
+        this._options.associatedChanges.forEach(function (change) {
+            var shortCommitId = change.id && change.id.length > 6 ? change.id.substr(0, 6) : change.id;
             var node = new TreeView.TreeNode(shortCommitId);
-            node.tag = c;
-            node.id = c.id;
-            node.link = VSS_Host.urlHelper.getFragmentActionLink("commit", { id: c.id });
+            node.tag = change;
+            node.id = parseInt(change.id);
+            node.link = VSS_Host.urlHelper.getFragmentActionLink("commit", { id: change.id });
             commitNode.add(node);            
+        });
+
+        // Process the build nodes to add to the appropriate root node
+        this._options.associatedWorkItems.forEach(function (workItem) {
+            var workItemId = workItem.id;
+            var node = new TreeView.TreeNode(workItemId.toString());
+            node.tag = workItem;
+            node.link = VSS_Host.urlHelper.getFragmentActionLink("workitem", { id: workItem.id });
+            workItemsNode.add(node);            
         });
 
         // Configure a few tree options
         var treeViewOptions = {
             width: "100%",
             height: "100%",
-            nodes: [commitNode, workItemsNode]
+            nodes: [overviewNode, commitNode, workItemsNode]
         };
 
         // Create the tree
-        this._treeView = <AssociatedItemsTree.AssociatedItemsTree>AssociatedItemsTree.AssociatedItemsTree.createIn($("#tree-container"), treeViewOptions);
+        this._treeView = Controls.create(AssociatedItemsTree.AssociatedItemsTree, $("#tree-container"), treeViewOptions);
     }
 
     /**
@@ -191,7 +221,7 @@ export class AssociatedItemsView extends Controls.BaseControl {
         var result = {};
         
         // If hash exists, parse it
-        if (hash) {
+        if (hash && Object.keys(hash).length > 0) {
             // decode each parameter
             var queryStringParams = hash.split("&");
             queryStringParams.forEach(function (val) {
@@ -200,9 +230,9 @@ export class AssociatedItemsView extends Controls.BaseControl {
             });
         }
 
-        this._currentAction = result["_a"] || "commit";
-        if (this._currentAction !== "commit" && this._currentAction !== "workitem") {
-            this._currentAction = "commit";
+        this._currentAction = result["_a"] || "overview";
+        if (this._currentAction !== "commit" && this._currentAction !== "workitem" && this._currentAction !== "overview") {
+            this._currentAction = "overview";
         }
         this._currentId = result["id"] || this._currentAction;
     }

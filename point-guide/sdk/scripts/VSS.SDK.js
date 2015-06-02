@@ -1,11 +1,11 @@
-///<reference path='References/VSS-Common.d.ts' />
-///<reference path='References/VSS.SDK.Interfaces.d.ts' />
-///<reference path='SDK.Interfaces.d.ts' />
-///<reference path='References/VSS.SDK.Interfaces.d.ts' />
-///<reference path='References/VSS-Common.d.ts' />
+///<reference path='../References/VSS-Common.d.ts' />
+///<reference path='../References/VSS.SDK.Interfaces.d.ts' />
+///<reference path='../References/SDK.Interfaces.d.ts' />
+///<reference path='../References/VSS.SDK.Interfaces.d.ts' />
+///<reference path='../References/VSS-Common.d.ts' />
 /// This file is going to be embedded into the following typescript files in the build time:
-///     - XDM.Host.ts
-///     - SDK.ts
+///     - VSS/SDK/XDM.ts
+///     - VSS/SDK/VSS.SDK.ts
 /// This module is unlike other modules which doesn't use AMD loading.
 var XDM;
 (function (XDM) {
@@ -129,56 +129,38 @@ var XDM;
         return Math.floor((Math.random() * (maxSafeInteger - smallestRandom)) + smallestRandom).toString(36) + Math.floor((Math.random() * (maxSafeInteger - smallestRandom)) + smallestRandom).toString(36);
     }
     /**
-     * Catalog of objects exposed for XDM where the key is as follows:
-     *
-     * ClassName{[instanceId]}.method
-     *
-     * Examples:
-     *     Access singleton Calculator's add function - Calculator.add(3,5)
-     *     Key: "Calculator"
-     *
-     * XDMChannel looks up object from the IJsonRpcMessage passed into onMessage
+     * Catalog of objects exposed for XDM
      */
     var XDMObjectRegistry = (function () {
         function XDMObjectRegistry() {
             this._registeredObjects = {};
         }
         /**
-        * Lookup a method on a registered object. Returns null if the object is
-        * not found or the method does not exist on the object.
+        * Register an object (instance or factory method) exposed by this frame to callers in a remote frame
         *
-        * @param fullMethodPath The name of the registered object + '.' + the method name
-        * @return XDM method info
+        * @param instanceId unique id of the registered object
+        * @param instance Either: (1) an object instance, or (2) a function that takes optional context data and returns an object instance.
         */
-        XDMObjectRegistry.prototype.getRegisteredMethodInfo = function (fullMethodPath) {
-            var lastDotIndex = fullMethodPath.lastIndexOf('.');
-            if (lastDotIndex > 0) {
-                var objectName = fullMethodPath.substr(0, lastDotIndex);
-                var obj = this._registeredObjects[objectName];
-                if (obj) {
-                    var methodName = fullMethodPath.substr(lastDotIndex + 1);
-                    var method = obj[methodName];
-                    if (method && typeof method === "function") {
-                        return {
-                            method: method,
-                            thisObj: obj
-                        };
-                    }
-                }
-            }
-            return null;
+        XDMObjectRegistry.prototype.register = function (instanceId, instance) {
+            this._registeredObjects[instanceId] = instance;
         };
         /**
-        * Register an object so that its methods can be invoked in an XDM channel
+        * Get an instance of an object registered with the given id
         *
-        * @param obj object to register. This object should have functions on it that can be invoked remotely
-        * @param name Unique name of the object to register.
+        * @param instanceId unique id of the registered object
+        * @param contextData Optional context data to pass to a registered object's factory method
         */
-        XDMObjectRegistry.prototype.register = function (obj, name) {
-            // register specified object as exposed via XDM
-            // Register the entire object/instance (not each function)
-            // We can register the object or the function or combination
-            this._registeredObjects[name] = obj;
+        XDMObjectRegistry.prototype.getInstance = function (instanceId, contextData) {
+            var instance = this._registeredObjects[instanceId];
+            if (!instance) {
+                return null;
+            }
+            if (typeof instance === "function") {
+                return instance(contextData);
+            }
+            else {
+                return instance;
+            }
         };
         return XDMObjectRegistry;
     })();
@@ -206,7 +188,6 @@ var XDM;
             if (!this._targetOrigin) {
                 this._handshakeToken = newFingerprint();
             }
-            this._channelObjectRegistry.register(this._proxyFunctions, "__proxyFunctions");
         }
         /**
         * Get the object registry to handle messages from this specific channel.
@@ -217,17 +198,19 @@ var XDM;
             return this._channelObjectRegistry;
         };
         /**
-        * Post a message to the other side of the XDM channel
+        * Invoke a method via RPC. Lookup the registered object on the remote end of the channel and invoke the specified method.
         *
         * @param method Name of the method to invoke
+        * @param instanceId unique id of the registered object
         * @param params Arguments to the method to invoke
-        * @param success Callback method to invoke when the remote procedure succeeds
-        * @param error Callback method to invoke when the remote procedure fails
+        * @param instanceContextData Optional context data to pass to a registered object's factory method
         */
-        XDMChannel.prototype.postMessage = function (method, params) {
+        XDMChannel.prototype.invokeRemoteMethod = function (methodName, instanceId, params, instanceContextData) {
             var message = {
                 id: this._nextMessageId++,
-                method: method,
+                methodName: methodName,
+                instanceId: instanceId,
+                instanceContext: instanceContextData,
                 params: this._customSerializeObject(params),
                 jsonrpc: "2.0"
             };
@@ -240,6 +223,66 @@ var XDM;
             return deferred.promise;
         };
         /**
+        * Get a proxied object that represents the object registered with the given instance id on the remote side of this channel.
+        *
+        * @param instanceId unique id of the registered object
+        * @param contextData Optional context data to pass to a registered object's factory method
+        */
+        XDMChannel.prototype.getRemoteObjectProxy = function (instanceId, contextData) {
+            return this.invokeRemoteMethod(null, instanceId, null, contextData);
+        };
+        XDMChannel.prototype.invokeMethod = function (registeredInstance, rpcMessage) {
+            var _this = this;
+            if (!rpcMessage.methodName) {
+                // Null/empty method name indicates to return the registered object itself.
+                this._success(rpcMessage, registeredInstance, rpcMessage.handshakeToken);
+                return;
+            }
+            var method = registeredInstance[rpcMessage.methodName];
+            if (typeof method !== "function") {
+                this._error(rpcMessage, new Error("RPC method not found: " + rpcMessage.methodName), rpcMessage.handshakeToken);
+                return;
+            }
+            try {
+                // Call specified method.  Add nested success and error call backs with closure
+                // so we can post back a response as a result or error as appropriate
+                var methodArgs = [];
+                if (rpcMessage.params) {
+                    methodArgs = this._customDeserializeObject(rpcMessage.params);
+                }
+                var result = method.apply(registeredInstance, methodArgs);
+                if (result !== undefined) {
+                    if (result.then && typeof result.then === "function") {
+                        result.then(function (asyncResult) {
+                            _this._success(rpcMessage, asyncResult, rpcMessage.handshakeToken);
+                        }, function (e) {
+                            _this._error(rpcMessage, e, rpcMessage.handshakeToken);
+                        });
+                    }
+                    else {
+                        this._success(rpcMessage, result, rpcMessage.handshakeToken);
+                    }
+                }
+            }
+            catch (exception) {
+                // send back as error if an exception is thrown
+                this._error(rpcMessage, exception, rpcMessage.handshakeToken);
+            }
+        };
+        XDMChannel.prototype.getRegisteredObject = function (instanceId, instanceContext) {
+            if (instanceId === "__proxyFunctions") {
+                // Special case for proxied functions of remote instances
+                return this._proxyFunctions;
+            }
+            // Look in the channel registry first
+            var registeredObject = this._channelObjectRegistry.getInstance(instanceId, instanceContext);
+            if (!registeredObject) {
+                // Look in the global registry as a fallback
+                registeredObject = XDM.globalObjectRegistry.getInstance(instanceId, instanceContext);
+            }
+            return registeredObject;
+        };
+        /**
         * Handle a received message on this channel. Dispatch to the appropriate object found via object registry
         *
         * @param data Message data
@@ -249,42 +292,23 @@ var XDM;
         XDMChannel.prototype.onMessage = function (data, origin) {
             var _this = this;
             var rpcMessage = data;
-            if (rpcMessage.method) {
+            if (rpcMessage.instanceId) {
                 // Find the object that handles this requestNeed to find implementation
                 // Look in the channel registry first
-                var methodInfo = this._channelObjectRegistry.getRegisteredMethodInfo(rpcMessage.method);
-                if (!methodInfo) {
-                    // Look in the global registry as a fallback
-                    methodInfo = XDM.globalObjectRegistry.getRegisteredMethodInfo(rpcMessage.method);
-                    // If still not found return false to indicate that the message was not handled
-                    if (!methodInfo) {
-                        return false;
-                    }
+                var registeredObject = this.getRegisteredObject(rpcMessage.instanceId, rpcMessage.instanceContext);
+                if (!registeredObject) {
+                    // If not found return false to indicate that the message was not handled
+                    return false;
                 }
-                try {
-                    // Call specified method.  Add nested success and error call backs with closure
-                    // so we can post back a response as a result or error as appropriate
-                    var methodArgs = [];
-                    if (rpcMessage.params) {
-                        methodArgs = this._customDeserializeObject(rpcMessage.params);
-                    }
-                    var result = methodInfo.method.apply(methodInfo.thisObj, methodArgs);
-                    if (result !== undefined) {
-                        if (result.then && typeof result.then === "function") {
-                            result.then(function (asyncResult) {
-                                _this._success(rpcMessage, asyncResult, rpcMessage.handshakeToken);
-                            }, function (e) {
-                                _this._error(rpcMessage, e, rpcMessage.handshakeToken);
-                            });
-                        }
-                        else {
-                            this._success(rpcMessage, result, rpcMessage.handshakeToken);
-                        }
-                    }
+                if (typeof registeredObject["then"] === "function") {
+                    registeredObject.then(function (resolvedInstance) {
+                        _this.invokeMethod(resolvedInstance, rpcMessage);
+                    }, function (e) {
+                        _this._error(rpcMessage, e, rpcMessage.handshakeToken);
+                    });
                 }
-                catch (exception) {
-                    // If no error call back and exception thrown, send back as error
-                    this._error(rpcMessage, exception, rpcMessage.handshakeToken);
+                else {
+                    this.invokeMethod(registeredObject, rpcMessage);
                 }
             }
             else {
@@ -492,7 +516,7 @@ var XDM;
                 else if (itemType === "object" && item) {
                     if (item.__proxyFunctionId) {
                         parentObject[key] = function () {
-                            return _this.postMessage("__proxyFunctions.proxy" + item.__proxyFunctionId, Array.prototype.slice.call(arguments, 0));
+                            return _this.invokeRemoteMethod("proxy" + item.__proxyFunctionId, "__proxyFunctions", Array.prototype.slice.call(arguments, 0));
                         };
                     }
                     else if (item.__proxyDate) {
@@ -556,19 +580,6 @@ var XDM;
             this._channels.push(channel);
             return channel;
         };
-        /**
-        * Broadcast a message to all channels managed by this channel manager
-        *
-        * @param method Name of the method to invoke
-        * @param params Arguments to the method to invoke
-        * @param success Callback method to invoke when the remote procedure succeeds
-        * @param error Callback method to invoke when the remote procedure fails
-        */
-        XDMChannelManager.prototype.broadcastMessage = function (method, params) {
-            for (var i = 0, l = this._channels.length; i < l; i++) {
-                this._channels[i].postMessage(method, params);
-            }
-        };
         XDMChannelManager.prototype._handleMessageReceived = function (event) {
             // get channel and dispatch to it
             var i, len, channel;
@@ -606,55 +617,19 @@ var XDM;
 })(XDM || (XDM = {}));
 var VSS;
 (function (VSS) {
-    /**
-    * Private class for registered objects
-    */
-    var ObjectRegistry = (function () {
-        function ObjectRegistry() {
-            this._registeredObjects = {};
-        }
-        /**
-        * Register an object (instance or factory method) that this extension exposes to the host frame.
-        *
-        * @param id unique id of the registered object
-        * @param instance Either: (1) an object instance, or (2) a function that takes optional context data and returns an object instance.
-        */
-        ObjectRegistry.prototype.register = function (id, instance) {
-            this._registeredObjects[id] = instance;
-        };
-        /**
-        * Get an instance of an object registered with the given id
-        *
-        * @param id unique id of the registered object
-        * @param contextData Optional context data to pass to the contructor of an object factory method
-        */
-        ObjectRegistry.prototype.getInstance = function (id, contextData) {
-            var instance = this._registeredObjects[id];
-            if (!instance) {
-                return null;
-            }
-            if (typeof instance === "function") {
-                return instance(contextData);
-            }
-            else {
-                return instance;
-            }
-        };
-        return ObjectRegistry;
-    })();
+    VSS.VssSDKVersion = "0.1";
     var htmlElement;
     var webContext;
     var hostPageContext;
     var extensionContext;
     var initialConfiguration;
+    var initialContribution;
     var initOptions;
     var loaderConfigured = false;
     var usingLoader = false;
     var isReady = false;
     var readyCallbacks;
     var parentChannel = XDM.XDMChannelManager.get().addChannel(window.parent);
-    var objectRegistry = new ObjectRegistry();
-    parentChannel.getObjectRegistry().register(objectRegistry, "ObjectRegistry");
     /**
      * Initiates the handshake with the host window.
      *
@@ -666,16 +641,16 @@ var VSS;
         // Run this after current execution path is complete - allows objects to get initialized
         window.setTimeout(function () {
             var appHandshakeData = {
-                notifyLoadSucceeded: !initOptions.explicitNotifyLoaded
+                notifyLoadSucceeded: !initOptions.explicitNotifyLoaded,
+                extensionReusedCallback: initOptions.extensionReusedCallback
             };
-            parentChannel.postMessage("VSS.HostControl.initialHandshake", [appHandshakeData]).then(function (handshakeData) {
+            parentChannel.invokeRemoteMethod("initialHandshake", "VSS.HostControl", [appHandshakeData]).then(function (handshakeData) {
                 hostPageContext = handshakeData.pageContext;
                 hostPageContext.serviceInstanceId = null; // need to remove id from context, so we recognize that call is coming from a different service.
                 webContext = hostPageContext.webContext;
                 initialConfiguration = handshakeData.initialConfig || {};
-                extensionContext = handshakeData.appContext;
-                // Place context so that child frames can pick it up correctly
-                window.__parentPageContext = hostPageContext;
+                initialContribution = handshakeData.contribution;
+                extensionContext = handshakeData.extensionContext;
                 if (usingLoader) {
                     setupAmdLoader();
                 }
@@ -736,7 +711,7 @@ var VSS;
         }
     }
     VSS.require = require;
-    /*
+    /**
     * Register a callback that gets called once the initial setup/handshake has completed.
     * If the initial setup is already completed, the callback is invoked at the end of the current call stack.
     */
@@ -756,14 +731,14 @@ var VSS;
     * Notifies the host that the extension successfully loaded (stop showing the loading indicator)
     */
     function notifyLoadSucceeded() {
-        parentChannel.postMessage("VSS.HostControl.notifyLoadSucceeded");
+        parentChannel.invokeRemoteMethod("notifyLoadSucceeded", "VSS.HostControl");
     }
     VSS.notifyLoadSucceeded = notifyLoadSucceeded;
     /**
     * Notifies the host that the extension failed to load
     */
     function notifyLoadFailed(e) {
-        parentChannel.postMessage("VSS.HostControl.notifyLoadFailed", [e]);
+        parentChannel.invokeRemoteMethod("notifyLoadFailed", "VSS.HostControl", [e]);
     }
     VSS.notifyLoadFailed = notifyLoadFailed;
     /**
@@ -781,12 +756,19 @@ var VSS;
     }
     VSS.getConfiguration = getConfiguration;
     /**
-    * Get the context about the app that owns the content that is being hosted
+    * Get the context about the extension that owns the content that is being hosted
     */
     function getExtensionContext() {
         return extensionContext;
     }
     VSS.getExtensionContext = getExtensionContext;
+    /**
+    * Gets the information about the contribution that first caused this extension to load.
+    */
+    function getContribution() {
+        return initialContribution;
+    }
+    VSS.getContribution = getContribution;
     /**
     * Get a contributed service from the parent host.
     *
@@ -796,7 +778,7 @@ var VSS;
     function getService(serviceId, context) {
         var deferred = XDM.createDeferred();
         VSS.ready(function () {
-            parentChannel.postMessage("VSS.SDK.Host.getService", [serviceId, context]).then(deferred.resolve, deferred.reject);
+            parentChannel.invokeRemoteMethod("getService", "vss.hostManagement", [serviceId, context]).then(deferred.resolve, deferred.reject);
         });
         return deferred.promise;
     }
@@ -810,7 +792,7 @@ var VSS;
     function getServiceContributions(contributionPointId, contributionId) {
         var deferred = XDM.createDeferred();
         VSS.ready(function () {
-            parentChannel.postMessage("VSS.SDK.Host.getServiceContributions", [contributionPointId, contributionId]).then(deferred.resolve, deferred.reject);
+            parentChannel.invokeRemoteMethod("getServiceContributions", "vss.hostManagement", [contributionPointId, contributionId]).then(deferred.resolve, deferred.reject);
         });
         return deferred.promise;
     }
@@ -822,14 +804,24 @@ var VSS;
     * @param instance Either: (1) an object instance, or (2) a function that takes optional context data and returns an object instance.
     */
     function register(instanceId, instance) {
-        objectRegistry.register(instanceId, instance);
+        parentChannel.getObjectRegistry().register(instanceId, instance);
     }
     VSS.register = register;
+    /**
+    * Get an instance of an object registered with the given id
+    *
+    * @param instanceId unique id of the registered object
+    * @param contextData Optional context data to pass to the contructor of an object factory method
+    */
+    function getRegisteredObject(instanceId, contextData) {
+        return parentChannel.getObjectRegistry().getInstance(instanceId, contextData);
+    }
+    VSS.getRegisteredObject = getRegisteredObject;
     /**
     * Fetch an access token which will allow calls to be made to other VSO services
     */
     function getAccessToken() {
-        return parentChannel.postMessage("VSS.HostControl.getAccessToken");
+        return parentChannel.invokeRemoteMethod("getAccessToken", "VSS.HostControl");
     }
     VSS.getAccessToken = getAccessToken;
     /**
@@ -839,16 +831,9 @@ var VSS;
         if (!htmlElement) {
             htmlElement = document.getElementsByTagName("html").item(0);
         }
-        parentChannel.postMessage("VSS.HostControl.resize", [htmlElement.scrollWidth, htmlElement.scrollHeight]);
+        parentChannel.invokeRemoteMethod("resize", "VSS.HostControl", [htmlElement.scrollWidth, htmlElement.scrollHeight]);
     }
     VSS.resize = resize;
-    // Does not work - was broken since removal of host-side endpoint a while back. HttpClients should be used instead.
-    // Left until CodeAnalysis\Service\Server\WebAccess\TfsExtensions\Scripts\CodeAnalysis.TfsExtensions.AdornmentProvider.ts
-    // removes its reference to it.
-    function api(path, apiResourceScope, verb, headers, params, success, error) {
-        throw new Error("Deprecated");
-    }
-    VSS.api = api;
     function setupAmdLoader() {
         var hostRootUri = getRootUri(hostPageContext.webContext);
         // Place context so that VSS scripts pick it up correctly

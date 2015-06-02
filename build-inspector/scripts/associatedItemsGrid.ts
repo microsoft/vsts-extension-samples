@@ -1,16 +1,19 @@
 ﻿/// <reference path='ref/VSS.d.ts' />
 
 import Controls = require("VSS/Controls");
+import TFS_Build_Contracts = require("TFS/Build/Contracts");
+import TFS_Wit_Contracts = require("TFS/WorkItemTracking/Contracts");
 import Grids = require("VSS/Controls/Grids");
 
 export interface AssociatedItemsGridOptions {
-    associatedNodes: any[];
+    associatedWorkItems?: TFS_Wit_Contracts.WorkItem[];
+    associatedChanges?: TFS_Build_Contracts.Change[];
 }
 
 /**
  * This object will be draw the commits grid.
  */
-export class AssociatedCommitsGrid extends Controls.BaseControl {
+export class AssociatedCommitsGrid extends Controls.Control<AssociatedItemsGridOptions> {
     private _selectedId: string;
 
     constructor(options: AssociatedItemsGridOptions) {
@@ -26,15 +29,16 @@ export class AssociatedCommitsGrid extends Controls.BaseControl {
     public initialize(): void {
         super.initialize();
         var commitData = [];
+        this._element.append($("<div/>").addClass("grid-caption").append("Associated Commits"));
 
         // Parse the nodes
-        this._options.associatedChanges.forEach((c: any) => {
+        this._options.associatedChanges.forEach((change: TFS_Build_Contracts.Change) => {
             commitData.push({
-				"author": c.author.displayName,
-				"comment": c.message,
-				"commitId": c.id,
-				"commitDate": c.timestamp
-			});
+                "author": change.author.displayName,
+                "comment": change.message,
+                "commitId": change.id,
+                "commitDate": change.timestamp
+            });
         });
 
         if (commitData.length === 0) {
@@ -58,7 +62,7 @@ export class AssociatedCommitsGrid extends Controls.BaseControl {
 /**
  * This object will be draw the work item grid.
  */
-export class AssociatedWorkItemsGrid extends Controls.BaseControl {
+export class AssociatedWorkItemsGrid extends Controls.Control<AssociatedItemsGridOptions> {
     private _selectedId: string;
     
     constructor(options: AssociatedItemsGridOptions) {
@@ -74,18 +78,14 @@ export class AssociatedWorkItemsGrid extends Controls.BaseControl {
     public initialize(): void {
         super.initialize();
         var data = [];
-		
-		// We converted this to build vNext and at this point you can not get associated work items.
-		// Will add this back when work items are available
+        this._element.append($("<div/>").addClass("grid-caption").append("Associated Work Items"));
         
-		//this._options.associatedNodes.forEach((c: any) => {
-        //    if (c.type === "AssociatedWorkItem") {
-        //       data.push({
-        //            "workItemId": c.fields.WorkItemId,
-        //            "title": c.fields.Title
-        //        });
-        //    }
-        //});
+        this._options.associatedWorkItems.forEach((workItem: TFS_Wit_Contracts.WorkItem) => {
+            data.push({
+                "workItemId": workItem.id,
+                "title": workItem.fields["System.Title"]
+            });
+        });
 
         if (data.length === 0) {
             this._element.addClass('message-area-control info-message').text("No work items are associated with this build.");

@@ -4,6 +4,7 @@ import Controls = require("VSS/Controls");
 import TreeView = require("VSS/Controls/TreeView");
 
 export const enum NodeItemType {
+    overview,
     commit,
     workItem
 }
@@ -57,7 +58,7 @@ export class AssociatedItemsTree extends TreeView.TreeView {
         super._updateNode(li, node, level);
 
         if (typeof node.id !== "undefined") {
-            li.attr("data-id", node.id === NodeItemType.commit ? "commit" : "workitem");
+            li.attr("data-id", node.id === NodeItemType.commit ? "commit" : (node.id === NodeItemType.workItem ? "workitem" : "overview"));
         }
     }
 }

@@ -18,3 +18,9 @@
     display: table-cell;
     padding-top: 6px;
 }
+
+.grid-caption {
+	margin-left: 6px;
+	font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+	font-size: 14px;
+}
