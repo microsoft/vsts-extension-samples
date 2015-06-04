@@ -14,24 +14,43 @@
         setupModuleLoader: true
     });
     
-    VSS.require(["VSS/Controls", "VSS/Controls/Grids"], function (Controls, Grids) {
+    var getGridItems = (function() {
+        var nextId = 0;
+        return function _getGridItems(obj, parentId) {
+            if (parentId === undefined) {
+                parentId = null;
+            }
+            var items = [];
+            Object.keys(obj).forEach(function(key) {
+                var val = obj[key];
+                var item = {
+                    id: nextId++,
+                    values: [key],
+                    parentId: parentId
+                };
+                if (val && typeof val === "object") {
+                    item.values[1] = "...";
+                    item.children = _getGridItems(val, nextId - 1);
+                } else {
+                    item.values[1] = JSON.stringify(val);
+                }
+                items.push(item);
+            });
+            return items;
+        };
+    }());
+    
+    VSS.require(["VSS/Controls", "VSS/Controls/Grids", "VSS/Controls/Data"], function (Controls, Grids, Data) {
         
-        var properties = VSS.getConfiguration().properties || {};
-            
-        var dataSource = [];
-        Object.keys(properties).forEach(function(key) {
-            dataSource.push({key: key, value: JSON.stringify(properties[key])});
-        });
-        
-        Controls.create(Grids.Grid, $("#grid-container"), {
+        var grid = Controls.create(Grids.Grid, $("#grid-container"), {
             height: "500px",
-            source: dataSource,
             columns: [
                 { text: "Property key", index: "key", width: 150 },
                 { text: "Property value", index: "value", width: 600 }
             ]
         });
-        
+        var gridItems = getGridItems(VSS.getConfiguration().properties || {});
+        Data.HierarchicalGridDataAdapter.bindAdapter(Data.HierarchicalGridDataAdapter, new Data.FieldDataProvider(gridItems), grid);
         VSS.notifyLoadSucceeded();
     });
 
