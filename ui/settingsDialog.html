@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Calendar Extension</title>
+    <script src="/sdk/Scripts/VSS.SDK.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+</head>
+<body>
+    <script type="text/javascript">
+        // Initialize the VSS SDK
+        VSS.init({
+            setupModuleLoader: true,
+        });
+
+        // Wait for the SDK to be initialized
+        VSS.ready(function () {
+            require(["Scripts/extension"], function (items) { });
+            VSS.notifyLoadSucceeded();
+        });
+    </script>
+    <div id="ess-extension">
+        <div class="user">
+            <div class="bool">
+                <label>Boolean Value</label>
+                <input class="booleanValue" type="checkbox" />
+            </div>
+            <div class="number">
+                <label>Integer Value</label>
+                <input class="numberValue" />
+            </div>
+            <div class="obj">
+                <label>Object Value 1</label>
+                <input class="objectValue1" />
+
+                <label>Object Value 2</label>
+                <input class="objectValue2" />
+            </div>
+        </div>
+
+        <div class="default">
+            <div class="bool">
+                <label>Boolean Value</label>
+                <input class="booleanValue" type="checkbox" />
+            </div>
+            <div class="number">
+                <label>Integer Value</label>
+                <input class="numberValue" />
+            </div>
+            <div class="obj">
+                <label>Object Value 1</label>
+                <input class="objectValue1" />
+
+                <label>Object Value 2</label>
+                <input class="objectValue2" />
+				
+				<button class="deleteButton">Delete</button>
+            </div>
+        </div>
+
+        <br />
+        <button class="saveButton">Save Settings</button>
+    </div>
+</body>
+</html>

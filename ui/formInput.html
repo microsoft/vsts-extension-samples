@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<head>
+    <title>Form Input</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/main.css" />
+    <script src="sdk/scripts/VSS.SDK.js"></script>
+</head>
+<body>
+    <script type="text/javascript">
+        // Initialize the VSS sdk
+        VSS.init({
+            setupModuleLoader: true,
+            moduleLoaderPathMappings: {
+                "Scripts/": "/scripts/"
+            }
+        });
+
+        // Wait for the SDK to be initialized
+        VSS.ready(function () {
+            require(["VSS/Common/Contracts/FormInput", "VSS/Controls/FormInput", "q"], function (FormInput_Contracts, Controls_FormInput, MenuControls, Q ) {
+				var $myForm = $(".my-form");
+				
+				var checkbox = { id: 'checkbox', inputMode: FormInput_Contracts.InputMode.CheckBox, description: 'This is a checkbox', name: "Checkbox" };
+				
+				var textbox = { id: 'textbox', inputMode: FormInput_Contracts.InputMode.TextBox, description: 'Can only contain letters', name: "Username" };
+				
+				var requiredPasswordBox = { id: 'passwordBox', inputMode: FormInput_Contracts.InputMode.PasswordBox, description: 'This is a password box', name: "Password", validation: {isRequired: true, minLength: 6, dataType: FormInput_Contracts.InputDataType.String} };
+				
+				var textArea = { id: 'textarea', inputMode: FormInput_Contracts.InputMode.TextArea, description: 'This is where the description should be entered', name: "Description" };
+				
+				var numberTextbox = { id: 'numberTextBox', inputMode: FormInput_Contracts.InputMode.TextBox, description: 'Must be a one or two digit number', name: "Number" , validation: {maxValue: 99, dataType: FormInput_Contracts.InputDataType.Number} };
+				
+				var combo = { id: 'combo', inputMode: FormInput_Contracts.InputMode.Combo, description: 'This is a combobox', name: "Select a value", values: {isLimitedToPossibleValues: true,  possibleValues: [{displayValue: "Item #1", value: "item1"}, {displayValue: "Item #2", value: "item2"}] }};
+				
+				var dependentCombo = { hasDynamicValueInformation: true, dependencyInputIds: ['combo'], id: 'dependentCombo', inputMode: FormInput_Contracts.InputMode.Combo, description: 'This is a second combobox', name: "Select a value based on the previous", values: {isLimitedToPossibleValues: true }};
+				
+				var radio = { id: 'radio', inputMode: FormInput_Contracts.InputMode.RadioButtons, description: 'This is a radio button group', name: "Radio Group", values: {possibleValues: [{displayValue: "Radio Item #1", value: "radioitem1"}, {displayValue: "Radio Item #2", value: "radioitem2"}, {displayValue: "Radio Item #3", value: "radioitem3"}], defaultValue: "radioitem2"}, validation: {isRequired: true, dataType: FormInput_Contracts.InputDataType.String} };
+
+				var formInputViewModel = new Controls_FormInput.FormInputViewModel(dependentInputsLoadingCallback, dependentInputsLoadedCallback, inputValidChangedCallback, inputValuesChangedCallback, onGetQuery);
+				
+				var inputDescriptors = [checkbox, textbox, requiredPasswordBox, numberTextbox, textArea, combo, dependentCombo, radio];
+				var inputsViewModel = new Controls_FormInput.InputsViewModel(formInputViewModel, inputDescriptors, {}, inputValidChangedCallback, inputValuesChangedCallback);
+				var $formInputContainer = Controls_FormInput.FormInputControl.createControl($myForm, {inputsViewModel: inputsViewModel, headerLabel: "My Form Header", comboControlMap: formInputViewModel.mapInputIdToComboControl});
+				
+				var $isValid = $("<span>").text("Not all inputs are valid");
+				var $button = $("<button>").text("Gather all values");
+				$button.prop("disabled", true);
+				$button.click(function () {
+					var allValues = "";
+					var inputsDictionary = inputsViewModel.getInputsAsDictionary();
+					$.each( inputsDictionary, function( key, value ) {
+						allValues += key + ": " + value + "\n";
+					});
+					alert(allValues);
+				});
+				$myForm.append($isValid);
+				$myForm.append($('<br />'));
+				$myForm.append($button);
+				
+				function onGetQuery(inputValues, inputsViewModel) {
+					var deferred = $.Deferred();
+					var possibleValues = [];
+					if (inputValues[0].inputId === 'dependentCombo') {
+						var comboValue = inputsViewModel.getInputsAsDictionary()['combo'];
+						if (comboValue === 'item1') {
+							possibleValues = [{possibleValues: [{displayValue: "Item #3", value: "item3"}, {displayValue: "Item #4", value: "item4"}], inputId: 'dependentCombo'}];
+						}
+						else if (comboValue === 'item2') {
+							possibleValues = [{possibleValues: [{displayValue: "Item #5", value: "item5"}, {displayValue: "Item #6", value: "item6"}], inputId: 'dependentCombo'}];
+						}
+					}
+					deferred.resolve(possibleValues);
+					
+					return deferred.promise();
+				};
+				
+				function dependentInputsLoadingCallback(inputValues, inputsViewModel) {
+
+				};
+				
+				function dependentInputsLoadedCallback(inputValues, inputsViewModel) {
+
+				};
+				
+				function inputValidChangedCallback() {
+					if (inputsViewModel.areValid()) {
+						$isValid.text("All inputs are valid");
+						$button.prop("disabled", false);
+					}
+					else {
+						$isValid.text("Not all inputs are valid");
+						$button.prop("disabled", true);
+					}
+				};
+				
+				function inputValuesChangedCallback(inputViewModel) {
+					formInputViewModel.onInputValuesChanged(inputViewModel);
+				}
+			});
+        });
+    </script>
+    <div class="my-form">
+    </div>
+</body>
+</html>

@@ -1,4 +1,4 @@
-﻿{
+{
     "namespace": "samples.ui",
     "version": "0.0.1",
     "name": "UI Controls (Sample)",
@@ -8,6 +8,10 @@
     },
     "baseUri": "https://localhost",
     "icon": "https://localhost/images/fabrikam-logo.png",
+    "publisher": "vseqa1o",
+	"public": true,
+	"tags": ["test"],
+	"categories": ["Productivity"],
     "contributions": {
         "vss.web#hubGroups.project": [
             {
@@ -52,6 +56,22 @@
                 "uri": "menu-context.html",
                 "usesSdk": true,
                 "fullPage": false
+            },
+            {
+                "id": "ess",
+                "name": "Extension Settings Sample",
+                "groupId": "home",
+                "order": 22,
+                "uri": "extension.html",
+                "usesSdk": true
+            },
+            {
+                "id": "formInput",
+                "name": "Form Input Sample",
+                "groupId": "home",
+                "order": 22,
+                "uri": "formInput.html",
+                "usesSdk": true
             }
         ],
         "vss.code.web#sourceItemActions": [
@@ -67,6 +87,10 @@
             {
                 "id": "compareToForm",
                 "uri": "compareToForm.html"
+            },
+            {
+                "id": "settingsDialog",
+                "uri": "settingsDialog.html"
             }
         ]
     },

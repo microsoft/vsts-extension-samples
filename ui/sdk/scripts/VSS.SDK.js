@@ -36,7 +36,9 @@ var XDM;
         }
         XdmDeferred.prototype._then = function (onFulfill, onReject) {
             var _this = this;
-            if ((!onFulfill && !onReject) || (this._isResolved && !onFulfill) || (this._isRejected && !onReject)) {
+            if ((!onFulfill && !onReject) ||
+                (this._isResolved && !onFulfill) ||
+                (this._isRejected && !onReject)) {
                 return this.promise;
             }
             var newDeferred = new XdmDeferred();
@@ -126,7 +128,8 @@ var XDM;
      */
     function newFingerprint() {
         // smallestRandom ensures we will get a 11-character result from the base-36 conversion.
-        return Math.floor((Math.random() * (maxSafeInteger - smallestRandom)) + smallestRandom).toString(36) + Math.floor((Math.random() * (maxSafeInteger - smallestRandom)) + smallestRandom).toString(36);
+        return Math.floor((Math.random() * (maxSafeInteger - smallestRandom)) + smallestRandom).toString(36) +
+            Math.floor((Math.random() * (maxSafeInteger - smallestRandom)) + smallestRandom).toString(36);
     }
     /**
      * Catalog of objects exposed for XDM
@@ -500,6 +503,7 @@ var XDM;
         };
         XDMChannel.prototype._customDeserializeObject = function (obj, circularRefs) {
             var _this = this;
+            var that = this;
             if (!obj) {
                 return null;
             }
@@ -516,7 +520,7 @@ var XDM;
                 else if (itemType === "object" && item) {
                     if (item.__proxyFunctionId) {
                         parentObject[key] = function () {
-                            return _this.invokeRemoteMethod("proxy" + item.__proxyFunctionId, "__proxyFunctions", Array.prototype.slice.call(arguments, 0));
+                            return that.invokeRemoteMethod("proxy" + item.__proxyFunctionId, "__proxyFunctions", Array.prototype.slice.call(arguments, 0));
                         };
                     }
                     else if (item.__proxyDate) {
@@ -685,8 +689,7 @@ var VSS;
         }
         if (!callback) {
             // Generate an empty callback for require
-            callback = function () {
-            };
+            callback = function () { };
         }
         if (loaderConfigured) {
             // Loader already configured, just issue require
@@ -824,6 +827,13 @@ var VSS;
         return parentChannel.invokeRemoteMethod("getAccessToken", "VSS.HostControl");
     }
     VSS.getAccessToken = getAccessToken;
+    /**
+    * Fetch an token which can be used to identify the current user
+    */
+    function getAppToken() {
+        return parentChannel.invokeRemoteMethod("getAppToken", "VSS.HostControl");
+    }
+    VSS.getAppToken = getAppToken;
     /**
     * Requests the parent window to resize the container for this extension based on the current extension size.
     */
