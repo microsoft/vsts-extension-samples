@@ -12,6 +12,12 @@
             "path": "images/fabrikam-logo.png"
         }
     ],
+    "tags": [
+        "Sample"
+    ],
+    "categories": [
+        "Sync and integration"
+    ],
     "contributions": [
         {
             "id": "showProperties",

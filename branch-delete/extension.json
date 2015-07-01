@@ -1,22 +1,36 @@
-﻿{
-    "namespace": "samples.branch-delete",
-    "version": "0.0.1",
+{
+    "manifestVersion": 1,
+    "extensionId": "samples-branch-delete",
+    "version": "0.1.0",
     "name": "Branch Delete (Sample)",
     "description": "Clean up old or unneeded Git branches right from within Visual Studio Online.",
-    "provider": {
-        "name": "Microsoft and the community"
-    },
-    "icon": "https://localhost/images/fabrikam-logo.png",
     "baseUri": "https://localhost",
-    "contributions": {    
-        "vss.code.web#gitBranchActions": [
-            {
-                "id": "deleteBranchMenu",
+    "publisher": "YOUR PUBLISHER HERE",
+    "assets": [
+        {
+            "type": "Microsoft.VSO.LargeIcon",
+            "path": "images/fabrikam-logo.png"
+        }
+    ],
+    "tags": [
+        "Sample"
+    ],
+    "categories": [
+        "Productivity"
+    ],
+    "contributions": [
+        {
+            "id": "deleteBranchMenu",
+            "targets": [
+                "ms.vss-code-web.git-branches-tree-menu"
+            ],
+            "type": "ms.vss-web.action",
+            "properties": {
                 "title": "Delete...",
                 "icon": "images/delete.png",
                 "group": "actions",
                 "uri": "main.html"
             }
-        ]
-    }
+        }
+    ]
 }
