@@ -1,314 +1,441 @@
-﻿{
-    "namespace": "samples.point-guide",
-    "version": "0.0.1",
+{
+    "manifestVersion": 1,
+    "extensionId": "samples-point-guide",
+    "version": "0.1.0",
     "name": "Contribution Point Guide (Sample)",
-    "description": "Discover all the places (called contribution points) in Visual Studio Online you can extend, including hubs, toolbars, and context menus, and more.",
-    "provider": {
-        "name": "Microsoft and the community"
-    },
+    "description": "Discover all the places in Visual Studio Online you can extend, including hubs, toolbars, and context menus, and more.",
     "baseUri": "https://localhost",
-    "icon": "https://localhost/images/fabrikam-logo.png",
-        "contributions": {
-        "vss.code.web#sourceItemActions": [
-            {
-                "id": "showProperties",
+    "publisher": "YOUR PUBLISHER HERE",
+    "assets": [
+        {
+            "type": "Microsoft.VSO.LargeIcon",
+            "path": "images/fabrikam-logo.png"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "showProperties",
+            "targets": [
+                "ms.vss-code-web.source-item-menu"
+            ],
+            "type": "ms.vss-web.action",
+            "properties": {
                 "text": "Custom source item action",
                 "title": "vss.code.web#sourceItemActions",
                 "icon": "images/show-properties.png",
                 "group": "actions",
                 "uri": "main.html"
             }
-        ],
-        "vss.code.web#sourceGridItemActions": [
-            {
-                "id": "showProperties",
+        },
+        {
+            "id": "showProperties_2",
+            "targets": [
+                "ms.vss-code-web.source-grid-item-menu"
+            ],
+            "type": "ms.vss-web.action",
+            "properties": {
                 "text": "Custom source grid item action",
                 "title": "vss.code.web#sourceGridItemActions",
                 "icon": "images/show-properties.png",
                 "group": "actions",
-                "uri": "main.html"
-            },
-            {
-                "id": "sourceGridDynamicMenu",
+                "uri": "main.html",
+                "registeredObjectId": "showProperties"
+            }
+        },
+        {
+            "id": "sourceGridDynamicMenu",
+            "targets": [
+                "ms.vss-code-web.source-grid-item-menu"
+            ],
+            "type": "ms.vss-web.action-provider",
+            "properties": {
                 "group": "actions",
                 "uri": "main.html"
             }
-        ],
-        "vss.code.web#sourceTreeItemActions": [
-            {
-                "id": "showProperties",
+        },
+        {
+            "id": "showProperties_3",
+            "targets": [
+                "ms.vss-code-web.source-tree-item-menu"
+            ],
+            "type": "ms.vss-web.action",
+            "properties": {
                 "text": "Custom source tree item action",
                 "title": "vss.code.web#sourceTreeItemActions",
                 "icon": "images/show-properties.png",
                 "group": "actions",
-                "uri": "main.html"
+                "uri": "main.html",
+                "registeredObjectId": "showProperties"
             }
-        ],
-        "vss.code.web#changeExplorerActions": [
-            {
-                "id": "showProperties",
+        },
+        {
+            "id": "showProperties_4",
+            "targets": [
+                "ms.vss-code-web.change-list-item-menu"
+            ],
+            "type": "ms.vss-web.action",
+            "properties": {
                 "text": "Custom change explorer action",
                 "title": "vss.code.web#changeExplorerActions",
                 "icon": "images/show-properties.png",
                 "group": "actions",
-                "uri": "main.html"
+                "uri": "main.html",
+                "registeredObjectId": "showProperties"
             }
-        ],
-        "vss.code.web#changeListSummaryItemActions": [
-            {
-                "id": "showProperties",
+        },
+        {
+            "id": "showProperties_5",
+            "targets": [
+                "ms.vss-code-web.change-list-summary-item-menu"
+            ],
+            "type": "ms.vss-web.action",
+            "properties": {
                 "text": "Custom change list summary item action",
                 "title": "vss.code.web#changeListSummaryItemActions",
                 "icon": "images/show-properties.png",
                 "group": "actions",
-                "uri": "main.html"
+                "uri": "main.html",
+                "registeredObjectId": "showProperties"
             }
-        ],
-        "vss.code.web#gitBranchActions": [
-            {
-                "id": "showProperties",
+        },
+        {
+            "id": "showProperties_6",
+            "targets": [
+                "ms.vss-code-web.git-branches-tree-menu"
+            ],
+            "type": "ms.vss-web.action",
+            "properties": {
                 "text": "Custom Git branch action",
                 "title": "vss.code.web#gitBranchActions",
                 "icon": "images/show-properties.png",
                 "group": "actions",
-                "uri": "main.html"
+                "uri": "main.html",
+                "registeredObjectId": "showProperties"
             }
-        ],
-        "vss.code.web#gitBranchDiffActions": [
-            {
-                "id": "showProperties",
+        },
+        {
+            "id": "showProperties_7",
+            "targets": [
+                "ms.vss-code-web.git-branches-summary-grid-diff-menu"
+            ],
+            "type": "ms.vss-web.action",
+            "properties": {
                 "text": "Custom Git branch diff action",
                 "title": "vss.code.web#gitBranchesGridActions",
                 "icon": "images/show-properties.png",
                 "group": "actions",
-                "uri": "main.html"
+                "uri": "main.html",
+                "registeredObjectId": "showProperties"
             }
-        ],
-        "vss.build.web#completedBuildActions": [
-            {
-                "id": "showProperties",
+        },
+        {
+            "id": "showProperties_8",
+            "targets": [
+                "ms.vss-build-web.completed-build-menu"
+            ],
+            "type": "ms.vss-web.action",
+            "properties": {
                 "text": "Custom completed build action",
                 "title": "vss.build.web#completedBuildActions",
                 "icon": "images/show-properties.png",
                 "group": "actions",
-                "uri": "main.html"
+                "uri": "main.html",
+                "registeredObjectId": "showProperties"
             }
-        ],
-        "vss.build.web#buildDefinitionActions": [
-            {
-                "id": "showProperties",
+        },
+        {
+            "id": "showProperties_9",
+            "targets": [
+                "ms.vss-build-web.build-definition-menu"
+            ],
+            "type": "ms.vss-web.action",
+            "properties": {
                 "text": "Custom build definition action",
                 "title": "vss.build.web#buildDefinitionActions",
                 "icon": "images/show-properties.png",
                 "group": "actions",
-                "uri": "main.html"
+                "uri": "main.html",
+                "registeredObjectId": "showProperties"
             }
-        ],
-        "vss.work.web#workItemActions": [
-            {
-                "id": "showProperties",
+        },
+        {
+            "id": "showProperties_10",
+            "targets": [
+                "ms.vss-work-web.work-item-context-menu"
+            ],
+            "type": "ms.vss-web.action",
+            "properties": {
                 "text": "Custom work item action",
                 "title": "vss.work.web#workItemActions",
                 "toolbarText": "Custom action 1",
                 "icon": "images/show-properties.png",
-                "uri": "main.html"
+                "uri": "main.html",
+                "registeredObjectId": "showProperties"
             }
-        ],
-        "vss.work.web#workItemToolbarActions": [
-            {
-                "id": "showProperties",
+        },
+        {
+            "id": "showProperties_11",
+            "targets": [
+                "ms.vss-work-web.work-item-toolbar-menu"
+            ],
+            "type": "ms.vss-web.action",
+            "properties": {
                 "text": "Custom work item toolbar action",
                 "title": "vss.work.web#workItemToolbarActions",
                 "toolbarText": "Custom action 2",
                 "icon": "images/show-properties.png",
                 "group": "actions",
-                "uri": "main.html"
+                "uri": "main.html",
+                "registeredObjectId": "showProperties"
             }
-        ],
-        "vss.work.web#backlogItemActions": [
-            {
-                "id": "showProperties",
+        },
+        {
+            "id": "showProperties_12",
+            "targets": [
+                "ms.vss-work.web.backlog-item-menu"
+            ],
+            "type": "ms.vss-web.action",
+            "properties": {
                 "text": "Custom backlog item action",
                 "title": "vss.work.web#backlogItemActions",
                 "icon": "images/show-properties.png",
                 "group": "actions",
-                "uri": "main.html"
+                "uri": "main.html",
+                "registeredObjectId": "showProperties"
             }
-        ],
-        "vss.work.web#queryActions": [
-            {
-                "id": "showProperties",
+        },
+        {
+            "id": "showProperties_13",
+            "targets": [
+                "ms.vss-work.web.work-item-query-menu"
+            ],
+            "type": "ms.vss-web.action",
+            "properties": {
                 "text": "Custom query action",
                 "title": "vss.work.web#queryActions",
                 "icon": "images/show-properties.png",
                 "group": "actions",
-                "uri": "main.html"
+                "uri": "main.html",
+                "registeredObjectId": "showProperties"
             }
-        ],
-        "vss.test.web#testRunActions": [
-            {
-                "id": "showProperties",
+        },
+        {
+            "id": "showProperties_14",
+            "targets": [
+                "ms.vss-code-web.test-run-toolbar-menu"
+            ],
+            "type": "ms.vss-web.action",
+            "properties": {
                 "text": "Custom test run action",
                 "title": "vss.test.web#testRunActions",
                 "icon": "images/show-properties.png",
                 "group": "actions",
-                "uri": "main.html"
+                "uri": "main.html",
+                "registeredObjectId": "showProperties"
             }
-        ],
-        "vss.test.web#testRunGridActions": [
-            {
-                "id": "showProperties",
+        },
+        {
+            "id": "showProperties_15",
+            "targets": [
+                "ms.vss-code-web.test-run-grid-menu"
+            ],
+            "type": "ms.vss-web.action",
+            "properties": {
                 "text": "Custom test run grid action",
                 "title": "vss.test.web#testRunGridActions",
                 "icon": "images/show-properties.png",
                 "group": "actions",
-                "uri": "main.html"
+                "uri": "main.html",
+                "registeredObjectId": "showProperties"
             }
-        ],
-        "vss.web#hubGroups.project": [
-            {
-                "id": "project.contribution",
+        },
+        {
+            "id": "project.contribution",
+            "targets": [
+                "ms.vss-web.project-hub-groups-collection"
+            ],
+            "type": "ms.vss-web.hub-group",
+            "properties": {
                 "name": "Group (project)",
                 "order": 100
             }
-        ],
-        "vss.web#hubGroups.application": [
-            {
-                "id": "application.contribution",
+        },
+        {
+            "id": "application.contribution",
+            "targets": [
+                "ms.vss-web.account-hub-groups-collection"
+            ],
+            "type": "ms.vss-web.hub-group",
+            "properties": {
                 "name": "Group (account)",
                 "order": 100
             }
-        ],
-        "vss.web#hubs": [
-            {
-                "id": "projectGroup.context",
+        },
+        {
+            "id": "projectGroup.context",
+            "targets": [
+                "ms.vss-web.project-hub-groups-collection"
+            ],
+            "type": "ms.vss-web.hub",
+            "properties": {
                 "name": "Hub (Project)",
-                "groupId": "project.contribution",
                 "order": 100,
-                "uri": "context.html",
-                "usesSdk": true,
-                "fullPage": false
-            },
-            {
-                "id": "applicationGroup.context",
-                "name": "Hub (Account)",
-                "groupId": "application.contribution",
-                "order": 100,
-                "uri": "context.html",
-                "usesSdk": true,
-                "fullPage": false
-            },
-            {
-                "id": "adminProjectGroup.context",
-                "name": "Admin Hub (Project)",
-                "groupId": "admin.project",
-                "order": 100,
-                "uri": "context.html",
-                "usesSdk": true,
-                "fullPage": false
-            },
-            {
-                "id": "adminCollectionGroup.context",
-                "name": "Admin Hub (Collection)",
-                "groupId": "admin.collection",
-                "order": 100,
-                "uri": "context.html",
-                "usesSdk": true,
-                "fullPage": false
-            },
-            {
-                "id": "adminApplicationGroup.context",
-                "name": "Admin Hub (Account)",
-                "groupId": "admin.application",
-                "order": 100,
-                "uri": "context.html",
-                "usesSdk": true,
-                "fullPage": false
-            },
-            {
-                "id": "home.context",
-                "name": "Home Hub (Project)",
-                "groupId": "home",
-                "order": 100,
-                "uri": "context.html",
-                "usesSdk": true,
-                "fullPage": false
-            },
-            {
-                "id": "home.context",
-                "name": "Home Hub (Account)",
-                "groupId": "home.application",
-                "order": 100,
-                "uri": "context.html",
-                "usesSdk": true,
-                "fullPage": false
-            },
-            {
-                "id": "source.context",
-                "name": "Code Hub",
-                "groupId": "source",
-                "order": 100,
-                "uri": "context.html",
-                "usesSdk": true,
-                "fullPage": false
-            },
-            {
-                "id": "workitems.context",
-                "name": "Work Hub",
-                "groupId": "workitems",
-                "order": 100,
-                "uri": "context.html",
-                "usesSdk": true,
-                "fullPage": false
-            },
-            {
-                "id": "build.context",
-                "name": "Build Hub",
-                "groupId": "build",
-                "order": 100,
-                "uri": "context.html",
-                "usesSdk": true,
-                "fullPage": false
-            },
-            {
-                "id": "test.context",
-                "name": "Test Hub",
-                "groupId": "test",
-                "order": 100,
-                "uri": "context.html",
-                "usesSdk": true,
-                "fullPage": false
-            },
-            {
-                "id": "search.context",
-                "name": "Search Hub",
-                "groupId": "search",
-                "order": 100,
-                "uri": "context.html",
-                "usesSdk": true,
-                "fullPage": false
-            },
-            {
-                "id": "admin.context",
-                "name": "Admin Hub",
-                "groupId": "admin",
-                "order": 100,
-                "uri": "context.html",
-                "usesSdk": true,
-                "fullPage": false
+                "uri": "context.html"
             }
-        ],
-        "#controls": [
-            {
-                "id": "contextForm",
+        },
+        {
+            "id": "applicationGroup.context",
+            "targets": [
+                "ms.vss-web.account-hub-groups-collection"
+            ],
+            "type": "ms.vss-web.hub",
+            "properties": {
+                "name": "Hub (Account)",
+                "order": 100,
+                "uri": "context.html"
+            }
+        },
+        {
+            "id": "adminProjectGroup.context",
+            "targets": [
+                "ms.vss-web.project-admin-hub-groups-collection"
+            ],
+            "type": "ms.vss-web.hub",
+            "properties": {
+                "name": "Admin Hub (Project)",
+                "order": 100,
+                "uri": "context.html"
+            }
+        },
+        {
+            "id": "adminCollectionGroup.context",
+            "targets": [
+                "ms.vss-web.collection-admin-hub-groups-collection"
+            ],
+            "type": "ms.vss-web.hub",
+            "properties": {
+                "name": "Admin Hub (Collection)",
+                "order": 100,
+                "uri": "context.html"
+            }
+        },
+        {
+            "id": "adminApplicationGroup.context",
+            "targets": [
+                "ms.vss-web.account-admin-hub-groups-collection"
+            ],
+            "type": "ms.vss-web.hub",
+            "properties": {
+                "name": "Admin Hub (Account)",
+                "order": 100,
+                "uri": "context.html"
+            }
+        },
+        {
+            "id": "home.context",
+            "targets": [
+                "ms.vss-web.home-hub-group"
+            ],
+            "type": "ms.vss-web.hub",
+            "properties": {
+                "name": "Home Hub (Project)",
+                "order": 100,
+                "uri": "context.html"
+            }
+        },
+        {
+            "id": "home.context_2",
+            "targets": [
+                "ms.vss-web.account-home-hub-group"
+            ],
+            "type": "ms.vss-web.hub",
+            "properties": {
+                "name": "Home Hub (Account)",
+                "order": 100,
+                "uri": "context.html"
+            }
+        },
+        {
+            "id": "source.context",
+            "targets": [
+                "ms.vss-code-web.code-hub-group"
+            ],
+            "type": "ms.vss-web.hub",
+            "properties": {
+                "name": "Code Hub",
+                "order": 100,
+                "uri": "context.html"
+            }
+        },
+        {
+            "id": "workitems.context",
+            "targets": [
+                "ms.vss-work-web.work-hub-group"
+            ],
+            "type": "ms.vss-web.hub",
+            "properties": {
+                "name": "Work Hub",
+                "order": 100,
+                "uri": "context.html"
+            }
+        },
+        {
+            "id": "build.context",
+            "targets": [
+                "ms.vss-build-web.build-hub-group"
+            ],
+            "type": "ms.vss-web.hub",
+            "properties": {
+                "name": "Build Hub",
+                "order": 100,
+                "uri": "context.html"
+            }
+        },
+        {
+            "id": "test.context",
+            "targets": [
+                "ms.vss-test-web.test-hub-group"
+            ],
+            "type": "ms.vss-web.hub",
+            "properties": {
+                "name": "Test Hub",
+                "order": 100,
+                "uri": "context.html"
+            }
+        },
+        {
+            "id": "search.context",
+            "targets": [
+                "vss.web#hubs"
+            ],
+            "type": "ms.vss-web.hub",
+            "properties": {
+                "name": "Search Hub",
+                "order": 100,
+                "uri": "context.html"
+            }
+        },
+        {
+            "id": "admin.context",
+            "targets": [
+                "vss.web#hubs"
+            ],
+            "type": "ms.vss-web.hub",
+            "properties": {
+                "name": "Admin Hub",
+                "order": 100,
+                "uri": "context.html"
+            }
+        },
+        {
+            "id": "contextForm",
+            "targets": [
+                ".controls"
+            ],
+            "type": ".controls",
+            "properties": {
                 "uri": "contextForm.html"
             }
-        ]
-    },
-    "contributionPoints": {
-        "controls": {
-            "type": "vss.web#control",
-            "description": "Provider of contribution controls."
         }
-    }
+    ]
 }
