@@ -1,18 +1,30 @@
 {
-    "namespace": "samples.public-events",
-    "version": "0.0.1",
+    "manifestVersion": 1,
+    "id": "samples-public-events",
+    "version": "0.1.0",
     "name": "Team Calendar US Public Events (Sample)",
     "description": "See public United States events and holidays on the Team Calendar extension for Visual Studio Online.",
-    "provider": {
-        "name": "Microsoft and the community"
-    },
     "baseUri": "https://localhost",
-    "contributions": {
-        "Microsoft.calendar#eventSources": [
-            {
-                "id": "publicEvents",
+    "publisher": "YOUR PUBLISHER HERE",
+    "icons": {
+        "wide": "images/fabrikam-logo.png",
+        "default": "images/fabrikam-logo.png"
+    },
+    "tags": [
+        "Sample"
+    ],
+    "categories": [
+        "Planning"
+    ],
+    "contributions": [
+        {
+            "id": "publicEvents",
+            "targets": [
+                "ms.vss-calendar.event-source"
+            ],
+            "properties": {
                 "uri": "out/main.html"
             }
-        ]
-    }
+        }
+    ]
 }

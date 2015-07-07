@@ -1,17 +1,15 @@
 {
     "manifestVersion": 1,
-    "extensionId": "samples-branch-delete",
+    "id": "samples-branch-delete",
     "version": "0.1.0",
     "name": "Branch Delete (Sample)",
     "description": "Clean up old or unneeded Git branches right from within Visual Studio Online.",
     "baseUri": "https://localhost",
     "publisher": "YOUR PUBLISHER HERE",
-    "assets": [
-        {
-            "type": "Microsoft.VSO.LargeIcon",
-            "path": "images/fabrikam-logo.png"
-        }
-    ],
+    "icons": {
+        "wide": "images/fabrikam-logo.png",
+        "default": "images/fabrikam-logo.png"
+    },
     "tags": [
         "Sample"
     ],

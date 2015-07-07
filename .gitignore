@@ -198,3 +198,5 @@ FakesAssemblies/
 # Extension manifest
 extension-*.json
 
+# vset (NPM Package) settings
+settings.vset.json

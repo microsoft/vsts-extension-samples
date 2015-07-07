@@ -62,7 +62,7 @@ export class AssociatedItemsView extends Controls.Control<AssociatedItemsViewOpt
         this._renderTree();
         this._renderGrid();
 
-        VSS.getService<IHostHistoryService>("ms.vss-web.history-service").then((historyService) => {
+        VSS.getService<IHostNavigationService>("ms.vss-web.navigation-service").then((historyService) => {
 
             // Attach to hash changed event.  This will happen when a tree node is clicked.
             historyService.onHashChanged((newHash: string) => {

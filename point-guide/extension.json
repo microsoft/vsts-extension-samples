@@ -1,17 +1,15 @@
 {
     "manifestVersion": 1,
-    "extensionId": "samples-point-guide",
+    "id": "samples-point-guide",
     "version": "0.1.0",
     "name": "Contribution Point Guide (Sample)",
     "description": "Discover all the places in Visual Studio Online you can extend, including hubs, toolbars, and context menus, and more.",
     "baseUri": "https://localhost",
     "publisher": "YOUR PUBLISHER HERE",
-    "assets": [
-        {
-            "type": "Microsoft.VSO.LargeIcon",
-            "path": "images/fabrikam-logo.png"
-        }
-    ],
+    "icons": {
+        "wide": "images/fabrikam-logo.png",
+        "default": "images/fabrikam-logo.png"
+    },
     "tags": [
         "Sample"
     ],
@@ -248,6 +246,66 @@
             "type": "ms.vss-web.action",
             "properties": {
                 "text": "Custom test run grid action",
+                "title": "vss.test.web#testRunGridActions",
+                "icon": "images/show-properties.png",
+                "group": "actions",
+                "uri": "main.html",
+                "registeredObjectId": "showProperties"
+            }
+        },
+        {
+            "id": "showProperties_16",
+            "targets": [
+                "ms.vss-admin-web.teams-grid-menu"
+            ],
+            "type": "ms.vss-web.action",
+            "properties": {
+                "text": "Custom teams admin grid action",
+                "title": "vss.test.web#testRunGridActions",
+                "icon": "images/show-properties.png",
+                "group": "actions",
+                "uri": "main.html",
+                "registeredObjectId": "showProperties"
+            }
+        },
+        {
+            "id": "showProperties_17",
+            "targets": [
+                "ms.vss-admin-web.project-overview-toolbar-menu"
+            ],
+            "type": "ms.vss-web.action",
+            "properties": {
+                "text": "Custom project overview toolbar action",
+                "title": "vss.test.web#testRunGridActions",
+                "icon": "images/show-properties.png",
+                "group": "actions",
+                "uri": "main.html",
+                "registeredObjectId": "showProperties"
+            }
+        },
+        {
+            "id": "showProperties_18",
+            "targets": [
+                "ms.vss-admin-web.projects-grid-menu"
+            ],
+            "type": "ms.vss-web.action",
+            "properties": {
+                "text": "Custom admin projects grid action",
+                "title": "vss.test.web#testRunGridActions",
+                "icon": "images/show-properties.png",
+                "group": "actions",
+                "uri": "main.html",
+                "registeredObjectId": "showProperties"
+            }
+        },
+        {
+            "id": "showProperties_19",
+            "targets": [
+                "ms.vss-admin-web.collection-overview-toolbar-menu"
+            ],
+            "type": "ms.vss-web.action",
+            "properties": {
+                "text": "Custom collection overview toolbar action",
                 "title": "vss.test.web#testRunGridActions",
                 "icon": "images/show-properties.png",
                 "group": "actions",

@@ -20,9 +20,7 @@ var deleteBranchMenu = (function () {
                         }], sourceItemContext.repository.id).then(function () {
                             var vsoContext = VSS.getWebContext();
 
-                            VSS.getService("ms.vss-web.history-service").then(function (historySvc) {
-                                historyService.reload();
-                            });
+                            sourceItemContext.view.refresh();
                         });
                     });
                 });

@@ -6,6 +6,7 @@ import TFS_Build_Contracts = require("TFS/Build/Contracts");
 import TFS_Build_Client = require("TFS/Build/RestClient");
 import TFS_Wit_Contracts = require("TFS/WorkItemTracking/Contracts");
 import TFS_Wit_Client = require("TFS/WorkItemTracking/RestClient");
+import Q = require("q");
 import VSS_Common_Contracts = require("VSS/WebApi/Contracts");
 
 // Parse the query string from iframe
@@ -35,36 +36,41 @@ if (buildId > 0) {
     var buildClient = VSS_Service.getClient(TFS_Build_Client.BuildHttpClient);
     var context = VSS.getWebContext();
 
-    // We need the project to fetch the associated commits
-    // Fetch the build to load
-    buildClient.getBuild(buildId, context.project.id).then((build: TFS_Build_Contracts.Build) => {
-        
-        // Fetch the build associated commit nodes
-        buildClient.getBuildCommits(context.project.name, buildId).then(function (associatedChanges: TFS_Build_Contracts.Change[]) {
+    // Fetch the build before getting its associated items
+    buildClient.getBuild(buildId, context.project.id).then<[TFS_Build_Contracts.Build, TFS_Build_Contracts.Change[], TFS_Wit_Contracts.WorkItem[]]>((build: TFS_Build_Contracts.Build) => {
+        return Q.all([
+            Q.resolve(build),
 
-            // Fetch the work item references associated with the build
-            buildClient.getBuildWorkItemsRefs(associatedChanges.map(change => change.id), context.project.name, buildId).then(function (itemRefs: VSS_Common_Contracts.ResourceRef[])  {
-                var witClient = VSS_Service.getClient(TFS_Wit_Client.WorkItemTrackingHttpClient);
+            // Fetch the build's associated commits and work items (refs) in parallel
+            buildClient.getBuildCommits(context.project.name, buildId), 
+            buildClient.getBuildWorkItemsRefs(context.project.name, buildId).then((itemRefs) => {
+                // If we retrieved any work item refs, resolve the full work items before fulfilling the promise
+                if (itemRefs.length > 0) {
+                    var witClient = VSS_Service.getClient(TFS_Wit_Client.WorkItemTrackingHttpClient);
+                    return witClient.getWorkItems(itemRefs.map(ref => parseInt(ref.id, 10)));
+                } else {
+                    return Q.resolve([]);
+                }
+            })
+        ]);
+    }).then((results: [TFS_Build_Contracts.Build, TFS_Build_Contracts.Change[], TFS_Wit_Contracts.WorkItem[]]) => {
+        var build = results[0]
+        var changes = results[1];
+        var items = results[2];
 
-                // Fetch the work items from the work item references
-                witClient.getWorkItems(itemRefs.map(ref => parseInt(ref.id, 10))).then((items: TFS_Wit_Contracts.WorkItem[]) => {
-
-                    // Create the view, passing in the fetched data to the control's options
-                    AssociatedItemsView.AssociatedItemsView.enhance(AssociatedItemsView.AssociatedItemsView, $(".hub-view"), {
-                        build: build,
-                        associatedChanges: associatedChanges,
-                        associatedWorkItems: items
-                    });
-
-                    // Notify the parent frame that the host has been loaded
-                    VSS.notifyLoadSucceeded();
-                });
-            });
+        // Create the view, passing in the fetched data to the control's options
+        AssociatedItemsView.AssociatedItemsView.enhance(AssociatedItemsView.AssociatedItemsView, $(".hub-view"), {
+            build: build,
+            associatedChanges: changes,
+            associatedWorkItems: items
         });
+
+        // Notify the parent frame that the host has been loaded
+        VSS.notifyLoadSucceeded();
     });
 } else {
     var vsoContext = VSS.getWebContext();
-    var buildExplorerUrl = vsoContext.host.uri + "/" + vsoContext.project.name + "/_BuildvNext";
+    var buildExplorerUrl = vsoContext.host.uri + "/" + vsoContext.project.name + "/_build";
     var noBuildText = "No build was specified. Launch the hub from a completed build on <a href='" + buildExplorerUrl +"' target= '_parent' >build explorer.</a><span>";
     $('.hub-title').html(noBuildText);
 }

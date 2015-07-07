@@ -1,17 +1,15 @@
 {
     "manifestVersion": 1,
-    "extensionId": "samples-build-inspector",
+    "id": "samples-build-inspector",
     "version": "0.1.0",
     "name": "Build Inspector (Sample)",
     "description": "A simple extension that demonstrates how to show details for a Visual Studio Online resource.",
     "baseUri": "https://localhost",
     "publisher": "YOUR PUBLISHER HERE",
-    "assets": [
-        {
-            "type": "Microsoft.VSO.LargeIcon",
-            "path": "images/fabrikam-logo.png"
-        }
-    ],
+    "icons": {
+        "wide": "images/fabrikam-logo.png",
+        "default": "images/fabrikam-logo.png"
+    },
     "tags": [
         "Sample"
     ],
