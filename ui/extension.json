@@ -29,9 +29,9 @@
             }
         },
         {
-            "id": "projectGroup.menu",
+            "id": "simple-menu",
             "targets": [
-                "trgau.samples-ui.sample-ui-group"
+                ".sample-ui-group"
             ],
             "type": "ms.vss-web.hub",
             "properties": {
@@ -41,9 +41,9 @@
             }
         },
         {
-            "id": "projectGroup.controlmenu",
+            "id": "control-menu",
             "targets": [
-                "trgau.samples-ui.sample-ui-group"
+                ".sample-ui-group"
             ],
             "type": "ms.vss-web.hub",
             "properties": {
@@ -53,9 +53,9 @@
             }
         },
         {
-            "id": "projectGroup.dropdown",
+            "id": "dropdown-menu",
             "targets": [
-                "trgau.samples-ui.sample-ui-group"
+                ".sample-ui-group"
             ],
             "type": "ms.vss-web.hub",
             "properties": {
@@ -65,9 +65,9 @@
             }
         },
         {
-            "id": "projectGroup.context",
+            "id": "context-menu",
             "targets": [
-                "trgau.samples-ui.sample-ui-group"
+                ".sample-ui-group"
             ],
             "type": "ms.vss-web.hub",
             "properties": {
@@ -91,21 +91,11 @@
         },
         {
             "id": "compareToForm",
-            "targets": [
-                ".controls"
-            ],
-            "type": ".controls",
+            "targets": [ ],
+            "type": "ms.vss-web.control",
             "properties": {
                 "uri": "compareToForm.html"
             }
-        }
-    ],
-    "contributionPoints": [
-        {
-            "id": "controls",
-            "name": "controls",
-            "description": "Provider of contribution controls.",
-            "properties": {}
         }
     ]
 }

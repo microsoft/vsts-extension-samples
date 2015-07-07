@@ -314,7 +314,7 @@
             }
         },
         {
-            "id": "project.contribution",
+            "id": "project-hub-group",
             "targets": [
                 "ms.vss-web.project-hub-groups-collection"
             ],
@@ -325,7 +325,7 @@
             }
         },
         {
-            "id": "application.contribution",
+            "id": "account-hub-group",
             "targets": [
                 "ms.vss-web.account-hub-groups-collection"
             ],
@@ -336,9 +336,9 @@
             }
         },
         {
-            "id": "projectGroup.context",
+            "id": "project-hub-group-hub",
             "targets": [
-                "ms.vss-web.project-hub-groups-collection"
+                ".project-hub-group"
             ],
             "type": "ms.vss-web.hub",
             "properties": {
@@ -348,9 +348,9 @@
             }
         },
         {
-            "id": "applicationGroup.context",
+            "id": "account-hub-group-hub",
             "targets": [
-                "ms.vss-web.account-hub-groups-collection"
+                ".account-hub-group"
             ],
             "type": "ms.vss-web.hub",
             "properties": {
@@ -360,43 +360,7 @@
             }
         },
         {
-            "id": "adminProjectGroup.context",
-            "targets": [
-                "ms.vss-web.project-admin-hub-groups-collection"
-            ],
-            "type": "ms.vss-web.hub",
-            "properties": {
-                "name": "Admin Hub (Project)",
-                "order": 100,
-                "uri": "context.html"
-            }
-        },
-        {
-            "id": "adminCollectionGroup.context",
-            "targets": [
-                "ms.vss-web.collection-admin-hub-groups-collection"
-            ],
-            "type": "ms.vss-web.hub",
-            "properties": {
-                "name": "Admin Hub (Collection)",
-                "order": 100,
-                "uri": "context.html"
-            }
-        },
-        {
-            "id": "adminApplicationGroup.context",
-            "targets": [
-                "ms.vss-web.account-admin-hub-groups-collection"
-            ],
-            "type": "ms.vss-web.hub",
-            "properties": {
-                "name": "Admin Hub (Account)",
-                "order": 100,
-                "uri": "context.html"
-            }
-        },
-        {
-            "id": "home.context",
+            "id": "home-hub",
             "targets": [
                 "ms.vss-web.home-hub-group"
             ],
@@ -408,7 +372,7 @@
             }
         },
         {
-            "id": "home.context_2",
+            "id": "account-home-hub",
             "targets": [
                 "ms.vss-web.account-home-hub-group"
             ],
@@ -420,7 +384,7 @@
             }
         },
         {
-            "id": "source.context",
+            "id": "code-hub",
             "targets": [
                 "ms.vss-code-web.code-hub-group"
             ],
@@ -432,7 +396,7 @@
             }
         },
         {
-            "id": "workitems.context",
+            "id": "work-hub",
             "targets": [
                 "ms.vss-work-web.work-hub-group"
             ],
@@ -444,7 +408,7 @@
             }
         },
         {
-            "id": "build.context",
+            "id": "build-hub",
             "targets": [
                 "ms.vss-build-web.build-hub-group"
             ],
@@ -456,7 +420,7 @@
             }
         },
         {
-            "id": "test.context",
+            "id": "test-hub",
             "targets": [
                 "ms.vss-test-web.test-hub-group"
             ],
@@ -468,21 +432,33 @@
             }
         },
         {
-            "id": "search.context",
+            "id": "account-admin-hub",
             "targets": [
-                "vss.web#hubs"
+                "ms.vss-web.account-admin-hub-group"
             ],
             "type": "ms.vss-web.hub",
             "properties": {
-                "name": "Search Hub",
+                "name": "Admin Hub",
                 "order": 100,
                 "uri": "context.html"
             }
         },
         {
-            "id": "admin.context",
+            "id": "collection-admin-hub",
             "targets": [
-                "vss.web#hubs"
+                "ms.vss-web.collection-admin-hub-group"
+            ],
+            "type": "ms.vss-web.hub",
+            "properties": {
+                "name": "Admin Hub",
+                "order": 100,
+                "uri": "context.html"
+            }
+        },
+        {
+            "id": "project-admin-hub",
+            "targets": [
+                "ms.vss-web.project-admin-hub-group"
             ],
             "type": "ms.vss-web.hub",
             "properties": {
@@ -493,10 +469,8 @@
         },
         {
             "id": "contextForm",
-            "targets": [
-                ".controls"
-            ],
-            "type": ".controls",
+            "targets": [ ],
+            "type": "ms.vss-web.control",
             "properties": {
                 "uri": "contextForm.html"
             }
