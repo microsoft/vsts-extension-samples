@@ -49,8 +49,8 @@ define([
                     contextMenu: true
                 },
 				contextMenu: {
-                    items: Core.delegate(this, this._createToolbarItems),
-                    executeAction: Core.delegate(this, this._onMenuItemClick)
+                    items: this._createToolbarItems.bind(this),
+                    executeAction: this._onMenuItemClick.bind(this)
                 }
 		   };
 			
@@ -61,12 +61,11 @@ define([
 		
 		ItemsView.prototype._createToolbarItems = function () {
             return [
-				{ id: "refresh-items", title: "Refresh", icon: "icon-refresh", showText: false },
-				{ separator: true },
-				{ id: "clear-items", text: "Clear", title: "Clear", showText: true, noIcon: true },
-				{ id: "start-items", text: "Start", title: "Start", showText: true, noIcon: true, disabled: true },
-				{ id: "stop-items", text: "Stop", title: "Stop", showText: true, noIcon: true, disabled: true },
-				{ id: "help-items", text: "Help", title: "Help", showText: true, noIcon: true }
+				{ id: "refresh-items", title: "Refresh", icon: "icon-refresh", showText: false, groupId: "icon" },
+				{ id: "clear-items", text: "Clear", title: "Clear", showText: true, noIcon: true, groupId: "text" },
+				{ id: "start-items", text: "Start", title: "Start", showText: true, noIcon: true, disabled: true, groupId: "text" },
+				{ id: "stop-items", text: "Stop", title: "Stop", showText: true, noIcon: true, disabled: true, groupId: "text" },
+				{ id: "help-items", text: "Help", title: "Help", showText: true, noIcon: true, groupId: "text" }
 			];
         };
 		

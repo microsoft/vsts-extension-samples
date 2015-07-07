@@ -22,10 +22,10 @@ define([
             this._menu = null;
         }
 
-       /**
-        *   Initialize will be called when this control is created.  This will setup the UI, 
-        *   attach to events, etc.
-        */
+        /**
+         * Initialize will be called when this control is created.  This will setup the UI, 
+         * attach to events, etc.
+         */
         ItemsView.prototype.initialize = function () {
             _super.prototype.initialize.call(this);
 
@@ -33,20 +33,19 @@ define([
         };
 		
 		ItemsView.prototype._createToolbar = function () {
-            this._menu = Controls.BaseControl.createIn(MenuControls.MenuBar, this._element.find("div.menu-container"), {
+            this._menu = Controls.create(MenuControls.MenuBar, this._element.find("div.menu-container"), {
                 items: this._createToolbarItems()
             });
-            MenuControls.menuManager.attachExecuteCommand(Core.delegate(this, this._onToolbarItemClick));
+            MenuControls.menuManager.attachExecuteCommand(this._onToolbarItemClick.bind(this));
         };
 		
 		ItemsView.prototype._createToolbarItems = function () {
             return [
-				{ id: "refresh-items", title: "Refresh", icon: "icon-refresh", showText: false },
-				{ separator: true },
-				{ id: "clear-items", text: "Clear", title: "Clear", showText: true, noIcon: true },
-				{ id: "start-items", text: "Start", title: "Start", showText: true, noIcon: true, disabled: true },
-				{ id: "stop-items", text: "Stop", title: "Stop", showText: true, noIcon: true, disabled: true },
-				{ id: "help-items", text: "Help", title: "Help", showText: true, noIcon: true }
+				{ id: "refresh-items", title: "Refresh", icon: "icon-refresh", showText: false, groupId: "icons" },
+				{ id: "clear-items", text: "Clear", title: "Clear", showText: true, noIcon: true, groupId: "text" },
+				{ id: "start-items", text: "Start", title: "Start", showText: true, noIcon: true, disabled: true, groupId: "text" },
+				{ id: "stop-items", text: "Stop", title: "Stop", showText: true, noIcon: true, disabled: true, groupId: "text" },
+				{ id: "help-items", text: "Help", title: "Help", showText: true, noIcon: true, groupId: "text" }
 			];
         };
 		

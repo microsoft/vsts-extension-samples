@@ -18,20 +18,20 @@
     ],
     "contributions": [
         {
-            "id": "menu.contribution",
+            "id": "sample-ui-group",
             "targets": [
                 "ms.vss-web.project-hub-groups-collection"
             ],
             "type": "ms.vss-web.hub-group",
             "properties": {
-                "name": "Sample Menus",
+                "name": "Sample UI",
                 "order": 100
             }
         },
         {
             "id": "projectGroup.menu",
             "targets": [
-                "vss.web#hubs"
+                "trgau.samples-ui.sample-ui-group"
             ],
             "type": "ms.vss-web.hub",
             "properties": {
@@ -43,7 +43,7 @@
         {
             "id": "projectGroup.controlmenu",
             "targets": [
-                "vss.web#hubs"
+                "trgau.samples-ui.sample-ui-group"
             ],
             "type": "ms.vss-web.hub",
             "properties": {
@@ -55,7 +55,7 @@
         {
             "id": "projectGroup.dropdown",
             "targets": [
-                "vss.web#hubs"
+                "trgau.samples-ui.sample-ui-group"
             ],
             "type": "ms.vss-web.hub",
             "properties": {
@@ -67,11 +67,11 @@
         {
             "id": "projectGroup.context",
             "targets": [
-                "vss.web#hubs"
+                "trgau.samples-ui.sample-ui-group"
             ],
             "type": "ms.vss-web.hub",
             "properties": {
-                "name": "Context",
+                "name": "Context Menu",
                 "order": 100,
                 "uri": "menu-context.html"
             }
@@ -98,6 +98,14 @@
             "properties": {
                 "uri": "compareToForm.html"
             }
+        }
+    ],
+    "contributionPoints": [
+        {
+            "id": "controls",
+            "name": "controls",
+            "description": "Provider of contribution controls.",
+            "properties": {}
         }
     ]
 }
