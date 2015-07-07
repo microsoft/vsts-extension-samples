@@ -20,8 +20,9 @@
         {
             "id": "publicEvents",
             "targets": [
-                "ms.vss-calendar.event-source"
+                "ms.team-calendar.calendar"
             ],
+            "type": "ms.vss-web.service",
             "properties": {
                 "uri": "out/main.html"
             }

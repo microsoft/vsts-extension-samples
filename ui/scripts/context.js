@@ -31,7 +31,7 @@ define([
             _super.prototype.initialize.call(this);
 
             var gridOptions = {
-			   height: 300,
+			   height: "100%",
 			   width: "90%",
 			   source: function () {
 				   var result = [], i;
