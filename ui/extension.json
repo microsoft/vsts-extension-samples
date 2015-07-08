@@ -96,6 +96,18 @@
             "properties": {
                 "uri": "compareToForm.html"
             }
+        },
+        {
+            "id": "eds",
+            "targets": [
+                "ms.vss-web.home-hub-group"
+            ],
+            "type": "ms.vss-web.hub",
+            "properties": {
+                "name": "Extension Data Sample",
+                "order": 22,
+                "uri": "extensionData.html"
+            }
         }
     ]
 }
