@@ -47,17 +47,6 @@
             }
         },
         {
-            "id": "sourceGridDynamicMenu",
-            "targets": [
-                "ms.vss-code-web.source-grid-item-menu"
-            ],
-            "type": "ms.vss-web.action-provider",
-            "properties": {
-                "group": "actions",
-                "uri": "main.html"
-            }
-        },
-        {
             "id": "showProperties_3",
             "targets": [
                 "ms.vss-code-web.source-tree-item-menu"
