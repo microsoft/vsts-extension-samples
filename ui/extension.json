@@ -1,11 +1,11 @@
 {
-    "manifestVersion": 1,
+    "manifestVersion": 1.0,
     "id": "samples-ui",
     "version": "0.1.0",
     "name": "UI Controls (Sample)",
     "description": "Explore different UI controls, including menus, toolbars, custom controls, and more.",
     "baseUri": "https://localhost",
-    "publisher": "YOUR PUBLISHER HERE",
+    "publisher": "fabrikam",
     "icons": {
         "wide": "images/fabrikam-logo.png",
         "default": "images/fabrikam-logo.png"
@@ -19,10 +19,11 @@
     "contributions": [
         {
             "id": "sample-ui-group",
+            "type": "ms.vss-web.hub-group",
+            "description": "Adds a 'Sample UI' hub group",
             "targets": [
                 "ms.vss-web.project-hub-groups-collection"
             ],
-            "type": "ms.vss-web.hub-group",
             "properties": {
                 "name": "Sample UI",
                 "order": 100
@@ -30,10 +31,11 @@
         },
         {
             "id": "simple-menu",
+            "type": "ms.vss-web.hub",
+            "description": "Adds a 'Simple' hub to the 'Sample UI' hub group to show basic usage of the menu control.",
             "targets": [
                 ".sample-ui-group"
             ],
-            "type": "ms.vss-web.hub",
             "properties": {
                 "name": "Simple",
                 "order": 100,
@@ -53,10 +55,11 @@
         },
         {
             "id": "control-menu",
+            "type": "ms.vss-web.hub",
+            "description": "Adds a 'Custom Control' hub to the 'Sample UI' hub group to show more advanced use of the menu control.",
             "targets": [
                 ".sample-ui-group"
             ],
-            "type": "ms.vss-web.hub",
             "properties": {
                 "name": "Custom Control",
                 "order": 100,
@@ -65,10 +68,11 @@
         },
         {
             "id": "dropdown-menu",
+            "type": "ms.vss-web.hub",
+            "description": "Adds a 'Dropdown' hub to the 'Sample UI' hub group to show usage of a dropdown menu.",
             "targets": [
                 ".sample-ui-group"
             ],
-            "type": "ms.vss-web.hub",
             "properties": {
                 "name": "Dropdown",
                 "order": 100,
@@ -77,10 +81,11 @@
         },
         {
             "id": "context-menu",
+            "type": "ms.vss-web.hub",
+            "description": "Adds a 'Context Menu' hub to the 'Sample UI' hub group to show usage of a context menu.",
             "targets": [
                 ".sample-ui-group"
             ],
-            "type": "ms.vss-web.hub",
             "properties": {
                 "name": "Context Menu",
                 "order": 100,
@@ -89,10 +94,11 @@
         },
         {
             "id": "compareMenu",
+            "type": "ms.vss-web.action",
+            "description": "Adds a 'Compare...' menu item to context menus on files from the Code Explore view which demonstrates how to raise modal dialogs to collect information.",
             "targets": [
                 "ms.vss-code-web.source-item-menu"
             ],
-            "type": "ms.vss-web.action",
             "properties": {
                 "title": "Compare...",
                 "icon": "images/show-properties.png",
@@ -102,10 +108,24 @@
         },
         {
             "id": "compareToForm",
-            "targets": [ ],
             "type": "ms.vss-web.control",
+            "description": "The content to show within the contributed Compare... menu item of this extension.",
+            "targets": [ ],
             "properties": {
                 "uri": "compareToForm.html"
+            }
+        },
+        {
+            "id": "eds",
+            "type": "ms.vss-web.hub",
+            "description": "Adds an 'Extension Data Sample' hub to the Home hub group which shows how to use the extension data service apis.",
+            "targets": [
+                "ms.vss-web.home-hub-group"
+            ],
+            "properties": {
+                "name": "Extension Data Sample",
+                "order": 22,
+                "uri": "extensionData.html"
             }
         }
     ]
