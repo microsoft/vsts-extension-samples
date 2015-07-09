@@ -1,5 +1,5 @@
 {
-    "manifestVersion": 1,
+    "manifestVersion": 1.0,
     "id": "samples-public-events",
     "version": "0.1.0",
     "name": "Team Calendar US Public Events (Sample)",
@@ -19,10 +19,11 @@
     "contributions": [
         {
             "id": "publicEvents",
-            "targets": [
-                "ms.team-calendar.calendar"
-            ],
             "type": "ms.vss-web.service",
+            "description": "Team Calendar event source for public U.S. events and holidays.",
+            "targets": [
+                "ms.team-calendar.calendar-event-sources"
+            ],
             "properties": {
                 "uri": "out/main.html"
             }
