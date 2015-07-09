@@ -19,7 +19,7 @@
     "contributions": [
         {
             "id": "publicEvents",
-            "type": "ms.vss-web.service",
+            "type": "ms.team-calendar.calendar-event-source",
             "description": "Team Calendar event source for public U.S. events and holidays.",
             "targets": [
                 "ms.team-calendar.calendar-event-sources"
