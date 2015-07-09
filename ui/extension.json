@@ -41,26 +41,14 @@
             }
         },
         {
-            "id": "extensible-menu",
-            "targets": [
-                ".sample-ui-group"
-            ],
-            "type": "ms.vss-web.hub",
-            "properties": {
-                "name": "Extensible Menu",
-                "order": 100,
-                "uri": "menu-extensible.html"
-            }
-        },
-        {
             "id": "dynamic-menu",
             "targets": [
-                ".extensible-menu"
+                "ms.vss-code-web.source-grid-item-menu"
             ],
             "type": "ms.vss-web.action-provider",
             "properties": {
-                "group": "actions",
-                "uri": "contributed-items.html"
+                "group": "contributed",
+                "uri": "dynamic-menu.html"
             }
         },
         {

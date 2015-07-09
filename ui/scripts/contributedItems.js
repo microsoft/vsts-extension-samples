@@ -1,4 +1,4 @@
-VSS.register("sourceGridDynamicMenu", {
+VSS.register("dynamic-menu", {
     execute: function (actionArgs) {
         alert("execute: " + (JSON.stringify(actionArgs) || "").substr(0, 100));
     },
