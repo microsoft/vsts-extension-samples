@@ -1,3 +1,6 @@
+//----------------------------------------------------------
+// Copyright (C) Microsoft Corporation. All rights reserved.
+//----------------------------------------------------------
 ///<reference path='../References/VSS-Common.d.ts' />
 ///<reference path='../References/VSS.SDK.Interfaces.d.ts' />
 ///<reference path='../References/SDK.Interfaces.d.ts' />
