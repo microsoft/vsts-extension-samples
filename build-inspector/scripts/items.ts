@@ -1,6 +1,6 @@
 /// <reference path='ref/VSS.d.ts' />
 
-import AssociatedItemsView = require("Scripts/AssociatedItemsView");
+import AssociatedItemsView = require("scripts/associatedItemsView");
 import VSS_Service = require("VSS/Service");
 import TFS_Build_Contracts = require("TFS/Build/Contracts");
 import TFS_Build_Client = require("TFS/Build/RestClient");

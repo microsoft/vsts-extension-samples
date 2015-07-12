@@ -2,9 +2,9 @@
 
 import VSS_Host = require("VSS/Host");
 import Controls = require("VSS/Controls");
-import AssociatedItemsTree = require("Scripts/AssociatedItemsTree");
-import AssociatedItemsGrid = require("Scripts/AssociatedItemsGrid");
-import AssociatedItemContent = require("Scripts/AssociatedItemContent");
+import AssociatedItemsTree = require("scripts/associatedItemsTree");
+import AssociatedItemsGrid = require("scripts/associatedItemsGrid");
+import AssociatedItemContent = require("scripts/associatedItemContent");
 import TFS_Build_Contracts = require("TFS/Build/Contracts");
 import TFS_Wit_Contracts = require("TFS/WorkItemTracking/Contracts");
 import TreeView = require("VSS/Controls/TreeView");

@@ -200,3 +200,6 @@ extension-*.json
 
 # vset (NPM Package) settings
 settings.vset.json
+
+# Grunt build output folder
+dist/

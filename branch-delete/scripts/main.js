@@ -18,8 +18,6 @@ var deleteBranchMenu = (function () {
                             oldObjectId: ref.objectId,
                             newObjectId: "0000000000000000000000000000000000000000"
                         }], sourceItemContext.repository.id).then(function () {
-                            var vsoContext = VSS.getWebContext();
-
                             sourceItemContext.view.refresh();
                         });
                     });
