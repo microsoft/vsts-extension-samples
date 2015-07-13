@@ -203,3 +203,6 @@ settings.vset.json
 
 # Grunt build output folder
 dist/
+
+# VSIX Packages (vset output)
+*.vsix
