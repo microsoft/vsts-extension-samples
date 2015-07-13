@@ -123,7 +123,7 @@ module.exports = function (grunt) {
       // Update publisher
       manifest.publisher = publisher;
       
-      grunt.file.write(this.data.manifest, JSON.stringify(manifest, null, 2));
+      grunt.file.write(this.data.manifest, JSON.stringify(manifest, null, 4));
   }); 
   
   // Register prep package and deploy tasks
