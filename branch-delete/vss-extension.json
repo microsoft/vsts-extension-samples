@@ -2,10 +2,10 @@
     "manifestVersion": 1.0,
     "id": "samples-branch-delete",
     "version": "0.1.0",
-    "name": "Branch Delete (Sample)",
+    "name": "Branch Delete",
     "description": "Clean up old or unneeded Git branches right from within Visual Studio Online.",
     "baseUri": "https://localhost",
-    "publisher": "Fabrikam",
+    "publisher": "fabrikam",
     "icons": {
         "default": "images/fabrikam-logo.png"
     },
@@ -19,7 +19,7 @@
         {
             "id": "deleteBranchMenu",
             "type": "ms.vss-web.action",
-            "description": "Adds a 'Delete' action to the git branches tree's context menu.",
+            "description": "Delete action on the Git branches tree's context menu",
             "targets": [
                 "ms.vss-code-web.git-branches-tree-menu"
             ],

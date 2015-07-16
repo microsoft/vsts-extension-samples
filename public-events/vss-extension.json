@@ -2,10 +2,10 @@
     "manifestVersion": 1.0,
     "id": "samples-public-events",
     "version": "0.1.0",
-    "name": "Team Calendar US Public Events (Sample)",
+    "name": "Team Calendar US Public Events",
     "description": "See public United States events and holidays on the Team Calendar extension for Visual Studio Online.",
     "baseUri": "https://localhost",
-    "publisher": "YOUR PUBLISHER HERE",
+    "publisher": "fabrikam",
     "icons": {
         "default": "images/fabrikam-logo.png"
     },

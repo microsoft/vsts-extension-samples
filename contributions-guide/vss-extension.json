@@ -2,7 +2,7 @@
     "manifestVersion": 1.0,
     "id": "samples-contributions-guide",
     "version": "0.1.0",
-    "name": "Contributions Guide (Sample)",
+    "name": "Contributions Guide",
     "description": "Discover all the places in Visual Studio Online you can extend, including hubs, toolbars, and context menus, and more.",
     "baseUri": "https://localhost",
     "publisher": "fabrikam",
