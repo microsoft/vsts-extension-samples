@@ -1,5 +1,5 @@
 {
-    "manifestVersion": 1.0,
+    "manifestVersion": 1,
     "id": "samples-build-inspector",
     "version": "0.1.0",
     "name": "Build Inspector",
