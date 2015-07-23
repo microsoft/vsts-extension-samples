@@ -7,24 +7,40 @@ This repo contains samples to help jump-start you in your development of [Extens
 ### Pre-requisites
 
 1. [Join the Visual Studio Partner program](http://www.vsipprogram.com/join) to get early access to the Extensions feature
-2. Verify the Extensions feature has been enabled on your account by navigating to ```https://youraccount.visualstudio.com/_admin/_ext```.
+2. Verify the Extensions feature has been enabled on your account by navigating to ```https://youraccount.visualstudio.com/_admin/_apps/hub/ms.vss-extensionManagement-web.manageExtensions```.
 3. Available local or cloud web server with HTTPS (IIS, Node.js, Azure Web App, Heroku, etc)
 
 ### Steps
 
-1. Clone this repo
-2. Browse to the folder of the extension you are interested in trying
-3. Publish the contents of the extension to a local or cloud web server
- * The root of the extension should be at the root of the web server, for example: https://myserver/images/fabrikam-logo.png
-4. Copy the extension manifest file (`extension.json`) to something like `extension-me.json`
- * You do not need to re-deploy/re-publish after updating this file
-5. Update this extension manifest file:
-  1. Update the `namespace` field to a globally-unique value. For example: ```johnsmith.samples.build-inspector```
-  2. Update the `baseUri` field to be the fully-qualified URL to the root of your web server, for example: `https://myserver`
-6. Install the extension into your Visual Studio Online account
-  1. Navigate to ```https://youraccount.visualstudio.com/_admin/_ext``` (replace youraccount with your real account name)
-  2. Click **Install** and browse to your manifest file, for example extension-me.json
-  3. Click **OK**
+The samples are published to the gallery. You can install them to your account by doing the following:
+
+1. Go to https://<your_account_url>/_admin/_apps/hub/ms.vss-extensionManagement-web.manageExtensions
+2. Locate the sample extension you want to install and click "Install".
+
+#### Publishing the extensions yourself
+
+If you want to edit the samples to play around with them, you will need to publish them yourself.
+
+##### Before you begin
+Follow the steps under Before you begin at [Publishing from the Command Line](https://www.visualstudio.com/en-us/integrate/extensions/publish/command-line). Save your Personal Access Token for later use.
+
+##### Publish
+1. Clone the samples  
+    `git clone https://github.com/Microsoft/vso-extension-samples.git`  
+    `cd vso-extension-samples`
+    
+2. Prep the packages and distributions:  
+    `npm install`  
+    `grunt prepPackage --baseUri https://localhost:XXXX --publisher PPPP`  
+    Note: XXXX is the port on which you will set up a local web server. PPPP is the ID of the publisher you created in the "Before you begin" steps.
+3. Publish  
+    `cd dist\packages\<sample>`  
+    Note: <sample> is the directory containing the sample you want to publish.  
+    
+    `vset publish --token TTTT --share-with AAAA --save`  
+    Note: TTTT is the Personal Access Token you generated in "Before you begin" above. AAAA is the name of your VSO account.  
+    Note: From now on, if you need to make changes to your manifest and re-publish the extension, you just type `vset publish`. Your token and share options are remembered.  
+4. Install by going to https://youraccount.visualstudio.com/_admin/_apps/hub/ms.vss-extensionManagement-web.manageExtensions. Find the extension you published under the Shared With Me category. Click "Install" to install the extension.
 
 ## What's available
 
@@ -34,11 +50,11 @@ This repo contains samples to help jump-start you in your development of [Extens
 
 Clean up old or unneeded Git branches right from within Visual Studio Online.
 
-### Contribution point guide
+### Contribution guide
 
-![image](point-guide/images/context-menu-screenshot.png)
+![image](contributions-guide/images/context-menu-screenshot.png)
 
-Discover all the places (called contribution points) in Visual Studio Online you can extend, including hubs, toolbars, and context menus, and more.
+Discover all the places in Visual Studio Online you can extend, including hubs, toolbars, and context menus, and more.
  
 ### Build inspector
 
