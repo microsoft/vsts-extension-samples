@@ -30,7 +30,7 @@ export class AssociatedItemsTree extends TreeView.TreeView {
      */
     public onItemClick(node: TreeView.TreeNode, nodeElement: any, e?: JQueryEventObject): void {
         super.onItemClick.apply(this, arguments);
-        VSS.getService<IHostHistoryService>("vss.history").then((historyService) => {
+        VSS.getService<IHostNavigationService>("ms.vss-web.navigation-service").then((historyService) => {
             historyService.setHash(node.link);
         });
     }

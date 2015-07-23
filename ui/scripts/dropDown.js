@@ -6,13 +6,13 @@
 };
 
 define([
-	"require",
-	"exports",
-	"VSS/Utils/Core",
-	"VSS/Host",
-	"VSS/Controls",
-	"VSS/Controls/Menus"
-	], function (require, exports, Core, VSS_HOST, Controls, MenuControls) {
+    "require",
+    "exports",
+    "VSS/Utils/Core",
+    "VSS/Host",
+    "VSS/Controls",
+    "VSS/Controls/Menus"
+    ], function (require, exports, Core, VSS_HOST, Controls, MenuControls) {
 
     var ItemsView = (function (_super) {
         __extends(ItemsView , _super);
@@ -31,66 +31,74 @@ define([
 
             this._createToolbar();
         };
-		
-		ItemsView.prototype._createToolbar = function () {
+        
+        ItemsView.prototype._createToolbar = function () {
             this._menu = Controls.BaseControl.createIn(MenuControls.MenuBar, this._element.find("div.menu-container"), {
                 items: this._createToolbarItems()
             });
-            MenuControls.menuManager.attachExecuteCommand(Core.delegate(this, this._onToolbarItemClick));
+            MenuControls.menuManager.attachExecuteCommand(this._onToolbarItemClick.bind(this));
         };
-		
-		ItemsView.prototype._createToolbarItems = function () {
+        
+        ItemsView.prototype._createToolbarItems = function () {
             return [
-				{ id: "refresh-items", title: "Refresh", icon: "icon-refresh", showText: false },
-				{ separator: true },
-				{
+                { id: "refresh-items", title: "Refresh", icon: "icon-refresh", showText: false, groupId: "icon" },
+                {
                     id: "item-actions",
-                    idIsAction: false,
                     text: "Actions",
                     noIcon: true,
                     childItems: [
-                        { id: "manage-items", text: "Manage"},
-                        { separator: true },
-                        { id: "manage-security", text: "Security"}
-                    ]
+                        { id: "manage-items", text: "Manage", groupId: "first", childItems: [
+                            {id: "submenu1", text: "Submenu 1"},
+                            {id: "submenu2", text: "Submenu 2"}
+                        ]},
+                        { id: "manage-security", text: "Security", groupId: "second"}
+                    ],
+                    "groupId": "text"
                 }
-			];
+            ];
         };
-		
-		ItemsView.prototype._refreshItems = function(){
-			alert("refresh");
-		};
-		
-		ItemsView.prototype._manageItems = function(){
-			alert("manage");
-		};
-		
-		ItemsView.prototype._security = function(){
-			alert("security");
-		};
+        
+        ItemsView.prototype._refreshItems = function(){
+            alert("refresh");
+        };
+        
+        ItemsView.prototype._manageItems = function(){
+            alert("manage");
+        };
+        
+        ItemsView.prototype._security = function(){
+            alert("security");
+        };
 
         ItemsView.prototype._onToolbarItemClick = function (sender, args) {
-            var command = args.get_commandName(), commandArgument = args.get_commandArgument(), that = this, result = false;
-			switch (command) {
-				case "refresh-items":
-					this._refreshItems();
-					break;
-				case "manage-items":
-					this._manageItems();
-					break;
-				case "manage-security":
-					this._security();
-					break;
-				default:
-					result = true;
-					break;
-			}
-			return result;
+            var command = args.get_commandName();
+            var result = false;
+            switch (command) {
+                case "refresh-items":
+                    this._refreshItems();
+                    break;
+                case "manage-items":
+                    this._manageItems();
+                    break;
+                case "manage-security":
+                    this._security();
+                    break;
+                case "submenu1":
+                    alert("Submenu 1");
+                    break;
+                case "submenu2":
+                    alert("Submenu 2");
+                    break;
+                default:
+                    result = true;
+                    break;
+            }
+            return result;
         };
-		
+        
         return ItemsView;
     })(Controls.BaseControl);
     exports.ItemsView = ItemsView;
-	
-	Controls.Enhancement.registerEnhancement(ItemsView, ".hub-view");
+    
+    Controls.Enhancement.registerEnhancement(ItemsView, ".hub-view");
 });

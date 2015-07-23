@@ -10,15 +10,11 @@
         var compareMenu = {
             execute: function (actionContext) {
                 
-                VSS.getService("vss.dialogs").then(function (dialogSvc) {
+                VSS.getService("ms.vss-web.dialog-service").then(function (dialogSvc) {
                 
                     var compareToForm;
                 
-                    var controlContributionInfo = {
-                        id: "compareToForm",
-                        extensionId: VSS.getExtensionContext().id,
-                        pointId: VSS.getExtensionContext().namespace + "#controls"
-                    };
+                    var extInfo = VSS.getExtensionContext();
                     
                     var dialogOptions = {
                         title: "Compare to",
@@ -26,14 +22,14 @@
                         height: 400,
                         okText: "Compare",
                         okCallback: function (result) {
-                            VSS.getService("vss.history").then(function (historyService) {
+                            VSS.getService("ms.vss-web.navigation-service").then(function (navigationSvc) {
                                 var newHash = [
                                     "_a=compare",
-                                    "path=" + encodeURIComponent(actionContext.serverItem),
+                                    "path=" + encodeURIComponent(actionContext.item.path),
                                     "oversion=" + encodeURIComponent("GB" + result.branch),
-                                    "mversion=" + encodeURIComponent(actionContext.version)
+                                    "mversion=" + encodeURIComponent("GB" + actionContext.version)
                                 ];
-                                historyService.setHash(newHash.join('&')); 
+                                navigationSvc.setHash(newHash.join('&')); 
                             });
                         },
                         getDialogResult: function () {
@@ -45,7 +41,7 @@
                         item: actionContext  
                     };
                     
-                    dialogSvc.openDialog(controlContributionInfo, dialogOptions, contributionContext).then(function (dialog) {
+                    dialogSvc.openDialog(extInfo.publisherId + "." + extInfo.extensionId + "." + "compareToForm", dialogOptions, contributionContext).then(function (dialog) {
                         dialog.getContributionInstance("compareToForm").then(function (compareToFormInstance) {
                             
                             compareToForm = compareToFormInstance;

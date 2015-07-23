@@ -1,0 +1,500 @@
+{
+    "manifestVersion": 1,
+    "id": "samples-contributions-guide",
+    "version": "0.1.0",
+    "name": "Contributions Guide",
+    "description": "Discover all the places in Visual Studio Online you can extend, including hubs, toolbars, and context menus, and more.",
+    "baseUri": "https://localhost",
+    "publisher": "fabrikam",
+    "icons": {
+        "default": "images/fabrikam-logo.png"
+    },
+    "tags": [
+        "Sample"
+    ],
+    "categories": [
+        "Sync and integration"
+    ],
+    "contributions": [
+        {
+            "id": "showProperties",
+            "type": "ms.vss-web.action",
+            "description": "Shows the target properties for menu actions for source files",
+            "targets": [
+                "ms.vss-code-web.source-item-menu"
+            ],
+            "properties": {
+                "text": "Custom source item action",
+                "title": "ms.vss-code-web.source-item-menu",
+                "icon": "images/show-properties.png",
+                "group": "actions",
+                "uri": "main.html"
+            }
+        },
+        {
+            "id": "showProperties_2",
+            "type": "ms.vss-web.action",
+            "description": "Shows the target properties for menu actions for the source explorer grid",
+            "targets": [
+                "ms.vss-code-web.source-grid-item-menu"
+            ],
+            "properties": {
+                "text": "Custom source grid item action",
+                "title": "ms.vss-code-web.source-grid-item-menu",
+                "icon": "images/show-properties.png",
+                "group": "actions",
+                "uri": "main.html",
+                "registeredObjectId": "showProperties"
+            }
+        },
+        {
+            "id": "showProperties_3",
+            "type": "ms.vss-web.action",
+            "description": "Shows the target properties for menu actions for the source explorer tree",
+            "targets": [
+                "ms.vss-code-web.source-tree-item-menu"
+            ],
+            "properties": {
+                "text": "Custom source tree item action",
+                "title": "ms.vss-code-web.source-tree-item-menu",
+                "icon": "images/show-properties.png",
+                "group": "actions",
+                "uri": "main.html",
+                "registeredObjectId": "showProperties"
+            }
+        },
+        {
+            "id": "showProperties_4",
+            "type": "ms.vss-web.action",
+            "description": "Shows the target properties for menu actions for the commit/changeset files tree",
+            "targets": [
+                "ms.vss-code-web.change-list-item-menu"
+            ],
+            "properties": {
+                "text": "Custom change explorer action",
+                "title": "ms.vss-code-web.change-list-item-menu",
+                "icon": "images/show-properties.png",
+                "group": "actions",
+                "uri": "main.html",
+                "registeredObjectId": "showProperties"
+            }
+        },
+        {
+            "id": "showProperties_5",
+            "type": "ms.vss-web.action",
+            "description": "Shows the target properties for menu actions for the commit/changeset summary view file menu",
+            "targets": [
+                "ms.vss-code-web.change-list-summary-item-menu"
+            ],
+            "properties": {
+                "text": "Custom change list summary item action",
+                "title": "ms.vss-code-web.change-list-summary-item-menu",
+                "icon": "images/show-properties.png",
+                "group": "actions",
+                "uri": "main.html",
+                "registeredObjectId": "showProperties"
+            }
+        },
+        {
+            "id": "showProperties_6",
+            "type": "ms.vss-web.action",
+            "description": "Shows the target properties for menu actions for the git branches tree",
+            "targets": [
+                "ms.vss-code-web.git-branches-tree-menu"
+            ],
+            "properties": {
+                "text": "Custom Git branch action",
+                "title": "ms.vss-code-web.git-branches-tree-menu",
+                "icon": "images/show-properties.png",
+                "group": "actions",
+                "uri": "main.html",
+                "registeredObjectId": "showProperties"
+            }
+        },
+        {
+            "id": "showProperties_7",
+            "type": "ms.vss-web.action",
+            "description": "Shows the target properties for menu actions for the git branches view's diff menu",
+            "targets": [
+                "ms.vss-code-web.git-branches-summary-grid-diff-menu"
+            ],
+            "properties": {
+                "text": "Custom Git branch diff action",
+                "title": "ms.vss-code-web.git-branches-summary-grid-diff-menu",
+                "icon": "images/show-properties.png",
+                "group": "actions",
+                "uri": "main.html",
+                "registeredObjectId": "showProperties"
+            }
+        },
+        {
+            "id": "showProperties_8",
+            "type": "ms.vss-web.action",
+            "description": "Shows the target properties for menu actions for the completed builds grid",
+            "targets": [
+                "ms.vss-build-web.completed-build-menu"
+            ],
+            "properties": {
+                "text": "Custom completed build action",
+                "title": "ms.vss-build-web.completed-build-menu",
+                "icon": "images/show-properties.png",
+                "group": "actions",
+                "uri": "main.html",
+                "registeredObjectId": "showProperties"
+            }
+        },
+        {
+            "id": "showProperties_9",
+            "type": "ms.vss-web.action",
+            "description": "Shows the target properties for menu actions for the build definitions list",
+            "targets": [
+                "ms.vss-build-web.build-definition-menu"
+            ],
+            "properties": {
+                "text": "Custom build definition action",
+                "title": "ms.vss-build-web.build-definition-menu",
+                "icon": "images/show-properties.png",
+                "group": "actions",
+                "uri": "main.html",
+                "registeredObjectId": "showProperties"
+            }
+        },
+        {
+            "id": "showProperties_10",
+            "type": "ms.vss-web.action",
+            "description": "Shows the target properties for menu actions for work items",
+            "targets": [
+                "ms.vss-work-web.work-item-context-menu"
+            ],
+            "properties": {
+                "text": "Custom work item action",
+                "title": "ms.vss-work-web.work-item-context-menu",
+                "toolbarText": "Custom action 1",
+                "icon": "images/show-properties.png",
+                "uri": "main.html",
+                "registeredObjectId": "showProperties"
+            }
+        },
+        {
+            "id": "showProperties_11",
+            "type": "ms.vss-web.action",
+            "description": "Shows the target properties for menu actions for the work item form's toolbar menu",
+            "targets": [
+                "ms.vss-work-web.work-item-toolbar-menu"
+            ],
+            "properties": {
+                "text": "Custom work item toolbar action",
+                "title": "ms.vss-work-web.work-item-toolbar-menu",
+                "toolbarText": "Custom action 2",
+                "icon": "images/show-properties.png",
+                "group": "actions",
+                "uri": "main.html",
+                "registeredObjectId": "showProperties"
+            }
+        },
+        {
+            "id": "showProperties_12",
+            "type": "ms.vss-web.action",
+            "description": "Shows the target properties for menu actions for the backlog grid",
+            "targets": [
+                "ms.vss-work.web.backlog-item-menu"
+            ],
+            "properties": {
+                "text": "Custom backlog item action",
+                "title": "ms.vss-work.web.backlog-item-menu",
+                "icon": "images/show-properties.png",
+                "group": "actions",
+                "uri": "main.html",
+                "registeredObjectId": "showProperties"
+            }
+        },
+        {
+            "id": "showProperties_13",
+            "type": "ms.vss-web.action",
+            "description": "Shows the target properties for menu actions for the work item query context menu",
+            "targets": [
+                "ms.vss-work.web.work-item-query-menu"
+            ],
+            "properties": {
+                "text": "Custom query action",
+                "title": "ms.vss-work.web.work-item-query-menu",
+                "icon": "images/show-properties.png",
+                "group": "actions",
+                "uri": "main.html",
+                "registeredObjectId": "showProperties"
+            }
+        },
+        {
+            "id": "showProperties_14",
+            "type": "ms.vss-web.action",
+            "description": "Shows the target properties for menu actions for the test run toolbar menu",
+            "targets": [
+                "ms.vss-code-web.test-run-toolbar-menu"
+            ],
+            "properties": {
+                "text": "Custom test run action",
+                "title": "ms.vss-code-web.test-run-toolbar-menu",
+                "icon": "images/show-properties.png",
+                "group": "actions",
+                "uri": "main.html",
+                "registeredObjectId": "showProperties"
+            }
+        },
+        {
+            "id": "showProperties_15",
+            "type": "ms.vss-web.action",
+            "description": "Shows the target properties for menu actions for the test runs grid",
+            "targets": [
+                "ms.vss-code-web.test-run-grid-menu"
+            ],
+            "properties": {
+                "text": "Custom test run grid action",
+                "title": "ms.vss-code-web.test-run-grid-menu",
+                "icon": "images/show-properties.png",
+                "group": "actions",
+                "uri": "main.html",
+                "registeredObjectId": "showProperties"
+            }
+        },
+        {
+            "id": "showProperties_16",
+            "type": "ms.vss-web.action",
+            "description": "Shows the target properties for menu actions for the teams grid on the project-level admin overview hub",
+            "targets": [
+                "ms.vss-admin-web.teams-grid-menu"
+            ],
+            "properties": {
+                "text": "Custom teams admin grid action",
+                "title": "ms.vss-admin-web.teams-grid-menu",
+                "icon": "images/show-properties.png",
+                "group": "actions",
+                "uri": "main.html",
+                "registeredObjectId": "showProperties"
+            }
+        },
+        {
+            "id": "showProperties_17",
+            "type": "ms.vss-web.action",
+            "description": "Shows the target properties for menu actions for the projects overview toolbar on the collection-level admin overview hub",
+            "targets": [
+                "ms.vss-admin-web.project-overview-toolbar-menu"
+            ],
+            "properties": {
+                "text": "Custom project overview toolbar action",
+                "title": "ms.vss-admin-web.project-overview-toolbar-menu",
+                "icon": "images/show-properties.png",
+                "group": "actions",
+                "uri": "main.html",
+                "registeredObjectId": "showProperties"
+            }
+        },
+        {
+            "id": "showProperties_18",
+            "type": "ms.vss-web.action",
+            "description": "Shows the target properties for menu actions for the projects overview toolbar on the collection-level admin overview hub",
+            "targets": [
+                "ms.vss-admin-web.projects-grid-menu"
+            ],
+            "properties": {
+                "text": "Custom admin projects grid action",
+                "title": "ms.vss-admin-web.projects-grid-menu",
+                "icon": "images/show-properties.png",
+                "group": "actions",
+                "uri": "main.html",
+                "registeredObjectId": "showProperties"
+            }
+        },
+        {
+            "id": "showProperties_19",
+            "type": "ms.vss-web.action",
+            "description": "Shows the target properties for menu actions for the collection overview toolbar menu in the admin hub",
+            "targets": [
+                "ms.vss-admin-web.collection-overview-toolbar-menu"
+            ],
+            "properties": {
+                "text": "Custom collection overview toolbar action",
+                "title": "ms.vss-admin-web.collection-overview-toolbar-menu",
+                "icon": "images/show-properties.png",
+                "group": "actions",
+                "uri": "main.html",
+                "registeredObjectId": "showProperties"
+            }
+        },
+        {
+            "id": "project-hub-group",
+            "type": "ms.vss-web.hub-group",
+            "description": "Adds a hub group at the project/team-level",
+            "targets": [
+                "ms.vss-web.project-hub-groups-collection"
+            ],
+            "properties": {
+                "name": "Group (project)",
+                "order": 100
+            }
+        },
+        {
+            "id": "account-hub-group",
+            "type": "ms.vss-web.hub-group",
+            "description": "Adds a hub group at the account-level",
+            "targets": [
+                "ms.vss-web.account-hub-groups-collection"
+            ],
+            "properties": {
+                "name": "Group (account)",
+                "order": 100
+            }
+        },
+        {
+            "id": "project-hub-group-hub",
+            "type": "ms.vss-web.hub",
+            "description": "Adds a hub to the contributed project-level hub group",
+            "targets": [
+                ".project-hub-group"
+            ],
+            "properties": {
+                "name": "Hub (Project)",
+                "order": 100,
+                "uri": "context.html"
+            }
+        },
+        {
+            "id": "account-hub-group-hub",
+            "type": "ms.vss-web.hub",
+            "description": "Adds a hub to the contributed account-level hub group",
+            "targets": [
+                ".account-hub-group"
+            ],
+            "properties": {
+                "name": "Hub (Account)",
+                "order": 100,
+                "uri": "context.html"
+            }
+        },
+        {
+            "id": "home-hub",
+            "type": "ms.vss-web.hub",
+            "description": "Adds a hub to the project-level Home hub group",
+            "targets": [
+                "ms.vss-web.home-hub-group"
+            ],
+            "properties": {
+                "name": "Home Hub (Project)",
+                "order": 100,
+                "uri": "context.html"
+            }
+        },
+        {
+            "id": "account-home-hub",
+            "type": "ms.vss-web.hub",
+            "description": "Adds a hub to the Account-level Home hub group",
+            "targets": [
+                "ms.vss-web.account-home-hub-group"
+            ],
+            "properties": {
+                "name": "Home Hub (Account)",
+                "order": 100,
+                "uri": "context.html"
+            }
+        },
+        {
+            "id": "code-hub",
+            "type": "ms.vss-web.hub",
+            "description": "Adds a hub to the Code hub group",
+            "targets": [
+                "ms.vss-code-web.code-hub-group"
+            ],
+            "properties": {
+                "name": "Code Hub",
+                "order": 100,
+                "uri": "context.html"
+            }
+        },
+        {
+            "id": "work-hub",
+            "type": "ms.vss-web.hub",
+            "description": "Adds a hub to the Work hub group",
+            "targets": [
+                "ms.vss-work-web.work-hub-group"
+            ],
+            "properties": {
+                "name": "Work Hub",
+                "order": 100,
+                "uri": "context.html"
+            }
+        },
+        {
+            "id": "build-hub",
+            "type": "ms.vss-web.hub",
+            "description": "Adds a hub to the Build hub group",
+            "targets": [
+                "ms.vss-build-web.build-hub-group"
+            ],
+            "properties": {
+                "name": "Build Hub",
+                "order": 100,
+                "uri": "context.html"
+            }
+        },
+        {
+            "id": "test-hub",
+            "type": "ms.vss-web.hub",
+            "description": "Adds a hub to the Test hub group",
+            "targets": [
+                "ms.vss-test-web.test-hub-group"
+            ],
+            "properties": {
+                "name": "Test Hub",
+                "order": 100,
+                "uri": "context.html"
+            }
+        },
+        {
+            "id": "account-admin-hub",
+            "type": "ms.vss-web.hub",
+            "description": "Adds a hub to the account-level admin hubs",
+            "targets": [
+                "ms.vss-web.account-admin-hub-group"
+            ],
+            "properties": {
+                "name": "Admin Hub",
+                "order": 100,
+                "uri": "context.html"
+            }
+        },
+        {
+            "id": "collection-admin-hub",
+            "type": "ms.vss-web.hub",
+            "description": "Adds a hub to the collection-level admin hubs",
+            "targets": [
+                "ms.vss-web.collection-admin-hub-group"
+            ],
+            "properties": {
+                "name": "Admin Hub",
+                "order": 100,
+                "uri": "context.html"
+            }
+        },
+        {
+            "id": "project-admin-hub",
+            "type": "ms.vss-web.hub",
+            "description": "Adds a hub to the project-level admin hubs",
+            "targets": [
+                "ms.vss-web.project-admin-hub-group"
+            ],
+            "properties": {
+                "name": "Admin Hub",
+                "order": 100,
+                "uri": "context.html"
+            }
+        },
+        {
+            "id": "contextForm",
+            "type": "ms.vss-web.control",
+            "description": "The content displayed in the dialog shown in the contributed menu actions from this extension.",
+            "targets": [ ],
+            "properties": {
+                "uri": "contextForm.html"
+            }
+        }
+    ]
+}

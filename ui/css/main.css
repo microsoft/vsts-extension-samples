@@ -18,3 +18,23 @@
     display: table-cell;
     padding-top: 6px;
 }
+
+.note-content {
+    position: absolute;
+    top: 185px;
+    left: 15px;
+    right: 0;
+    bottom: 0;
+}
+
+.notes-grid-container {
+    position: absolute;
+    top: 30px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.notes-grid {
+    height: 100%;
+}

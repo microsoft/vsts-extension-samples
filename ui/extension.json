@@ -1,79 +1,132 @@
-﻿{
-    "namespace": "samples.ui",
-    "version": "0.0.1",
+{
+    "manifestVersion": 1.0,
+    "id": "samples-ui",
+    "version": "0.1.0",
     "name": "UI Controls (Sample)",
     "description": "Explore different UI controls, including menus, toolbars, custom controls, and more.",
-    "provider": {
-        "name": "Microsoft and the community"
-    },
     "baseUri": "https://localhost",
-    "icon": "https://localhost/images/fabrikam-logo.png",
-    "contributions": {
-        "vss.web#hubGroups.project": [
-            {
-                "id": "menu.contribution",
-                "name": "Sample Menus",
+    "publisher": "fabrikam",
+    "icons": {
+        "wide": "images/fabrikam-logo.png",
+        "default": "images/fabrikam-logo.png"
+    },
+    "tags": [
+        "Sample"
+    ],
+    "categories": [
+        "Sync and integration"
+    ],
+    "contributions": [
+        {
+            "id": "sample-ui-group",
+            "type": "ms.vss-web.hub-group",
+            "description": "Adds a 'Sample UI' hub group",
+            "targets": [
+                "ms.vss-web.project-hub-groups-collection"
+            ],
+            "properties": {
+                "name": "Sample UI",
                 "order": 100
             }
-        ],
-        "vss.web#hubs": [
-            {
-                "id": "projectGroup.menu",
+        },
+        {
+            "id": "simple-menu",
+            "type": "ms.vss-web.hub",
+            "description": "Adds a 'Simple' hub to the 'Sample UI' hub group to show basic usage of the menu control.",
+            "targets": [
+                ".sample-ui-group"
+            ],
+            "properties": {
                 "name": "Simple",
-                "groupId": "menu.contribution",
                 "order": 100,
-                "uri": "menu.html",
-                "usesSdk": true,
-                "fullPage": false
-            }, 
-			{
-                "id": "projectGroup.controlmenu",
-                "name": "Custom Control",
-                "groupId": "menu.contribution",
-                "order": 100,
-                "uri": "menu-control.html",
-                "usesSdk": true,
-                "fullPage": false
-            }, 
-			{
-                "id": "projectGroup.dropdown",
-                "name": "Dropdown",
-                "groupId": "menu.contribution",
-                "order": 100,
-                "uri": "menu-dropdown.html",
-                "usesSdk": true,
-                "fullPage": false
-            },
-			{
-                "id": "projectGroup.context",
-                "name": "Context",
-                "groupId": "menu.contribution",
-                "order": 100,
-                "uri": "menu-context.html",
-                "usesSdk": true,
-                "fullPage": false
+                "uri": "menu.html"
             }
-        ],
-        "vss.code.web#sourceItemActions": [
-            {
-                "id": "compareMenu",
+        },
+        {
+            "id": "dynamic-menu",
+            "targets": [
+                "ms.vss-code-web.source-grid-item-menu"
+            ],
+            "type": "ms.vss-web.action-provider",
+            "properties": {
+                "group": "contributed",
+                "uri": "dynamic-menu.html"
+            }
+        },
+        {
+            "id": "control-menu",
+            "type": "ms.vss-web.hub",
+            "description": "Adds a 'Custom Control' hub to the 'Sample UI' hub group to show more advanced use of the menu control.",
+            "targets": [
+                ".sample-ui-group"
+            ],
+            "properties": {
+                "name": "Custom Control",
+                "order": 100,
+                "uri": "menu-control.html"
+            }
+        },
+        {
+            "id": "dropdown-menu",
+            "type": "ms.vss-web.hub",
+            "description": "Adds a 'Dropdown' hub to the 'Sample UI' hub group to show usage of a dropdown menu.",
+            "targets": [
+                ".sample-ui-group"
+            ],
+            "properties": {
+                "name": "Dropdown",
+                "order": 100,
+                "uri": "menu-dropdown.html"
+            }
+        },
+        {
+            "id": "context-menu",
+            "type": "ms.vss-web.hub",
+            "description": "Adds a 'Context Menu' hub to the 'Sample UI' hub group to show usage of a context menu.",
+            "targets": [
+                ".sample-ui-group"
+            ],
+            "properties": {
+                "name": "Context Menu",
+                "order": 100,
+                "uri": "menu-context.html"
+            }
+        },
+        {
+            "id": "compareMenu",
+            "type": "ms.vss-web.action",
+            "description": "Adds a 'Compare...' menu item to context menus on files from the Code Explore view which demonstrates how to raise modal dialogs to collect information.",
+            "targets": [
+                "ms.vss-code-web.source-item-menu"
+            ],
+            "properties": {
                 "title": "Compare...",
                 "icon": "images/show-properties.png",
                 "group": "actions",
                 "uri": "menu-contributions.html"
             }
-        ],
-        "#controls": [
-            {
-                "id": "compareToForm",
+        },
+        {
+            "id": "compareToForm",
+            "type": "ms.vss-web.control",
+            "description": "The content to show within the contributed Compare... menu item of this extension.",
+            "targets": [ ],
+            "properties": {
                 "uri": "compareToForm.html"
             }
-        ]
-    },
-    "contributionPoints": {
-        "controls": {
-            "type": "vss.web#control",
-            "description": "Provider of contribution controls."
+        },
+        {
+            "id": "eds",
+            "type": "ms.vss-web.hub",
+            "description": "Adds an 'Extension Data Sample' hub to the Home hub group which shows how to use the extension data service apis.",
+            "targets": [
+                "ms.vss-web.home-hub-group"
+            ],
+            "properties": {
+                "name": "Extension Data Sample",
+                "order": 22,
+                "uri": "extensionData.html"
+            }
         }
-    }
+    ]
 }

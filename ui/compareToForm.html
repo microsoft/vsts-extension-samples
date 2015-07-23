@@ -8,7 +8,7 @@
 <script type="text/javascript">
     VSS.init({
         explicitNotifyLoaded: true,
-        setupModuleLoader: true
+        usePlatformScripts: true
     });
     
     VSS.require([
@@ -47,7 +47,7 @@
             
             var itemContext = VSS.getConfiguration().item;
             var gitClient = Service.getClient(GitWebApi.GitHttpClient);
-            gitClient.getBranches(itemContext.repositoryId).then(function (branches) {
+            gitClient.getBranches(itemContext.gitRepository.id).then(function (branches) {
                 branchSelector.setSource($.map(branches, function (branch) {
                    return branch.name; 
                 }));

@@ -3,13 +3,9 @@ var showPropertiesMenuProvider = (function () {
     return {
         showPropertiesInDialog: function(properties, title) {
             
-            VSS.getService("vss.dialogs").then(function (dialogSvc) {
+            VSS.getService("ms.vss-web.dialog-service").then(function (dialogSvc) {
                 
-                var controlContributionInfo = {
-                    id: "contextForm",
-                    extensionId: VSS.getExtensionContext().id,
-                    pointId: VSS.getExtensionContext().namespace + "#controls"
-                };
+                var extInfo = VSS.getExtensionContext();
                 
                 var dialogOptions = {
                     title: title || "Properties",
@@ -22,7 +18,7 @@ var showPropertiesMenuProvider = (function () {
                     properties: properties
                 };
                 
-                dialogSvc.openDialog(controlContributionInfo, dialogOptions, contributionConfig);
+                dialogSvc.openDialog(extInfo.publisherId + "." + extInfo.extensionId + "." + "contextForm", dialogOptions, contributionConfig);
             });
         },
         execute: function(actionContext) {
@@ -42,9 +38,9 @@ VSS.register("sourceGridDynamicMenu", {
     getMenuItems: function (context) {
         var menuItems = [
             {
-                title: "Sample: " + context.name,
+                title: "Sample: " + context.item.path,
                 action: function (actionContext) {
-                    alert("action: " + actionContext.name);
+                    alert("action: " + actionContext.item.path);
                 }
             },
             {
@@ -64,7 +60,7 @@ VSS.register("sourceGridDynamicMenu", {
             },
         ];
         
-        if (context.name === "README.md") {
+        if (context.item.path === "/README.md") {
             menuItems.push({ separator: true });
             menuItems.push({
                 title: "Extra entry for README.md"

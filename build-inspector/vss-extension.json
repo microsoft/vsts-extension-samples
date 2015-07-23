@@ -1,0 +1,45 @@
+{
+    "manifestVersion": 1,
+    "id": "samples-build-inspector",
+    "version": "0.1.0",
+    "name": "Build Inspector",
+    "description": "A simple extension that demonstrates how to show details for a Visual Studio Online resource.",
+    "baseUri": "https://localhost",
+    "publisher": "fabrikam",
+    "icons": {
+        "default": "images/fabrikam-logo.png"
+    },
+    "tags": [
+        "Sample"
+    ],
+    "categories": [
+        "Sync and integration"
+    ],
+    "contributions": [
+        {
+            "id": "showCommits",
+            "type": "ms.vss-web.action",
+            "description": "Menu action on builds grid to show associated items",
+            "targets": [
+                "ms.vss-build-web.completed-build-menu"
+            ],
+            "properties": {
+                "title": "View associated items",
+                "uri": "launch.html"
+            }
+        },
+        {
+            "id": "build.items",
+            "type": "ms.vss-web.hub",
+            "description": "Inspector hub to the Build hub group that shows items associated with a build",
+            "targets": [
+                "ms.vss-build-web.build-hub-group"
+            ],
+            "properties": {
+                "name": "Inspector",
+                "order": 22,
+                "uri": "items.html"
+            }
+        }
+    ]
+}
