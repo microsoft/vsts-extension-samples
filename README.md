@@ -14,7 +14,7 @@ This repo contains samples to help jump-start you in your development of [Extens
 
 The samples are published to the gallery. You can install them to your account by doing the following:
 
-1. Go to https://<your_account_url>/_admin/_apps/hub/ms.vss-extensionManagement-web.manageExtensions
+1. Go to https://youraccount.visualstudio.com/_admin/_apps/hub/ms.vss-extensionManagement-web.manageExtensions
 2. Locate the sample extension you want to install and click "Install".
 
 #### Publishing the extensions yourself
