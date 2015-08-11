@@ -1,7 +1,6 @@
 ﻿/// <reference path='ref/VSS.d.ts' />
 
 import Utils_String = require("VSS/Utils/String");
-import VSS_Service = require("VSS/Service");
 import Controls = require("VSS/Controls");
 import VCContracts = require("TFS/VersionControl/Contracts");
 import GitHttpClient = require("TFS/VersionControl/GitRestClient");
@@ -76,7 +75,7 @@ export class AssociatedCommitContent extends AssociatedItemContent {
         this._element.empty();
         if (associatedItem) {
             var repoId  = this._parseRepo(associatedItem);
-            var gitClient = VSS_Service.getClient(GitHttpClient.GitHttpClient);
+            var gitClient = GitHttpClient.getClient();
             gitClient.getCommit(associatedItem.id, repoId).then((commit: VCContracts.GitCommit) => {
                 this._addProperty("Commit Id", commit.commitId);
                 this._addProperty("Comment", commit.comment);
@@ -114,7 +113,7 @@ export class AssociatedWorkItemContent extends AssociatedItemContent {
     public update(associatedItem: WitContracts.WorkItem): void {
         this._element.empty();
         if (associatedItem) {
-            var witClient = VSS_Service.getCollectionClient(WitClient.WorkItemTrackingHttpClient);
+            var witClient = WitClient.getClient();
             witClient.getWorkItem(associatedItem.id).then((workItem: WitContracts.WorkItem) => {
                 this._addProperty("Area Path", workItem.fields["System.AreaPath"]);
                 this._addProperty("Assigned To", workItem.fields["System.AssignedTo"]);

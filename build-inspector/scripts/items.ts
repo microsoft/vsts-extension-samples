@@ -1,7 +1,6 @@
 /// <reference path='ref/VSS.d.ts' />
 
 import AssociatedItemsView = require("scripts/associatedItemsView");
-import VSS_Service = require("VSS/Service");
 import TFS_Build_Contracts = require("TFS/Build/Contracts");
 import TFS_Build_Client = require("TFS/Build/RestClient");
 import TFS_Wit_Contracts = require("TFS/WorkItemTracking/Contracts");
@@ -33,7 +32,7 @@ if (buildUri) {
 }
 
 if (buildId > 0) {
-    var buildClient = VSS_Service.getClient(TFS_Build_Client.BuildHttpClient);
+    var buildClient = TFS_Build_Client.getClient();
     var context = VSS.getWebContext();
 
     // Fetch the build before getting its associated items
@@ -46,7 +45,7 @@ if (buildId > 0) {
             buildClient.getBuildWorkItemsRefs(context.project.name, buildId).then((itemRefs) => {
                 // If we retrieved any work item refs, resolve the full work items before fulfilling the promise
                 if (itemRefs.length > 0) {
-                    var witClient = VSS_Service.getClient(TFS_Wit_Client.WorkItemTrackingHttpClient);
+                    var witClient = TFS_Wit_Client.getClient();
                     return witClient.getWorkItems(itemRefs.map(ref => parseInt(ref.id, 10)));
                 } else {
                     return Q.resolve([]);

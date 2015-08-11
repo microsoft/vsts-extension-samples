@@ -197,11 +197,11 @@
             "type": "ms.vss-web.action",
             "description": "Shows the target properties for menu actions for the backlog grid",
             "targets": [
-                "ms.vss-work.web.backlog-item-menu"
+                "ms.vss-work-web.backlog-item-menu"
             ],
             "properties": {
                 "text": "Custom backlog item action",
-                "title": "ms.vss-work.web.backlog-item-menu",
+                "title": "ms.vss-work-web.backlog-item-menu",
                 "icon": "images/show-properties.png",
                 "group": "actions",
                 "uri": "main.html",
@@ -213,11 +213,11 @@
             "type": "ms.vss-web.action",
             "description": "Shows the target properties for menu actions for the work item query context menu",
             "targets": [
-                "ms.vss-work.web.work-item-query-menu"
+                "ms.vss-work-web.work-item-query-menu"
             ],
             "properties": {
                 "text": "Custom query action",
-                "title": "ms.vss-work.web.work-item-query-menu",
+                "title": "ms.vss-work-web.work-item-query-menu",
                 "icon": "images/show-properties.png",
                 "group": "actions",
                 "uri": "main.html",
@@ -314,6 +314,38 @@
             "properties": {
                 "text": "Custom collection overview toolbar action",
                 "title": "ms.vss-admin-web.collection-overview-toolbar-menu",
+                "icon": "images/show-properties.png",
+                "group": "actions",
+                "uri": "main.html",
+                "registeredObjectId": "showProperties"
+            }
+        },
+        {
+            "id": "showProperties_20",
+            "type": "ms.vss-web.action",
+            "description": "Shows the target properties for menu actions for the menu bar for the test plan suite tree.",
+            "targets": [
+                "ms.vss-test-web.test-plans-suites-toolbar"
+            ],
+            "properties": {
+                "text": "",
+                "title": "ms.vss-test-web.test-plans-suites-toolbar (Custom test plan suite tree menu bar action)",
+                "icon": "images/show-properties.png",
+                "group": "actions",
+                "uri": "main.html",
+                "registeredObjectId": "showProperties"
+            }
+        },
+        {
+            "id": "showProperties_21",
+            "type": "ms.vss-web.action",
+            "description": "Shows the target properties for menu actions for the context menu for the test plan suite tree",
+            "targets": [
+                "ms.vss-test-web.test-plans-suites-context"
+            ],
+            "properties": {
+                "text": "Custom test plan suite tree context menu action",
+                "title": "ms.vss-test-web.test-plans-suites-context",
                 "icon": "images/show-properties.png",
                 "group": "actions",
                 "uri": "main.html",

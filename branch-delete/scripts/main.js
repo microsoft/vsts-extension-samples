@@ -9,10 +9,10 @@ var deleteBranchMenu = (function () {
 
                 // Post the ref update
                 VSS.ready(function () {
-                    require(["VSS/Service", "TFS/VersionControl/GitRestClient"], function (VSS_Service, TfsGitClient) {
-                        // Get repo name from repo ID (needed to refresh the page)		
+                    require(["TFS/VersionControl/GitRestClient"], function (TfsGitClient) {
+                        // Get repo name from repo ID (needed to refresh the page)
                         // NOTE: This is also a temporary workaround
-                        var gitClient = VSS_Service.getCollectionClient(TfsGitClient.GitHttpClient);
+                        var gitClient = TfsGitClient.getClient();
                         gitClient.updateRefs([{
                             name: ref.name,
                             oldObjectId: ref.objectId,
