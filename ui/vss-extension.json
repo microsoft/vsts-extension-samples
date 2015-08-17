@@ -7,7 +7,6 @@
     "baseUri": "https://localhost",
     "publisher": "fabrikam",
     "icons": {
-        "wide": "images/fabrikam-logo.png",
         "default": "images/fabrikam-logo.png"
     },
     "tags": [

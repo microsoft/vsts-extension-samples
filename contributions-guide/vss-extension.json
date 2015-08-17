@@ -353,6 +353,38 @@
             }
         },
         {
+            "id": "showProperties_22",
+            "type": "ms.vss-web.action",
+            "description": "Shows the target properties for the sprint board's pivot filter menu.",
+            "targets": [
+                "ms.vss-work-web.sprint-board-pivot-filter-menu"
+            ],
+            "properties": {
+                "text": "",
+                "title": "ms.vss-work-web.backlog-item-menu (Custom sprint board pivot filter menu item action)",
+                "icon": "images/show-properties.png",
+                "group": "actions",
+                "uri": "main.html",
+                "registeredObjectId": "showProperties"
+            }
+        },
+        {
+            "id": "showProperties_23",
+            "type": "ms.vss-web.action",
+            "description": "Shows the target properties for the backlog board's pivot filter menu.",
+            "targets": [
+                "ms.vss-work-web.backlog-board-pivot-filter-menu"
+            ],
+            "properties": {
+                "text": "",
+                "title": "ms.vss-work-web.backlog-item-menu (Custom backlog board pivot filter menu item action)",
+                "icon": "images/show-properties.png",
+                "group": "actions",
+                "uri": "main.html",
+                "registeredObjectId": "showProperties"
+            }
+        },
+        {
             "id": "project-hub-group",
             "type": "ms.vss-web.hub-group",
             "description": "Adds a hub group at the project/team-level",
@@ -361,18 +393,6 @@
             ],
             "properties": {
                 "name": "Group (project)",
-                "order": 100
-            }
-        },
-        {
-            "id": "account-hub-group",
-            "type": "ms.vss-web.hub-group",
-            "description": "Adds a hub group at the account-level",
-            "targets": [
-                "ms.vss-web.account-hub-groups-collection"
-            ],
-            "properties": {
-                "name": "Group (account)",
                 "order": 100
             }
         },
@@ -390,19 +410,6 @@
             }
         },
         {
-            "id": "account-hub-group-hub",
-            "type": "ms.vss-web.hub",
-            "description": "Adds a hub to the contributed account-level hub group",
-            "targets": [
-                ".account-hub-group"
-            ],
-            "properties": {
-                "name": "Hub (Account)",
-                "order": 100,
-                "uri": "context.html"
-            }
-        },
-        {
             "id": "home-hub",
             "type": "ms.vss-web.hub",
             "description": "Adds a hub to the project-level Home hub group",
@@ -411,19 +418,6 @@
             ],
             "properties": {
                 "name": "Home Hub (Project)",
-                "order": 100,
-                "uri": "context.html"
-            }
-        },
-        {
-            "id": "account-home-hub",
-            "type": "ms.vss-web.hub",
-            "description": "Adds a hub to the Account-level Home hub group",
-            "targets": [
-                "ms.vss-web.account-home-hub-group"
-            ],
-            "properties": {
-                "name": "Home Hub (Account)",
                 "order": 100,
                 "uri": "context.html"
             }
