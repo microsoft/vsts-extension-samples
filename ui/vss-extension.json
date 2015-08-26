@@ -7,7 +7,6 @@
     "baseUri": "https://localhost",
     "publisher": "fabrikam",
     "icons": {
-        "wide": "images/fabrikam-logo.png",
         "default": "images/fabrikam-logo.png"
     },
     "tags": [
@@ -126,6 +125,19 @@
                 "name": "Extension Data Sample",
                 "order": 22,
                 "uri": "extensionData.html"
+            }
+        },
+        {
+            "id": "work-item-form-service",
+            "type": "ms.vss-web.hub",
+            "description": "Adds a 'WorkItem Service' hub to the 'Sample UI' hub group to show usage of the work item service.",
+            "targets": [
+                ".sample-ui-group"
+            ],
+            "properties": {
+                "name": "WorkItem Service",
+                "order": 110,
+                "uri": "workItemService.html"
             }
         }
     ]

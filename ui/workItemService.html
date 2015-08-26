@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Work Item Form Service Example</title>
+    <script src="sdk/Scripts/VSS.SDK.js"></script>
+    <style>
+        .open-existing-work-item, .open-existing-work-item {
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="open-existing-work-item">
+        <label for="existing-wit-id">Existing work item id:</label>
+        <input id="existing-wit-id" value="1" />
+        <input type="button" id="existing-wit-button" value="Open..." />
+    </div>
+    
+    <div class="open-existing-work-item">
+        <label for="new-work-item-type">New work item type:</label>
+        <input id="new-work-item-type" value="Bug" />
+        
+        <input type="button" id="new-wit-button" value="New..." />
+    </div>
+    
+    <script type="text/javascript">
+        VSS.init({ usePlatformScripts: true, explicitNotifyLoaded: true });
+        VSS.require(["TFS/WorkItemTracking/Services"], function(_WorkItemServices) {
+            VSS.notifyLoadSucceeded();
+            
+            $("#existing-wit-button").click(function() {
+                var workItemId = parseInt($("#existing-wit-id").val());
+                if (workItemId > 0) {
+                    _WorkItemServices.WorkItemFormNavigationService.getService().then(function (workItemNavSvc) {
+                        workItemNavSvc.openWorkItem(workItemId);
+                    });
+                }
+            });
+            
+            $("#new-wit-button").click(function() {
+                var workItemType = $("#new-work-item-type").val();
+                if (workItemType) {
+                    _WorkItemServices.WorkItemFormNavigationService.getService().then(function (workItemNavSvc) {
+                        workItemNavSvc.openNewWorkItem(workItemType, { 
+                            "Title": "Opened a work item from the Work Item Nav Service",
+                            "Tags": "extension;wit-service", 
+                            "System.AssignedTo": VSS.getWebContext().user.name,
+                            "priority": 1
+                        });
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
