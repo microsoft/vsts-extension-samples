@@ -7,6 +7,16 @@
         .open-existing-work-item, .open-existing-work-item {
             margin: 20px;
         }
+        .work-item-types {
+            width: 200px;
+            display: inline-block;
+            margin-left: 5px;
+            margin-right: 5px;
+            vertical-align: bottom;
+        }
+        #existing-wit-id {
+            border: 1px solid #DDD;
+        }
     </style>
 </head>
 <body>
@@ -18,15 +28,31 @@
     
     <div class="open-existing-work-item">
         <label for="new-work-item-type">New work item type:</label>
-        <input id="new-work-item-type" value="Bug" />
-        
+        <div class="work-item-types"></div>
         <input type="button" id="new-wit-button" value="New..." />
     </div>
     
     <script type="text/javascript">
         VSS.init({ usePlatformScripts: true, explicitNotifyLoaded: true });
-        VSS.require(["TFS/WorkItemTracking/Services"], function(_WorkItemServices) {
+        VSS.require([
+            "TFS/WorkItemTracking/Services",
+            "TFS/WorkItemTracking/RestClient",
+            "VSS/Controls",
+            "VSS/Controls/Common"], function(_WorkItemServices, _WorkItemRestClient, _Controls, _ControlsCommon) {
+                
             VSS.notifyLoadSucceeded();
+            
+            var workItemTypesCombo;
+            
+            var witClient = _WorkItemRestClient.getClient();
+            witClient.getWorkItemTypes(VSS.getWebContext().project.name).then(function(workItemTypes) {
+                workItemTypesCombo = _Controls.create(_ControlsCommon.Combo, $(".work-item-types"), {
+                    source: $.map(workItemTypes, function(wiType) { return wiType.name })
+                });
+                if (workItemTypes.length > 0) {
+                    workItemTypesCombo.setText(workItemTypes[0].name);
+                }
+            });
             
             $("#existing-wit-button").click(function() {
                 var workItemId = parseInt($("#existing-wit-id").val());
@@ -38,7 +64,7 @@
             });
             
             $("#new-wit-button").click(function() {
-                var workItemType = $("#new-work-item-type").val();
+                var workItemType = workItemTypesCombo ? workItemTypesCombo.getText() : "";
                 if (workItemType) {
                     _WorkItemServices.WorkItemFormNavigationService.getService().then(function (workItemNavSvc) {
                         workItemNavSvc.openNewWorkItem(workItemType, { 
