@@ -70,3 +70,23 @@ Explore different UI controls, including menus, toolbars, custom controls, and m
 
 Adds an event source to the [Team Calendar extension](https://github.com/Microsoft/vso-team-calendar) for public holidays. Note that this sample contributes *to another extension* rather than core Visual Studio Online.
 
+### Build Status
+
+This sample extension shows how to make a tab contribution to build summary page. This extension reacts to build status.
+
+While the build is waiting to run -
+
+![image](build-status/images/none-screenshot.png)
+
+While the build is running -
+
+![image](build-status/images/running-screenshot.png)
+
+If the build failed -
+
+![image](build-status/images/fail-screenshot.png)
+
+If the build is successful -
+
+![image](build-status/images/success-screenshot.png)
+
