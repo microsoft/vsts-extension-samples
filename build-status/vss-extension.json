@@ -1,0 +1,35 @@
+{
+    "manifestVersion": 1,
+    "id": "sample-build-summary-status",
+    "version": "0.1.0",
+    "name": "Build Status",
+    "description": "A simple extension that demonstrates how to extend build summary page.",
+    "publisher": "fabrikam",
+    "baseUri":"http://localhost:5001",
+    "icons": {
+        "default": "images/fabrikam-logo.png"
+    },    
+    "tags": [
+        "Build"
+    ],
+     "scopes": [
+        "vso.build_execute"
+    ],
+    "categories": [
+        "Build and release"
+    ],   
+    "contributions": [
+        {
+            "id": "build-status",
+            "type": "ms.vss-web.hub",
+            "description": "A tab that displays summary information for a tab",
+            "targets": [
+                "ms.vss-build-web.build-summary-view"
+            ],
+            "properties": {
+                "name": "Build Status",                
+                 "uri": "details.html"                
+            }
+        }        
+    ]
+}
