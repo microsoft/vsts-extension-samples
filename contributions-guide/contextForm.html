@@ -16,41 +16,37 @@
     
     var getGridItems = (function() {
         var nextId = 0;
-        return function _getGridItems(obj, parentId) {
-            if (parentId === undefined) {
-                parentId = null;
-            }
+        return function _getGridItems(obj) {
             var items = [];
-            Object.keys(obj).forEach(function(key) {
+            for (var key in obj) {
                 var val = obj[key];
                 var item = {
                     id: nextId++,
-                    values: [key],
-                    parentId: parentId
+                    values: [key]
                 };
                 if (val && typeof val === "object") {
                     item.values[1] = "...";
-                    item.children = _getGridItems(val, nextId - 1);
+                    item.children = _getGridItems(val);
                 } else {
                     item.values[1] = JSON.stringify(val);
                 }
                 items.push(item);
-            });
+            }
             return items;
         };
     }());
     
-    VSS.require(["VSS/Controls", "VSS/Controls/Grids", "VSS/Controls/Data"], function (Controls, Grids, Data) {
-        
+    VSS.require(["VSS/Controls", "VSS/Controls/Grids"], function (Controls, Grids) {
+        var gridItems = getGridItems(VSS.getConfiguration().properties || {});
+        var gridSource = new Grids.GridHierarchySource(gridItems);
         var grid = Controls.create(Grids.Grid, $("#grid-container"), {
             height: "500px",
             columns: [
-                { text: "Property key", index: "key", width: 150 },
-                { text: "Property value", index: "value", width: 600 }
+                { text: "Property key", index: 0, width: 150 },
+                { text: "Property value", index: 1, width: 600 }
             ]
         });
-        var gridItems = getGridItems(VSS.getConfiguration().properties || {});
-        Data.HierarchicalGridDataAdapter.bindAdapter(Data.HierarchicalGridDataAdapter, new Data.FieldDataProvider(gridItems), grid);
+        grid.setDataSource(gridSource);
         VSS.notifyLoadSucceeded();
     });
 
