@@ -1,5 +1,5 @@
 {
-    "manifestVersion": 1.0,
+    "manifestVersion": 1,
     "id": "samples-contributions-guide",
     "version": "0.1.0",
     "name": "Contributions Guide",
@@ -229,11 +229,11 @@
             "type": "ms.vss-web.action",
             "description": "Shows the target properties for menu actions for the test run toolbar menu",
             "targets": [
-                "ms.vss-code-web.test-run-toolbar-menu"
+                "ms.vss-test-web.test-run-toolbar-menu"
             ],
             "properties": {
                 "text": "Custom test run action",
-                "title": "ms.vss-code-web.test-run-toolbar-menu",
+                "title": "ms.vss-test-web.test-run-toolbar-menu",
                 "icon": "images/show-properties.png",
                 "group": "actions",
                 "uri": "main.html",
@@ -245,11 +245,11 @@
             "type": "ms.vss-web.action",
             "description": "Shows the target properties for menu actions for the test runs grid",
             "targets": [
-                "ms.vss-code-web.test-run-grid-menu"
+                "ms.vss-test-web.test-run-grid-menu"
             ],
             "properties": {
                 "text": "Custom test run grid action",
-                "title": "ms.vss-code-web.test-run-grid-menu",
+                "title": "ms.vss-test-web.test-run-grid-menu",
                 "icon": "images/show-properties.png",
                 "group": "actions",
                 "uri": "main.html",

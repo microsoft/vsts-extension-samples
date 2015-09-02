@@ -126,6 +126,19 @@
                 "order": 22,
                 "uri": "extensionData.html"
             }
+        },
+        {
+            "id": "work-item-form-service",
+            "type": "ms.vss-web.hub",
+            "description": "Adds a 'WorkItem Service' hub to the 'Sample UI' hub group to show usage of the work item service.",
+            "targets": [
+                ".sample-ui-group"
+            ],
+            "properties": {
+                "name": "WorkItem Service",
+                "order": 110,
+                "uri": "workItemService.html"
+            }
         }
     ]
 }

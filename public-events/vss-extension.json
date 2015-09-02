@@ -1,5 +1,5 @@
 {
-    "manifestVersion": 1.0,
+    "manifestVersion": 1,
     "id": "samples-public-events",
     "version": "0.1.0",
     "name": "Team Calendar US Public Events",

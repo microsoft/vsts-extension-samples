@@ -21,7 +21,9 @@ module.exports = function (grunt) {
       "build-inspector",
       "contributions-guide",
       "branch-delete",
-      "public-events"
+      "public-events",
+      "ui",
+      "build-status"
     ];
   }
   

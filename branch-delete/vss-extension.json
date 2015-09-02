@@ -1,5 +1,5 @@
 {
-    "manifestVersion": 1.0,
+    "manifestVersion": 1,
     "id": "samples-branch-delete",
     "version": "0.1.0",
     "name": "Branch Delete",
