@@ -7,7 +7,7 @@ This repo contains samples to help jump-start you in your development of [Extens
 ### Pre-requisites
 
 1. [Join the Visual Studio Partner program](http://www.vsipprogram.com/join) to get early access to the Extensions feature
-2. Verify the Extensions feature has been enabled on your account by navigating to ```https://youraccount.visualstudio.com/_admin/_apps/hub/ms.vss-extensionManagement-web.manageExtensions```.
+2. Verify the Extensions feature has been enabled on your account by navigating to ```https://youraccount.visualstudio.com/DefaultCollection/_admin/_apps/hub/ms.vss-extmgmt-web.manageExtensions-collection```.
 3. Available local or cloud web server with HTTPS (IIS, Node.js, Azure Web App, Heroku, etc)
 
 ### Steps
