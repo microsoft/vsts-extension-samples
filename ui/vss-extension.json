@@ -4,7 +4,7 @@
     "version": "0.1.0",
     "name": "UI Controls (Sample)",
     "description": "Explore different UI controls, including menus, toolbars, custom controls, and more.",
-    "baseUri": "https://localhost/",
+    "baseUri": "https://localhost",
     "publisher": "fabrikam",
     "icons": {
         "default": "images/fabrikam-logo.png"
