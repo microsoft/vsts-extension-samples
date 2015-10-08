@@ -15,7 +15,7 @@
     "categories": [
         "Sync and integration"
     ],
-    "scopes": ["vso.work_read"],
+    "scopes": ["vso.work"],
     "contributions": [
         {
             "id": "sample-ui-group",
@@ -158,7 +158,7 @@
         },
         {
             "id": "sample-work-item-form-observer",
-            "type": "ms.vss-work-web.active-work-item-notifications",
+            "type": "ms.vss-work-web.work-item-notifications",
             "description": "Gets events about the current work item form for the 'Try Me!' toolbar button",
             "targets": [
                 "ms.vss-work-web.work-item-form"

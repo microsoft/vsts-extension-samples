@@ -9,67 +9,60 @@
 <body>
     <script src="sdk/scripts/VSS.SDK.js"></script>
     <script>
+        var changedFieldCount = [];
+        var changedFields = [];
 
         VSS.init({
             explicitNotifyLoaded: true,
             usePlatformScripts: true
         });
 
-        VSS.require(["TFS/WorkItemTracking/Services"], function (_WorkItemServices) {
-
-            // Get the WorkItemFormService.  This service allows you to get/set fields/links on the 'active' work item (the work item
-            // that currently is displayed in the UI).
-            function getWorkItemFormService()
-            {
-                return _WorkItemServices.WorkItemFormService.getService();
-            }
-
-            // Register a listener for the menu item contribution
-            VSS.register("sample-work-item-menu", function (context) {
-                return {
-                    // Called when the menu item is clicked.
-                    execute: function(actionContext) {
-                        // Get the active work item service
-                        getWorkItemFormService().then(function (service) {
-                            // Set a field value on the active work item.
-                            service.setFieldValue("System.Title", "Hello from your extension!").then(
-                                function () {
-                                    // Success!
-                                }, 
-                                function(error) {
-                                    // Error 
-                                    window.alert(error.message); });
-                            },
-                            function(error) {
-                                // Error getting the service 
-                                window.alert(error.message); 
-                            });
-                    }
+        // Register a listener for the menu item contribution
+        VSS.register("sample-work-item-menu", function (context) {
+            return {
+                // Called when the menu item is clicked.
+                execute: function(actionContext) {
+                    window.alert("Total fields changed: " + changedFieldCount[actionContext.workItemId]);
                 }
-            });
-
-            VSS.register("Fabrikam.samples-ui.sample-work-item-form-observer", function (context) {
-                return {
-                    // event handlers, called when the active work item is loaded/unloaded/modified/saved
-                    
-                    // todo: Do something interesting here.
-                    onFieldChanged: function (args) {
-                    },
-                    onLoaded: function (args) {
-                    },
-                    onUnloaded: function (args) {
-                    },
-                    onSaved: function (args) {
-                    },
-                    onReset: function (args) {
-                    },
-                    onRefreshed: function (args) {    
-                    }
-                };
-            });
-
-            VSS.notifyLoadSucceeded();
+            }
         });
+
+        VSS.register("sample-work-item-form-observer", function (context) {
+            return {    
+                // event handlers, called when the active work item is loaded/unloaded/modified/saved
+                onFieldChanged: function (args) {
+                    if (!changedFields[args.id]) {
+                        changedFields[args.id] = [];
+                        changedFieldCount[args.id] = 0;
+                    }
+                    
+                    $.each(args.changedFields, function(key, value) {
+                        if (!changedFields[args.id][key]) {
+                            changedFields[args.id][key] = value;
+                            changedFieldCount[args.id]++;
+                        }
+                    });
+                },
+                onLoaded: function (args) {
+                },
+                onUnloaded: function (args) {
+                },
+                onSaved: function (args) {
+                    changedFieldCount[args.id] = 0;
+                    changedFields[args.id] = [];
+                },
+                onReset: function (args) {
+                    changedFieldCount[args.id] = 0;
+                    changedFields[args.id] = [];
+                },
+                onRefreshed: function (args) {
+                    changedFieldCount[args.id] = 0;
+                    changedFields[args.id] = [];
+                }
+            };
+        });
+
+        VSS.notifyLoadSucceeded();
     </script>
 </body>
 </html>
