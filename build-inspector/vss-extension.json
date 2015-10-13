@@ -9,6 +9,7 @@
     "icons": {
         "default": "images/fabrikam-logo.png"
     },
+    "scopes": ["vso.build", "vso.work", "vso.code"],
     "tags": [
         "Sample"
     ],
