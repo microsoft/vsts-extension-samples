@@ -38,7 +38,7 @@
             "TFS/WorkItemTracking/Services",
             "TFS/WorkItemTracking/RestClient",
             "VSS/Controls",
-            "VSS/Controls/Common"], function(_WorkItemServices, _WorkItemRestClient, _Controls, _ControlsCommon) {
+            "VSS/Controls/Combos"], function(_WorkItemServices, _WorkItemRestClient, _Controls, _Combos) {
                 
             VSS.notifyLoadSucceeded();
             
@@ -46,7 +46,7 @@
             
             var witClient = _WorkItemRestClient.getClient();
             witClient.getWorkItemTypes(VSS.getWebContext().project.name).then(function(workItemTypes) {
-                workItemTypesCombo = _Controls.create(_ControlsCommon.Combo, $(".work-item-types"), {
+                workItemTypesCombo = _Controls.create(_Combos.Combo, $(".work-item-types"), {
                     source: $.map(workItemTypes, function(wiType) { return wiType.name })
                 });
                 if (workItemTypes.length > 0) {

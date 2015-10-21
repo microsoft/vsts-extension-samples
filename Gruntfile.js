@@ -79,10 +79,8 @@ module.exports = function (grunt) {
           dest: '<%= dirs.output.packages %>' + name
         },
         {
-          expand: true,
-          flatten: true,
-          src: 'lib/*.js',
-          dest: '<%= dirs.output.web %>' + name + '/sdk/scripts'
+          src: 'lib/VSS.SDK.js',
+          dest: '<%= dirs.output.web %>' + name + '/sdk/scripts/VSS.SDK.js'
         }
       ]
     };
