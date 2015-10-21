@@ -77,6 +77,12 @@ module.exports = function (grunt) {
           cwd: name,
           src: 'images/**',
           dest: '<%= dirs.output.packages %>' + name
+        },
+        {
+          expand: true,
+          flatten: true,
+          src: 'lib/*.js',
+          dest: '<%= dirs.output.web %>' + name + '/sdk/scripts'
         }
       ]
     };
@@ -87,6 +93,7 @@ module.exports = function (grunt) {
       newBaseUri: baseUri + '/' + (release ? release + '/' : "") + name     
     };
   });
+  
   grunt.config('typescript', typeScriptConfig);
   grunt.config('copy', copyConfig);
   grunt.config('prepManifest', prepManifestConfig);

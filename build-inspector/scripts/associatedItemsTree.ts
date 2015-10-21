@@ -1,4 +1,4 @@
-﻿/// <reference path='ref/VSS.d.ts' />
+﻿/// <reference path='../../lib/vss' />
 
 import Controls = require("VSS/Controls");
 import TreeView = require("VSS/Controls/TreeView");
