@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<head>
+    <script src="sdk/scripts/VSS.SDK.js"></script>  
+    <script type="text/javascript">
+    VSS.init({ usePlatformScripts: true }); 
+    VSS.ready(function() {
+       require(["scripts/status"], function () { });
+    });      
+    </script>
+    <style>
+ 
+    </style>
+</head>
+
+<body>
+    <div class="build-status">
+        <img id="status-img" src="" width="300px" height="300px"></img>
+    </div>  
+</body>
+</html>

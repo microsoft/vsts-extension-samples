@@ -23,7 +23,7 @@ module.exports = function (grunt) {
       "branch-delete",
       "public-events",
       "ui",
-      "build-status"
+      "build-results-enhancer"
     ];
   }
   
