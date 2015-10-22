@@ -1,3 +1,5 @@
+/// <reference path='../../../lib/vss' />
+
 /**
 * Interface for a calendar event provider
 */

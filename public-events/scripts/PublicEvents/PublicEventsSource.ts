@@ -1,4 +1,4 @@
-/// <reference path='../ref/VSS.d.ts' />
+/// <reference path='../../../lib/vss' />
 
 import Calendar_Contracts = require("Calendar/Contracts");
 import Q = require("q");

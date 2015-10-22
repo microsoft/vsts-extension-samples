@@ -1,5 +1,4 @@
 /// <reference path='ref/VSS.d.ts' />
-/// <reference path='ref/jquery.d.ts' />
 
 import Controls = require("VSS/Controls");
 import VSS_Service = require("VSS/Service");

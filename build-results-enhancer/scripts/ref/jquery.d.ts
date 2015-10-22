@@ -3191,7 +3191,6 @@ interface JQuery {
     dialog(...args: any[]): JQuery;
     droppable(...args: any[]): JQuery;
     draggable(...args: any[]): JQuery;
-    accessible(...args: any[]): JQuery;
     autocomplete(...args: any[]): JQuery;
     live(...args: any[]): JQuery;
     has(...args: any[]): JQuery;
@@ -3199,8 +3198,6 @@ interface JQuery {
     sortable(...args: any[]): JQuery;
     disableSelection(...args: any[]): JQuery;
     error(...args: any[]): JQuery;
-    Watermark(...args: any[]): JQuery;
-    Dropdown(...args: any[]): JQuery;
     IdentityInput(...args: any[]): JQuery;
     IdentitySearchControl(...args: any[]): JQuery;
     HorizontalPanel(...args: any[]): JQuery;

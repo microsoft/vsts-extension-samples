@@ -77,6 +77,10 @@ module.exports = function (grunt) {
           cwd: name,
           src: 'images/**',
           dest: '<%= dirs.output.packages %>' + name
+        },
+        {
+          src: 'lib/VSS.SDK.js',
+          dest: '<%= dirs.output.web %>' + name + '/sdk/scripts/VSS.SDK.js'
         }
       ]
     };
@@ -87,6 +91,7 @@ module.exports = function (grunt) {
       newBaseUri: baseUri + '/' + (release ? release + '/' : "") + name     
     };
   });
+  
   grunt.config('typescript', typeScriptConfig);
   grunt.config('copy', copyConfig);
   grunt.config('prepManifest', prepManifestConfig);
