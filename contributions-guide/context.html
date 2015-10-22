@@ -2,19 +2,50 @@
 <head>
     <title>Web Context</title>
     <script type="text/javascript" src="sdk/scripts/VSS.SDK.js"></script>
-    <script type="text/javascript">VSS.init();</script>
 </head>
 <body style="padding-left: 10px; padding-top: 10px; overflow-y: auto;">
     
     <h3>Web Context</h3>
     <pre id="context-display" style=""></pre>
-
+    
+    <div id="tab-context" style="display:none">
+        <h3>Tab Context</h3>
+        <pre id="tab-context-display" style=""></pre>
+    </div>
     <script type="text/javascript">
+        VSS.init({explicitNotifyLoaded: true})
+
         // Show context info when ready
         VSS.ready(function () {
             var context = VSS.getWebContext();
-            document.getElementById("context-display").innerText = JSON.stringify(context, null, 4);
+            document.getElementById("context-display").textContent = JSON.stringify(context, null, 4);
+            
+            if (VSS.getContribution().type === "ms.vss-web.tab") {
+                var updateTabContext = function(tabContext) {
+                    if (typeof tabContext === "object") {
+                        document.getElementById("tab-context-display").textContent = JSON.stringify(tabContext, null, 4);
+                    }
+                }
+                // Get the context data when the extension frame is first created, and show it in the DOM.
+                updateTabContext(VSS.getConfiguration());
+
+                VSS.register("showContext", {
+                    pageTitle: function(state) {
+                        return "Web Context";
+                    },
+                    updateContext: updateTabContext,
+                    isInvisible: function(state) {
+                        if (state && state.query && state.query.name === "Assigned to me" && state.query.path === null) {
+                            return true;
+                        }
+                        return false;
+                    }
+                });
+                document.getElementById("tab-context").style.display = "block";
+            }
+            VSS.notifyLoadSucceeded();
         });
+
     </script>
 </body>
 </html>

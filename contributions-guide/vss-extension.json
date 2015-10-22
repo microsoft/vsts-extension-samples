@@ -4,7 +4,7 @@
     "version": "0.1.0",
     "name": "Contributions Guide",
     "description": "Discover all the places in Visual Studio Online you can extend, including hubs, toolbars, and context menus, and more.",
-    "baseUri": "https://localhost",
+    "baseUri": "https://localhost/contributions-guide",
     "publisher": "fabrikam",
     "icons": {
         "default": "images/fabrikam-logo.png"
@@ -14,6 +14,11 @@
     ],
     "categories": [
         "Sync and integration"
+    ],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
     ],
     "contributions": [
         {
@@ -382,6 +387,20 @@
                 "group": "actions",
                 "uri": "main.html",
                 "registeredObjectId": "showProperties"
+            }
+        },
+        {
+            "id": "queries-hub-tab",
+            "type": "ms.vss-web.tab",
+            "description": "Adds a tab to the Queries hub",
+            "targets": [
+                "ms.vss-work-web.query-tabs"
+            ],
+            "properties": {
+                "uri": "context.html",
+                "title": "Web Context (ms.vss-work-web.query-tabs)",
+                "name": "Web Context",
+                "registeredObjectId": "showContext"
             }
         },
         {
