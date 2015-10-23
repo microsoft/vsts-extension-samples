@@ -8,8 +8,8 @@ import DT_Client = require("TFS/DistributedTask/TaskRestClient");
 
 export class InfoTab extends Controls.BaseControl {	
 	constructor() {
-        super();       
-    }
+		super();
+	}
 		
 	public initialize(): void {
 		super.initialize();
@@ -18,7 +18,7 @@ export class InfoTab extends Controls.BaseControl {
 		var vsoContext = VSS.getWebContext();
 		if(sharedConfig) {
 			// register your extension with host through callback
-			sharedConfig.onBuildChanged((build: TFS_Build_Contracts.Build) => {				
+			sharedConfig.onBuildChanged((build: TFS_Build_Contracts.Build) => {
 				this._initBuildInfo(build);	
 				
 				/*
@@ -34,8 +34,8 @@ export class InfoTab extends Controls.BaseControl {
 					// 			var attachmentName = taskAttachment.name;
 					// 			// do some thing here
 					// 		}
-					// 	});					
-					// });		
+					// 	});
+					// });
 				
 			});
 		}		

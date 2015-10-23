@@ -1,8 +1,8 @@
 ﻿<!DOCTYPE html>
 <head>
-    <script src="sdk/scripts/VSS.SDK.js"></script>  
+    <script src="/lib/VSS.SDK.js"></script>
     <script type="text/javascript">
-    VSS.init({ usePlatformScripts: true }); 
+    VSS.init({ usePlatformScripts: true, moduleLoaderConfig: { paths: { "scripts": "out/scripts" } } });
     VSS.ready(function() {
          require(["scripts/tab"], function () { });
     });      

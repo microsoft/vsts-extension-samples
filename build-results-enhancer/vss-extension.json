@@ -5,7 +5,7 @@
     "name": "Build Results Enhancer",
     "description": "A simple extension that demonstrates how to extend build summary page.",
     "publisher": "fabrikam",
-    "baseUri":"http://localhost",
+    "baseUri":"http://localhost/build-results-enhancer",
     "icons": {
         "default": "images/fabrikam-logo.png"
     },    
@@ -18,6 +18,11 @@
     "categories": [
         "Build and release"
     ],   
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
     "contributions": [
         {
             "id": "build-info-tab",
@@ -27,8 +32,8 @@
                 "ms.vss-build-web.build-results-view"
             ],
             "properties": {
-                "name": "Build Info",                
-                 "uri": "infoTab.html"                
+                "name": "Build Info",
+                 "uri": "infoTab.html"
             }
         },
         {
@@ -40,10 +45,10 @@
                 "ms.vss-build-web.build-results-summary-tab"
             ],
             "properties": {
-                 "name": "Build Status",                
+                 "name": "Build Status",
                  "uri": "statusSection.html",
                  "order": 20,
-                 "height": 500               
+                 "height": 500
             }
         },
         {
@@ -54,11 +59,11 @@
                 ".build-info-tab"
             ],
             "properties": {
-                 "name": "Build Dump",                
+                 "name": "Build Dump",
                  "uri": "buildDumpSection.html",
                  "order": 10,
-                 "height": 500             
+                 "height": 500
             }
-        }       
+        }
     ]
 }

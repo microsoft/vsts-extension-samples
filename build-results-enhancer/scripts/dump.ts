@@ -7,8 +7,8 @@ import TFS_Build_Extension_Contracts = require("TFS/Build/ExtensionContracts");
 
 export class BuildDumpSection extends Controls.BaseControl {	
 	constructor() {
-        super();       
-    }
+		super();
+	}
 		
 	public initialize(): void {
 		super.initialize();
@@ -17,9 +17,9 @@ export class BuildDumpSection extends Controls.BaseControl {
 		if(sharedConfig) {
 			// register your extension with host through callback
 			sharedConfig.onBuildChanged((build: TFS_Build_Contracts.Build) => {
-				this._initBuildDump(build);				
+				this._initBuildDump(build);
 			});
-		}		
+		}
 	}
 	
 	private _initBuildDump(build: TFS_Build_Contracts.Build) {

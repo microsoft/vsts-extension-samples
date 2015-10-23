@@ -4,7 +4,7 @@
     "version": "0.1.0",
     "name": "Branch Delete",
     "description": "Clean up old or unneeded Git branches right from within Visual Studio Online.",
-    "baseUri": "https://localhost",
+    "baseUri": "https://localhost/branch-delete",
     "publisher": "fabrikam",
     "icons": {
         "default": "images/fabrikam-logo.png"
@@ -15,6 +15,11 @@
     ],
     "categories": [
         "Productivity"
+    ],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
     ],
     "contributions": [
         {

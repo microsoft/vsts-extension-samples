@@ -1,0 +1,8 @@
+{
+    "compilerOptions": {
+        "module": "amd",
+        "target": "ES5",
+        "outDir": "out/scripts"
+    },
+    "files": ["scripts/items.ts", "scripts/main.ts"]
+}

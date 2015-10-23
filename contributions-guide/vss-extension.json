@@ -540,6 +540,33 @@
             "properties": {
                 "uri": "contextForm.html"
             }
+        },
+        {
+            "id": "build-info-tab",
+            "type": "ms.vss-build-web.build-results-tab",
+            "description": "A tab contributing to build results view",
+            "targets": [
+                "ms.vss-build-web.build-results-view"
+            ],
+            "properties": {
+                "name": "Build Info",                
+                 "uri": "context.html"                
+            }
+        },
+        {
+            "id": "build-status-section",
+            "type": "ms.vss-build-web.build-results-section",
+            "description": "A section contributing to our own new tab and also to existing build 'summary' tab",
+            "targets": [
+                ".build-info-tab",
+                "ms.vss-build-web.build-results-summary-tab"
+            ],
+            "properties": {
+                 "name": "Build Status",                
+                 "uri": "context.html",
+                 "order": 20,
+                 "height": 500               
+            }
         }
     ]
 }

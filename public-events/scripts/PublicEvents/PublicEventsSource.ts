@@ -15,12 +15,16 @@ export class PublicEventsSource implements Calendar_Contracts.IEventSource {
         return Q.resolve(PublicEventsSource._events.map((holiday) => {
             return {
                 title: holiday.localName,
-                startDate: new Date(holiday.date.year, holiday.date.month - 1, holiday.date.day)
+                startDate: new Date(holiday.date.year, holiday.date.month - 1, holiday.date.day).toJSON()
             };
         }));
     }
 
     public getCategories(query?: Calendar_Contracts.IEventQuery): IPromise<Calendar_Contracts.IEventCategory[]> {
         return Q.resolve([]);
+    }
+    
+    public getTitleUrl() {
+        return Q.resolve("http://www.timeanddate.com/holidays/us/");
     }
 }

@@ -5,7 +5,18 @@ var __extends = this.__extends || function (d, b) {
     __.prototype = b.prototype;
     d.prototype = new __();
 };
-define(["require", "exports", "VSS/Utils/Core", "Scripts/notesDialog", "Scripts/notesGrid", "Scripts/notesService", "VSS/Service",  "VSS/Controls", "VSS/Controls/Common", "VSS/Controls/Menus", "VSS/Controls/Navigation"], function (require, exports, Utils_Core, NotesDialog, NotesGrid, NotesService, Service, Controls, ControlsCommon, Menus, Navigation) {
+define([
+    "require", 
+    "exports", 
+    "VSS/Utils/Core", 
+    "Scripts/notesDialog", 
+    "Scripts/notesGrid", 
+    "Scripts/notesService", 
+    "VSS/Service", 
+    "VSS/Controls", 
+    "VSS/Controls/Menus", 
+    "VSS/Controls/Navigation", 
+    "VSS/Controls/Notifications"], function (require, exports, Utils_Core, NotesDialog, NotesGrid, NotesService, Service, Controls, Menus, Navigation, Notifications) {
     var delegate = Utils_Core.delegate;
     /**
      * Creates a high-level view object the notes UI.
@@ -23,7 +34,7 @@ define(["require", "exports", "VSS/Utils/Core", "Scripts/notesDialog", "Scripts/
             var _this = this;
             this._notesService = Service.getService(NotesService.NotesService);
             this._notesService.initService(function () { _this._onDataLoaded(); }, function (e) { _this._setError(e.message); });
-            this._noteValidationError = Controls.BaseControl.createIn(ControlsCommon.MessageAreaControl, this._element, { closeable: true });
+            this._noteValidationError = Controls.BaseControl.createIn(Notifications.MessageAreaControl, this._element, { closeable: true });
             var $toolbarContainer = this._element.find(".notes-toolbar-container");
             this._toolbar = this._createMenuBar($toolbarContainer);
             var $gridContainer = this._element.find(".notes-grid-container");

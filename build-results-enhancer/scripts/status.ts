@@ -7,8 +7,8 @@ import TFS_Build_Extension_Contracts = require("TFS/Build/ExtensionContracts");
 
 export class StatusSection extends Controls.BaseControl {	
 	constructor() {
-        super();       
-    }
+		super();
+	}
 		
 	public initialize(): void {
 		super.initialize();
@@ -20,24 +20,24 @@ export class StatusSection extends Controls.BaseControl {
 				var buildId = build.id;
 				var imgSource = "images/none.jpg";
 				this._element.find("#status-img").attr("src", imgSource);
-				this._initBuildStatus(build);				
+				this._initBuildStatus(build);
 			});
 		}		
 	}
 	
 	private _initBuildStatus(build: TFS_Build_Contracts.Build) {
 		var imgSource = "images/none.jpg";
-		this._element.find("#status-img").attr("src", imgSource);		
+		this._element.find("#status-img").attr("src", imgSource);
 		if(build.status === TFS_Build_Contracts.BuildStatus.InProgress) {
-			imgSource = "images/running.jpg";	
+			imgSource = "images/running.jpg";
 		}
-		else if(build.status === TFS_Build_Contracts.BuildStatus.Completed) {			
+		else if(build.status === TFS_Build_Contracts.BuildStatus.Completed) {
 			if(build.result === TFS_Build_Contracts.BuildResult.Succeeded) {
 				imgSource = "images/success.jpg";
 			}
-			else if(build.result === TFS_Build_Contracts.BuildResult.Failed) {			
-				imgSource = "images/fail.jpg";				
-			}						
+			else if(build.result === TFS_Build_Contracts.BuildResult.Failed) {
+				imgSource = "images/fail.jpg";
+			}
 		}
 		this._element.find("#status-img").attr("src", imgSource);
 	}

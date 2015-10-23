@@ -4,7 +4,7 @@
     "version": "0.1.0",
     "name": "Team Calendar US Public Events",
     "description": "See public United States events and holidays on the Team Calendar extension for Visual Studio Online.",
-    "baseUri": "https://localhost",
+    "baseUri": "https://localhost/public-events",
     "publisher": "fabrikam",
     "icons": {
         "default": "images/fabrikam-logo.png"
@@ -14,6 +14,11 @@
     ],
     "categories": [
         "Planning"
+    ],  
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
     ],
     "contributions": [
         {

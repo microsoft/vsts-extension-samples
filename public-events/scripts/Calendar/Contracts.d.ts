@@ -33,7 +33,7 @@ export interface IEventSource {
     /**
     * Optional method to add events to a given source
     */
-    addEvents?: (events: CalendarEvent[]) => IPromise<CalendarEvent[]>;
+    addEvents?: (events: CalendarEvent[]) => IPromise<CalendarEvent>;
     /**
     * Optional method to remove events from this event source
     */
@@ -42,6 +42,10 @@ export interface IEventSource {
     * Optional method to update an event in this event source
     */
     updateEvents?: (events: CalendarEvent[]) => IPromise<CalendarEvent[]>;
+    /**
+    * Forms the url which is linked to the title of the summary section for the source
+    */
+    getTitleUrl(webContext: WebContext): IPromise<string>;
 }
 /**
  * Summary item for events
@@ -85,18 +89,19 @@ export interface CalendarEvent {
     * Title of the event
     */
     title: string;
+    __etag?: number;
     /**
     * Event start date
     */
-    startDate: Date;
+    startDate: string;
     /**
     * Event end date
     */
-    endDate?: Date;
+    endDate?: string;
     /**
     * Unique id for the event
     */
-    eventId?: string | number;
+    id?: string;
     /**
      * Category of the service
      */
@@ -143,7 +148,8 @@ export interface IExtendedCalendarEventObject {
     rendering?: string;
     overlap?: boolean;
     constraint?: string;
-    id?: string | number;
+    id?: string;
+    __etag?: number;
     title: string;
     allDay?: boolean;
     start: Date | string;

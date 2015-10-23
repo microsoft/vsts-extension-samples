@@ -3,19 +3,22 @@
     <title>Associated Items</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/main.css" />
-    <script src="sdk/scripts/VSS.SDK.js"></script>
+    <script src="/lib/VSS.SDK.js"></script>
 </head>
 <body>
     <script type="text/javascript">
         // Initialize the VSS sdk
         VSS.init({
-            usePlatformScripts: true
+            usePlatformScripts: true,
+            moduleLoaderConfig: {
+                paths: {
+                    "scripts": "out/scripts"
+                }
+            }
         });
 
-        // Wait for the SDK to be initialized
-        VSS.ready(function () {
-            require(["scripts/items"], function (items) { });
-        });
+        // Wait for the SDK to be initialized then load a script
+        VSS.require(["scripts/items"], function (items) { });
     </script>
     <div class="hub-view explorer">
         <div class=" splitter horizontal hub-splitter">

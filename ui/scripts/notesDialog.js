@@ -5,7 +5,14 @@ var __extends = this.__extends || function (d, b) {
     __.prototype = b.prototype;
     d.prototype = new __();
 };
-define(["require", "exports", "VSS/Utils/String", "VSS/Service", "VSS/Utils/UI", "VSS/Controls", "VSS/Controls/Common"], function (require, exports, Utils_String, Service, Utils_UI, Controls, ControlsCommon) {
+define(["require", 
+    "exports", 
+    "VSS/Utils/String", 
+    "VSS/Service", 
+    "VSS/Utils/UI", 
+    "VSS/Controls", 
+    "VSS/Controls/Notifications", 
+    "VSS/Controls/Dialogs"], function (require, exports, Utils_String, Service, Utils_UI, Controls, ControlsNotifications, ControlsDialogs) {
     var domElem = Utils_UI.domElem;
     /**
      * A dialog for creating or editing a note
@@ -29,7 +36,7 @@ define(["require", "exports", "VSS/Utils/String", "VSS/Service", "VSS/Utils/UI",
             var _this = this;
             _super.prototype.initialize.call(this);
             this._$container = $(domElem('div')).addClass('.edit-note-container').appendTo(this._element);
-            this._noteValidationError = Controls.BaseControl.createIn(ControlsCommon.MessageAreaControl, this._$container, { closeable: false });
+            this._noteValidationError = Controls.BaseControl.createIn(ControlsNotifications.MessageAreaControl, this._$container, { closeable: false });
             var inputId = "noteId" + Controls.getId();
             $(domElem("label"))
                 .attr("for", inputId)
@@ -143,6 +150,6 @@ define(["require", "exports", "VSS/Utils/String", "VSS/Service", "VSS/Utils/UI",
             this._noteValidationError.clear();
         };
         return NotesDialog;
-    })(ControlsCommon.ModalDialog);
+    })(ControlsDialogs.ModalDialog);
     exports.NotesDialog = NotesDialog;
 });

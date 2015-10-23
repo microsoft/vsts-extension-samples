@@ -2,21 +2,16 @@
 <html>
 <head>
     <title>Public Events</title>
-    <script src="sdk/scripts/VSS.SDK.js"></script>
+    <script src="/lib/VSS.SDK.js"></script>
 </head>
 <body>
     <script type="text/javascript">
         VSS.init({
             explicitNotifyLoaded: true,
-            usePlatformScripts: true,
-            moduleLoaderConfig: {
-                paths: {
-                    "PublicEvents": "scripts/PublicEvents"
-                }
-            }
+            usePlatformScripts: true
         });
         VSS.require([
-            "PublicEvents/PublicEventsSource"
+            "out/scripts/PublicEventsSource"
         ], function (PubEvents) {
             VSS.register("publicEvents", function (context) {
                 return new PubEvents.PublicEventsSource();

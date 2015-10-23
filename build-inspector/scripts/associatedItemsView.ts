@@ -1,6 +1,6 @@
 ﻿/// <reference path='../../lib/vss' />
 
-import VSS_Host = require("VSS/Host");
+import NavigationServices = require("VSS/Navigation/Services");
 import Controls = require("VSS/Controls");
 import AssociatedItemsTree = require("scripts/associatedItemsTree");
 import AssociatedItemsGrid = require("scripts/associatedItemsGrid");
@@ -169,18 +169,20 @@ export class AssociatedItemsView extends Controls.Control<AssociatedItemsViewOpt
      */
     private _renderTree(): void {
         // create the root tree nodes
+        
+        var historySvc = NavigationServices.getHistoryService();
 
         var overviewNode = new TreeView.TreeNode("Overview");
-        overviewNode.link = VSS_Host.urlHelper.getFragmentActionLink("overview");
+        overviewNode.link = historySvc.getFragmentActionLink("overview");
         overviewNode.id = AssociatedItemsTree.NodeItemType.overview;
 
         var commitNode = new TreeView.TreeNode("Commits");
-        commitNode.link = VSS_Host.urlHelper.getFragmentActionLink("commit");
+        commitNode.link = historySvc.getFragmentActionLink("commit");
         commitNode.expanded = true;
         commitNode.id = AssociatedItemsTree.NodeItemType.commit;
 
         var workItemsNode = new TreeView.TreeNode("Workitems");
-        workItemsNode.link = VSS_Host.urlHelper.getFragmentActionLink("workitem");
+        workItemsNode.link = historySvc.getFragmentActionLink("workitem");
         workItemsNode.id = AssociatedItemsTree.NodeItemType.workItem;
         workItemsNode.expanded = true;
 
@@ -190,7 +192,7 @@ export class AssociatedItemsView extends Controls.Control<AssociatedItemsViewOpt
             var node = new TreeView.TreeNode(shortCommitId);
             node.tag = change;
             node.id = parseInt(change.id);
-            node.link = VSS_Host.urlHelper.getFragmentActionLink("commit", { id: change.id });
+            node.link = historySvc.getFragmentActionLink("commit", { id: change.id });
             commitNode.add(node);            
         });
 
@@ -199,7 +201,7 @@ export class AssociatedItemsView extends Controls.Control<AssociatedItemsViewOpt
             var workItemId = workItem.id;
             var node = new TreeView.TreeNode(workItemId.toString());
             node.tag = workItem;
-            node.link = VSS_Host.urlHelper.getFragmentActionLink("workitem", { id: workItem.id });
+            node.link = historySvc.getFragmentActionLink("workitem", { id: workItem.id });
             workItemsNode.add(node);            
         });
 
