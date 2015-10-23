@@ -140,6 +140,36 @@
                 "order": 110,
                 "uri": "workItemService.html"
             }
+        },
+        {
+            "id": "sample-work-item-menu",
+            "type": "ms.vss-web.action",
+            "description": "Shows the target properties for menu actions for work items",
+            "targets": [
+                "ms.vss-work-web.work-item-context-menu",
+                "ms.vss-work-web.active-work-item-notifications"
+            ],
+            "properties": {
+                "text": "Try me!",
+                "title": "ms.vss-work-web.work-item-context-menu",
+                "toolbarText": "Try me!",
+                "icon": "images/show-properties.png",
+                "uri": "menu-workItemToolbarButton.html",
+                "registeredObjectId": "MenuItemListener"
+            }
+        },
+        {
+            "id": "work-item-form-tab",
+            "type": "ms.vss-work-web.work-item-form-page",
+            "description": "Shows a new tab page on all work item types",
+            "targets": [
+                "ms.vss-work-web.work-item-form-pages"
+            ],
+            "properties": {
+                "name": "My Page",
+                "uri": "workItemTabPage.html",
+                "registeredObjectId": "SamplePageWorkItemListener"
+            }
         }
     ]
 }

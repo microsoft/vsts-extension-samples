@@ -64,7 +64,7 @@ Demonstrates advanced extension concepts like AMD loading, using UI controls, hi
 
 ![image](ui/images/menu-dropdown2.png)
 
-Explore different UI controls, including menus, toolbars, custom controls, and more.
+Explore different UI controls, including menus, toolbars, custom controls, work item form extensions, and more.
 
 ### Public events (for Team Calendar)
 

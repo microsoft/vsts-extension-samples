@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Work item menu contribution sample</title>
+</head>
+
+<body>
+    <script src="sdk/scripts/VSS.SDK.js"></script>
+    <script>
+
+        VSS.init({ usePlatformScripts: true });
+
+        // Get the ActiveWorkItemService.  This service allows you to get/set fields/links on the 'active' work item (the work item
+        // that currently is displayed in the UI).
+        function getActiveWorkItemService()
+        {
+            var deferred = $.Deferred();
+            
+            VSS.require(["TFS/WorkItemTracking/Services"], function(_WorkItemServices) {
+                _WorkItemServices.ActiveWorkItemService.getService().then(function (service) {
+                    deferred.resolve(service)
+                },
+                function() {
+                    deferred.reject();
+                });
+            });
+
+            return deferred.promise();           
+        }
+
+
+        // Register a listener for the menu item contribution
+        VSS.register("MenuItemListener", function (context) {
+            return {
+                setFields: function(properties, title) {
+                    
+                    // Get the active work item service
+                    getActiveWorkItemService().then(function (service) {
+                        // Set a field value
+                        service.setFieldValue("System.Title", "Hello from your extension!").then(
+                            function () {
+                                // Success!
+                            }, 
+                            function(error) {
+                                // Error 
+                                window.alert(error.message); });
+                        },
+                        function(error) {
+                            // Error getting the service 
+                            window.alert(error.message); 
+                        });
+                },
+                
+                // Called when the menu item is clicked.
+                execute: function(actionContext) {
+                    this.setFields(actionContext);
+                },
+                
+                // event handlers, called when the active work item is loaded/unloaded/modified/saved
+                onFieldChanged: function (args) {
+                },
+                onLoaded: function (args) {
+                },
+                onUnloaded: function (args) {
+                },
+                onSaved: function (args) {
+                },
+                onReset: function (args) {
+                },
+                onRefreshed: function (args) {
+                }
+            };
+        });
+    </script>
+</body>
+</html>
