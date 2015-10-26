@@ -54,7 +54,7 @@ Discover all the places in Visual Studio Online you can extend, including hubs, 
  
 ### Build inspector
 
-Demonstrates advanced extension concepts like AMD loading, using UI controls, history, and more. This sample is written in TypeScript and must be built before it can be installed. Open readme.md for instructions.
+Demonstrates advanced extension concepts like AMD loading, using UI controls, history, and more. This sample is written in TypeScript. The compiled JS files are included in the /out directory, but changes will need to be re-compiled. Open readme.txt for instructions.
 
 ### UI
 
@@ -66,9 +66,11 @@ Explore different UI controls, including menus, toolbars, custom controls, and m
 
 Adds an event source to the [Team Calendar extension](https://github.com/Microsoft/vso-team-calendar) for public holidays. Note that this sample contributes *to another extension* rather than core Visual Studio Online.
 
+This sample is written in TypeScript. The compiled JS files are included in the /out directory, but changes will need to be re-compiled. Open readme.txt for instructions.
+
 ### Build Results Enhancer
 
-This sample extension, written in typescript, shows how to make a tab/section contribution to build summary page, reacting to build updates.
+This sample extension shows how to make a tab/section contribution to build summary page, reacting to build updates.
 
 This also has a sample code that allows user to render custom data results uploaded from a particular task in build.
 
@@ -85,4 +87,6 @@ Contributing as a tab and a section to our own tab -
 Contributing as a section to "summary" tab -
 
 ![image](build-results-enhancer/images/sectionInSummaryTab.png)
+
+This sample is written in TypeScript. The compiled JS files are included in the /out directory, but changes will need to be re-compiled. Open readme.txt for instructions.
 
