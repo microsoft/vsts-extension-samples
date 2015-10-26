@@ -34,7 +34,7 @@ Follow the steps under Before you begin at [Publishing from the Command Line](ht
     Note: <sample> is the directory containing the sample you want to publish.
     
     `vset publish --publisher <P> --token <T> --share-with <A> --save`  
-    Note: <P> is the ID of the publisher you created in the "Before you begin" steps. <T> is the Personal Access Token you generated in "Before you begin" above. <A> is the name of your VSO account.  
+    Note: `<P>` is the ID of the publisher you created in the "Before you begin" steps. `<T>` is the Personal Access Token you generated in "Before you begin" above. `<A>` is the name of your VSO account.  
     Note: From now on, if you need to make changes to your manifest and re-publish the extension, you just type `vset publish`. Your token and share options are remembered.  
 4. Install by going to https://youraccount.visualstudio.com/_admin/_apps/hub/ms.vss-extensionManagement-web.manageExtensions. Find the extension you published under the Shared With Me category. Click "Install" to install the extension.
 
