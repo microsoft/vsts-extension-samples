@@ -70,23 +70,23 @@ Explore different UI controls, including menus, toolbars, custom controls, and m
 
 Adds an event source to the [Team Calendar extension](https://github.com/Microsoft/vso-team-calendar) for public holidays. Note that this sample contributes *to another extension* rather than core Visual Studio Online.
 
-### Build Status
+### Build Results Enhancer
 
-This sample extension shows how to make a tab contribution to build summary page. This extension reacts to build status.
+This sample extension, written in typescript, shows how to make a tab/section contribution to build summary page, reacting to build updates.
 
-While the build is waiting to run -
+This also has a sample code that allows user to render custom data results uploaded from a particular task in build.
 
-![image](build-status/images/none-screenshot.png)
+You could contribute to build results view in different ways :
+* As a section to any of your own contributed tab for build results view
+* As a section to the existing "summary" tab in build results view
+* As a tab to the build results view
+ 
 
-While the build is running -
+Contributing as a tab and a section to our own tab -
 
-![image](build-status/images/running-screenshot.png)
+![image](build-results-enhancer/images/tab&section.png)
 
-If the build failed -
+Contributing as a section to "summary" tab -
 
-![image](build-status/images/fail-screenshot.png)
-
-If the build is successful -
-
-![image](build-status/images/success-screenshot.png)
+![image](build-results-enhancer/images/sectionInSummaryTab.png)
 
