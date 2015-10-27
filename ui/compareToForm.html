@@ -14,9 +14,9 @@
     VSS.require([
         "VSS/Service",
         "VSS/Controls",
-        "VSS/Controls/Common",
+        "VSS/Controls/Combos",
         "TFS/VersionControl/GitRestClient"], 
-        function (Service, Controls, CommonControls, GitWebApi) {
+        function (Service, Controls, Combos, GitWebApi) {
         
         var compareToForm = (function() {
             
@@ -36,7 +36,7 @@
                 });
             }
             
-            branchSelector = Controls.create(CommonControls.Combo, $("#main-container"), {
+            branchSelector = Controls.create(Combos.Combo, $("#main-container"), {
                 mode: "drop",
                 allowEdit: false,
                 source: [],

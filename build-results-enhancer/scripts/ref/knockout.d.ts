@@ -66,6 +66,7 @@ interface KnockoutObservableArray<T> extends KnockoutObservable<T[]> {
     replace(oldItem: T, newItem: T): void;
 
     remove(item: T): T[];
+    remove(predicate: (item: T) => boolean): T[];
     removeAll(items?: T[]): T[];
 
     destroy(item: T): void;

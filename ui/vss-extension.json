@@ -15,7 +15,7 @@
     "categories": [
         "Sync and integration"
     ],
-    "scopes": ["vso.work"],
+    "scopes": ["vso.work", "vso.work_write"],
     "contributions": [
         {
             "id": "sample-ui-group",
