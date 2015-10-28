@@ -140,6 +140,57 @@
                 "order": 110,
                 "uri": "workItemService.html"
             }
+        },
+        {
+            "id": "sample-work-item-menu",
+            "type": "ms.vss-web.action",
+            "description": "Sample toolbar item which updates the title of a work item",
+            "targets": [
+                "ms.vss-work-web.work-item-context-menu"
+            ],
+            "properties": {
+                "text": "Try me!",
+                "title": "Updates the title of the work item from the extension",
+                "toolbarText": "Try me!",
+                "icon": "images/show-properties.png",
+                "uri": "menu-workItemToolbarButton.html"
+            }
+        },
+        {
+            "id": "sample-work-item-form-observer",
+            "type": "ms.vss-work-web.work-item-notifications",
+            "description": "Gets events about the current work item form for the 'Try Me!' toolbar button",
+            "targets": [
+                "ms.vss-work-web.work-item-form"
+            ],
+            "properties": {
+                "uri": "menu-workItemToolbarButton.html"
+            }
+        },
+        {
+            "id": "sample-work-item-form-page",
+            "type": "ms.vss-work-web.work-item-form-page",
+            "description": "Custom work item form page",
+            "targets": [
+                "ms.vss-work-web.work-item-form"
+            ],
+            "properties": {
+                "name": "My Page",
+                "uri": "workItemPage.html"
+            }
+        },
+        {
+            "id": "sample-work-item-form-group",
+            "type": "ms.vss-work-web.work-item-form-group",
+            "description": "Custom work item form group",
+            "targets": [
+                "ms.vss-work-web.work-item-form"
+            ],
+            "properties": {
+                "name": "My Group",
+                "uri": "workItemGroup.html",
+                "height": 600
+            }
         }
     ]
 }
