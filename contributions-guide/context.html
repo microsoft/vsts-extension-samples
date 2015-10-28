@@ -1,4 +1,4 @@
-﻿<html>
+<html>
 <head>
     <title>Web Context</title>
     <script src="/lib/VSS.SDK.js"></script>
@@ -20,33 +20,29 @@
             var context = VSS.getWebContext();
             var configuration = VSS.getConfiguration();
             document.getElementById("context-display").textContent = JSON.stringify(context, null, 4);
-            
-            if (Object.keys(configuration).length > 0) {
+
+            // Used for tab contributions
+            if (VSS.getContribution().type === "ms.vss-web.tab") {
                 var updateConfiguration = function(tabContext) {
                     if (typeof tabContext === "object") {
                         document.getElementById("configuration-display").textContent = JSON.stringify(tabContext, null, 4);
                     }
                 }
-                // Get the context data when the extension frame is first created, and show it in the DOM.
                 updateConfiguration(VSS.getConfiguration());
-
-                // Used for tab contributions
-                if (VSS.getContribution().type === "ms.vss-web.tab") {
-                    VSS.register("showContext", {
-                        pageTitle: function(state) {
-                            return "Web Context";
-                        },
-                        updateContext: updateConfiguration,
-                        isInvisible: function(state) {
-                            // Hide this tab if the user has selected the "Unsaved work items" pseudo-query.
-                            if (state && state.query && state.query.name === "Unsaved work items" && state.query.path === null) {
-                                return true;
-                            }
-                            return false;
-                        }
-                    });
-                }
                 document.getElementById("configuration").style.display = "block";
+                VSS.register("showContext", {
+                    pageTitle: function(state) {
+                        return "Web Context";
+                    },
+                    updateContext: updateConfiguration,
+                    isInvisible: function(state) {
+                        // Hide this tab if the user has selected the "Unsaved work items" pseudo-query.
+                        if (state && state.query && state.query.name === "Unsaved work items" && state.query.path === null) {
+                            return true;
+                        }
+                        return false;
+                    }
+                });
             }
             VSS.notifyLoadSucceeded();
         });
