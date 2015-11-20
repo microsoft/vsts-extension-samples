@@ -1,0 +1,31 @@
+{
+    "manifestVersion": 1,
+    "id": "build-task-hello-world-example",
+    "name": "Hello World",
+    "version": "1.0.0",
+    "publisher": "UPDATE_ME_TO_YOUR_PUBLISHER_NAME",
+    "description": "Sample Hello World build task extension.",
+    "categories": [
+        "Build and release"
+    ],
+    "icons": {
+        "default": "extension-icon.png"
+    },
+    "files": [
+        {
+            "path": "HelloWorld"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "hello-world-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "HelloWorld"
+            }
+        }
+    ]
+}
