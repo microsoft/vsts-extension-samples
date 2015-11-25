@@ -1,24 +1,61 @@
 {
     "manifestVersion": 1,
     "id": "samples-contributions-guide",
-    "version": "0.1.0",
+    "version": "0.1.4",
     "name": "Contributions Guide",
-    "description": "Discover all the places in Visual Studio Online you can extend, including hubs, toolbars, and context menus, and more.",
-    "baseUri": "https://localhost/contributions-guide",
-    "publisher": "fabrikam",
+    "description": "Building an extension for Visual Studio Team Services? See the places where you can extend and enhance the user's web experience with an extension ---- right from within the web experience.",
+    "publisher": "ms-samples",
+    "public": true,
+    "categories": [
+        "Other"
+    ],
+    "links": {
+        "learn": {
+            "uri": "https://github.com/Microsoft/vso-extension-samples"
+        }
+    },
     "icons": {
         "default": "images/fabrikam-logo.png"
     },
-    "tags": [
-        "Sample"
-    ],
-    "categories": [
-        "Sync and integration"
-    ],
     "targets": [
         {
             "id": "Microsoft.VisualStudio.Services"
         }
+    ],
+    "content": {
+        "details": {
+            "path": "details.md"
+        }
+    }, 
+    "branding": {
+        "color": "rgb(190, 39, 3)",
+        "theme": "dark"
+    },       
+    "files": [
+        {
+            "path": "scripts",
+            "addressable": true
+        },
+        {
+            "path": "images",
+            "addressable": true
+        },
+        {
+            "path": "context.html",
+            "addressable": true
+        },       
+        {
+            "path": "contextForm.html",
+            "addressable": true
+        },       
+        {
+            "path": "main.html",
+            "addressable": true
+        },     
+        {
+            "path": "lib",
+            "addressable": true
+        }    
     ],
     "contributions": [
         {

@@ -1,9 +1,9 @@
 <html>
 <head>
     <title>Web Context</title>
-    <script src="/lib/VSS.SDK.js"></script>
+    <script src="lib/VSS.SDK.js"></script>
 </head>
-<body style="padding-left: 10px; padding-top: 10px; overflow-y: auto;">
+<body style="padding-left: 20px; padding-top: 20px; overflow-y: auto; background-color: #ddd">
     
     <h3>Web Context</h3>
     <pre id="context-display" style=""></pre>
@@ -13,7 +13,7 @@
         <pre id="configuration-display" style=""></pre>
     </div>
     <script type="text/javascript">
-        VSS.init({explicitNotifyLoaded: true})
+        VSS.init({explicitNotifyLoaded: true, usePlatformScripts: true, usePlatformStyles: true })
 
         // Show context info when ready
         VSS.ready(function () {
