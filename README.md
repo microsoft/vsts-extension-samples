@@ -74,7 +74,7 @@ This sample extension shows how to make a tab/section contribution to build summ
 
 This also has a sample code that allows user to render custom data results uploaded from a particular task in build.
 
-You could contribute to build results view in different ways :
+You could contribute to build results view in different ways:
 * As a section to any of your own contributed tab for build results view
 * As a section to the existing "summary" tab in build results view
 * As a tab to the build results view
