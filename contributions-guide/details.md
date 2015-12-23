@@ -1,4 +1,4 @@
-This extension is designed to help extension developers understand the available extensibility points in Visual Studio Team Services and what context information is made available those points.
+This extension is designed to help extension developers understand the available extensibility points in Visual Studio Team Services and what context information is made available at those points.
 
 [Learn more](https://www.visualstudio.com/integrate/extensions/reference/targets/overview) about the supported extensibility points.
 
