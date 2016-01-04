@@ -9,11 +9,10 @@ define([
 	"require",
 	"exports",
 	"VSS/Utils/Core",
-	"VSS/Host",
 	"VSS/Controls",
 	"VSS/Controls/Menus",
 	"VSS/Controls/Grids"
-	], function (require, exports, Core, VSS_HOST, Controls, MenuControls, Grids) {
+	], function (require, exports, Core, Controls, MenuControls, Grids) {
 
     var ItemsView = (function (_super) {
         __extends(ItemsView , _super);
