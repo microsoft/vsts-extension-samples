@@ -1,8 +1,11 @@
 {
     "compilerOptions": {
         "module": "amd",
-        "target": "ES5",
-        "outDir": "out/scripts"
-    },
-    "files": ["scripts/items.ts", "scripts/main.ts"]
+        "target": "es5",
+        "rootDir": "scripts",
+        "removeComments": true,
+        "sourceMap": false,
+        "outDir": "built/scripts" 
+    }
 }
+

@@ -1,4 +1,5 @@
-﻿/// <reference path='../../lib/vss' />
+﻿/// <reference path='../../typings/vss' />
+/// <reference path='../../typings/tfs' />
 
 import Utils_String = require("VSS/Utils/String");
 import Controls = require("VSS/Controls");

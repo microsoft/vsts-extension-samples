@@ -1,4 +1,5 @@
-﻿/// <reference path='../../lib/vss' />
+﻿/// <reference path='../../typings/vss' />
+/// <reference path='../../typings/tfs' />
 
 import NavigationServices = require("VSS/Navigation/Services");
 import Controls = require("VSS/Controls");

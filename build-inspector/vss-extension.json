@@ -4,7 +4,6 @@
     "version": "0.1.0",
     "name": "Build Inspector",
     "description": "A simple extension that demonstrates how to show details for a Visual Studio Online resource.",
-    "baseUri": "https://localhost/build-inspector",
     "publisher": "fabrikam",
     "icons": {
         "default": "images/fabrikam-logo.png"
@@ -14,12 +13,38 @@
         "Sample"
     ],
     "categories": [
-        "Sync and integration"
+        "Developer samples"
     ],
     "targets": [
         {
             "id": "Microsoft.VisualStudio.Services"
         }
+    ],
+    "files": [
+        {
+            "path": "css",
+            "addressable": true          
+        },
+        {
+            "path": "images",
+            "addressable": true          
+        },
+        {
+            "path": "built",
+            "addressable": true
+        },
+        {
+            "path": "items.html",
+            "addressable": true
+        },
+        {
+            "path": "launch.html",
+            "addressable": true
+        },              
+        {
+            "path": "sdk",
+            "addressable": true
+        }        
     ],
     "contributions": [
         {

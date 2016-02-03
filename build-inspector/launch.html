@@ -1,9 +1,20 @@
 ﻿<!DOCTYPE html>
 <head>
-    <script src="/lib/VSS.SDK.js"></script>
-    <script src="out/scripts/main.js"></script>
-    <script type="text/javascript">VSS.init({ usePlatformScripts: true });</script>
+    <script src="sdk/scripts/VSS.SDK.js"></script>
+    <script src="built/scripts/main.js"></script>
+    
+    <script type="text/javascript">
+        VSS.init({
+            usePlatformScripts: true,
+            moduleLoaderConfig: {
+                paths: {
+                    "scripts": "built/scripts"
+                }
+            }
+        });
+    </script>
 </head>
+
 <body>
     
 </body>

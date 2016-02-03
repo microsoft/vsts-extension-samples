@@ -1,4 +1,5 @@
-﻿/// <reference path='../../lib/vss' />
+﻿/// <reference path='../../typings/vss' />
+/// <reference path='../../typings/tfs' />
 
 import Controls = require("VSS/Controls");
 import TFS_Build_Contracts = require("TFS/Build/Contracts");

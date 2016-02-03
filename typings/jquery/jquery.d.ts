@@ -106,6 +106,10 @@ interface JQueryAjaxSettings {
      */
     jsonpCallback?: any;
     /**
+     * The HTTP method to use for the request (e.g. "POST", "GET", "PUT"). (version added: 1.9.0)
+     */
+    method?: string;
+    /**
      * A mime type to override the XHR mime type. (version added: 1.5.1)
      */
     mimeType?: string;
@@ -181,6 +185,10 @@ interface JQueryXHR extends XMLHttpRequest, JQueryPromise<any> {
      * Property containing the parsed response if the response Content-Type is json
      */
     responseJSON?: any;
+    /**
+     * A function to be called if the request fails.
+     */
+    error(xhr: JQueryXHR, textStatus: string, errorThrown: string): void;
 }
 
 /**
@@ -233,7 +241,7 @@ interface JQueryCallback {
      * @param context A reference to the context in which the callbacks in the list should be fired.
      * @param arguments An argument, or array of arguments, to pass to the callbacks in the list.
      */
-    fireWith(context?: any, ...args: any[]): JQueryCallback;
+    fireWith(context?: any, args?: any[]): JQueryCallback;
 
     /**
      * Determine whether a supplied callback is in a list
@@ -297,7 +305,6 @@ interface JQueryPromiseCallback<T> {
 interface JQueryPromiseOperator<T, U> {
     (callback1: JQueryPromiseCallback<T>|JQueryPromiseCallback<T>[], ...callbacksN: Array<JQueryPromiseCallback<any>|JQueryPromiseCallback<any>[]>): JQueryPromise<U>;
 }
-
 
 /**
  * Interface for the JQuery promise, part of callbacks
@@ -388,7 +395,7 @@ interface JQueryDeferred<T> extends JQueryGenericPromise<T> {
      * @param context Context passed to the progressCallbacks as the this object.
      * @param args Optional arguments that are passed to the progressCallbacks.
      */
-    notifyWith(context: any, value?: any, ...args: any[]): JQueryDeferred<T>;
+    notifyWith(context: any, value?: any[]): JQueryDeferred<T>;
 
     /**
      * Reject a Deferred object and call any failCallbacks with the given args.
@@ -402,7 +409,7 @@ interface JQueryDeferred<T> extends JQueryGenericPromise<T> {
      * @param context Context passed to the failCallbacks as the this object.
      * @param args An optional array of arguments that are passed to the failCallbacks.
      */
-    rejectWith(context: any, value?: any, ...args: any[]): JQueryDeferred<T>;
+    rejectWith(context: any, value?: any[]): JQueryDeferred<T>;
 
     /**
      * Resolve a Deferred object and call any doneCallbacks with the given args.
@@ -418,7 +425,7 @@ interface JQueryDeferred<T> extends JQueryGenericPromise<T> {
      * @param context Context passed to the doneCallbacks as the this object.
      * @param args An optional array of arguments that are passed to the doneCallbacks.
      */
-    resolveWith(context: any, value?: T, ...args: any[]): JQueryDeferred<T>;
+    resolveWith(context: any, value?: T[]): JQueryDeferred<T>;
 
     /**
      * Return a Deferred's Promise object.
@@ -480,12 +487,7 @@ interface JQueryKeyEventObject extends JQueryInputEventObject {
     keyCode: number;
 }
 
-interface JQueryEventObject extends BaseJQueryEventObject, JQueryInputEventObject, JQueryMouseEventObject, JQueryKeyEventObject {
-}
-
-/** TFS Customization **/
-interface JQueryEventHandler {
-    (eventObject: JQueryEventObject, args?: any): any;
+interface JQueryEventObject extends BaseJQueryEventObject, JQueryInputEventObject, JQueryMouseEventObject, JQueryKeyEventObject{
 }
 
 /*
@@ -605,6 +607,16 @@ interface JQueryAnimationOptions {
     specialEasing?: Object;
 }
 
+interface JQueryEasingFunction {
+    ( percent: number ): number;
+}
+
+interface JQueryEasingFunctions {
+    [ name: string ]: JQueryEasingFunction;
+    linear: JQueryEasingFunction;
+    swing: JQueryEasingFunction;
+}
+
 /**
  * Static members of jQuery (those on $ and jQuery themselves)
  */
@@ -640,11 +652,11 @@ interface JQueryStatic {
 
     ajaxSettings: JQueryAjaxSettings;
 
-    /**
-     * Set default values for future Ajax requests. Its use is not recommended.
-     *
-     * @param options A set of key/value pairs that configure the default Ajax request. All options are optional.
-     */
+     /**
+      * Set default values for future Ajax requests. Its use is not recommended.
+      *
+      * @param options A set of key/value pairs that configure the default Ajax request. All options are optional.
+      */
     ajaxSetup(options: JQueryAjaxSettings): void;
 
     /**
@@ -731,30 +743,42 @@ interface JQueryStatic {
      * @param context A DOM Element, Document, or jQuery to use as context
      */
     (selector: string, context?: Element|JQuery): JQuery;
+
     /**
      * Accepts a string containing a CSS selector which is then used to match a set of elements.
      *
      * @param element A DOM element to wrap in a jQuery object.
      */
     (element: Element): JQuery;
+
     /**
      * Accepts a string containing a CSS selector which is then used to match a set of elements.
      *
      * @param elementArray An array containing a set of DOM elements to wrap in a jQuery object.
      */
     (elementArray: Element[]): JQuery;
+
+    /**
+     * Binds a function to be executed when the DOM has finished loading.
+     *
+     * @param callback A function to execute after the DOM is ready.
+     */
+    (callback: (jQueryAlias?: JQueryStatic) => any): JQuery;
+
     /**
      * Accepts a string containing a CSS selector which is then used to match a set of elements.
      *
      * @param object A plain object to wrap in a jQuery object.
      */
     (object: {}): JQuery;
+
     /**
      * Accepts a string containing a CSS selector which is then used to match a set of elements.
      *
      * @param object An existing jQuery object to clone.
      */
     (object: JQuery): JQuery;
+
     /**
      * Specify a function to execute when the DOM is fully loaded.
      */
@@ -767,6 +791,7 @@ interface JQueryStatic {
      * @param ownerDocument A document in which the new elements will be created.
      */
     (html: string, ownerDocument?: Document): JQuery;
+
     /**
      * Creates DOM elements on the fly from the provided string of raw HTML.
      *
@@ -774,13 +799,6 @@ interface JQueryStatic {
      * @param attributes An object of attributes, events, and methods to call on the newly-created element.
      */
     (html: string, attributes: Object): JQuery;
-
-    /**
-     * Binds a function to be executed when the DOM has finished loading.
-     *
-     * @param callback A function to execute after the DOM is ready.
-     */
-    (callback: Function): JQuery;
 
     /**
      * Relinquish jQuery's control of the $ variable.
@@ -801,8 +819,6 @@ interface JQueryStatic {
      */
     cssHooks: { [key: string]: any; };
     cssNumber: any;
-    css(e: any, propertyName: string, value?: any): JQuery;
-    css(e: any, propertyName: any, value?: any): JQuery;
 
     /**
      * Store arbitrary data associated with the specified element. Returns the value that was set.
@@ -883,6 +899,9 @@ interface JQueryStatic {
     /**
      * Effects
      */
+
+    easing: JQueryEasingFunctions;
+
     fx: {
         tick: () => void;
         /**
@@ -1140,24 +1159,6 @@ interface JQueryStatic {
      * @param keepScripts A Boolean indicating whether to include scripts passed in the HTML string
      */
     parseHTML(data: string, context?: Document, keepScripts?: boolean): any[];
-
-    /*******************************************************************************
-    * START TFS Customizations
-    ********************************************************************************/
-    //Event(...args: any[]): JQueryEventObject;
-    //map(jquery: JQuery, callback: (elementOfArray: any, indexInArray: any) => any): any[];
-    postMessage(stringifiedJson: string, targetUrl: string, contentWindow: JQuery);
-    receiveMessage(callback: (event: any) => any);
-
-    ui: any;
-    Widget: any;
-    widget: any;
-    jqplot: any;
-    connection: any;
-
-    /*******************************************************************************
-    * END TFS Customizations
-    ********************************************************************************/
 }
 
 /**
@@ -1375,9 +1376,9 @@ interface JQuery {
     /**
      * Set the value of each element in the set of matched elements.
      *
-     * @param value A string of text or an array of strings corresponding to the value of each matched element to set as selected/checked.
+     * @param value A string of text, an array of strings or number corresponding to the value of each matched element to set as selected/checked.
      */
-    val(value: string|string[]): JQuery;
+    val(value: string|string[]|number): JQuery;
     /**
      * Set the value of each element in the set of matched elements.
      *
@@ -1558,17 +1559,17 @@ interface JQuery {
      */
     data(key: string, value: any): JQuery;
     /**
-     * Store arbitrary data associated with the matched elements.
-     *
-     * @param obj An object of key-value pairs of data to update.
-     */
-    data(obj: { [key: string]: any; }): JQuery;
-    /**
      * Return the value at the named data store for the first element in the jQuery collection, as set by data(name, value) or by an HTML5 data-* attribute.
      *
      * @param key Name of the data stored.
      */
     data(key: string): any;
+    /**
+     * Store arbitrary data associated with the matched elements.
+     *
+     * @param obj An object of key-value pairs of data to update.
+     */
+    data(obj: { [key: string]: any; }): JQuery;
     /**
      * Return the value at the named data store for the first element in the jQuery collection, as set by data(name, value) or by an HTML5 data-* attribute.
      */
@@ -1586,16 +1587,17 @@ interface JQuery {
      *
      * @param name A string naming the piece of data to delete or space-separated string naming the pieces of data to delete.
      */
-    /****TFS Customization****/
-    removeData(name?: string): JQuery;
-    /****END TFS Customization****/
-    
+    removeData(name: string): JQuery;
     /**
      * Remove a previously-stored piece of data.
      *
      * @param list An array of strings naming the pieces of data to delete.
      */
     removeData(list: string[]): JQuery;
+    /**
+     * Remove all previously-stored piece of data.
+     */
+    removeData(): JQuery;
 
     /**
      * Return a Promise object to observe when all actions of a certain type bound to the collection, queued or not, have finished.
@@ -1920,9 +1922,6 @@ interface JQuery {
      */
     bind(events: any): JQuery;
 
-    /** TFS Customizations */
-    bind(...events: any[]): JQuery;
-
     /**
      * Trigger the "blur" event on an element
      */
@@ -2017,6 +2016,10 @@ interface JQuery {
     focus(eventData?: any, handler?: (eventObject: JQueryEventObject) => any): JQuery;
 
     /**
+     * Trigger the "focusin" event on an element.
+     */
+    focusin(): JQuery;
+    /**
      * Bind an event handler to the "focusin" JavaScript event
      *
      * @param handler A function to execute each time the event is triggered.
@@ -2030,6 +2033,10 @@ interface JQuery {
      */
     focusin(eventData: Object, handler: (eventObject: JQueryEventObject) => any): JQuery;
 
+    /**
+     * Trigger the "focusout" event on an element.
+     */
+    focusout(): JQuery;
     /**
      * Bind an event handler to the "focusout" JavaScript event
      *
@@ -2293,7 +2300,7 @@ interface JQuery {
      * @param data Data to be passed to the handler in event.data when an event is triggered.
      * @param handler A function to execute when the event is triggered. The value false is also allowed as a shorthand for a function that simply does return false.
     */
-    on(events: string, data: any, handler: (eventObject: JQueryEventObject, ...args: any[]) => any): JQuery;
+    on(events: string, data : any, handler: (eventObject: JQueryEventObject, ...args: any[]) => any): JQuery;
     /**
      * Attach an event handler function for one or more events to the selected elements.
      *
@@ -2384,10 +2391,7 @@ interface JQuery {
      *
      * @param handler A function to execute after the DOM is ready.
      */
-    ready(handler: Function): JQuery;
-
-    /* TFS Customization  */
-    ready(handler: any): JQuery;
+    ready(handler: (jQueryAlias?: JQueryStatic) => any): JQuery;
 
     /**
      * Trigger the "resize" event on an element.
@@ -2483,6 +2487,14 @@ interface JQuery {
      * @param extraParameters An array of additional parameters to pass along to the event handler.
      */
     triggerHandler(eventType: string, ...extraParameters: any[]): Object;
+
+    /**
+     * Execute all handlers attached to an element for an event.
+     * 
+     * @param event A jQuery.Event object.
+     * @param extraParameters An array of additional parameters to pass along to the event handler.
+     */
+    triggerHandler(event: JQueryEventObject, ...extraParameters: any[]): Object;
 
     /**
      * Remove a previously-attached event handler from the elements.
@@ -3051,7 +3063,7 @@ interface JQuery {
      * 
      * @param elements One or more DOM elements to remove from the matched set.
      */
-    not(...elements: Element[]): JQuery;
+    not(elements: Element|Element[]): JQuery;
     /**
      * Remove elements from the set of matched elements.
      * 
@@ -3183,27 +3195,6 @@ interface JQuery {
      * @param callback The new function to add to the queue, with a function to call that will dequeue the next item.
      */
     queue(queueName: string, callback: Function): JQuery;
-
-    /*******************************************************************************
-    * START TFS Customizations
-    ********************************************************************************/
-    button(...args: any[]): JQuery;
-    dialog(...args: any[]): JQuery;
-    droppable(...args: any[]): JQuery;
-    draggable(...args: any[]): JQuery;
-    autocomplete(...args: any[]): JQuery;
-    live(...args: any[]): JQuery;
-    has(...args: any[]): JQuery;
-    tabs(...args: any[]): JQuery;
-    sortable(...args: any[]): JQuery;
-    disableSelection(...args: any[]): JQuery;
-    error(...args: any[]): JQuery;
-    IdentityInput(...args: any[]): JQuery;
-    IdentitySearchControl(...args: any[]): JQuery;
-    HorizontalPanel(...args: any[]): JQuery;
-    /*******************************************************************************
-    * END TFS Customizations
-    ********************************************************************************/
 }
 declare module "jquery" {
     export = $;

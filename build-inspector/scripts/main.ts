@@ -1,4 +1,4 @@
-/// <reference path='../../lib/vss' />
+/// <reference path='../../typings/vss' />
 
 var showCommitsMenu = (function () {
     "use strict";

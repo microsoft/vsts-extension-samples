@@ -1,4 +1,5 @@
-/// <reference path='../../lib/vss' />
+/// <reference path='../../typings/vss' />
+/// <reference path='../../typings/tfs' />
 
 import AssociatedItemsView = require("scripts/associatedItemsView");
 import TFS_Build_Contracts = require("TFS/Build/Contracts");
@@ -37,11 +38,11 @@ if (buildId > 0) {
 
     // Fetch the build before getting its associated items
     buildClient.getBuild(buildId, context.project.id).then<[TFS_Build_Contracts.Build, TFS_Build_Contracts.Change[], TFS_Wit_Contracts.WorkItem[]]>((build: TFS_Build_Contracts.Build) => {
-        return Q.all([
+        return Q.all<any>([
             Q.resolve(build),
 
             // Fetch the build's associated commits and work items (refs) in parallel
-            buildClient.getBuildCommits(context.project.name, buildId), 
+            buildClient.getBuildChanges(context.project.name, buildId), 
             buildClient.getBuildWorkItemsRefs(context.project.name, buildId).then((itemRefs) => {
                 // If we retrieved any work item refs, resolve the full work items before fulfilling the promise
                 if (itemRefs.length > 0) {
