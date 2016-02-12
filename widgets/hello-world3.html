@@ -14,8 +14,8 @@
                 var projectId = VSS.getWebContext().project.id;
 
                 var getQueryInfo = function (widgetSettings) {
-                    // Extract query path from widgetSettings and ask user to configure one if none is found
-                    var settings = JSON.parse(widgetSettings.customSettings);
+                    // Extract query path from widgetSettings.customSettings and ask user to configure one if none is found
+                    var settings = JSON.parse(widgetSettings.customSettings.data);
                     if (!settings || !settings.queryPath) {
                         var $container = $('#query-info-container');
                         $container.empty();
