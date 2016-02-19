@@ -1,2 +1,2 @@
-var placeholder = require("./placeholder");
-placeholder.placeholder();
+var helloWorld = require("./helloWorld");
+helloWorld.sayHello();

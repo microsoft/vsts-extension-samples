@@ -1,47 +1,45 @@
 {
     "manifestVersion": 1,
-    "extensionId": "placeholder",
-    "name": "placeholder",
-    "version": "0.0.0",
-    "publisher": "placeholder",
-    "description": "placeholder",
-    "public": "placeholder",
+    "extensionId": "helloworld",
+    "name": "Hello World",
+    "version": "0.1.0",
+    "publisher": "contoso",
+    "description": "It's a wonderful world.",
+    "public": true,
     "galleryFlags": [
-        "placeholder"
+        "Preview"
     ],
     "icons": {
-        "default": "images/placeholder_logo.png",
-        "large": "images/placeholder_logo_large.png"
+        "default": "images/helloWorld_logo.png",
+        "large": "images/helloWorld_logo_large.png"
     },
     "categories": [
-        "placeholder"
+        "Build and release"
     ],
     "tags": [
-        "placeholder"
+        "hello",
+        "world"
     ],
     "links": {
         "support": {
-            "uri": "placeholder"
-        },
-        "pricing": {
-            "uri": "placeholder"
+            "uri": "http://aka.ms/sample-vsts-task-extension"
         },
         "home": {
-            "uri": "placeholder"
+            "uri": "http://aka.ms/sample-vsts-task-extension"
         }
     },
     "branding": {
-        "color": "placeholder",
-        "theme": "placeholder"
+        "color": "#12ab34",
+        "theme": "light"
     },
     "content": {
         "details": {
-            "path": "placeholder.md"
+            "path": "helloWorld.md"
         }
     },
     "files": [
         {
-            "path": "tasks/placeholder"
+            "path": "tasks/helloWorld"
         },
         {
             "path": "images",
@@ -55,13 +53,13 @@
     ],
     "contributions": [
         {
-            "id": "placeholder",
+            "id": "contoso-helloworld-task",
             "type": "ms.vss-distributed-task.task",
             "targets": [
                 "ms.vss-distributed-task.tasks"
             ],
             "properties": {
-                "name": "tasks/placeholder"
+                "name": "tasks/helloWorld"
             }
         }
     ]

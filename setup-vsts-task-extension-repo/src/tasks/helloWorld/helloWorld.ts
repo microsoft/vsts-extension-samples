@@ -2,6 +2,9 @@
 
 import tl = require("vsts-task-lib/task");
 
-export function placeholder(): void {
-    var placeholder = tl.getInput("placeholder", true);
+export function sayHello(): void {
+    var greeting = tl.getInput("greeting", true);
+    var greeted = tl.getInput("greeted", true);
+
+    console.log(greeting + " " + greeted + "!");
 }

@@ -1,7 +1,7 @@
 /// <reference path="../../../typings/tsd.d.ts" />
 /// <reference path="../../../typings/vsts-task-lib/vsts-task-lib.d.ts" />
 
-import * as placeholder from "../../../src/tasks/placeholder/placeholder";
+import * as helloWorld from "../../../src/tasks/helloWorld/helloWorld";
 
 import chai = require("chai");
 import sinon = require("sinon");
@@ -11,7 +11,7 @@ import tl = require("vsts-task-lib/task");
 chai.should();
 chai.use(sinonChai);
 
-describe("placeholder.placeholder", (): void => {
+describe("helloWorld.sayHello", (): void => {
     var sandbox;
     var getInputStub;
 
@@ -24,9 +24,16 @@ describe("placeholder.placeholder", (): void => {
         sandbox.restore();
     });
 
-    it("should pass", (): void => {
-        placeholder.placeholder();
+    it("should correctly greet the correct person", (): void => {
+        var consoleLogStub = sandbox.stub(console, "log");
 
-        getInputStub.withArgs("placeholder").should.have.been.calledOnce;
+        getInputStub.withArgs("greeting").returns("Happy Diwali");
+        getInputStub.withArgs("greeted").returns("folks");
+
+        helloWorld.sayHello();
+
+        consoleLogStub.withArgs("Happy Diwali folks!").should.have.been.calledOnce;
+
+        consoleLogStub.restore();
     });
 });
