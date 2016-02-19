@@ -1,0 +1,68 @@
+{
+    "manifestVersion": 1,
+    "extensionId": "placeholder",
+    "name": "placeholder",
+    "version": "0.0.0",
+    "publisher": "placeholder",
+    "description": "placeholder",
+    "public": "placeholder",
+    "galleryFlags": [
+        "placeholder"
+    ],
+    "icons": {
+        "default": "images/placeholder_logo.png",
+        "large": "images/placeholder_logo_large.png"
+    },
+    "categories": [
+        "placeholder"
+    ],
+    "tags": [
+        "placeholder"
+    ],
+    "links": {
+        "support": {
+            "uri": "placeholder"
+        },
+        "pricing": {
+            "uri": "placeholder"
+        },
+        "home": {
+            "uri": "placeholder"
+        }
+    },
+    "branding": {
+        "color": "placeholder",
+        "theme": "placeholder"
+    },
+    "content": {
+        "details": {
+            "path": "placeholder.md"
+        }
+    },
+    "files": [
+        {
+            "path": "tasks/placeholder"
+        },
+        {
+            "path": "images",
+            "addressable": true
+        }
+    ],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "placeholder",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "tasks/placeholder"
+            }
+        }
+    ]
+}

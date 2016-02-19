@@ -1,0 +1,19 @@
+{
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "del": "^2.2.0",
+    "gulp": "^3.9.0",
+    "gulp-istanbul": "^0.10.3",
+    "gulp-mocha": "^2.2.0",
+    "gulp-tsb": "^1.10.1",
+    "gulp-tslint": "^4.3.1",
+    "shelljs": "^0.6.0",
+    "sinon": "^1.17.3",
+    "sinon-chai": "^2.8.0",
+    "tslint": "^3.3.0",
+    "typescript": "^1.7.5"
+  },
+  "dependencies": {
+    "vsts-task-lib": "^0.5.10"
+  }
+}

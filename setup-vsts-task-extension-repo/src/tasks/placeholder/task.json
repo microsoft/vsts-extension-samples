@@ -1,0 +1,37 @@
+{
+    "id": "placeholder",
+    "name": "placeholder",
+    "friendlyName": "placeholder",
+    "description": "placeholder.",
+	"helpMarkDown": "[More Information](placeholder)",
+    "category": "placeholder",
+	"visibility": [
+        "placeholder"
+    ],
+    "author": "placeholder",
+    "version": {
+        "Major": 0,
+        "Minor": 0,
+        "Patch": 0
+    },
+    "demands": [
+        "placeholder"
+    ],
+    "inputs": [
+        {
+            "name": "placeholder",
+            "type": "placeholder",
+            "label": "placeholder",
+            "defaultValue": "placeholder",
+            "required": "placeholder",
+            "helpMarkDown": "placeholder"
+        }
+    ],
+    "instanceNameFormat": "placeholder",
+    "execution": {
+        "Node": {
+            "target": "invokeplaceholder.js",
+            "argumentFormat": ""
+        }
+    }
+}
