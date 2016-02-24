@@ -1,0 +1,40 @@
+{
+	"manifestVersion": 1,
+	"id": "rm-tab-extension-sample",
+	"version": "0.1.5",
+	"name": "RM deployment status - tab",
+	"description": "RM tab extension sample",
+	"publisher": "openalm",
+	"targets": 
+	[
+		{
+			"id": "Microsoft.VisualStudio.Services"
+		}
+	],
+	"contributions": 
+	[
+		{
+			"id": "rm-tab-sample",
+			"type": "ms.vss-releaseManagement-web.release-summary-tab",
+			"targets": [ "ms.vss-releaseManagement-web.release-details-view" ],
+			"properties": 
+			{
+				"name": "Deployment status",
+				"uri": "index.html",
+				"order": "99"
+			}
+		}
+	],
+	"files": 
+	[
+		{
+			"path": "index.html", "addressable": true
+		},
+		{
+			"path": "scripts", "addressable": true
+		},
+		{
+			"path": "sdk/scripts", "addressable": true
+		}
+	]
+}

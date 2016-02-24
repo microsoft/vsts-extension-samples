@@ -40,6 +40,18 @@ Follow the steps under Before you begin at [Publishing from the Command Line](ht
 
 ## What's available
 
+### Release deployment status enhancer - Summary
+This extension showcases how you can make a summary section contribution to Release page.
+
+Once this extension is installed, it shows an enhanced view of the deployment status to each environment
+![image](rm-deployment-status-enhancer-summary/images/screenshot.PNG)
+
+### Release deployment status enhancer - Tab
+This extension showcases how you can make a tab contribution to Release page.
+
+Once this extension is installed, it shows an enhanced view of the deployment status to each environment
+![image](rm-deployment-status-enhancer-tab/images/screenshot.PNG)
+
 ### Branch delete
 
 ![image](branch-delete/images/delete-action-screenshot.png)
