@@ -1,0 +1,40 @@
+{
+	"manifestVersion": 1,
+	"id": "rm-summary-section-extension-sample",
+	"version": "0.1.5",
+	"name": "RM deployment status - summary",
+	"description": "RM summary section extension sample",
+	"publisher": "openalm",
+	"targets": 
+	[
+		{
+			"id": "Microsoft.VisualStudio.Services"
+		}
+	],
+	"contributions": 
+	[
+		{
+			"id": "rm-summary-section-sample",
+			"type": "ms.vss-releaseManagement-web.release-summary-section",
+			"targets": [ "ms.vss-releaseManagement-web.release-details-summary-tab" ],
+			"properties": 
+			{
+				"name": "Deployment status",
+				"uri": "index.html",
+				"order": "99"
+			}
+		}
+	],
+	"files": 
+	[
+		{
+			"path": "index.html", "addressable": true
+		},
+		{
+			"path": "scripts", "addressable": true
+		},
+		{
+			"path": "sdk/scripts", "addressable": true
+		}
+	]
+}
