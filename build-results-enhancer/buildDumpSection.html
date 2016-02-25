@@ -6,8 +6,11 @@
         VSS.init( { 
             usePlatformScripts: true, 
             moduleLoaderConfig: { 
-                paths: { "enhancer": "dist/enhancer" } 
-        } });
+                paths: { 
+                    "enhancer": "dist/enhancer" 
+                } 
+            }
+        });
         
         VSS.ready(function() {
             require(["enhancer/dump"], function () { });
