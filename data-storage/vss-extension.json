@@ -4,7 +4,7 @@
     "version": "0.1.0",
     "name": "Data Storage Sample",
     "description": "Explore how to store settings and documents using the provided data storage service.",
-    "publisher": "fabrikam",
+    "publisher": "Fabrikam",
     "icons": {
         "default": "images/fabrikam-logo.png"
     },
@@ -26,11 +26,15 @@
             "addressable": true
         },
         {
-            "path": "extensionData.html",
+            "path": "settings.html",
             "addressable": true
-        },     
+        },  
         {
-            "path": "scripts",
+            "path": "notes.html",
+            "addressable": true
+        },    
+        {
+            "path": "dist",
             "addressable": true
         },     
         {
@@ -38,18 +42,44 @@
             "addressable": true
         }    
     ],    
-    "contributions": [       
+    "contributions": [    
         {
-            "id": "data-storage-hub",
-            "type": "ms.vss-web.hub",
-            "description": "Adds an 'Extension Data Sample' hub to the Home hub group which shows how to use the extension data service apis.",
+            "id": "data-storage-hub-group",
+            "type": "ms.vss-web.hub-group",
+            "description": "Adds an 'Data Storage' hub group",
             "targets": [
-                "ms.vss-web.home-hub-group"
+                "ms.vss-web.project-hub-groups-collection"
             ],
             "properties": {
                 "name": "Data Storage",
-                "order": 22,
-                "uri": "extensionData.html"
+                "order": 50
+            }
+        },   
+        {
+            "id": "settings-hub",
+            "type": "ms.vss-web.hub",
+            "description": "Adds an 'Extension Data Sample' hub to the Data Storage hub group which shows how to use the extension data settings apis.",
+            "targets": [
+                ".data-storage-hub-group"
+            ],
+            "properties": {
+                "name": "Settings",
+                "order": 1,
+                "uri": "settings.html"
+            }
+        },
+        {
+            
+            "id": "notes-hub",
+            "type": "ms.vss-web.hub",
+            "description": "Adds an 'Notes' hub to the Home hub group which shows how to use the extension data document apis.",
+            "targets": [
+                ".data-storage-hub-group"
+            ],
+            "properties": {
+                "name": "Notes",
+                "order": 2,
+                "uri": "notes.html"
             }
         }  
     ]
