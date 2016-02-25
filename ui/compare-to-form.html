@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Compare To form</title>
+    <title>Compare To form sample</title>
 </head>
 
-<script src="/lib/VSS.SDK.js"></script>
+<script src="bower_components/vss-web-extension-sdk/lib/VSS.SDK.min.js"></script>
+
 <script type="text/javascript">
     VSS.init({
         explicitNotifyLoaded: true,
@@ -63,7 +64,7 @@
             }
         })();
         
-        VSS.register("compareToForm", compareToForm);
+        VSS.register("compare-to-form", compareToForm);
         VSS.notifyLoadSucceeded();
     });
 

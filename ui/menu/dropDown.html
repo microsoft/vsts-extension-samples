@@ -1,25 +1,24 @@
 ﻿<!DOCTYPE html>
 <head>
-    <title>Associated Items</title>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/main.css" />
-    <script src="/lib/VSS.SDK.js"></script>
+    <title>Dropdown menu sample</title>
+    <meta charset="UTF-8">  
+    <script src="../bower_components/vss-web-extension-sdk/lib/VSS.SDK.min.js"></script>
 </head>
 <body>
     <script type="text/javascript">
         // Initialize the VSS sdk
         VSS.init({
             usePlatformScripts: true,
-            moduleLoaderConfig: {
-                paths: {
-                    "Scripts/": "/scripts/"
-                }
+            moduleLoaderConfig: { 
+                paths: { 
+                    "menu": "menu/scripts" 
+                } 
             }
         });
 
         // Wait for the SDK to be initialized
         VSS.ready(function () {
-            require(["Scripts/ItemView"], function (ItemsView ) {
+            require(["menu/dropDown"], function (ItemsView ) {
 				
 			});
         });

@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <head>
     <title>Background contributions</title>
-    <script src="/lib/VSS.SDK.js"></script>
+    <script src="../bower_components/vss-web-extension-sdk/lib/VSS.SDK.min.js"></script>
 </head>
 <body>
     <script type="text/javascript">
@@ -10,7 +10,7 @@
         var compareMenu = {
             execute: function (actionContext) {
                 
-                VSS.getService("ms.vss-web.dialog-service").then(function (dialogSvc) {
+                VSS.getService(VSS.ServiceIds.Dialog).then(function (dialogSvc) {
                 
                     var compareToForm;
                 
@@ -22,7 +22,7 @@
                         height: 400,
                         okText: "Compare",
                         okCallback: function (result) {
-                            VSS.getService("ms.vss-web.navigation-service").then(function (navigationSvc) {
+                            VSS.getService(VSS.ServiceIds.Navigation).then(function (navigationSvc) {
                                 var newHash = [
                                     "_a=compare",
                                     "path=" + encodeURIComponent(actionContext.item.path),
@@ -41,8 +41,8 @@
                         item: actionContext  
                     };
                     
-                    dialogSvc.openDialog(extInfo.publisherId + "." + extInfo.extensionId + "." + "compareToForm", dialogOptions, contributionContext).then(function (dialog) {
-                        dialog.getContributionInstance("compareToForm").then(function (compareToFormInstance) {
+                    dialogSvc.openDialog(extInfo.publisherId + "." + extInfo.extensionId + "." + "compare-to-form", dialogOptions, contributionContext).then(function (dialog) {
+                        dialog.getContributionInstance("compare-to-form").then(function (compareToFormInstance) {
                             
                             compareToForm = compareToFormInstance;
                             
@@ -61,7 +61,7 @@
             }
         };
         
-        VSS.register("compareMenu", compareMenu);
+        VSS.register("compare-menu-action", compareMenu);
         
     </script>
 </body>
