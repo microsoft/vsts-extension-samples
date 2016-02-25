@@ -1,15 +1,20 @@
 ﻿<!DOCTYPE html>
 <head>
-    <script src="/lib/VSS.SDK.js"></script>
+    <script src="bower_components/vss-web-extension-sdk/lib/VSS.SDK.min.js"></script>
+    
     <script type="text/javascript">
-    VSS.init({ usePlatformScripts: true, moduleLoaderConfig: { paths: { "scripts": "out/scripts" } } });
-    VSS.ready(function() {
-       require(["scripts/status"], function () { });
-    });      
+        VSS.init( { 
+            usePlatformScripts: true, 
+            moduleLoaderConfig: { 
+                paths: { "enhancer": "dist/enhancer" } 
+            } 
+        });
+        
+        VSS.ready(function() {
+            require(["enhancer/status"], function () { });
+        });        
     </script>
-    <style>
- 
-    </style>
+
 </head>
 
 <body>

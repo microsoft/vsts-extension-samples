@@ -1,60 +1,26 @@
-# Visual Studio Online Extension Samples
-
-This repo contains samples to help jump-start you in your development of [Extensions for Visual Studio Online](http://www.visualstudio.com/integrate/extensions/overview).
-
-## Getting started
-
-### Pre-requisites
-
-1. [Join the Visual Studio Partner program](http://www.vsipprogram.com/join) to get early access to the Extensions feature
-2. Verify the Extensions feature has been enabled on your account by navigating to ```https://youraccount.visualstudio.com/DefaultCollection/_admin/_apps/hub/ms.vss-extmgmt-web.manageExtensions-collection```.
-3. Available local or cloud web server with HTTPS (IIS, Node.js, Azure Web App, Heroku, etc)
-
-### Steps
-
-The samples are published to the gallery. You can install them to your account by doing the following:
-
-1. Go to https://youraccount.visualstudio.com/DefaultCollection/_admin/_apps/hub/ms.vss-extmgmt-web.manageExtensions-collection
-2. Locate the sample extension you want to install and click "Install".
-
-#### Publishing the extensions yourself
-
-If you want to edit the samples to play around with them, you will need to publish them yourself.
-
-##### Before you begin
-Follow the steps under Before you begin at [Publishing from the Command Line](https://www.visualstudio.com/en-us/integrate/extensions/publish/command-line). Save your Personal Access Token for later use.
-
-##### Publish
-1. Clone the samples  
-    `git clone https://github.com/Microsoft/vso-extension-samples.git`  
-    `cd vso-extension-samples`
-    
-2. Package and publish an extension  
-    `cd <sample>`  
-    Note: <sample> is the directory containing the sample you want to publish.
-    
-    `vset publish --publisher <P> --token <T> --share-with <A> --save`  
-    Note: `<P>` is the ID of the publisher you created in the "Before you begin" steps. `<T>` is the Personal Access Token you generated in "Before you begin" above. `<A>` is the name of your VSO account.  
-    Note: From now on, if you need to make changes to your manifest and re-publish the extension, you just type `vset publish`. Your token and share options are remembered.  
-4. Install by going to https://youraccount.visualstudio.com/_admin/_apps/hub/ms.vss-extensionManagement-web.manageExtensions. Find the extension you published under the Shared With Me category. Click "Install" to install the extension.
+# Extension Samples
+for Visual Studio Team Services
+ 
+Samples to help jump-start you in your development of an [Extension for Visual Studio Team Services](http://www.visualstudio.com/integrate/extensions/overview).
 
 ## What's available
 
-### Branch delete
+### Contributions Guide
 
-![image](branch-delete/images/delete-action-screenshot.png)
+![image](contributions-guide/images/hub-point.png)
 
-Clean up old or unneeded Git branches right from within Visual Studio Online.
+See the places where you can extend and enhance the user's web experience with an extension ---- right from within the web experience.
 
-### Contribution guide
-
-![image](contributions-guide/images/context-menu-screenshot.png)
-
-Discover all the places in Visual Studio Online you can extend, including hubs, toolbars, and context menus, and more.
+* [Learn more](./contributions-guide/readme.md)
+* [Install via the Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-samples.samples-contributions-guide)
  
-### Build inspector
+### Build Inspector
 
-Demonstrates advanced extension concepts like AMD loading, using UI controls, history, and more. This sample is written in TypeScript. The compiled JS files are included in the /out directory, but changes will need to be re-compiled. Open readme.txt for instructions.
+Learn about advanced extension concepts like module loading, using UI controls, history, and more.
+
+* [Learn more](./build-inspector/readme.md)
+ 
+Note: this sample is written in TypeScript.
 
 ### UI
 
@@ -62,11 +28,9 @@ Demonstrates advanced extension concepts like AMD loading, using UI controls, hi
 
 Explore different UI controls, including menus, toolbars, custom controls, and more.
 
-### Public events (for Team Calendar)
+### Public Events (for Team Calendar)
 
-Adds an event source to the [Team Calendar extension](https://github.com/Microsoft/vso-team-calendar) for public holidays. Note that this sample contributes *to another extension* rather than core Visual Studio Online.
-
-This sample is written in TypeScript. The compiled JS files are included in the /out directory, but changes will need to be re-compiled. Open readme.txt for instructions.
+Custom event source for the [Team Calendar extension](https://github.com/Microsoft/vso-team-calendar) for public holidays. 
 
 ### Build Results Enhancer
 

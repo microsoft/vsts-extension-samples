@@ -1,0 +1,40 @@
+﻿.form-inline {
+    display: table;
+    font-size: 14px;
+}
+
+.form-inline .form-pair {
+    display: table-row;
+}
+
+.form-inline .form-key {
+    display: table-cell;
+    vertical-align: top;
+    padding: 6px 16px 0px 10px;
+    font-weight: bold
+}
+
+.form-inline .form-value {
+    display: table-cell;
+    padding-top: 6px;
+}
+
+.note-content {
+    position: absolute;
+    top: 185px;
+    left: 15px;
+    right: 0;
+    bottom: 0;
+}
+
+.notes-grid-container {
+    position: absolute;
+    top: 30px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.notes-grid {
+    height: 100%;
+}

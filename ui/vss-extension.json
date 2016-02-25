@@ -1,29 +1,48 @@
 {
     "manifestVersion": 1.0,
     "id": "samples-ui",
-    "version": "0.1.0",
+    "version": "0.1.7",
     "name": "UI Controls (Sample)",
     "description": "Explore different UI controls, including menus, toolbars, custom controls, and more.",
-    "baseUri": "https://localhost/ui",
     "publisher": "fabrikam",
+    "public": false,
     "icons": {
         "default": "images/fabrikam-logo.png"
     },
-    "tags": [
-        "Sample"
-    ],
     "categories": [
-        "Sync and integration"
-    ],  
+        "Developer samples"
+    ],
     "targets": [
         {
             "id": "Microsoft.VisualStudio.Services"
         }
     ],
-    "scopes": ["vso.work", "vso.work_write"],
+    "scopes": [
+        "vso.work",
+        "vso.code",
+        "vso.build"  
+    ],
+    "files": [
+        {
+            "path": "images",
+            "addressable": true
+        },
+        {
+            "path": "menu",
+            "addressable": true
+        },
+        {
+            "path": "compare-to-form.html",
+            "addressable": true
+        },
+        {
+            "path": "bower_components/vss-web-extension-sdk/lib/VSS.SDK.min.js",
+            "addressable": true
+        }
+    ],
     "contributions": [
         {
-            "id": "sample-ui-group",
+            "id": "sample-hub-group",
             "type": "ms.vss-web.hub-group",
             "description": "Adds a 'Sample UI' hub group",
             "targets": [
@@ -35,70 +54,70 @@
             }
         },
         {
-            "id": "simple-menu",
+            "id": "simple-menu-hub",
             "type": "ms.vss-web.hub",
             "description": "Adds a 'Simple' hub to the 'Sample UI' hub group to show basic usage of the menu control.",
             "targets": [
-                ".sample-ui-group"
+                ".sample-hub-group"
             ],
             "properties": {
                 "name": "Simple",
                 "order": 100,
-                "uri": "menu.html"
+                "uri": "menu/simple.html"
             }
         },
         {
-            "id": "dynamic-menu",
+            "id": "sample-action-provider",
+            "type": "ms.vss-web.action-provider",
             "targets": [
                 "ms.vss-code-web.source-grid-item-menu"
             ],
-            "type": "ms.vss-web.action-provider",
             "properties": {
                 "group": "contributed",
-                "uri": "dynamic-menu.html"
+                "uri": "menu/dynamic.html"
             }
         },
         {
-            "id": "control-menu",
+            "id": "control-menu-hub",
             "type": "ms.vss-web.hub",
             "description": "Adds a 'Custom Control' hub to the 'Sample UI' hub group to show more advanced use of the menu control.",
             "targets": [
-                ".sample-ui-group"
+                ".sample-hub-group"
             ],
             "properties": {
                 "name": "Custom Control",
                 "order": 100,
-                "uri": "menu-control.html"
+                "uri": "menu/control.html"
             }
         },
         {
-            "id": "dropdown-menu",
+            "id": "dropdown-menu-hub",
             "type": "ms.vss-web.hub",
             "description": "Adds a 'Dropdown' hub to the 'Sample UI' hub group to show usage of a dropdown menu.",
             "targets": [
-                ".sample-ui-group"
+                ".sample-hub-group"
             ],
             "properties": {
                 "name": "Dropdown",
                 "order": 100,
-                "uri": "menu-dropdown.html"
+                "uri": "menu/dropDown.html"
             }
         },
         {
-            "id": "context-menu",
+            "id": "context-menu-hub",
             "type": "ms.vss-web.hub",
             "description": "Adds a 'Context Menu' hub to the 'Sample UI' hub group to show usage of a context menu.",
             "targets": [
-                ".sample-ui-group"
+                ".sample-hub-group"
             ],
             "properties": {
                 "name": "Context Menu",
                 "order": 100,
-                "uri": "menu-context.html"
+                "uri": "menu/context.html"
             }
         },
         {
-            "id": "compareMenu",
+            "id": "compare-menu-action",
             "type": "ms.vss-web.action",
             "description": "Adds a 'Compare...' menu item to context menus on files from the Code Explore view which demonstrates how to raise modal dialogs to collect information.",
             "targets": [
@@ -108,93 +127,16 @@
                 "title": "Compare...",
                 "icon": "images/show-properties.png",
                 "group": "actions",
-                "uri": "menu-contributions.html"
+                "uri": "menu/contributions.html"
             }
         },
         {
-            "id": "compareToForm",
+            "id": "compare-to-form",
             "type": "ms.vss-web.control",
             "description": "The content to show within the contributed Compare... menu item of this extension.",
-            "targets": [ ],
+            "targets": [],
             "properties": {
-                "uri": "compareToForm.html"
-            }
-        },
-        {
-            "id": "eds",
-            "type": "ms.vss-web.hub",
-            "description": "Adds an 'Extension Data Sample' hub to the Home hub group which shows how to use the extension data service apis.",
-            "targets": [
-                "ms.vss-web.home-hub-group"
-            ],
-            "properties": {
-                "name": "Extension Data Sample",
-                "order": 22,
-                "uri": "extensionData.html"
-            }
-        },
-        {
-            "id": "work-item-form-service",
-            "type": "ms.vss-web.hub",
-            "description": "Adds a 'WorkItem Service' hub to the 'Sample UI' hub group to show usage of the work item service.",
-            "targets": [
-                ".sample-ui-group"
-            ],
-            "properties": {
-                "name": "WorkItem Service",
-                "order": 110,
-                "uri": "workItemService.html"
-            }
-        },
-        {
-            "id": "sample-work-item-menu",
-            "type": "ms.vss-web.action",
-            "description": "Sample toolbar item which updates the title of a work item",
-            "targets": [
-                "ms.vss-work-web.work-item-context-menu"
-            ],
-            "properties": {
-                "text": "Try me!",
-                "title": "Updates the title of the work item from the extension",
-                "toolbarText": "Try me!",
-                "icon": "images/show-properties.png",
-                "uri": "menu-workItemToolbarButton.html"
-            }
-        },
-        {
-            "id": "sample-work-item-form-observer",
-            "type": "ms.vss-work-web.work-item-notifications",
-            "description": "Gets events about the current work item form for the 'Try Me!' toolbar button",
-            "targets": [
-                "ms.vss-work-web.work-item-form"
-            ],
-            "properties": {
-                "uri": "menu-workItemToolbarButton.html"
-            }
-        },
-        {
-            "id": "sample-work-item-form-page",
-            "type": "ms.vss-work-web.work-item-form-page",
-            "description": "Custom work item form page",
-            "targets": [
-                "ms.vss-work-web.work-item-form"
-            ],
-            "properties": {
-                "name": "My Page",
-                "uri": "workItemPage.html"
-            }
-        },
-        {
-            "id": "sample-work-item-form-group",
-            "type": "ms.vss-work-web.work-item-form-group",
-            "description": "Custom work item form group",
-            "targets": [
-                "ms.vss-work-web.work-item-form"
-            ],
-            "properties": {
-                "name": "My Group",
-                "uri": "workItemGroup.html",
-                "height": 600
+                "uri": "compare-to-form.html"
             }
         }
     ]

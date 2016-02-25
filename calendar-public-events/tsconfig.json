@@ -6,8 +6,6 @@
         "rootDir": "src/"
     },
     "files": [
-        "src/enhancer/dump.ts",
-        "src/enhancer/status.ts",
-        "src/enhancer/tab.ts"
+        "src/PublicEvents/PublicEventsSource.ts"
     ]
 }

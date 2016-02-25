@@ -1,0 +1,56 @@
+{
+    "manifestVersion": 1.0,
+    "id": "samples-data-storage",
+    "version": "0.1.0",
+    "name": "Data Storage Sample",
+    "description": "Explore how to store settings and documents using the provided data storage service.",
+    "publisher": "fabrikam",
+    "icons": {
+        "default": "images/fabrikam-logo.png"
+    },
+    "categories": [
+        "Developer samples"
+    ],  
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ], 
+    "files": [
+        {
+            "path": "css",
+            "addressable": true
+        },
+        {
+            "path": "images",
+            "addressable": true
+        },
+        {
+            "path": "extensionData.html",
+            "addressable": true
+        },     
+        {
+            "path": "scripts",
+            "addressable": true
+        },     
+        {
+            "path": "bower_components/vss-web-extension-sdk/lib/VSS.SDK.min.js",
+            "addressable": true
+        }    
+    ],    
+    "contributions": [       
+        {
+            "id": "data-storage-hub",
+            "type": "ms.vss-web.hub",
+            "description": "Adds an 'Extension Data Sample' hub to the Home hub group which shows how to use the extension data service apis.",
+            "targets": [
+                "ms.vss-web.home-hub-group"
+            ],
+            "properties": {
+                "name": "Data Storage",
+                "order": 22,
+                "uri": "extensionData.html"
+            }
+        }  
+    ]
+}

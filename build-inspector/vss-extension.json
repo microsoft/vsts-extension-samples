@@ -1,11 +1,11 @@
 {
     "manifestVersion": 1,
     "id": "samples-build-inspector",
-    "version": "0.1.0",
+    "version": "0.2.3",
     "name": "Build Inspector",
-    "description": "A simple extension that demonstrates how to show details for a Visual Studio Online resource.",
-    "baseUri": "https://localhost/build-inspector",
+    "description": "A simple extension that demonstrates how to show details for a Visual Studio Team Services resource.",
     "publisher": "fabrikam",
+    "public": false,
     "icons": {
         "default": "images/fabrikam-logo.png"
     },
@@ -14,12 +14,38 @@
         "Sample"
     ],
     "categories": [
-        "Sync and integration"
+        "Developer samples"
     ],
     "targets": [
         {
             "id": "Microsoft.VisualStudio.Services"
         }
+    ],
+    "files": [
+        {
+            "path": "css",
+            "addressable": true          
+        },
+        {
+            "path": "images",
+            "addressable": true          
+        },
+        {
+            "path": "dist",
+            "addressable": true
+        },
+        {
+            "path": "items.html",
+            "addressable": true
+        },
+        {
+            "path": "launch.html",
+            "addressable": true
+        },              
+        {
+            "path": "bower_components/vss-web-extension-sdk/lib/VSS.SDK.min.js",
+            "addressable": true
+        }        
     ],
     "contributions": [
         {

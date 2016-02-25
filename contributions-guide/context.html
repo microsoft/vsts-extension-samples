@@ -1,8 +1,9 @@
 <html>
 <head>
     <title>Web Context</title>
-    <script src="lib/VSS.SDK.js"></script>
+    <script src="bower_components/vss-web-extension-sdk/lib/VSS.SDK.min.js"></script> 
 </head>
+
 <body style="padding-left: 20px; padding-top: 20px; overflow-y: auto; background-color: #ddd">
     
     <h3>Web Context</h3>
@@ -18,7 +19,7 @@
         // Show context info when ready
         VSS.ready(function () {
             var context = VSS.getWebContext();
-            var configuration = VSS.getConfiguration();
+            
             document.getElementById("context-display").textContent = JSON.stringify(context, null, 4);
 
             // Used for tab contributions

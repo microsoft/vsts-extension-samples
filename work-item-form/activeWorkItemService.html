@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Work item form service sample</title>
+</head>
+
+<body>
+    <script src="bower_components/vss-web-extension-sdk/lib/VSS.SDK.min.js"></script>
+    
+    <script>
+        VSS.init({ usePlatformScripts: true });
+        VSS.ready(function() {
+            var activeWorkItemServiceSample = (function () {
+                "use strict";
+            
+                return {
+                    execute: function (ctx) {
+                        console.log(JSON.stringify(ctx));
+                    }
+                };
+            }());
+            
+            VSS.register("activeWorkItemServiceSample", activeWorkItemServiceSample);        
+        });
+    </script>
+</body>
+
+</html>

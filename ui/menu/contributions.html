@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<head>
+    <title>Background contributions</title>
+    <script src="../bower_components/vss-web-extension-sdk/lib/VSS.SDK.min.js"></script>
+</head>
+<body>
+    <script type="text/javascript">
+        VSS.init();
+
+        var compareMenu = {
+            execute: function (actionContext) {
+                
+                VSS.getService(VSS.ServiceIds.Dialog).then(function (dialogSvc) {
+                
+                    var compareToForm;
+                
+                    var extInfo = VSS.getExtensionContext();
+                    
+                    var dialogOptions = {
+                        title: "Compare to",
+                        width: 600,
+                        height: 400,
+                        okText: "Compare",
+                        okCallback: function (result) {
+                            VSS.getService(VSS.ServiceIds.Navigation).then(function (navigationSvc) {
+                                var newHash = [
+                                    "_a=compare",
+                                    "path=" + encodeURIComponent(actionContext.item.path),
+                                    "oversion=" + encodeURIComponent("GB" + result.branch),
+                                    "mversion=" + encodeURIComponent("GB" + actionContext.version)
+                                ];
+                                navigationSvc.setHash(newHash.join('&')); 
+                            });
+                        },
+                        getDialogResult: function () {
+                            return compareToForm ? compareToForm.getFormInputs() : null;
+                        }
+                    };
+                    
+                    var contributionContext = {
+                        item: actionContext  
+                    };
+                    
+                    dialogSvc.openDialog(extInfo.publisherId + "." + extInfo.extensionId + "." + "compare-to-form", dialogOptions, contributionContext).then(function (dialog) {
+                        dialog.getContributionInstance("compare-to-form").then(function (compareToFormInstance) {
+                            
+                            compareToForm = compareToFormInstance;
+                            
+                            // Subscribe to form input changes and update the Ok enabled state
+                            compareToForm.onFormChanged(function(formInput) {
+                                dialog.updateOkButton(formInput.branch && actionContext.version !== "GB" + formInput.branch);
+                            });
+                            
+                            // Get the initial ok enabled state
+                            compareToForm.getFormInput().then(function (formInput) {
+                                dialog.updateOkButton(formInput.branch && actionContext.version !== "GB" + formInput.branch);
+                            });
+                        });
+                    });
+                });
+            }
+        };
+        
+        VSS.register("compare-menu-action", compareMenu);
+        
+    </script>
+</body>
+</html>

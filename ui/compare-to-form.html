@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Compare To form sample</title>
+</head>
+
+<script src="bower_components/vss-web-extension-sdk/lib/VSS.SDK.min.js"></script>
+
+<script type="text/javascript">
+    VSS.init({
+        explicitNotifyLoaded: true,
+        usePlatformScripts: true
+    });
+    
+    VSS.require([
+        "VSS/Service",
+        "VSS/Controls",
+        "VSS/Controls/Combos",
+        "TFS/VersionControl/GitRestClient"], 
+        function (Service, Controls, Combos, GitWebApi) {
+        
+        var compareToForm = (function() {
+            
+            var formChangedCallbacks = [];
+            var branchSelector;
+            
+            function getFormInput() {
+                return {
+                    branch: branchSelector ? branchSelector.getText() : null
+                };
+            }
+            
+            function triggerCallbacks() {
+                var formInput = getFormInput();
+                formChangedCallbacks.forEach(function (callback) {
+                    callback(formInput);
+                });
+            }
+            
+            branchSelector = Controls.create(Combos.Combo, $("#main-container"), {
+                mode: "drop",
+                allowEdit: false,
+                source: [],
+                change: function (arg) {
+                    triggerCallbacks();
+                }
+            });
+            
+            var itemContext = VSS.getConfiguration().item;
+            var gitClient = Service.getClient(GitWebApi.GitHttpClient);
+            gitClient.getBranches(itemContext.gitRepository.id).then(function (branches) {
+                branchSelector.setSource($.map(branches, function (branch) {
+                   return branch.name; 
+                }));
+            });
+            
+            return {
+                getFormInputs: function() {
+                    return getFormInput();
+                },
+                onFormChanged: function (callback) {
+                    formChangedCallbacks.push(callback);
+                }
+            }
+        })();
+        
+        VSS.register("compare-to-form", compareToForm);
+        VSS.notifyLoadSucceeded();
+    });
+
+</script>
+
+<div id="main-container">
+    <label>Select branch:</label>
+</div>
+
+</body>
+</html>

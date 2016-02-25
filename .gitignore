@@ -1,3 +1,8 @@
+dist/
+typings/
+bower_components/
+
+
 # Custom extension manifest
 extension-*.json
 
@@ -6,3 +11,4 @@ settings.vset.json
 
 # VSIX Packages (vset output)
 *.vsix
+
