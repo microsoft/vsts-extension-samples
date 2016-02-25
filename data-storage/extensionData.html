@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Data storage service sample</title>
+    <script src="bower_components/vss-web-extension-sdk/lib/VSS.SDK.min.js"></script> 
+
+</head>
+<body>
+    <script type="text/javascript">
+        // Initialize the VSS SDK
+        VSS.init({
+            usePlatformScripts: true,
+        });
+
+        // Wait for the SDK to be initialized
+        VSS.ready(function () {
+            require(["scripts/extensionData"], function (extensionData) { });
+            VSS.notifyLoadSucceeded();
+        });
+    </script>
+    <div id="vss-extension">
+        <div class="user">
+            <div class="bool">
+                <label>Boolean Value</label>
+                <input class="booleanValue" type="checkbox" />
+            </div>
+            <div class="number">
+                <label>Integer Value</label>
+                <input class="numberValue" />
+            </div>
+            <div class="obj">
+                <label>Object Value 1</label>
+                <input class="objectValue1" />
+
+                <label>Object Value 2</label>
+                <input class="objectValue2" />
+            </div>
+        </div>
+
+        <div class="default">
+            <div class="bool">
+                <label>Boolean Value</label>
+                <input class="booleanValue" type="checkbox" />
+            </div>
+            <div class="number">
+                <label>Integer Value</label>
+                <input class="numberValue" />
+            </div>
+            <div class="obj">
+                <label>Object Value 1</label>
+                <input class="objectValue1" />
+
+                <label>Object Value 2</label>
+                <input class="objectValue2" />
+				
+				<button class="deleteButton">Delete</button>
+            </div>
+        </div>
+
+        <br />
+        <button class="saveButton">Save Settings</button>
+        
+        <div class="note-content">
+            <div class="notes-toolbar-container"></div>
+            <div class="notes-grid-container"></div>
+        </div>
+    </div>
+</body>
+</html>
