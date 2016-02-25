@@ -3,18 +3,23 @@
 <head>
     <title>Data storage service sample</title>
     <script src="bower_components/vss-web-extension-sdk/lib/VSS.SDK.min.js"></script> 
-
+    <link rel="stylesheet" href="css/main.css" />
 </head>
 <body>
     <script type="text/javascript">
         // Initialize the VSS SDK
         VSS.init({
             usePlatformScripts: true,
+            moduleLoaderConfig: {
+                paths: {
+                    "dataStorage": "dist/dataStorage"
+                }
+            }
         });
 
         // Wait for the SDK to be initialized
         VSS.ready(function () {
-            require(["scripts/extensionData"], function (extensionData) { });
+            require(["dataStorage/settings"], function () { });
             VSS.notifyLoadSucceeded();
         });
     </script>
@@ -52,18 +57,11 @@
 
                 <label>Object Value 2</label>
                 <input class="objectValue2" />
-				
-				<button class="deleteButton">Delete</button>
             </div>
         </div>
 
         <br />
         <button class="saveButton">Save Settings</button>
-        
-        <div class="note-content">
-            <div class="notes-toolbar-container"></div>
-            <div class="notes-grid-container"></div>
-        </div>
     </div>
 </body>
 </html>
