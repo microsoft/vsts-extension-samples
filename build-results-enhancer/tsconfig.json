@@ -1,8 +1,13 @@
 {
     "compilerOptions": {
         "module": "amd",
-        "target": "ES5",
-        "outDir": "out/scripts"
+        "target": "es5",
+        "outDir": "dist/",
+        "rootDir": "src/"
     },
-    "files": ["scripts/dump.ts","scripts/status.ts","scripts/tab.ts"]
+    "files": [
+        "src/enhancer/dump.ts",
+        "src/enhancer/status.ts",
+        "src/enhancer/tab.ts"
+    ]
 }

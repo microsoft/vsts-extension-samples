@@ -1,4 +1,4 @@
-/// <reference path='../../lib/vss' />
+/// <reference path='../../typings/main.d.ts' />
 
 import Controls = require("VSS/Controls");
 import VSS_Service = require("VSS/Service");
@@ -23,9 +23,9 @@ export class BuildDumpSection extends Controls.BaseControl {
 	}
 	
 	private _initBuildDump(build: TFS_Build_Contracts.Build) {
-		var span = $("<span />");
-		span.text(JSON.stringify(build));
-		this._element.append(span);
+		var element = $("<pre />");
+		element.text(JSON.stringify(build, null, 2));
+		this._element.append(element);
 	}
 }
 

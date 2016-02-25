@@ -1,11 +1,11 @@
 {
     "manifestVersion": 1,
-    "id": "sample-build-summary-status",
-    "version": "0.1.0",
+    "id": "samples-build-results-enhancer",
+    "version": "0.2.2",
     "name": "Build Results Enhancer",
     "description": "A simple extension that demonstrates how to extend build summary page.",
     "publisher": "fabrikam",
-    "baseUri":"http://localhost/build-results-enhancer",
+    "public": false,
     "icons": {
         "default": "images/fabrikam-logo.png"
     },    
@@ -16,12 +16,38 @@
         "vso.build_execute"
     ],
     "categories": [
-        "Build and release"
+        "Developer samples"
     ],   
     "targets": [
         {
             "id": "Microsoft.VisualStudio.Services"
         }
+    ],
+    "files": [
+        {
+            "path": "images",
+            "addressable": true          
+        },
+        {
+            "path": "dist",
+            "addressable": true
+        },
+        {
+            "path": "buildDumpSection.html",
+            "addressable": true
+        },
+        {
+            "path": "infoTab.html",
+            "addressable": true
+        },
+        {
+            "path": "statusSection.html",
+            "addressable": true
+        },                      
+        {
+            "path": "bower_components/vss-web-extension-sdk/lib/VSS.SDK.min.js",
+            "addressable": true
+        }        
     ],
     "contributions": [
         {
@@ -32,7 +58,7 @@
                 "ms.vss-build-web.build-results-view"
             ],
             "properties": {
-                "name": "Build Info",
+                "name": "Custom Tab",
                  "uri": "infoTab.html"
             }
         },
@@ -45,7 +71,7 @@
                 "ms.vss-build-web.build-results-summary-tab"
             ],
             "properties": {
-                 "name": "Build Status",
+                 "name": "Custom Section",
                  "uri": "statusSection.html",
                  "order": 20,
                  "height": 500
@@ -59,7 +85,7 @@
                 ".build-info-tab"
             ],
             "properties": {
-                 "name": "Build Dump",
+                 "name": "Custom Section 2",
                  "uri": "buildDumpSection.html",
                  "order": 10,
                  "height": 500
