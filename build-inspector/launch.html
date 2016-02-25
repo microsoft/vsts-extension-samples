@@ -1,21 +1,26 @@
 ﻿<!DOCTYPE html>
+
 <head>
-    <script src="sdk/scripts/VSS.SDK.js"></script>
-    <script src="built/scripts/main.js"></script>
-    
+    <script src="bower_components/vss-web-extension-sdk/lib/VSS.SDK.min.js"></script>
+
     <script type="text/javascript">
         VSS.init({
             usePlatformScripts: true,
+            usePlatformStyles: true,
+            explicitNotifyLoaded: true,        
             moduleLoaderConfig: {
                 paths: {
-                    "scripts": "built/scripts"
+                    "inspector": "dist/inspector"
                 }
             }
         });
+        
+        // Wait for the SDK to be initialized then load a script
+        VSS.require(["inspector/launch"], function (items) {
+            VSS.notifyLoadSucceeded();            
+        });
+        
     </script>
 </head>
 
-<body>
-    
-</body>
 </html>

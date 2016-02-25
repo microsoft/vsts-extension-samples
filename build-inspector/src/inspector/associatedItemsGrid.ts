@@ -1,5 +1,4 @@
-﻿/// <reference path='../../typings/vss' />
-/// <reference path='../../typings/tfs' />
+﻿/// <reference path='../../typings/main.d.ts' />
 
 import Controls = require("VSS/Controls");
 import TFS_Build_Contracts = require("TFS/Build/Contracts");

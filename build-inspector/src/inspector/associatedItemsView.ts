@@ -1,11 +1,11 @@
-﻿/// <reference path='../../typings/vss' />
-/// <reference path='../../typings/tfs' />
+﻿/// <reference path='../../typings/main.d.ts' />
+
+import AssociatedItemsTree = require("inspector/associatedItemsTree");
+import AssociatedItemsGrid = require("inspector/associatedItemsGrid");
+import AssociatedItemContent = require("inspector/associatedItemContent");
 
 import NavigationServices = require("VSS/Navigation/Services");
 import Controls = require("VSS/Controls");
-import AssociatedItemsTree = require("scripts/associatedItemsTree");
-import AssociatedItemsGrid = require("scripts/associatedItemsGrid");
-import AssociatedItemContent = require("scripts/associatedItemContent");
 import TFS_Build_Contracts = require("TFS/Build/Contracts");
 import TFS_Wit_Contracts = require("TFS/WorkItemTracking/Contracts");
 import TreeView = require("VSS/Controls/TreeView");

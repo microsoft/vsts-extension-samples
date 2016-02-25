@@ -1,13 +1,14 @@
-/// <reference path='../../typings/vss' />
-/// <reference path='../../typings/tfs' />
+/// <reference path='../../typings/main.d.ts' />
 
-import AssociatedItemsView = require("scripts/associatedItemsView");
+import AssociatedItemsView = require("inspector/associatedItemsView");
+
+import VSS_Common_Contracts = require("VSS/WebApi/Contracts");
 import TFS_Build_Contracts = require("TFS/Build/Contracts");
 import TFS_Build_Client = require("TFS/Build/RestClient");
 import TFS_Wit_Contracts = require("TFS/WorkItemTracking/Contracts");
 import TFS_Wit_Client = require("TFS/WorkItemTracking/RestClient");
+
 import Q = require("q");
-import VSS_Common_Contracts = require("VSS/WebApi/Contracts");
 
 // Parse the query string from iframe
 var query = <IDictionaryStringTo<string>>{};
