@@ -1,5 +1,4 @@
-# Extension Samples
-for Visual Studio Team Services
+# Sample Extensions for Visual Studio Team Services
  
 Samples to help jump-start you in your development of an [Extension for Visual Studio Team Services](http://www.visualstudio.com/integrate/extensions/overview).
 
@@ -46,7 +45,7 @@ You could contribute to build results view in different ways:
 
 Contributing as a tab and a section to our own tab -
 
-![image](build-results-enhancer/images/tab&section.png)
+![image](build-results-enhancer/images/tabAndsection.png)
 
 Contributing as a section to "summary" tab -
 
