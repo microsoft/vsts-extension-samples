@@ -19,14 +19,6 @@
     padding-top: 6px;
 }
 
-.note-content {
-    position: absolute;
-    top: 185px;
-    left: 15px;
-    right: 0;
-    bottom: 0;
-}
-
 .notes-grid-container {
     position: absolute;
     top: 30px;
