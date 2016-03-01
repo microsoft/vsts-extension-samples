@@ -4,22 +4,23 @@ Samples to help jump-start your development of [extensions for Visual Studio Tea
 
 ## Get started
 
-If you plan to package any of the extensions, you will need:
+If you plan to package any of the sample extensions, get:
 
 1. [Node.js](https://nodejs.org)
-2. Bower (`npm install -g bower`)
-3. Team Foundation command line interface (`npm install -g tfx-cli`)
+2. [Bower](http://bower.io/) (`npm install -g bower`)
+3. [Team Foundation command line interface](https://github.com/Microsoft/tfs-cli)(`npm install -g tfx-cli`)
 
-For extensions written in TypeScript, you will need:
+If you plan to compile any of the sample extensions, get:
 
 3. TypeScript 1.7 or higher (`npm install -g typescript`)
 3. Typings (`npm install -g typings`) (manages TypeScript declare files)
 
-### Get the Web extension SDK
+### Get the web extension SDK
 
 Each web extension sample has a `bower.json` file, which references third-party libraries used by the sample, including the [Visual Studio Services Web Extension SDK](https://github.com/Microsoft/vss-web-extension-sdk). This JavaScript file is required by all web extensions.
 
-From the directory of the web extension sample, run:
+From the directory of the sample, run:
+
 ```
 bower install
 ```
@@ -44,13 +45,13 @@ tsc
 
 ### Try the extension in your own Team Services account
 
-Most samples can be run without any modififications on [Visual Studio Team Services](https://www.visualstudio.com/products/visual-studio-team-services-vs). The high-level steps are:
+Most samples can be run without any modififications on [Visual Studio Team Services](https://www.visualstudio.com/products/visual-studio-team-services-vs). The steps are:
 
-0. Create a free [Visual Studio Team Services account](https://app.vssps.visualstudio.com/go/profile?account=true)
-1. Create a [Visual Studio Marketplace Publisher](aka.ms/vsmarketplace-publish) (all extensions are uploaded under a publisher)
-2. Verify the extension's manifst file (`vss-extension.json`) either has the `public` attribute set to `false` or is not specified (this ensures your extension is not inadvertently made available to all Team Services users)
+0. Create a free Visual Studio [Team Services account](https://app.vssps.visualstudio.com/go/profile?account=true)
+1. Create a Visual Studio [Marketplace Publisher](aka.ms/vsmarketplace-publish) (all extensions are uploaded under a publisher)
+2. Verify the extension's manifest file (`vss-extension.json`) either has the `public` attribute set to `false` or is not specified (this ensures your extension is not inadvertently made available to all Team Services users)
 3. Package the extension with the ID of your publisher (run `tfx extension create --publisher MYPUBLISHERID`)
-4. Upload the .vsix file via the [Marketplace publisher management page](https://aka.ms/vsmarketplace-manage)
+4. Upload the produced .vsix file to the [Marketplace](https://aka.ms/vsmarketplace-manage)
 5. Share your extension with your Team Services account (right-click on the published extension and select Share)
 6. Install the extension into the account (click on the published extension's title and then click Install)
 
@@ -96,10 +97,9 @@ You could contribute to build results view in different ways:
 * As a section to the existing "summary" tab in build results view
 * As a tab to the build results view
  
-
 Contributing as a tab and a section to our own tab -
 
-![image](build-results-enhancer/images/tabAndsection.png)
+![image](build-results-enhancer/images/tabAndSection.png)
 
 Contributing as a section to "summary" tab -
 
