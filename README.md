@@ -43,7 +43,7 @@ From the same directory, run:
 tsc
 ```
 
-### Try the extension in your own Team Services account
+### Try the extension in Visual Studio Team Services
 
 Most samples can be run without any modififications on [Visual Studio Team Services](https://www.visualstudio.com/products/visual-studio-team-services-vs). The steps are:
 
