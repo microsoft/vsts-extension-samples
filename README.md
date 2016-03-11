@@ -1,6 +1,6 @@
 # Visual Studio Team Services Sample Extensions
  
-Samples to help jump-start your development of [extensions for Visual Studio Team Services](http://www.visualstudio.com/integrate/extensions/overvi ew).
+Samples to help jump-start your development of [extensions for Visual Studio Team Services](http://www.visualstudio.com/integrate/extensions/overview).
 
 ## Get started
 
@@ -45,10 +45,10 @@ tsc
 
 ### Try the extension in Visual Studio Team Services
 
-Most samples can be run without any modififications on [Visual Studio Team Services](https://www.visualstudio.com/products/visual-studio-team-services-vs). The steps are:
+Most samples can be run without any modifications on [Visual Studio Team Services](https://www.visualstudio.com/products/visual-studio-team-services-vs). The steps are:
 
 0. Create a free Visual Studio [Team Services account](https://app.vssps.visualstudio.com/go/profile?account=true)
-1. Create a Visual Studio [Marketplace Publisher](aka.ms/vsmarketplace-publish) (all extensions are uploaded under a publisher)
+1. Create a Visual Studio [Marketplace Publisher](https://aka.ms/vsmarketplace-publish) (all extensions are uploaded under a publisher)
 2. Verify the extension's manifest file (`vss-extension.json`) either has the `public` attribute set to `false` or is not specified (this ensures your extension is not inadvertently made available to all Team Services users)
 3. Package the extension with the ID of your publisher (run `tfx extension create --publisher MYPUBLISHERID`)
 4. Upload the produced .vsix file to the [Marketplace](https://aka.ms/vsmarketplace-manage)
@@ -65,14 +65,11 @@ See the [full instructions](https://www.visualstudio.com/en-us/integrate/extensi
 
 See the places where you can extend and enhance the user's web experience with an extension ---- right from within the web experience.
 
-* [Learn more](./contributions-guide/readme.md)
 * [Install via the Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-samples.samples-contributions-guide)
  
 ### Build Inspector
 
 Learn about advanced extension concepts like module loading, using UI controls, history, and more.
-
-* [Learn more](./build-inspector/readme.md)
  
 Note: this sample is written in TypeScript.
 
