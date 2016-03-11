@@ -4,13 +4,113 @@
         "version": "1.0.1",
         "name": "My First Set of Extensions",
         "description": "Samples containing different widgets extending dashboards",
-        "publisher": "fabrikam",
+        "publisher": "ramyaraoa",
         "targets": [
             {
                 "id": "Microsoft.VisualStudio.Services"
             }
         ],
          "contributions": [
+		 {
+                "id": "SampleTemplate1",
+                "type": "ms.vss-dashboards-web.widget",
+                "targets": [
+                    "ms.vss-dashboards-web.widget-catalog"
+                ],
+                "properties": {
+                    "name": "Sample Template 1",
+                    "description": "Sample Template 1",
+                    "previewImageUrl": "img/preview.png",                            
+                    "uri": "SampleTemplate1.html",
+                    "supportedSizes": [
+                         {
+                                "rowSpan": 2,
+                                "columnSpan": 2
+                            }
+                        ],
+                    "supportedScopes": ["project_team"]
+                }
+            },
+			{
+                "id": "SampleTemplate2",
+                "type": "ms.vss-dashboards-web.widget",
+                "targets": [
+                    "ms.vss-dashboards-web.widget-catalog"
+                ],
+                "properties": {
+                    "name": "Sample Template 2",
+                    "description": "Sample Template 2",
+                    "previewImageUrl": "img/preview.png",                            
+                    "uri": "SampleTemplate2.html",
+                    "supportedSizes": [
+                         {
+                                "rowSpan": 1,
+                                "columnSpan": 2
+                            }
+                        ],
+                    "supportedScopes": ["project_team"]
+                }
+            },
+						{
+                "id": "SampleTemplate3",
+                "type": "ms.vss-dashboards-web.widget",
+                "targets": [
+                    "ms.vss-dashboards-web.widget-catalog"
+                ],
+                "properties": {
+                    "name": "Sample Template 3",
+                    "description": "Sample Template 3",
+                    "previewImageUrl": "img/preview.png",                            
+                    "uri": "SampleTemplate3.html",
+                    "supportedSizes": [
+                         {
+                                "rowSpan": 1,
+                                "columnSpan": 2
+                            }
+                        ],
+                    "supportedScopes": ["project_team"]
+                }
+            },
+						{
+                "id": "SampleTemplate4",
+                "type": "ms.vss-dashboards-web.widget",
+                "targets": [
+                    "ms.vss-dashboards-web.widget-catalog"
+                ],
+                "properties": {
+                    "name": "Sample Template 4",
+                    "description": "Sample Template 4",
+                    "previewImageUrl": "img/preview.png",                            
+                    "uri": "SampleTemplate4.html",
+                    "supportedSizes": [
+                         {
+                                "rowSpan": 1,
+                                "columnSpan": 1
+                            }
+                        ],
+                    "supportedScopes": ["project_team"]
+                }
+            },
+						{
+                "id": "SampleTemplate5",
+                "type": "ms.vss-dashboards-web.widget",
+                "targets": [
+                    "ms.vss-dashboards-web.widget-catalog"
+                ],
+                "properties": {
+                    "name": "Sample Template 5",
+                    "description": "Sample Template 5",
+                    "previewImageUrl": "img/preview.png",                            
+                    "uri": "SampleTemplate5.html",
+                    "supportedSizes": [
+                         {
+                                "rowSpan": 1,
+                                "columnSpan": 1
+                            }
+                        ],
+                    "supportedScopes": ["project_team"]
+                }
+            },
             {
                 "id": "HelloWorldWidget",
                 "type": "ms.vss-dashboards-web.widget",
@@ -95,10 +195,28 @@
                 "path": "hello-world3.html", "addressable": true
             },
 			{
+                "path": "SampleTemplate1.html", "addressable": true
+            },
+			{
+                "path": "SampleTemplate2.html", "addressable": true
+            },
+			{
+                "path": "SampleTemplate3.html", "addressable": true
+            },
+			{
+                "path": "SampleTemplate4.html", "addressable": true
+            },
+			{
+                "path": "SampleTemplate5.html", "addressable": true
+            },
+			{
                 "path": "configuration.html", "addressable": true
             },
             {
                 "path": "sdk/scripts", "addressable": true
+            },
+			{
+                "path": "scripts", "addressable": true
             },
             {
                 "path": "img", "addressable": true
