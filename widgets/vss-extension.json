@@ -12,19 +12,19 @@
         ],
          "contributions": [
 		 {
-                "id": "SampleTemplate1",
+                "id": "Title-Description",
                 "type": "ms.vss-dashboards-web.widget",
                 "targets": [
                     "ms.vss-dashboards-web.widget-catalog"
                 ],
                 "properties": {
-                    "name": "Sample Template 1",
-                    "description": "Sample Template 1",
+                    "name": "Template With Title and Description",
+                    "description": "Template With Title and Description",
                     "previewImageUrl": "img/preview.png",                            
-                    "uri": "SampleTemplate1.html",
+                    "uri": "Title-Description.html",
                     "supportedSizes": [
                          {
-                                "rowSpan": 2,
+                                "rowSpan": 1,
                                 "columnSpan": 2
                             }
                         ],
@@ -32,16 +32,16 @@
                 }
             },
 			{
-                "id": "SampleTemplate2",
+                "id": "Title-Subtitle-SameLine",
                 "type": "ms.vss-dashboards-web.widget",
                 "targets": [
                     "ms.vss-dashboards-web.widget-catalog"
                 ],
                 "properties": {
-                    "name": "Sample Template 2",
-                    "description": "Sample Template 2",
+                    "name": "Template With Title and Subtitle on the same line",
+                    "description": "Template With Title and Subtitle on the same line",
                     "previewImageUrl": "img/preview.png",                            
-                    "uri": "SampleTemplate2.html",
+                    "uri": "Title-Subtitle-SameLine.html",
                     "supportedSizes": [
                          {
                                 "rowSpan": 1,
@@ -52,16 +52,16 @@
                 }
             },
 						{
-                "id": "SampleTemplate3",
+                "id": "Title-Subtitle-NextLine",
                 "type": "ms.vss-dashboards-web.widget",
                 "targets": [
                     "ms.vss-dashboards-web.widget-catalog"
                 ],
                 "properties": {
-                    "name": "Sample Template 3",
-                    "description": "Sample Template 3",
+                    "name": "Template With Title and Subtitle on the next line",
+                    "description": "Template With Title and Subtitle on the next line",
                     "previewImageUrl": "img/preview.png",                            
-                    "uri": "SampleTemplate3.html",
+                    "uri": "Title-Subtitle-NextLine.html",
                     "supportedSizes": [
                          {
                                 "rowSpan": 1,
@@ -72,16 +72,16 @@
                 }
             },
 						{
-                "id": "SampleTemplate4",
+                "id": "Counter",
                 "type": "ms.vss-dashboards-web.widget",
                 "targets": [
                     "ms.vss-dashboards-web.widget-catalog"
                 ],
                 "properties": {
-                    "name": "Sample Template 4",
-                    "description": "Sample Template 4",
+                    "name": "Counter",
+                    "description": "Counter, it counts",
                     "previewImageUrl": "img/preview.png",                            
-                    "uri": "SampleTemplate4.html",
+                    "uri": "Counter.html",
                     "supportedSizes": [
                          {
                                 "rowSpan": 1,
@@ -92,20 +92,39 @@
                 }
             },
 						{
-                "id": "SampleTemplate5",
+                "id": "Clickable-Counter",
                 "type": "ms.vss-dashboards-web.widget",
                 "targets": [
                     "ms.vss-dashboards-web.widget-catalog"
                 ],
                 "properties": {
-                    "name": "Sample Template 5",
-                    "description": "Sample Template 5",
+                    "name": "Clickable Counter",
+                    "description": "Clickable Counter, it counts as well",
                     "previewImageUrl": "img/preview.png",                            
-                    "uri": "SampleTemplate5.html",
+                    "uri": "Clickable-Counter.html",
                     "supportedSizes": [
                          {
                                 "rowSpan": 1,
                                 "columnSpan": 1
+                            }
+                        ],
+                    "supportedScopes": ["project_team"]
+                }
+            },{
+                "id": "Link-With-Icon-Text",
+                "type": "ms.vss-dashboards-web.widget",
+                "targets": [
+                    "ms.vss-dashboards-web.widget-catalog"
+                ],
+                "properties": {
+                    "name": "Link-With-Icon-Text",
+                    "description": "Widget that has a link with icon and text",
+                    "previewImageUrl": "img/preview.png",                            
+                    "uri": "Link-With-Icon-Text.html",
+                    "supportedSizes": [
+                         {
+                                "rowSpan": 1,
+                                "columnSpan": 2
                             }
                         ],
                     "supportedScopes": ["project_team"]
@@ -195,19 +214,22 @@
                 "path": "hello-world3.html", "addressable": true
             },
 			{
-                "path": "SampleTemplate1.html", "addressable": true
+                "path": "Title-Description.html", "addressable": true
             },
 			{
-                "path": "SampleTemplate2.html", "addressable": true
+                "path": "Title-Subtitle-SameLine.html", "addressable": true
             },
 			{
-                "path": "SampleTemplate3.html", "addressable": true
+                "path": "Title-Subtitle-NextLine.html", "addressable": true
             },
 			{
-                "path": "SampleTemplate4.html", "addressable": true
+                "path": "Counter.html", "addressable": true
             },
 			{
-                "path": "SampleTemplate5.html", "addressable": true
+                "path": "Clickable-Counter.html", "addressable": true
+            },
+			{
+                "path": "Link-With-Icon-Text.html", "addressable": true
             },
 			{
                 "path": "configuration.html", "addressable": true

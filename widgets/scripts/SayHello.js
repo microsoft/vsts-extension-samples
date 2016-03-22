@@ -14,11 +14,12 @@ VSS.require("TFS/Dashboards/WidgetHelpers", function (WidgetHelpers) {
 		}
 	}
 	
-	VSS.register("SampleTemplate1", registerWidget);
-	VSS.register("SampleTemplate2", registerWidget);
-	VSS.register("SampleTemplate3", registerWidget);
-	VSS.register("SampleTemplate4", registerWidget);
-	VSS.register("SampleTemplate5", registerWidget);
+	VSS.register("Title-Description", registerWidget);
+	VSS.register("Title-Subtitle-SameLine", registerWidget);
+	VSS.register("Title-Subtitle-NextLine", registerWidget);
+	VSS.register("Counter", registerWidget);
+	VSS.register("Clickable-Counter", registerWidget);
+	VSS.register("Link-With-Icon-Text", registerWidget);
 	
 	
 	VSS.notifyLoadSucceeded();
