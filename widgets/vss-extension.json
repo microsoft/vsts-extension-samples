@@ -4,7 +4,7 @@
         "version": "1.0.1",
         "name": "My First Set of Extensions",
         "description": "Samples containing different widgets extending dashboards",
-        "publisher": "ramyaraoa",
+        "publisher": "fabrikam",
         "targets": [
             {
                 "id": "Microsoft.VisualStudio.Services"
