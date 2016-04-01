@@ -24,7 +24,7 @@
                     "uri": "Title-Description.html",
                     "supportedSizes": [
                          {
-                                "rowSpan": 1,
+                                "rowSpan": 2,
                                 "columnSpan": 2
                             }
                         ],
