@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link href="css/widgets.css" rel="stylesheet" type="text/css"></link>
-    <script src="sdk/scripts/VSS.SDK.min.js"></script>
+	<script src="sdk/scripts/VSS.SDK.min.js"></script>
     <script type="text/javascript">
         VSS.init({
             explicitNotifyLoaded: true,
@@ -10,6 +9,7 @@
         });
                
         VSS.require(["TFS/Dashboards/WidgetHelpers", "TFS/WorkItemTracking/RestClient"], function (WidgetHelpers, TFS_Wit_WebApi) {
+			WidgetHelpers.IncludeWidgetStyles();
             VSS.register("HelloWorldWidget2", function () {                
                 var projectId = VSS.getWebContext().project.id;
 
@@ -39,7 +39,7 @@
                 return {
                     load: function (widgetSettings) {
                         // Set your title
-                        var $title = $('h1.title');
+                        var $title = $('h2.title');
                         $title.text('Hello World');
 
                         return getQueryInfo(widgetSettings);
@@ -52,7 +52,9 @@
 
 </head>
 <body>
-    <h1 class="title"></h1>
-    <div id="query-info-container"></div>
+	<div class="widget">
+		<h2 class="title"></h1>
+		<div id="query-info-container"></div>
+	</div>
 </body>
 </html>

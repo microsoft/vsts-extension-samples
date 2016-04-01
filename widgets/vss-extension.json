@@ -242,10 +242,7 @@
             },
             {
                 "path": "img", "addressable": true
-            },
-			{
-			    "path": "css", "addressable": true
-			}
+            }
         ],
 		"scopes":[
 			"vso.work"
