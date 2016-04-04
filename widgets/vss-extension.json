@@ -11,6 +11,125 @@
             }
         ],
          "contributions": [
+		 {
+                "id": "Title-Description",
+                "type": "ms.vss-dashboards-web.widget",
+                "targets": [
+                    "ms.vss-dashboards-web.widget-catalog"
+                ],
+                "properties": {
+                    "name": "Template With Title and Description",
+                    "description": "Template With Title and Description",
+                    "previewImageUrl": "img/preview.png",                            
+                    "uri": "Title-Description.html",
+                    "supportedSizes": [
+                         {
+                                "rowSpan": 2,
+                                "columnSpan": 2
+                            }
+                        ],
+                    "supportedScopes": ["project_team"]
+                }
+            },
+			{
+                "id": "Title-Subtitle-SameLine",
+                "type": "ms.vss-dashboards-web.widget",
+                "targets": [
+                    "ms.vss-dashboards-web.widget-catalog"
+                ],
+                "properties": {
+                    "name": "Template With Title and Subtitle on the same line",
+                    "description": "Template With Title and Subtitle on the same line",
+                    "previewImageUrl": "img/preview.png",                            
+                    "uri": "Title-Subtitle-SameLine.html",
+                    "supportedSizes": [
+                         {
+                                "rowSpan": 1,
+                                "columnSpan": 2
+                            }
+                        ],
+                    "supportedScopes": ["project_team"]
+                }
+            },
+						{
+                "id": "Title-Subtitle-NextLine",
+                "type": "ms.vss-dashboards-web.widget",
+                "targets": [
+                    "ms.vss-dashboards-web.widget-catalog"
+                ],
+                "properties": {
+                    "name": "Template With Title and Subtitle on the next line",
+                    "description": "Template With Title and Subtitle on the next line",
+                    "previewImageUrl": "img/preview.png",                            
+                    "uri": "Title-Subtitle-NextLine.html",
+                    "supportedSizes": [
+                         {
+                                "rowSpan": 1,
+                                "columnSpan": 2
+                            }
+                        ],
+                    "supportedScopes": ["project_team"]
+                }
+            },
+						{
+                "id": "Counter",
+                "type": "ms.vss-dashboards-web.widget",
+                "targets": [
+                    "ms.vss-dashboards-web.widget-catalog"
+                ],
+                "properties": {
+                    "name": "Counter",
+                    "description": "Counter, it counts",
+                    "previewImageUrl": "img/preview.png",                            
+                    "uri": "Counter.html",
+                    "supportedSizes": [
+                         {
+                                "rowSpan": 1,
+                                "columnSpan": 1
+                            }
+                        ],
+                    "supportedScopes": ["project_team"]
+                }
+            },
+						{
+                "id": "Clickable-Counter",
+                "type": "ms.vss-dashboards-web.widget",
+                "targets": [
+                    "ms.vss-dashboards-web.widget-catalog"
+                ],
+                "properties": {
+                    "name": "Clickable Counter",
+                    "description": "Clickable Counter, it counts as well",
+                    "previewImageUrl": "img/preview.png",                            
+                    "uri": "Clickable-Counter.html",
+                    "supportedSizes": [
+                         {
+                                "rowSpan": 1,
+                                "columnSpan": 1
+                            }
+                        ],
+                    "supportedScopes": ["project_team"]
+                }
+            },{
+                "id": "Link-With-Icon-Text",
+                "type": "ms.vss-dashboards-web.widget",
+                "targets": [
+                    "ms.vss-dashboards-web.widget-catalog"
+                ],
+                "properties": {
+                    "name": "Link-With-Icon-Text",
+                    "description": "Widget that has a link with icon and text",
+                    "previewImageUrl": "img/preview.png",                            
+                    "uri": "Link-With-Icon-Text.html",
+                    "supportedSizes": [
+                         {
+                                "rowSpan": 1,
+                                "columnSpan": 2
+                            }
+                        ],
+                    "supportedScopes": ["project_team"]
+                }
+            },
             {
                 "id": "HelloWorldWidget",
                 "type": "ms.vss-dashboards-web.widget",
@@ -95,17 +214,35 @@
                 "path": "hello-world3.html", "addressable": true
             },
 			{
+                "path": "Title-Description.html", "addressable": true
+            },
+			{
+                "path": "Title-Subtitle-SameLine.html", "addressable": true
+            },
+			{
+                "path": "Title-Subtitle-NextLine.html", "addressable": true
+            },
+			{
+                "path": "Counter.html", "addressable": true
+            },
+			{
+                "path": "Clickable-Counter.html", "addressable": true
+            },
+			{
+                "path": "Link-With-Icon-Text.html", "addressable": true
+            },
+			{
                 "path": "configuration.html", "addressable": true
             },
             {
                 "path": "sdk/scripts", "addressable": true
             },
+			{
+                "path": "scripts", "addressable": true
+            },
             {
                 "path": "img", "addressable": true
-            },
-			{
-			    "path": "css", "addressable": true
-			}
+            }
         ],
 		"scopes":[
 			"vso.work"
