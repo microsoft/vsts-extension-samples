@@ -1,1 +1,1 @@
-tfx extension create --publisher dhaundiyal-railseatalert --manifest-globs vss-extension.json 
+tfx extension create --publisher <publisher-alias> --manifest-globs vss-extension.json 
