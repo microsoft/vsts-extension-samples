@@ -104,3 +104,14 @@ Contributing as a section to "summary" tab -
 
 This sample is written in TypeScript. The compiled JS files are included in the /out directory, but changes will need to be re-compiled. Open readme.txt for instructions.
 
+### Release deployment status enhancer - Summary
+This extension showcases how you can make a summary section contribution to Release page.
+
+Once this extension is installed, it shows an enhanced view of the deployment status to each environment
+![image](rm-deployment-status-enhancer-summary/images/screenshot.PNG)
+
+### Release deployment status enhancer - Tab
+This extension showcases how you can make a tab contribution to Release page.
+
+Once this extension is installed, it shows an enhanced view of the deployment status to each environment
+![image](rm-deployment-status-enhancer-tab/images/screenshot.PNG)
