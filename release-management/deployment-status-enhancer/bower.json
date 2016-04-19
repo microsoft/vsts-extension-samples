@@ -3,7 +3,7 @@
   "homepage": "https://github.com/Microsoft/vso-extension-samples",
   "description": "",
   "main": "",
-  "moduleType": [],
+  "moduleType": [ ],
   "license": "MIT",
   "private": true,
   "ignore": [
