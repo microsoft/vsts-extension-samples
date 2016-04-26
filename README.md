@@ -111,8 +111,8 @@ Once this extension is installed, it shows an enhanced view of the deployment st
 This extension showcases 
 ##### a summary section contribution to Release summary page.
 
-![image](release-management/deployment-status-enhancer/images/screenshot1.PNG)
+![image](release-management/deployment-status-enhancer/images/screenshot1.png)
 
 ##### a tab contribution to Release summary page.
 
-![image](release-management/deployment-status-enhancer/images/screenshot2.PNG)
+![image](release-management/deployment-status-enhancer/images/screenshot2.png)
