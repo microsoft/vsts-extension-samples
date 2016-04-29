@@ -21,7 +21,7 @@
                     "name": "Template With Title and Description",
                     "description": "Template With Title and Description",
                     "previewImageUrl": "img/preview.png",                            
-                    "uri": "Title-Description.html",
+                    "uri": "templates/Title-Description.html",
                     "supportedSizes": [
                          {
                                 "rowSpan": 2,
@@ -41,7 +41,7 @@
                     "name": "Template With Title and Subtitle on the same line",
                     "description": "Template With Title and Subtitle on the same line",
                     "previewImageUrl": "img/preview.png",                            
-                    "uri": "Title-Subtitle-SameLine.html",
+                    "uri": "templates/Title-Subtitle-SameLine.html",
                     "supportedSizes": [
                          {
                                 "rowSpan": 1,
@@ -61,7 +61,7 @@
                     "name": "Template With Title and Subtitle on the next line",
                     "description": "Template With Title and Subtitle on the next line",
                     "previewImageUrl": "img/preview.png",                            
-                    "uri": "Title-Subtitle-NextLine.html",
+                    "uri": "templates/Title-Subtitle-NextLine.html",
                     "supportedSizes": [
                          {
                                 "rowSpan": 1,
@@ -81,7 +81,7 @@
                     "name": "Counter",
                     "description": "Counter, it counts",
                     "previewImageUrl": "img/preview.png",                            
-                    "uri": "Counter.html",
+                    "uri": "templates/Counter.html",
                     "supportedSizes": [
                          {
                                 "rowSpan": 1,
@@ -101,7 +101,7 @@
                     "name": "Clickable Counter",
                     "description": "Clickable Counter, it counts as well",
                     "previewImageUrl": "img/preview.png",                            
-                    "uri": "Clickable-Counter.html",
+                    "uri": "templates/Clickable-Counter.html",
                     "supportedSizes": [
                          {
                                 "rowSpan": 1,
@@ -120,7 +120,7 @@
                     "name": "Link-With-Icon-Text",
                     "description": "Widget that has a link with icon and text",
                     "previewImageUrl": "img/preview.png",                            
-                    "uri": "Link-With-Icon-Text.html",
+                    "uri": "templates/Link-With-Icon-Text.html",
                     "supportedSizes": [
                          {
                                 "rowSpan": 1,
@@ -212,33 +212,15 @@
             },
 			{
                 "path": "hello-world3.html", "addressable": true
-            },
-			{
-                "path": "Title-Description.html", "addressable": true
-            },
-			{
-                "path": "Title-Subtitle-SameLine.html", "addressable": true
-            },
-			{
-                "path": "Title-Subtitle-NextLine.html", "addressable": true
-            },
-			{
-                "path": "Counter.html", "addressable": true
-            },
-			{
-                "path": "Clickable-Counter.html", "addressable": true
-            },
-			{
-                "path": "Link-With-Icon-Text.html", "addressable": true
-            },
+            },			
 			{
                 "path": "configuration.html", "addressable": true
             },
             {
                 "path": "sdk/scripts", "addressable": true
-            },
+            },			
 			{
-                "path": "scripts", "addressable": true
+                "path": "templates", "addressable": true
             },
             {
                 "path": "img", "addressable": true
