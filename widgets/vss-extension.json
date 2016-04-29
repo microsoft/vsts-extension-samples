@@ -130,6 +130,36 @@
                     "supportedScopes": ["project_team"]
                 }
             },
+			{
+                "id": "Widget-for-sample-configuration",
+                "type": "ms.vss-dashboards-web.widget",
+                "targets": [
+                    "ms.vss-dashboards-web.widget-catalog", "fabrikam.vsts-extensions-myExtensions.Sample-Configuration"
+                ],
+                "properties": {
+                    "name": "Widget for sample configuration",
+                    "description": "Widget for sample configuration",
+                    "previewImageUrl": "img/preview.png",                            
+                    "uri": "templates/Widget-for-sample-configuration.html",
+                    "supportedSizes": [
+                         {
+                                "rowSpan": 1,
+                                "columnSpan": 2
+                            }
+                        ],
+                    "supportedScopes": ["project_team"]
+                }
+            },
+			 {
+				 "id": "Sample-Configuration",
+				 "type": "ms.vss-dashboards-web.widget-configuration",
+				 "targets": [ "ms.vss-dashboards-web.widget-configuration"],
+				 "properties": {
+					 "name": "HelloWorldWidget Configuration",
+					 "description": "Configures HelloWorldWidget",
+					 "uri": "templates/sample-configuration.html"
+				 }
+			},
             {
                 "id": "HelloWorldWidget",
                 "type": "ms.vss-dashboards-web.widget",
@@ -174,7 +204,7 @@
              "id": "HelloWorldWidget3",
              "type": "ms.vss-dashboards-web.widget",
              "targets": [
-                 "ms.vss-dashboards-web.widget-catalog", "fabrikam.vsts-extensions-myExtensions.HelloWorldWidget.Configuration" 
+                 "ms.vss-dashboards-web.widget-catalog", "ramyaraoa.vsts-extensions-myExtensions.HelloWorldWidget.Configuration" 
              ],
              "properties": {
                  "name": "Hello World Widget 3 (with config)",
