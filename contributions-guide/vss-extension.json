@@ -1,13 +1,13 @@
 {
     "manifestVersion": 1,
     "id": "samples-contributions-guide",
-    "version": "0.1.4",
+    "version": "0.1.5",
     "name": "Contributions Guide",
     "description": "Building an extension for Visual Studio Team Services? See the places where you can extend and enhance the user's web experience with an extension ---- right from within the web experience.",
     "publisher": "ms-samples",
-    "public": true,
+    "public": false,
     "categories": [
-        "Other"
+        "Developer samples"
     ],
     "links": {
         "learn": {
@@ -53,7 +53,7 @@
             "addressable": true
         },     
         {
-            "path": "lib",
+            "path": "bower_components/vss-web-extension-sdk/lib/VSS.SDK.min.js",
             "addressable": true
         }    
     ],

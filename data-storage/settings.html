@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Data storage service sample</title>
+    <script src="bower_components/vss-web-extension-sdk/lib/VSS.SDK.min.js"></script> 
+    <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+    <script type="text/javascript">
+        // Initialize the VSS SDK
+        VSS.init({
+            usePlatformScripts: true,
+            moduleLoaderConfig: {
+                paths: {
+                    "dataStorage": "dist/dataStorage"
+                }
+            }
+        });
+
+        // Wait for the SDK to be initialized
+        VSS.ready(function () {
+            require(["dataStorage/settings"], function () { });
+            VSS.notifyLoadSucceeded();
+        });
+    </script>
+    <div id="vss-extension">
+        <div class="user">
+            <div class="bool">
+                <label>Boolean Value</label>
+                <input class="booleanValue" type="checkbox" />
+            </div>
+            <div class="number">
+                <label>Integer Value</label>
+                <input class="numberValue" />
+            </div>
+            <div class="obj">
+                <label>Object Value 1</label>
+                <input class="objectValue1" />
+
+                <label>Object Value 2</label>
+                <input class="objectValue2" />
+            </div>
+        </div>
+
+        <div class="default">
+            <div class="bool">
+                <label>Boolean Value</label>
+                <input class="booleanValue" type="checkbox" />
+            </div>
+            <div class="number">
+                <label>Integer Value</label>
+                <input class="numberValue" />
+            </div>
+            <div class="obj">
+                <label>Object Value 1</label>
+                <input class="objectValue1" />
+
+                <label>Object Value 2</label>
+                <input class="objectValue2" />
+            </div>
+        </div>
+
+        <br />
+        <button class="saveButton">Save Settings</button>
+    </div>
+</body>
+</html>

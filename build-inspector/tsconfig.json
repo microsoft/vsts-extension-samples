@@ -1,8 +1,18 @@
 {
     "compilerOptions": {
         "module": "amd",
-        "target": "ES5",
-        "outDir": "out/scripts"
+        "target": "es5",
+        "removeComments": true,
+        "sourceMap": false,
+        "outDir": "dist/",
+        "rootDir": "src"
     },
-    "files": ["scripts/items.ts", "scripts/main.ts"]
+    "files": [
+        "src/inspector/associatedItemContent.ts",
+        "src/inspector/associatedItemsGrid.ts",
+        "src/inspector/associatedItemsTree.ts",
+        "src/inspector/associatedItemsView.ts",
+        "src/inspector/associatedItems.ts",
+        "src/inspector/launch.ts"
+    ]
 }

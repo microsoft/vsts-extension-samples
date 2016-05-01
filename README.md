@@ -1,60 +1,77 @@
-# Visual Studio Online Extension Samples
-
-This repo contains samples to help jump-start you in your development of [Extensions for Visual Studio Online](http://www.visualstudio.com/integrate/extensions/overview).
-
-## Getting started
-
-### Pre-requisites
-
-1. [Join the Visual Studio Partner program](http://www.vsipprogram.com/join) to get early access to the Extensions feature
-2. Verify the Extensions feature has been enabled on your account by navigating to ```https://youraccount.visualstudio.com/DefaultCollection/_admin/_apps/hub/ms.vss-extmgmt-web.manageExtensions-collection```.
-3. Available local or cloud web server with HTTPS (IIS, Node.js, Azure Web App, Heroku, etc)
-
-### Steps
-
-The samples are published to the gallery. You can install them to your account by doing the following:
-
-1. Go to https://youraccount.visualstudio.com/DefaultCollection/_admin/_apps/hub/ms.vss-extmgmt-web.manageExtensions-collection
-2. Locate the sample extension you want to install and click "Install".
-
-#### Publishing the extensions yourself
-
-If you want to edit the samples to play around with them, you will need to publish them yourself.
-
-##### Before you begin
-Follow the steps under Before you begin at [Publishing from the Command Line](https://www.visualstudio.com/en-us/integrate/extensions/publish/command-line). Save your Personal Access Token for later use.
-
-##### Publish
-1. Clone the samples  
-    `git clone https://github.com/Microsoft/vso-extension-samples.git`  
-    `cd vso-extension-samples`
-    
-2. Package and publish an extension  
-    `cd <sample>`  
-    Note: <sample> is the directory containing the sample you want to publish.
-    
-    `vset publish --publisher <P> --token <T> --share-with <A> --save`  
-    Note: `<P>` is the ID of the publisher you created in the "Before you begin" steps. `<T>` is the Personal Access Token you generated in "Before you begin" above. `<A>` is the name of your VSO account.  
-    Note: From now on, if you need to make changes to your manifest and re-publish the extension, you just type `vset publish`. Your token and share options are remembered.  
-4. Install by going to https://youraccount.visualstudio.com/_admin/_apps/hub/ms.vss-extensionManagement-web.manageExtensions. Find the extension you published under the Shared With Me category. Click "Install" to install the extension.
-
-## What's available
-
-### Branch delete
-
-![image](branch-delete/images/delete-action-screenshot.png)
-
-Clean up old or unneeded Git branches right from within Visual Studio Online.
-
-### Contribution guide
-
-![image](contributions-guide/images/context-menu-screenshot.png)
-
-Discover all the places in Visual Studio Online you can extend, including hubs, toolbars, and context menus, and more.
+# Visual Studio Team Services Sample Extensions
  
-### Build inspector
+Samples to help jump-start your development of [extensions for Visual Studio Team Services](http://www.visualstudio.com/integrate/extensions/overview).
 
-Demonstrates advanced extension concepts like AMD loading, using UI controls, history, and more. This sample is written in TypeScript. The compiled JS files are included in the /out directory, but changes will need to be re-compiled. Open readme.txt for instructions.
+## Get started
+
+If you plan to package any of the sample extensions, get:
+
+1. [Node.js](https://nodejs.org)
+2. [Bower](http://bower.io/) (`npm install -g bower`)
+3. [Team Foundation command line interface](https://github.com/Microsoft/tfs-cli)(`npm install -g tfx-cli`)
+
+If you plan to compile any of the sample extensions, get:
+
+3. TypeScript 1.7 or higher (`npm install -g typescript`)
+3. Typings (`npm install -g typings`) (manages TypeScript declare files)
+
+### Get the web extension SDK
+
+Each web extension sample has a `bower.json` file, which references third-party libraries used by the sample, including the [Visual Studio Services Web Extension SDK](https://github.com/Microsoft/vss-web-extension-sdk). This JavaScript file is required by all web extensions.
+
+From the directory of the sample, run:
+
+```
+bower install
+```
+
+### Get TypeScript declare files and compile
+
+Each sample written in [TypeScript](https://github.com/Microsoft/vss-web-extension-sdk) has a `typings.json` file, which references the TypeScript declare files the sample needs to compile. This includes the declare files for Visual Studio Services and Team Foundation types.
+
+From the directory of a sample written in TypeScript, run:
+
+```
+typings install
+```
+
+Each sample written in TypeScript has a `tsconfig.json` file, which defines the necessary TypeScript compiler settings for the sample.
+
+From the same directory, run:
+
+```
+tsc
+```
+
+### Try the extension in Visual Studio Team Services
+
+Most samples can be run without any modifications on [Visual Studio Team Services](https://www.visualstudio.com/products/visual-studio-team-services-vs). The steps are:
+
+0. Create a free Visual Studio [Team Services account](https://app.vssps.visualstudio.com/go/profile?account=true)
+1. Create a Visual Studio [Marketplace Publisher](https://aka.ms/vsmarketplace-publish) (all extensions are uploaded under a publisher)
+2. Verify the extension's manifest file (`vss-extension.json`) either has the `public` attribute set to `false` or is not specified (this ensures your extension is not inadvertently made available to all Team Services users)
+3. Package the extension with the ID of your publisher (run `tfx extension create --publisher MYPUBLISHERID`)
+4. Upload the produced .vsix file to the [Marketplace](https://aka.ms/vsmarketplace-manage)
+5. Share your extension with your Team Services account (right-click on the published extension and select Share)
+6. Install the extension into the account (click on the published extension's title and then click Install)
+
+See the [full instructions](https://www.visualstudio.com/en-us/integrate/extensions/publish/overview).
+
+## Available samples
+
+### Contributions Guide
+
+![image](contributions-guide/images/hub-point.png)
+
+See the places where you can extend and enhance the user's web experience with an extension ---- right from within the web experience.
+
+* [Install via the Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-samples.samples-contributions-guide)
+ 
+### Build Inspector
+
+Learn about advanced extension concepts like module loading, using UI controls, history, and more.
+ 
+Note: this sample is written in TypeScript.
 
 ### UI
 
@@ -62,11 +79,9 @@ Demonstrates advanced extension concepts like AMD loading, using UI controls, hi
 
 Explore different UI controls, including menus, toolbars, custom controls, and more.
 
-### Public events (for Team Calendar)
+### Public Events (for Team Calendar)
 
-Adds an event source to the [Team Calendar extension](https://github.com/Microsoft/vso-team-calendar) for public holidays. Note that this sample contributes *to another extension* rather than core Visual Studio Online.
-
-This sample is written in TypeScript. The compiled JS files are included in the /out directory, but changes will need to be re-compiled. Open readme.txt for instructions.
+Custom event source for the [Team Calendar extension](https://github.com/Microsoft/vso-team-calendar) for public holidays. 
 
 ### Build Results Enhancer
 
@@ -79,10 +94,9 @@ You could contribute to build results view in different ways:
 * As a section to the existing "summary" tab in build results view
 * As a tab to the build results view
  
-
 Contributing as a tab and a section to our own tab -
 
-![image](build-results-enhancer/images/tab&section.png)
+![image](build-results-enhancer/images/tabAndSection.png)
 
 Contributing as a section to "summary" tab -
 
@@ -90,3 +104,15 @@ Contributing as a section to "summary" tab -
 
 This sample is written in TypeScript. The compiled JS files are included in the /out directory, but changes will need to be re-compiled. Open readme.txt for instructions.
 
+### Release management extensions
+#### Deployment status enhancer
+Once this extension is installed, it shows an enhanced view of the deployment status to each environment
+
+This extension showcases 
+##### a summary section contribution to Release summary page.
+
+![image](release-management/deployment-status-enhancer/images/screenshot1.png)
+
+##### a tab contribution to Release summary page.
+
+![image](release-management/deployment-status-enhancer/images/screenshot2.png)

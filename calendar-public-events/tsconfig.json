@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "module": "amd",
+        "target": "es5",
+        "outDir": "dist/",
+        "rootDir": "src/"
+    },
+    "files": [
+        "src/PublicEvents/PublicEventsSource.ts"
+    ]
+}
