@@ -204,7 +204,7 @@
              "id": "HelloWorldWidget3",
              "type": "ms.vss-dashboards-web.widget",
              "targets": [
-                 "ms.vss-dashboards-web.widget-catalog", "ramyaraoa.vsts-extensions-myExtensions.HelloWorldWidget.Configuration" 
+                 "ms.vss-dashboards-web.widget-catalog", "fabrikam.vsts-extensions-myExtensions.HelloWorldWidget.Configuration" 
              ],
              "properties": {
                  "name": "Hello World Widget 3 (with config)",
