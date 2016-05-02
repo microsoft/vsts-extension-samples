@@ -14,7 +14,7 @@ VSS.require(["TFS/Dashboards/WidgetHelpers", "TFS/WorkItemTracking/RestClient"],
 			if (!settings || !settings.queryPath) {
 				var $container = $('#query-info-container');
 				$container.empty();
-				$container.text("Sorry nothing to show, please configure a query path");
+				$container.text("Nothing to show. Please select a query.");
 
 				return WidgetHelpers.WidgetStatusHelper.Success();
 			}

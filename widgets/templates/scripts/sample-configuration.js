@@ -15,7 +15,7 @@ function validateNameTextInput($nameInput, $errorSingleLineInput){
 
 function validateQueryDropdown($queryDropdown, $errordropdown){					
 	if ($queryDropdown.val().indexOf("Fake") > -1){
-		$errordropdown.text("Sorry, you cannot choose the fake query");
+		$errordropdown.text("Please select a valid query");
 		$errordropdown.parent().css("visibility", "visible");
 		return false;
 	} 
@@ -25,7 +25,7 @@ function validateQueryDropdown($queryDropdown, $errordropdown){
 
 function validateCheckbox($errorcheckbox){					
 	if ($("#select-results input:checked").length == 0){
-		$errorcheckbox.text("Please select at aleast one option.");
+		$errorcheckbox.text("Please select at least one option.");
 		$errorcheckbox.parent().css("visibility", "visible");
 		return false;										
 	} 
@@ -35,7 +35,7 @@ function validateCheckbox($errorcheckbox){
 
 function validateRadioButtons($errorradio){					
 	if ($("#display-options input:checked").length == 0){
-		$errorradio.text("Please select at aleast one option.");
+		$errorradio.text("Please select at least one option.");
 		$errorradio.parent().css("visibility", "visible");
 		return false;										
 	} 
