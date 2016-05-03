@@ -4,7 +4,7 @@
         "version": "1.0.1",
         "name": "My First Set of Extensions",
         "description": "Samples containing different widgets extending dashboards",
-        "publisher": "fabrikam",
+        "publisher": "Fabrikam",
         "targets": [
             {
                 "id": "Microsoft.VisualStudio.Services"
@@ -134,7 +134,7 @@
                 "id": "Widget-for-sample-configuration",
                 "type": "ms.vss-dashboards-web.widget",
                 "targets": [
-                    "ms.vss-dashboards-web.widget-catalog", "fabrikam.vsts-extensions-myExtensions.Sample-Configuration"
+                    "ms.vss-dashboards-web.widget-catalog", "Fabrikam.vsts-extensions-myExtensions.Sample-Configuration"
                 ],
                 "properties": {
                     "name": "Widget for sample configuration",
@@ -204,7 +204,7 @@
              "id": "HelloWorldWidget3",
              "type": "ms.vss-dashboards-web.widget",
              "targets": [
-                 "ms.vss-dashboards-web.widget-catalog", "fabrikam.vsts-extensions-myExtensions.HelloWorldWidget.Configuration" 
+                 "ms.vss-dashboards-web.widget-catalog", "Fabrikam.vsts-extensions-myExtensions.HelloWorldWidget.Configuration" 
              ],
              "properties": {
                  "name": "Hello World Widget 3 (with config)",
