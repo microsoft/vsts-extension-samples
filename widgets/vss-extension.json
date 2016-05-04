@@ -19,7 +19,7 @@
             ],
             "properties": {
                 "name": "Template With Title and Description",
-                "description": "Template With Title and Description",
+                "description": "Sample widget template with the title and description.",
                 "previewImageUrl": "img/preview.png",
                 "uri": "templates/Title-Description.html",
                 "supportedSizes": [
