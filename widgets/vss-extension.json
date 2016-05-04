@@ -1,263 +1,294 @@
 {
-        "manifestVersion": 1,
-        "id": "vsts-extensions-myExtensions",
-        "version": "1.0.1",
-        "name": "Sample Dashboard Widgets",
-        "description": "Samples containing different widgets extending dashboards.",
-        "publisher": "Fabrikam",
-        "targets": [
-            {
-                "id": "Microsoft.VisualStudio.Services"
+    "manifestVersion": 1,
+    "id": "vsts-extensions-myExtensions",
+    "version": "1.0.1",
+    "name": "Sample Dashboard Widgets",
+    "description": "Samples containing different widgets extending dashboards.",
+    "publisher": "Fabrikam",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "Title-Description",
+            "type": "ms.vss-dashboards-web.widget",
+            "targets": [
+                "ms.vss-dashboards-web.widget-catalog"
+            ],
+            "properties": {
+                "name": "Template With Title and Description",
+                "description": "Template With Title and Description",
+                "previewImageUrl": "img/preview.png",
+                "uri": "templates/Title-Description.html",
+                "supportedSizes": [
+                    {
+                        "rowSpan": 2,
+                        "columnSpan": 2
+                    }
+                ],
+                "supportedScopes": [
+                    "project_team"
+                ]
             }
-        ],
-         "contributions": [
-		 {
-                "id": "Title-Description",
-                "type": "ms.vss-dashboards-web.widget",
-                "targets": [
-                    "ms.vss-dashboards-web.widget-catalog"
+        },
+        {
+            "id": "Title-Subtitle-SameLine",
+            "type": "ms.vss-dashboards-web.widget",
+            "targets": [
+                "ms.vss-dashboards-web.widget-catalog"
+            ],
+            "properties": {
+                "name": "Template With Title and Subtitle on the same line",
+                "description": "Sample widget template with the title and subtitle on the same line.",
+                "previewImageUrl": "img/preview.png",
+                "uri": "templates/Title-Subtitle-SameLine.html",
+                "supportedSizes": [
+                    {
+                        "rowSpan": 1,
+                        "columnSpan": 2
+                    }
                 ],
-                "properties": {
-                    "name": "Template With Title and Description",
-                    "description": "Template With Title and Description",
-                    "previewImageUrl": "img/preview.png",                            
-                    "uri": "templates/Title-Description.html",
-                    "supportedSizes": [
-                         {
-                                "rowSpan": 2,
-                                "columnSpan": 2
-                            }
-                        ],
-                    "supportedScopes": ["project_team"]
-                }
-            },
-			{
-                "id": "Title-Subtitle-SameLine",
-                "type": "ms.vss-dashboards-web.widget",
-                "targets": [
-                    "ms.vss-dashboards-web.widget-catalog"
-                ],
-                "properties": {
-                    "name": "Template With Title and Subtitle on the same line",
-                    "description": "Sample widget template with the title and subtitle on the same line.",
-                    "previewImageUrl": "img/preview.png",                            
-                    "uri": "templates/Title-Subtitle-SameLine.html",
-                    "supportedSizes": [
-                         {
-                                "rowSpan": 1,
-                                "columnSpan": 2
-                            }
-                        ],
-                    "supportedScopes": ["project_team"]
-                }
-            },
-						{
-                "id": "Title-Subtitle-NextLine",
-                "type": "ms.vss-dashboards-web.widget",
-                "targets": [
-                    "ms.vss-dashboards-web.widget-catalog"
-                ],
-                "properties": {
-                    "name": "Template With Title and Subtitle on the next line",
-                    "description": "Sample widget template with the title and subtitle on separate lines.",
-                    "previewImageUrl": "img/preview.png",                            
-                    "uri": "templates/Title-Subtitle-NextLine.html",
-                    "supportedSizes": [
-                         {
-                                "rowSpan": 1,
-                                "columnSpan": 2
-                            }
-                        ],
-                    "supportedScopes": ["project_team"]
-                }
-            },
-						{
-                "id": "Counter",
-                "type": "ms.vss-dashboards-web.widget",
-                "targets": [
-                    "ms.vss-dashboards-web.widget-catalog"
-                ],
-                "properties": {
-                    "name": "Counter",
-                    "description": "Sample widget with formatting for counters.",
-                    "previewImageUrl": "img/preview.png",                            
-                    "uri": "templates/Counter.html",
-                    "supportedSizes": [
-                         {
-                                "rowSpan": 1,
-                                "columnSpan": 1
-                            }
-                        ],
-                    "supportedScopes": ["project_team"]
-                }
-            },
-						{
-                "id": "Clickable-Counter",
-                "type": "ms.vss-dashboards-web.widget",
-                "targets": [
-                    "ms.vss-dashboards-web.widget-catalog"
-                ],
-                "properties": {
-                    "name": "Clickable Counter",
-                    "description": "Sample widget with formatting for counters. The entire widget is clickable.",
-                    "previewImageUrl": "img/preview.png",                            
-                    "uri": "templates/Clickable-Counter.html",
-                    "supportedSizes": [
-                         {
-                                "rowSpan": 1,
-                                "columnSpan": 1
-                            }
-                        ],
-                    "supportedScopes": ["project_team"]
-                }
-            },{
-                "id": "Link-With-Icon-Text",
-                "type": "ms.vss-dashboards-web.widget",
-                "targets": [
-                    "ms.vss-dashboards-web.widget-catalog"
-                ],
-                "properties": {
-                    "name": "Link with icon and text",
-                    "description": "Sample widget that has a link with an icon and text.",
-                    "previewImageUrl": "img/preview.png",                            
-                    "uri": "templates/Link-With-Icon-Text.html",
-                    "supportedSizes": [
-                         {
-                                "rowSpan": 1,
-                                "columnSpan": 2
-                            }
-                        ],
-                    "supportedScopes": ["project_team"]
-                }
-            },
-			{
-                "id": "Widget-for-sample-configuration",
-                "type": "ms.vss-dashboards-web.widget",
-                "targets": [
-                    "ms.vss-dashboards-web.widget-catalog", ".Sample-Configuration"
-                ],
-                "properties": {
-                    "name": "Configuration template",
-                    "description": "Sample widget using SDK provided configuration controls.",
-                    "previewImageUrl": "img/preview.png",                            
-                    "uri": "templates/Widget-for-sample-configuration.html",
-                    "supportedSizes": [
-                         {
-                                "rowSpan": 1,
-                                "columnSpan": 2
-                            }
-                        ],
-                    "supportedScopes": ["project_team"]
-                }
-            },
-			 {
-				 "id": "Sample-Configuration",
-				 "type": "ms.vss-dashboards-web.widget-configuration",
-				 "targets": [ "ms.vss-dashboards-web.widget-configuration"],
-				 "properties": {
-					 "name": "HelloWorldWidget Configuration",
-					 "description": "Configures HelloWorldWidget",
-					 "uri": "templates/sample-configuration.html"
-				 }
-			},
-            {
-                "id": "HelloWorldWidget",
-                "type": "ms.vss-dashboards-web.widget",
-                "targets": [
-                    "ms.vss-dashboards-web.widget-catalog"
-                ],
-                "properties": {
-                    "name": "Hello World Widget",
-                    "description": "My first widget.",
-                    "previewImageUrl": "img/preview.png",                            
-                    "uri": "hello-world.html",
-                    "supportedSizes": [
-                         {
-                                "rowSpan": 1,
-                                "columnSpan": 2
-                            }
-                        ],
-                    "supportedScopes": ["project_team"]
-                }
-            },
-			{
-             "id": "HelloWorldWidget2",
-             "type": "ms.vss-dashboards-web.widget",
-             "targets": [
-                 "ms.vss-dashboards-web.widget-catalog"
-             ],
-             "properties": {
-                 "name": "Hello World Widget (with API)",
-                 "description": "My second widget which calls a VSTS REST API.",
-                 "previewImageUrl": "img/preview.png",                       
-                 "uri": "hello-world2.html",
-                 "supportedSizes": [
-                      {
-                             "rowSpan": 1,
-                             "columnSpan": 2
-                         }
-                     ],
-                 "supportedScopes": ["project_team"]
-             }
-         },
-		 {
-             "id": "HelloWorldWidget3",
-             "type": "ms.vss-dashboards-web.widget",
-             "targets": [
-                 "ms.vss-dashboards-web.widget-catalog", ".HelloWorldWidget.Configuration" 
-             ],
-             "properties": {
-                 "name": "Hello World Widget 3 (with config)",
-                 "description": "My third widget which supports configuration.",
-                 "previewImageUrl": "img/preview.png",                       
-                 "uri": "hello-world3.html",
-                 "supportedSizes": [
-                      {
-                             "rowSpan": 1,
-                             "columnSpan": 2
-                         }
-                     ],
-                 "supportedScopes": ["project_team"]
-             }
-         },
-		 {
-             "id": "HelloWorldWidget.Configuration",
-             "type": "ms.vss-dashboards-web.widget-configuration",
-             "targets": [ "ms.vss-dashboards-web.widget-configuration"],
-             "properties": {
-                 "name": "HelloWorldWidget Configuration",
-                 "description": "Configures HelloWorldWidget",
-                 "uri": "configuration.html"
-             }
-         }
-
-
-        ],
-        "files": [
-            {
-                "path": "hello-world.html", "addressable": true
-            },
-			 {
-                "path": "hello-world2.html", "addressable": true
-            },
-			{
-                "path": "hello-world3.html", "addressable": true
-            },			
-			{
-                "path": "configuration.html", "addressable": true
-            },
-            {
-                "path": "bower_components/vss-web-extension-sdk/lib/VSS.SDK.min.js", "addressable": true
-            },			
-			{
-                "path": "templates", "addressable": true
-            },
-            {
-                "path": "img", "addressable": true
+                "supportedScopes": [
+                    "project_team"
+                ]
             }
-        ],
-		"scopes":[
-			"vso.work"
-		]
-
-    }
+        },
+        {
+            "id": "Title-Subtitle-NextLine",
+            "type": "ms.vss-dashboards-web.widget",
+            "targets": [
+                "ms.vss-dashboards-web.widget-catalog"
+            ],
+            "properties": {
+                "name": "Template With Title and Subtitle on the next line",
+                "description": "Sample widget template with the title and subtitle on separate lines.",
+                "previewImageUrl": "img/preview.png",
+                "uri": "templates/Title-Subtitle-NextLine.html",
+                "supportedSizes": [
+                    {
+                        "rowSpan": 1,
+                        "columnSpan": 2
+                    }
+                ],
+                "supportedScopes": [
+                    "project_team"
+                ]
+            }
+        },
+        {
+            "id": "Counter",
+            "type": "ms.vss-dashboards-web.widget",
+            "targets": [
+                "ms.vss-dashboards-web.widget-catalog"
+            ],
+            "properties": {
+                "name": "Counter",
+                "description": "Sample widget with formatting for counters.",
+                "previewImageUrl": "img/preview.png",
+                "uri": "templates/Counter.html",
+                "supportedSizes": [
+                    {
+                        "rowSpan": 1,
+                        "columnSpan": 1
+                    }
+                ],
+                "supportedScopes": [
+                    "project_team"
+                ]
+            }
+        },
+        {
+            "id": "Clickable-Counter",
+            "type": "ms.vss-dashboards-web.widget",
+            "targets": [
+                "ms.vss-dashboards-web.widget-catalog"
+            ],
+            "properties": {
+                "name": "Clickable Counter",
+                "description": "Sample widget with formatting for counters. The entire widget is clickable.",
+                "previewImageUrl": "img/preview.png",
+                "uri": "templates/Clickable-Counter.html",
+                "supportedSizes": [
+                    {
+                        "rowSpan": 1,
+                        "columnSpan": 1
+                    }
+                ],
+                "supportedScopes": [
+                    "project_team"
+                ]
+            }
+        },
+        {
+            "id": "Link-With-Icon-Text",
+            "type": "ms.vss-dashboards-web.widget",
+            "targets": [
+                "ms.vss-dashboards-web.widget-catalog"
+            ],
+            "properties": {
+                "name": "Link with icon and text",
+                "description": "Sample widget that has a link with an icon and text.",
+                "previewImageUrl": "img/preview.png",
+                "uri": "templates/Link-With-Icon-Text.html",
+                "supportedSizes": [
+                    {
+                        "rowSpan": 1,
+                        "columnSpan": 2
+                    }
+                ],
+                "supportedScopes": [
+                    "project_team"
+                ]
+            }
+        },
+        {
+            "id": "Widget-for-sample-configuration",
+            "type": "ms.vss-dashboards-web.widget",
+            "targets": [
+                "ms.vss-dashboards-web.widget-catalog",
+                ".Sample-Configuration"
+            ],
+            "properties": {
+                "name": "Configuration template",
+                "description": "Sample widget using SDK provided configuration controls.",
+                "previewImageUrl": "img/preview.png",
+                "uri": "templates/Widget-for-sample-configuration.html",
+                "supportedSizes": [
+                    {
+                        "rowSpan": 1,
+                        "columnSpan": 2
+                    }
+                ],
+                "supportedScopes": [
+                    "project_team"
+                ]
+            }
+        },
+        {
+            "id": "Sample-Configuration",
+            "type": "ms.vss-dashboards-web.widget-configuration",
+            "targets": [
+                "ms.vss-dashboards-web.widget-configuration"
+            ],
+            "properties": {
+                "name": "HelloWorldWidget Configuration",
+                "description": "Configures HelloWorldWidget",
+                "uri": "templates/sample-configuration.html"
+            }
+        },
+        {
+            "id": "HelloWorldWidget",
+            "type": "ms.vss-dashboards-web.widget",
+            "targets": [
+                "ms.vss-dashboards-web.widget-catalog"
+            ],
+            "properties": {
+                "name": "Hello World Widget",
+                "description": "My first widget.",
+                "previewImageUrl": "img/preview.png",
+                "uri": "hello-world.html",
+                "supportedSizes": [
+                    {
+                        "rowSpan": 1,
+                        "columnSpan": 2
+                    }
+                ],
+                "supportedScopes": [
+                    "project_team"
+                ]
+            }
+        },
+        {
+            "id": "HelloWorldWidget2",
+            "type": "ms.vss-dashboards-web.widget",
+            "targets": [
+                "ms.vss-dashboards-web.widget-catalog"
+            ],
+            "properties": {
+                "name": "Hello World Widget (with API)",
+                "description": "My second widget which calls a VSTS REST API.",
+                "previewImageUrl": "img/preview.png",
+                "uri": "hello-world2.html",
+                "supportedSizes": [
+                    {
+                        "rowSpan": 1,
+                        "columnSpan": 2
+                    }
+                ],
+                "supportedScopes": [
+                    "project_team"
+                ]
+            }
+        },
+        {
+            "id": "HelloWorldWidget3",
+            "type": "ms.vss-dashboards-web.widget",
+            "targets": [
+                "ms.vss-dashboards-web.widget-catalog",
+                ".HelloWorldWidget.Configuration"
+            ],
+            "properties": {
+                "name": "Hello World Widget 3 (with config)",
+                "description": "My third widget which supports configuration.",
+                "previewImageUrl": "img/preview.png",
+                "uri": "hello-world3.html",
+                "supportedSizes": [
+                    {
+                        "rowSpan": 1,
+                        "columnSpan": 2
+                    }
+                ],
+                "supportedScopes": [
+                    "project_team"
+                ]
+            }
+        },
+        {
+            "id": "HelloWorldWidget.Configuration",
+            "type": "ms.vss-dashboards-web.widget-configuration",
+            "targets": [
+                "ms.vss-dashboards-web.widget-configuration"
+            ],
+            "properties": {
+                "name": "HelloWorldWidget Configuration",
+                "description": "Configures HelloWorldWidget",
+                "uri": "configuration.html"
+            }
+        }
+    ],
+    "files": [
+        {
+            "path": "hello-world.html",
+            "addressable": true
+        },
+        {
+            "path": "hello-world2.html",
+            "addressable": true
+        },
+        {
+            "path": "hello-world3.html",
+            "addressable": true
+        },
+        {
+            "path": "configuration.html",
+            "addressable": true
+        },
+        {
+            "path": "bower_components/vss-web-extension-sdk/lib/VSS.SDK.min.js",
+            "addressable": true
+        },
+        {
+            "path": "templates",
+            "addressable": true
+        },
+        {
+            "path": "img",
+            "addressable": true
+        }
+    ],
+    "scopes": [
+        "vso.work"
+    ]
+}
