@@ -134,7 +134,7 @@
                 "id": "Widget-for-sample-configuration",
                 "type": "ms.vss-dashboards-web.widget",
                 "targets": [
-                    "ms.vss-dashboards-web.widget-catalog", "Fabrikam.vsts-extensions-myExtensions.Sample-Configuration"
+                    "ms.vss-dashboards-web.widget-catalog", ".Sample-Configuration"
                 ],
                 "properties": {
                     "name": "Widget for sample configuration",
@@ -204,7 +204,7 @@
              "id": "HelloWorldWidget3",
              "type": "ms.vss-dashboards-web.widget",
              "targets": [
-                 "ms.vss-dashboards-web.widget-catalog", "Fabrikam.vsts-extensions-myExtensions.HelloWorldWidget.Configuration" 
+                 "ms.vss-dashboards-web.widget-catalog", ".HelloWorldWidget.Configuration" 
              ],
              "properties": {
                  "name": "Hello World Widget 3 (with config)",
