@@ -1,0 +1,7 @@
+{
+    "name": "webapp",
+    "version": "0.1.0",
+    "dependencies": {
+        "vss-web-extension-sdk":"*"
+     }
+}
