@@ -24,9 +24,9 @@
             {
                 return _WorkItemServices.WorkItemFormService.getService();
             }
-    
+                
             // Register a listener for the work item group contribution.
-            VSS.register("sample-work-item-form-group", function () {
+            VSS.register(VSS.getContribution().id, function () {
                 return {
                     // Called when the active work item is modified
                     onFieldChanged: function(args) {
@@ -73,7 +73,7 @@
             // register a handler for the 'Click me!' button.        
              $("#clickme").click(function() {
                  getWorkItemFormService().then(function(service) {
-                     service.setFieldValue("System.Title", "Title set from your group extension!")
+                     service.setFieldValue("System.Title", "Title set from your group extension!");
                  });
              });
         });

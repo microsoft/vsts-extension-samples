@@ -28,10 +28,6 @@
         {
             "path": "images",
             "addressable": true          
-        },
-        {
-            "path": "activeWorkItemService.html",
-            "addressable": true
         }, 
         {
             "path": "workItemGroup.html",
@@ -49,6 +45,10 @@
             "path": "workItemToolbarButton.html",
             "addressable": true
         },                                            
+        {
+            "path": "workItemNotifications.html",
+            "addressable": true
+        },
         {
             "path": "bower_components/vss-web-extension-sdk/lib/VSS.SDK.min.js",
             "addressable": true
@@ -92,6 +92,17 @@
             ],
             "properties": {
                 "uri": "workItemToolbarButton.html"
+            }
+        },
+        {
+            "id": "sample-work-item-form-notifications",
+            "type": "ms.vss-work-web.work-item-notifications",
+            "description": "Gets events about the current work item form",
+            "targets": [
+                "ms.vss-work-web.work-item-form"
+            ],
+            "properties": {
+                "uri": "workItemNotifications.html"
             }
         },
         {
