@@ -1,0 +1,43 @@
+{
+    "manifestVersion": 1,
+    "id": "dashboardmanager",
+    "version": "0.1.4",
+    "name": "Dashboard Manager",
+    "publisher": "arsaveli",
+    "description": "Test dashboard manager",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "scopes": [
+        "vso.dashboards_manage"
+    ],
+    "contributions": [
+        {
+            "id": "manager",
+            "type": "ms.vss-web.hub",
+            "description": "Manages dashboard",
+            "targets": [
+                "ms.vss-web.home-hub-group"
+            ],
+            "properties": {
+                "name":"Dashboards Admin",
+                "title": "Manage Dashboards",
+                "uri": "index.html"
+            }
+        }
+    ],
+    "files": [
+        {
+            "path": "index.html", "addressable": true
+        },
+        {
+            "path": "main.js", "addressable": true
+        },
+        {
+            "path": "libs/vss-web-extension-sdk/lib/VSS.SDK.js", "addressable": true
+        }
+    ]
+    
+}

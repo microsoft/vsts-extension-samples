@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="libs/vss-web-extension-sdk/lib/VSS.SDK.js" type="text/javascript"></script>
+
+    <script src="main.js" type="text/javascript"></script>
+    <style>
+        #networkResult {
+            width: 400px;
+            height: 100%;
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            display: none;
+        }
+        
+        .payload {
+            display: block;
+            height: 400px;
+            width: 50%;
+        }
+        
+        section {
+            margin-left: 20px;
+        }
+        
+        a {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <textarea id="networkResult"></textarea>
+
+    <section>
+        <H2>Dashboards</H2>
+
+        <section>
+            <H3>Get dashboards</H3>
+            <button onclick="getDashboards()">Get dashboards</button>
+            <div id="dashboardList">
+            </div>
+        </section>
+
+        <section>
+            <H3>Create dashboard</H3>
+            <button onclick="createDashboard()">Create dashboard</button>
+            <textarea id="createDashboardPayload" class="payload">
+{
+"name": "test",
+"position": 5,
+"widgets": [
+        {
+        "name": "Team Members renamed",
+        "position": {
+            "row": 2,
+            "column": 2
+        },
+        "size": {
+            "rowSpan": 1,
+            "columnSpan": 2
+        },
+        "settings": null,
+        "settingsVersion": {
+            "major": 1,
+            "minor": 0,
+            "patch": 0
+        },
+        "contributionId": "ms.vss-dashboards-web.Microsoft.VisualStudioOnline.Dashboards.TeamMembersWidget"
+        }
+    ]
+}        
+            </textarea>
+        </section>
+
+
+        <section>
+            <H3>Get dashboard</H3>
+            <input id="getDashboardId" placeholder="Dashboard ID" />
+            <button onclick="getDashboard()">Get dashboard</button>
+        </section>
+
+        <section>
+            <H3>Delete dashboard</H3>
+            <input id="deleteDashboardId" placeholder="Dashboard ID" />
+            <button onclick="deleteDashboard()">Delete dashboard</button>
+        </section>
+    </section>
+
+
+    <section>
+        <H2>Widgets</H2>
+        Dashboard ID <input id="widgetsDashboardId" placeholder="Widgets Dashboard ID" />
+
+        <section>
+            <H3>Get widgets</H3>
+            <button onclick="getWidgets()">List widgets</button>
+            <div id="widgetsList">
+            </div>
+        </section>
+
+        <section>
+            <H3>Get widget</H3>
+            <input id="getWidgetId" placeholder="Widget ID" /><button onclick="getWidget()">Get widget</button>
+        </section>
+
+        <section>
+            <H3>Create Widget</H3>
+            <button onclick="createWidget()">Create widget</button>
+            <textarea id="createWidgetPayload" class="payload">
+{
+    "name": "Other Links",
+    "position": {
+        "row": 1,
+        "column": 1
+    },
+    "size": {
+        "rowSpan": 1,
+        "columnSpan": 2
+    },
+    "settings": null,
+    "settingsVersion": {
+        "major": 1,
+        "minor": 0,
+        "patch": 0
+    },
+    "dashboard": {
+        "eTag": "18"
+    },
+    "contributionId": "ms.vss-dashboards-web.Microsoft.VisualStudioOnline.Dashboards.OtherLinksWidget"
+}
+            </textarea>
+        </section>
+
+
+        <section>
+            <H3>Update widget</H3>
+            <input id="updateWidgetId" placeholder="Widget ID" /><button onclick="updateWidget()">Update widget</button>
+            <textarea id="updateWidgetPayload" class="payload" placeholder="widget json"></textarea>
+        </section>
+
+        <section>
+            <H3>Replace widget</H3>
+            <input id="replaceWidgetId" placeholder="Widget ID" /><button onclick="replaceWidget()">Replace widget</button>
+            <textarea id="replaceWidgetPayload" class="payload" placeholder="widget json"></textarea>
+        </section>
+
+        <section>
+            <H3>Delete widget</H3>
+            <input id="deleteWidgetId" placeholder="Widget ID" /> <button onclick="deleteWidget()">Delete widget</button>
+        </section>
+    </section>
+
+    <section>
+        <H2>Widgets List</H2>
+
+        <section>
+            <H3>Replace widgets list</H3>
+            <input id="replaceWidgetsETag" placeholder="ETag" /><button onclick="replaceWidgets()">Replace widgets list</button>
+            <textarea id="replaceWidgetsPayload" class="payload" placeholder="widgets json"></textarea>
+        </section>
+
+        <section>
+            <H3>Update widgets list</H3>
+            <input id="updateWidgetsETag" placeholder="ETag" /><button onclick="updateWidgets()">Update widgets list</button>
+            <textarea id="updateWidgetsPayload" class="payload" placeholder="widgets json"></textarea>
+        </section>
+    </section>
+
+</body>
+</html>
