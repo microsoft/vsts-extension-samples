@@ -17,9 +17,9 @@
             explicitNotifyLoaded: true,
             usePlatformScripts: true
         });
-
+        
         // Register a listener for the menu item contribution
-        VSS.register("sample-work-item-menu", function (context) {
+        VSS.register("Fabrikam.samples-work-item-form.sample-work-item-menu", function (context) {
             return {
                 // Called when the menu item is clicked.
                 execute: function(actionContext) {
@@ -28,7 +28,7 @@
             }
         });
 
-        VSS.register("sample-work-item-form-observer", function (context) {
+        VSS.register("Fabrikam.samples-work-item-form.sample-work-item-form-observer", function (context) {
             return {    
                 // event handlers, called when the active work item is loaded/unloaded/modified/saved
                 onFieldChanged: function (args) {

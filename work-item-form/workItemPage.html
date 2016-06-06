@@ -26,7 +26,7 @@
             }
 
             // Register a listener for the work item page contribution
-            VSS.register("sample-work-item-form-page", function () {
+            VSS.register(VSS.getContribution().id, function () {
                 return {
                     // Called when the active work item is modified
                     onFieldChanged: function(args) {
