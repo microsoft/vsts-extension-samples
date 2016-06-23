@@ -10,6 +10,9 @@
             "id": "Microsoft.VisualStudio.Services"
         }
     ],
+    "icons": {
+        "default": "img/logo.png"
+    },
     "contributions": [
         {
             "id": "Title-Description",
@@ -20,7 +23,8 @@
             "properties": {
                 "name": "Template With Title and Description",
                 "description": "Sample widget template with the title and description.",
-                "previewImageUrl": "img/preview.png",
+                "catalogIconUrl": "img/template.png",
+                "previewImageUrl": "img/template_330X160.png",
                 "uri": "templates/Title-Description.html",
                 "supportedSizes": [
                     {
@@ -42,7 +46,8 @@
             "properties": {
                 "name": "Template With Title and Subtitle on the same line",
                 "description": "Sample widget template with the title and subtitle on the same line.",
-                "previewImageUrl": "img/preview.png",
+                "catalogIconUrl": "img/template.png",
+                "previewImageUrl": "img/template_330X160.png",
                 "uri": "templates/Title-Subtitle-SameLine.html",
                 "supportedSizes": [
                     {
@@ -64,7 +69,8 @@
             "properties": {
                 "name": "Template With Title and Subtitle on the next line",
                 "description": "Sample widget template with the title and subtitle on separate lines.",
-                "previewImageUrl": "img/preview.png",
+                "catalogIconUrl": "img/template.png",
+                "previewImageUrl": "img/template_330X160.png",
                 "uri": "templates/Title-Subtitle-NextLine.html",
                 "supportedSizes": [
                     {
@@ -86,7 +92,8 @@
             "properties": {
                 "name": "Counter",
                 "description": "Sample widget with formatting for counters.",
-                "previewImageUrl": "img/preview.png",
+                "catalogIconUrl": "img/template.png",
+                "previewImageUrl": "img/template_330X160.png",
                 "uri": "templates/Counter.html",
                 "supportedSizes": [
                     {
@@ -108,7 +115,8 @@
             "properties": {
                 "name": "Clickable Counter",
                 "description": "Sample widget with formatting for counters. The entire widget is clickable.",
-                "previewImageUrl": "img/preview.png",
+                "catalogIconUrl": "img/template.png",
+                "previewImageUrl": "img/template_330X160.png",
                 "uri": "templates/Clickable-Counter.html",
                 "supportedSizes": [
                     {
@@ -130,7 +138,8 @@
             "properties": {
                 "name": "Link with icon and text",
                 "description": "Sample widget that has a link with an icon and text.",
-                "previewImageUrl": "img/preview.png",
+                "catalogIconUrl": "img/template.png",
+                "previewImageUrl": "img/template_330X160.png",
                 "uri": "templates/Link-With-Icon-Text.html",
                 "supportedSizes": [
                     {
@@ -153,7 +162,8 @@
             "properties": {
                 "name": "Configuration template",
                 "description": "Sample widget using SDK provided configuration controls.",
-                "previewImageUrl": "img/preview.png",
+                "catalogIconUrl": "img/template.png",
+                "previewImageUrl": "img/template_330X160.png",
                 "uri": "templates/Widget-for-sample-configuration.html",
                 "supportedSizes": [
                     {
@@ -187,7 +197,8 @@
             "properties": {
                 "name": "Hello World Widget",
                 "description": "My first widget.",
-                "previewImageUrl": "img/preview.png",
+                "catalogIconUrl": "img/helloWorld.png",
+                "previewImageUrl": "img/helloWorld_330x160.png",
                 "uri": "hello-world.html",
                 "supportedSizes": [
                     {
@@ -209,7 +220,8 @@
             "properties": {
                 "name": "Hello World Widget (with API)",
                 "description": "My second widget which calls a VSTS REST API.",
-                "previewImageUrl": "img/preview.png",
+                "catalogIconUrl": "img/helloWorld.png",
+                "previewImageUrl": "img/helloWorld_330x160.png",
                 "uri": "hello-world2.html",
                 "supportedSizes": [
                     {
@@ -232,7 +244,8 @@
             "properties": {
                 "name": "Hello World Widget 3 (with config)",
                 "description": "My third widget which supports configuration.",
-                "previewImageUrl": "img/preview.png",
+                "catalogIconUrl": "img/helloWorld.png",
+                "previewImageUrl": "img/helloWorld_330x160.png",
                 "uri": "hello-world3.html",
                 "supportedSizes": [
                     {
