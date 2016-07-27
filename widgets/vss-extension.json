@@ -13,6 +13,7 @@
     "icons": {
         "default": "img/logo.png"
     },
+    "demands": ["contribution/ms.vss-dashboards-web.widget-sdk-version-2"],
     "contributions": [
         {
             "id": "Title-Description",
