@@ -1,0 +1,11 @@
+{    
+    "compilerOptions": {
+        "module": "amd",
+        "sourceMap": false,
+        "jsx": "react",
+        "outDir": "dist"
+    },
+    "exclude": [
+        "node_modules"
+    ]
+}

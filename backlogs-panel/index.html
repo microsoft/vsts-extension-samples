@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <script src="dist/VSS.SDK.min.js"></script>
+    
+    <link href="dist/main.css" rel="stylesheet"></link>
+</head>
+<body>
+    <script type="text/javascript">
+        // Initialize framework 
+        VSS.init({
+            explicitNotifyLoaded: true,
+            usePlatformScripts: true,
+            moduleLoaderConfig: {
+                paths: {
+                    "scripts": "dist"
+                }
+            }
+        });
+        
+        // Load main entry point for extension
+        VSS.require(["dist/app"], function () {
+            // Loading succeeded
+            VSS.notifyLoadSucceeded();
+        });
+    </script>
+    
+    <div class="hub-title">Details</div>
+    <div id="main"></div>
+</body>
+</html>
