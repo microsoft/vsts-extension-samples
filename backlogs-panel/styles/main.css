@@ -1,0 +1,92 @@
+body {
+    height: 100%;
+}
+
+#main {
+    background: white;
+    padding: 5px;
+    padding-top: 45px;
+        
+    height: 100%;
+}
+
+.hub-title {
+    padding: none !important;
+}
+
+.widget {
+    margin: 10px;
+    padding: 10px;
+
+    background: rgb(242, 242, 242);
+    box-shadow: 2px 2px 3px #DADADA
+}
+
+.widget .title {
+    color: rgb(66, 66, 69);
+    font-family: 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, Verdana;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/** Assigned to widget */
+.assigned-to ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.assigned-to ul li {
+    margin-bottom: 5px;
+}
+
+.assigned-to img {
+    width: 20px;
+    height: 20px;
+    
+    vertical-align: middle;
+}
+
+/* Styles for development widget */
+.pull-request-item {
+    margin-bottom: 10px;
+}
+
+.pull-request-primary-data {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    height: 20px;
+}
+
+.pull-request-data {
+    margin-left: 20px;
+}
+
+.pull-request-icon {
+    float: left;
+    width: 20px;
+    padding-left: 1px;
+}
+
+.pull-request-assigned-to-icon{
+    padding-right: 4px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.pull-request-primary-data { 
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.pull-request-secondary-data {
+    overflow: hidden;
+}
+
+/** Loading Spinner */
+.indicator {
+    position: absolute;
+    left: calc(50% - 40px);
+    top: 20%;
+}
