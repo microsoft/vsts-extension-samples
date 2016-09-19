@@ -1,7 +1,7 @@
 {
     "manifestVersion": 1,
     "id": "samples-contributions-guide",
-    "version": "0.1.5",
+    "version": "0.1.6",
     "name": "Contributions Guide",
     "description": "Building an extension for Visual Studio Team Services? See the places where you can extend and enhance the user's web experience with an extension ---- right from within the web experience.",
     "publisher": "ms-samples",
@@ -427,22 +427,6 @@
             }
         },
         {
-            "id": "showProperties_24",
-            "type": "ms.vss-web.action",
-            "description": "Shows the target properties for work item query results toolbar menu.",
-            "targets": [
-                "ms.vss-work-web.work-item-query-results-toolbar-menu"
-            ],
-            "properties": {
-                "text": "Custom query results toolbar menu",
-                "title": "ms.vss-work-web.work-item-query-results-toolbar-menu (Custom query results toolbar action)",
-                "icon": "images/show-properties.png",
-                "group": "actions",
-                "uri": "main.html",
-                "registeredObjectId": "showProperties"
-            }
-        },
-        {
             "id": "queries-hub-tab",
             "type": "ms.vss-web.tab",
             "description": "Adds a tab to the Queries hub",
@@ -452,8 +436,7 @@
             "properties": {
                 "uri": "context.html",
                 "title": "Web Context (ms.vss-work-web.query-tabs)",
-                "name": "Web Context",
-                "registeredObjectId": "showContext"
+                "name": "Web Context"
             }
         },
         {
