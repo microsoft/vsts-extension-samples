@@ -426,6 +426,22 @@
                 "registeredObjectId": "showProperties"
             }
         },
+        {		         {
+-            "id": "showProperties_24",		
+-            "type": "ms.vss-web.action",		
+-            "description": "Shows the target properties for work item query results toolbar menu.",		
+-            "targets": [		
+-                "ms.vss-work-web.work-item-query-results-toolbar-menu"		
+-            ],		
+-            "properties": {		
+-                "text": "Custom query results toolbar menu",		
+-                "title": "ms.vss-work-web.work-item-query-results-toolbar-menu (Custom query results toolbar action)",		
+-                "icon": "images/show-properties.png",		
+-                "group": "actions",		
+-                "uri": "main.html",		
+-                "registeredObjectId": "showProperties"		
+-            }		
+-        },
         {
             "id": "queries-hub-tab",
             "type": "ms.vss-web.tab",
