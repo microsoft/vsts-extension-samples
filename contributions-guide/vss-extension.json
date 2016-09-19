@@ -1,7 +1,7 @@
 {
     "manifestVersion": 1,
     "id": "samples-contributions-guide",
-    "version": "0.1.5",
+    "version": "0.1.6",
     "name": "Contributions Guide",
     "description": "Building an extension for Visual Studio Team Services? See the places where you can extend and enhance the user's web experience with an extension ---- right from within the web experience.",
     "publisher": "ms-samples",
@@ -452,8 +452,7 @@
             "properties": {
                 "uri": "context.html",
                 "title": "Web Context (ms.vss-work-web.query-tabs)",
-                "name": "Web Context",
-                "registeredObjectId": "showContext"
+                "name": "Web Context"
             }
         },
         {

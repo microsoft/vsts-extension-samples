@@ -31,7 +31,10 @@
                 }
                 updateConfiguration(VSS.getConfiguration());
                 document.getElementById("configuration").style.display = "block";
-                VSS.register("showContext", {
+                
+                //Register the fully-qualified contribution id here.
+                //Because we're using the contribution id, we do NOT need to define a registeredObjectId in the extension manfiest.
+                VSS.register(VSS.getContribution().id, {
                     pageTitle: function(state) {
                         return "Web Context";
                     },
