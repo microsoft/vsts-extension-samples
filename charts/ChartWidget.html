@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<script src="bower_components/vss-web-extension-sdk/lib/VSS.SDK.min.js"></script>
+	<script type="text/javascript">
+VSS.init({
+ 		explicitNotifyLoaded: true,
+ 		usePlatformStyles: true 
+ 	});
+ 	
+VSS.require([
+ 		"TFS/Dashboards/WidgetHelpers", 
+	 "Charts/Controls", 
+	 "Charts/Services"
+		],
+		function (WidgetHelpers, Controls, Services) {
+ 		WidgetHelpers.IncludeWidgetStyles();
+ 		VSS.register("ChartWidget", function () { 
+			 return {
+			 load:function() {
+				var $container = $('#Chart-Container');
+				var chartOptions = { 
+					"hostOptions": { 
+						"height": "290", 
+						"width": "300"
+					},
+					"chartType": "pie",
+					"series": [{
+						"data": [11, 4, 3, 1]
+					}],
+					"xAxis": { 
+						"labelValues": ["Design", "On Deck", "Completed", "Development"] 
+					}, 
+					"tooltip": {
+						"enabled": "true",
+						"onlyShowFocusedSeries": "true" 
+					},
+					"legend": { 
+						"limitLabelSize": "true"
+					},
+					"specializedOptions": {
+						"showLabels": "true",
+						"size": 200,
+  						"center": [
+   							null,
+   							90
+  						]
+					} 
+				};
+
+				Controls.create($container, chartOptions);
+				return WidgetHelpers.WidgetStatusHelper.Success();
+			 	}
+			 }
+			});
+	VSS.notifyLoadSucceeded();
+});
+</script>
+</head>
+
+<body>
+	<div class="widget">
+		<h2 class="title">Chart Widget</h2>
+		<div id="Chart-Container"></div>
+	</div>
+</body>
+
+</html>

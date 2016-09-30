@@ -1,0 +1,57 @@
+{
+    "manifestVersion": 1,
+    "id": "samples-charts",
+    "version": "1.0.1",
+    "name": "Interactive Charts in VSTS",
+    "description": "Samples of interactive charts from teh Chart SDK.",
+    "publisher": "Fabrikam",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "icons": {
+        "default": "img/logo.png"
+    },
+    "demands": ["contribution/ms.vss-dashboards-web.widget-sdk-version-2"],
+    "contributions": [
+        {
+            "id": "ChartWidget",
+            "type": "ms.vss-dashboards-web.widget",
+            "targets": [
+                "ms.vss-dashboards-web.widget-catalog"
+            ],
+            "properties": {
+                "name": "Sample Chart",
+                "description": "A simple pie chart widget with no configuration and dummy data.",
+                "catalogIconUrl": "img/CatalogIcon.png",
+                "uri": "ChartWidget.html",
+                "supportedSizes": [
+                    {
+                        "rowSpan": 2,
+                        "columnSpan": 2
+                    }
+                ],
+                "supportedScopes": [
+                    "project_team"
+                ]
+            }
+        }
+    ],
+    "files": [
+        {
+            "path": "ChartWidget.html",
+            "addressable": true
+        },
+        {
+            "path": "bower_components/vss-web-extension-sdk/lib/VSS.SDK.min.js",
+            "addressable": true
+        },
+        {
+            "path": "img",
+            "addressable": true
+        }
+    ],
+    "scopes": [
+    ]
+}
