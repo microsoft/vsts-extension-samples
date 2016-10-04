@@ -55,7 +55,7 @@ Most samples can be run without any modifications on [Visual Studio Team Service
 5. Share your extension with your Team Services account (right-click on the published extension and select Share)
 6. Install the extension into the account (click on the published extension's title and then click Install)
 
-See the [full instructions](https://www.visualstudio.com/en-us/integrate/extensions/publish/overview).
+See the [full instructions](https://www.visualstudio.com/en-us/docs/integrate/extensions/publish/overview).
 
 ## Available samples
 
