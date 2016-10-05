@@ -1,9 +1,9 @@
 {
     "manifestVersion": 1,
     "id": "samples-charts",
-    "version": "1.0.1",
+    "version": "1.0.0",
     "name": "Interactive Charts in VSTS",
-    "description": "Samples of interactive charts from teh Chart SDK.",
+    "description": "Samples of interactive charts from the Chart SDK.",
     "publisher": "Fabrikam",
     "targets": [
         {
