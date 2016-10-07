@@ -1,0 +1,65 @@
+{
+    "manifestVersion": 1,
+    "id": "samples-service-hooks-consumer",
+    "version": "0.0.4",
+    "name": "Service Hooks Sample",
+    "description": "A simple extension that demonstrates how to contribute a consumer service into service hooks.",
+    "publisher": "fabrikam",
+    "public": false,
+    "icons": {
+        "default": "images/fabrikam-logo.png"
+    },
+    "scopes": [
+       
+    ],
+    "categories": [
+        "Developer samples"
+    ],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "consumer",
+            "type": "ms.vss-servicehooks.consumer",
+            "targets": [
+                "ms.vss-servicehooks.consumers"
+            ],
+            "properties": {
+                "id": "consumer",
+                "name": "Sample Consumer",
+                "description": "Sample service hooks consumer service",
+                "informationUrl": "https://aka.ms/vsoextensions",
+                "inputDescriptors": [
+                    {
+                        "id": "url",
+                        "isRequired": true,
+                        "name": "URL",
+                        "description": "URL to post event payload to",
+                        "inputMode": "textbox"
+                    }
+                ],
+                "actions": [
+                    {
+                        "id": "performAction",
+                        "name": "Perform action",
+                        "description": "Posts a standard event payload",
+                        "supportedEventTypes": [
+                            "git.push",
+                            "git.pullrequest.created",
+                            "git.pullrequest.updated"
+                        ],
+                        "publishEvent": {
+                            "url": "{{{url}}}",
+                            "resourceDetailsToSend": "all",
+                            "messagesToSend": "all",
+                            "detailedMessagesToSend": "all"
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}
