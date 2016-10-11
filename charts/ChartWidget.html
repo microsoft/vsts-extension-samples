@@ -11,46 +11,47 @@ VSS.init({
  	
 VSS.require([
  		"TFS/Dashboards/WidgetHelpers", 
-	 "Charts/Controls", 
-	 "Charts/Services"
+	    "Charts/Services"
 		],
-		function (WidgetHelpers, Controls, Services) {
+		function (WidgetHelpers, Services) {
  		WidgetHelpers.IncludeWidgetStyles();
  		VSS.register("ChartWidget", function () { 
 			 return {
 			 load:function() {
-				var $container = $('#Chart-Container');
-				var chartOptions = { 
-					"hostOptions": { 
-						"height": "290", 
-						"width": "300"
-					},
-					"chartType": "pie",
-					"series": [{
-						"data": [11, 4, 3, 1]
-					}],
-					"xAxis": { 
-						"labelValues": ["Design", "On Deck", "Completed", "Development"] 
-					}, 
-					"tooltip": {
-						"enabled": "true",
-						"onlyShowFocusedSeries": "true" 
-					},
-					"legend": { 
-						"limitLabelSize": "true"
-					},
-					"specializedOptions": {
-						"showLabels": "true",
-						"size": 200,
-  						"center": [
-   							null,
-   							90
-  						]
-					} 
-				};
+				return Services.ChartsService.getService().then(function(chartService){
+					var $container = $('#Chart-Container');
+					var chartOptions = { 
+						"hostOptions": { 
+							"height": "290", 
+							"width": "300"
+						},
+						"chartType": "pie",
+						"series": [{
+							"data": [11, 4, 3, 1]
+						}],
+						"xAxis": { 
+							"labelValues": ["Design", "On Deck", "Completed", "Development"] 
+						}, 
+						"tooltip": {
+							"enabled": "true",
+							"onlyShowFocusedSeries": "true" 
+						},
+						"legend": { 
+							"limitLabelSize": "true"
+						},
+						"specializedOptions": {
+							"showLabels": "true",
+							"size": 200,
+							"center": [
+								null,
+								90
+							]
+						} 
+					};
 
-				Controls.create($container, chartOptions);
-				return WidgetHelpers.WidgetStatusHelper.Success();
+					chartService.createChart($container, chartOptions);
+					return WidgetHelpers.WidgetStatusHelper.Success();
+				});
 			 	}
 			 }
 			});
