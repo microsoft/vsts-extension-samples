@@ -23,7 +23,7 @@
             ],
             "properties": {
                 "name": "Sample Pie Chart",
-                "description": "A simple pie chart widget with no configuration and dummy data.",
+                "description": "A simple pie chart widget with no configuration and hard-coded data.",
                 "catalogIconUrl": "img/CatalogIcon.png",
                 "uri": "SimplePieChart.html",
                 "supportedSizes": [
@@ -45,7 +45,7 @@
             ],
             "properties": {
                 "name": "Sample Stacked Area Chart",
-                "description": "A stacked area chart widget with no configuration and dummy data.",
+                "description": "A stacked area chart widget with no configuration and hard-coded data.",
                 "catalogIconUrl": "img/CatalogIcon.png",
                 "uri": "StackedAreaChart.html",
                 "supportedSizes": [
@@ -67,7 +67,7 @@
             ],
             "properties": {
                 "name": "Sample Pivot Table",
-                "description": "A Pivot Table widget with no configuration and dummy data.",
+                "description": "A Pivot Table widget with no configuration and hard-coded data.",
                 "catalogIconUrl": "img/CatalogIcon.png",
                 "uri": "PivotTable.html",
                 "supportedSizes": [
