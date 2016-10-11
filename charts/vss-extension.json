@@ -4,7 +4,7 @@
     "version": "1.0.0",
     "name": "Interactive Charts in VSTS",
     "description": "Samples of interactive charts from the Chart SDK.",
-    "publisher": "rbansal",
+    "publisher": "Fabrikam",
     "targets": [
         {
             "id": "Microsoft.VisualStudio.Services"
