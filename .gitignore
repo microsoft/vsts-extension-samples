@@ -1,7 +1,7 @@
 dist/
 typings/
 bower_components/
-
+node_modules/
 
 # Custom extension manifest
 extension-*.json
