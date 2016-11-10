@@ -1,7 +1,7 @@
 {
     "manifestVersion": 1,
     "id": "samples-contributions-guide",
-    "version": "0.1.6",
+    "version": "0.1.29",
     "name": "Contributions Guide",
     "description": "Building an extension for Visual Studio Team Services? See the places where you can extend and enhance the user's web experience with an extension ---- right from within the web experience.",
     "publisher": "ms-samples",
@@ -53,7 +53,7 @@
             "addressable": true
         },     
         {
-            "path": "bower_components/vss-web-extension-sdk/lib/VSS.SDK.min.js",
+            "path": "bower_components/vss-web-extension-sdk/lib",
             "addressable": true
         }    
     ],
@@ -452,7 +452,8 @@
             "properties": {
                 "uri": "context.html",
                 "title": "Web Context (ms.vss-work-web.query-tabs)",
-                "name": "Web Context"
+                "name": "Web Context",
+                "dynamic": true
             }
         },
         {
@@ -618,6 +619,34 @@
                  "uri": "context.html",
                  "order": 20,
                  "height": 500               
+            }
+        },
+        {
+            "id": "product-backlog-tab",
+            "type": "ms.vss-web.tab",
+            "description": "Adds a tab to the Product Backlog page.",
+            "targets": [
+                "ms.vss-work-web.product-backlog-tabs"
+            ],
+            "properties": {
+                "name": "Web Context",
+                "title": "Web Context (ms.vss-work-web.product-backlog-tabs)",
+                "uri": "context.html",
+                "dynamic": true
+            }
+        },
+        {
+            "id": "iteration-backlog-tab",
+            "type": "ms.vss-web.tab",
+            "description": "Adds a tab to the Iteration Backlog page.",
+            "targets": [
+                "ms.vss-work-web.iteration-backlog-tabs"
+            ],
+            "properties": {
+                "name": "Web Context",
+                "title": "Web Context (ms.vss-work-web.iteration-backlog-tabs)",
+                "uri": "context.html",
+                "dynamic": true
             }
         }
     ]

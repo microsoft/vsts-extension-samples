@@ -1,7 +1,7 @@
 <html>
 <head>
     <title>Web Context</title>
-    <script src="bower_components/vss-web-extension-sdk/lib/VSS.SDK.min.js"></script> 
+    <script src="bower_components/vss-web-extension-sdk/lib/VSS.SDK.js"></script> 
 </head>
 
 <body style="padding-left: 20px; padding-top: 20px; overflow-y: auto; background-color: #ddd">
@@ -24,6 +24,15 @@
 
             // Used for tab contributions
             if (VSS.getContribution().type === "ms.vss-web.tab") {
+
+                var getTabTitle = function(tabContext) {
+                    if (tabContext && tabContext.iterationId) {
+                        return "Web Context (iterationId: " + tabContext.iterationId.substr(0, 5) + ")";
+                    } else {tabContext
+                        return "Web Context";
+                    }
+                }
+
                 var updateConfiguration = function(tabContext) {
                     if (typeof tabContext === "object") {
                         document.getElementById("configuration-display").textContent = JSON.stringify(tabContext, null, 4);
@@ -31,19 +40,19 @@
                 }
                 updateConfiguration(VSS.getConfiguration());
                 document.getElementById("configuration").style.display = "block";
-                
-                //Register the fully-qualified contribution id here.
-                //Because we're using the contribution id, we do NOT need to define a registeredObjectId in the extension manfiest.
+
+                // Register the fully-qualified contribution id here.
+                // Because we're using the contribution id, we do NOT need to define a registeredObjectId in the extension manfiest.
                 VSS.register(VSS.getContribution().id, {
-                    pageTitle: function(state) {
-                        return "Web Context";
-                    },
+                    pageTitle: getTabTitle,
+
+                    // We set the "dynamic" contribution property to true in the manifest so that it will get the tab name from this function.
+                    name: getTabTitle,
+
                     updateContext: updateConfiguration,
+
                     isInvisible: function(state) {
-                        // Hide this tab if the user has selected the "Unsaved work items" pseudo-query.
-                        if (state && state.query && state.query.name === "Unsaved work items" && state.query.path === null) {
-                            return true;
-                        }
+                        // tab is always visible
                         return false;
                     }
                 });
