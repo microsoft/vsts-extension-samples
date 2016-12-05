@@ -1,0 +1,24 @@
+<html dir="ltr">
+
+<head>
+    <title>Work Item Search</title>
+    <%= head %>
+    <style>
+        body.my-extension {
+            padding: 10px 20px;
+            overflow: auto;
+        }
+    </style>
+
+</head>
+
+<body class="my-extension">
+    <script type="text/javascript">
+        <%= init %>
+    </script>
+
+    <h2>Work Item Search</h2>
+    <div id="work-item-search-view"></div>
+</body>
+
+</html>
