@@ -4,6 +4,8 @@ A sample extension for Visual Studio Team Services using [Office UI Fabric React
 
 It uses components like TextField, Button, Checkbox and DetailsList to search for work items and list the results.
 
+![screenshot](images/screenshot.png)
+
 ## Prerequisites
 
 If you plan to build and install this extension, you need:
