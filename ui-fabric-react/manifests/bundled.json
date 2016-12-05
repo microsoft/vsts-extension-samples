@@ -11,6 +11,6 @@
         {
             "path": "../dist/index.html",
             "addressable": true
-        }
+        }    
     ]
 }

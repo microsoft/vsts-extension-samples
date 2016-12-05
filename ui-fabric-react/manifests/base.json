@@ -1,8 +1,8 @@
 {
     "manifestVersion": 1,
-    "id": "c-ui-officefabric",
-    "version": "0.1.0",
-    "publisher": "willsmythe",
+    "id": "samples-ui-fabric-react",
+    "version": "1.0.3",
+    "publisher": "ms-samples",
     "name": "Office UI Fabric React Sample",
     "description": "Sample Team Services web extension using Office UI Fabric React",
     "public": false,
@@ -25,10 +25,10 @@
             "id": "samples",
             "type": "ms.vss-web.hub",
             "targets": [
-                "ms.vss-web.home-hub-group"
+                "ms.vss-work-web.work-hub-group"
             ],
             "properties": {
-                "name": "Fabric UI",
+                "name": "Search (Fabric)",
                 "order": 1000,
                 "uri": "index.html"
             }

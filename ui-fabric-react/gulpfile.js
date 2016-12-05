@@ -4,6 +4,7 @@ const template = require('gulp-template');
 const webpack = require('gulp-webpack');
 const rename = require('gulp-rename');
 const ts = require("gulp-typescript");
+const yargs = require("yargs");
 
 var exec = require('child_process').exec;
 
@@ -11,8 +12,12 @@ const tsProject = ts.createProject('tsconfig.json', {
     typescript: require('typescript')
 });
 
-const isBundled = process.argv.indexOf('--local') < 0;
-const destFolder = isBundled ? 'dist' : '.';
+var argv = yargs.string("publisher").argv;
+
+const publisherIdOverride = argv.publisher || "";
+const isBundled = argv.local ? false : true;
+const distFolder = 'dist';
+const contentFolder = isBundled ? distFolder : '.';
 
 var templateValues = {};
 
@@ -66,7 +71,7 @@ gulp.task('template', () => {
             path.basename = 'index';
             path.extname = '.html';
         }))
-        .pipe(gulp.dest(destFolder));
+        .pipe(gulp.dest(contentFolder));
 });
 
 gulp.task('build', () => {
@@ -80,10 +85,10 @@ gulp.task('build', () => {
 gulp.task('copy', ['build'], () => {
     if (isBundled) {
         gulp.src('node_modules/vss-web-extension-sdk/lib/VSS.SDK.min.js')
-            .pipe(gulp.dest(destFolder + '/scripts'));
+            .pipe(gulp.dest(contentFolder + '/scripts'));
 
         return gulp.src(['node_modules/office-ui-fabric-react/dist/*css/*.min.css', '*css/*.css'])
-            .pipe(gulp.dest(destFolder));
+            .pipe(gulp.dest(contentFolder));
     } else {
         return true;
     }
@@ -93,7 +98,7 @@ gulp.task('webpack', ['copy'], () => {
     if (isBundled) {
         return gulp.src('./scripts/WorkItemSearchComponent.js')
             .pipe(webpack(require('./webpack.config.js')))
-            .pipe(gulp.dest(destFolder + "/scripts"));
+            .pipe(gulp.dest(contentFolder + "/scripts"));
 
     } else {
         return true;
@@ -101,13 +106,14 @@ gulp.task('webpack', ['copy'], () => {
 });
 
 gulp.task('tfxpack', ['webpack'], ()=> {
-    const rootArg = isBundled ? `--root ${destFolder}` : '';
-    const outputPathArg = isBundled ? `--output-path ${destFolder}` : '';
+    const rootArg = `--root ${contentFolder}`;
+    const outputPathArg = `--output-path ${distFolder}`;
     const manifestsArg = `--manifests ${isBundled ? '../' : ''}manifests/base.json`; 
     const overridesFileArg = `--overrides-file manifests/${isBundled ? 'bundled.json' : 'local.json'}`;
+    const publisherOverrideArg = publisherIdOverride != "" ? `--publisher ${publisherIdOverride}` : '';
 
     // run tfx
-    exec(`${path.join(__dirname, "node_modules", ".bin", "tfx.cmd")} extension create ${rootArg} ${outputPathArg} ${manifestsArg} ${overridesFileArg}`,
+    exec(`${path.join(__dirname, "node_modules", ".bin", "tfx.cmd")} extension create ${rootArg} ${outputPathArg} ${manifestsArg} ${overridesFileArg} ${publisherOverrideArg} --rev-version`,
         (err, stdout, stderr) => {
             if (err) {
                 console.log(err);

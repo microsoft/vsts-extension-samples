@@ -1,7 +1,7 @@
 {
-  "name": "vsts-fabric-extension",
-  "version": "0.1.0",
-  "description": "Sample VSTS extension using office-ui-fabric-react",
+  "name": "samples-ui-fabric-react",
+  "version": "1.0.0",
+  "description": "Sample Team Services web extension using Office UI Fabric React",
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -23,7 +23,8 @@
     "gulp-webpack": "^1.5.0",
     "tfx-cli": "^0.3.40",
     "typescript": "^2.0.10",
-    "webpack": "^1.13.3"
+    "webpack": "^1.13.3",
+    "yargs": "^6.5.0"
   },
   "dependencies": {
     "office-ui-fabric-react": "^0.74.0",
