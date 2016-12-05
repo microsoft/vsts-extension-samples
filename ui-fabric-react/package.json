@@ -1,0 +1,33 @@
+{
+  "name": "samples-ui-fabric-react",
+  "version": "1.0.0",
+  "description": "Sample Team Services web extension using Office UI Fabric React",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "vsts",
+    "extension",
+    "office-ui-fabric-react"
+  ],
+  "author": "serkan-inci",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/react": "^0.14.48",
+    "@types/react-dom": "^0.14.18",
+    "gulp": "^3.9.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-template": "^4.0.0",
+    "gulp-typescript": "^3.1.3",
+    "gulp-webpack": "^1.5.0",
+    "tfx-cli": "^0.3.40",
+    "typescript": "^2.0.10",
+    "webpack": "^1.13.3",
+    "yargs": "^6.5.0"
+  },
+  "dependencies": {
+    "office-ui-fabric-react": "^0.74.0",
+    "vss-web-extension-sdk": "^1.108.0"
+  }
+}

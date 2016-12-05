@@ -1,0 +1,37 @@
+{
+    "manifestVersion": 1,
+    "id": "samples-ui-fabric-react",
+    "version": "1.0.3",
+    "publisher": "ms-samples",
+    "name": "Office UI Fabric React Sample",
+    "description": "Sample Team Services web extension using Office UI Fabric React",
+    "public": false,
+    "tags": [
+        "samples",
+        "fabric",
+        "ui"
+    ],
+    "scopes": ["vso.work_write"],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "categories": [
+        "Developer samples"
+    ],
+    "contributions": [
+        {
+            "id": "samples",
+            "type": "ms.vss-web.hub",
+            "targets": [
+                "ms.vss-work-web.work-hub-group"
+            ],
+            "properties": {
+                "name": "Search (Fabric)",
+                "order": 1000,
+                "uri": "index.html"
+            }
+        }       
+    ]
+}

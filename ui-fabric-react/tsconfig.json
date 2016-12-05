@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "module": "amd",
+        "moduleResolution": "classic",
+        "target": "es5",
+        "noImplicitAny": false,
+        "jsx": "react",
+        "sourceMap": false,
+        "baseUrl": ".",
+        "paths": {
+            "OfficeFabric/*": ["node_modules/office-ui-fabric-react/lib-amd/*"]
+        }
+    }
+}
