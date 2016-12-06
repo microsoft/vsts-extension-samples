@@ -14,7 +14,6 @@ import { DetailsList } from 'OfficeFabric/components/DetailsList/DetailsList';
 
 // vsts imports
 import { WorkItemFormNavigationService } from "TFS/WorkItemTracking/Services";
-import { toDictionary } from "VSS/Utils/Array";
 
 import {
     Instance as WorkItemSearch,
