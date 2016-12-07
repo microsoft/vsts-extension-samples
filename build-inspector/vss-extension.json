@@ -1,13 +1,13 @@
 {
     "manifestVersion": 1,
     "id": "samples-build-inspector",
-    "version": "0.2.3",
+    "version": "0.3.8",
     "name": "Build Inspector",
     "description": "A simple extension that demonstrates how to show details for a Visual Studio Team Services resource.",
     "publisher": "fabrikam",
     "public": false,
     "icons": {
-        "default": "images/fabrikam-logo.png"
+        "default": "static/images/fabrikam-logo.png"
     },
     "scopes": ["vso.build", "vso.work", "vso.code"],
     "tags": [
@@ -23,29 +23,20 @@
     ],
     "files": [
         {
-            "path": "css",
-            "addressable": true          
-        },
-        {
-            "path": "images",
-            "addressable": true          
-        },
-        {
             "path": "dist",
-            "addressable": true
+            "addressable": true,
+            "packagePath": "inspector"
         },
         {
-            "path": "items.html",
-            "addressable": true
+            "path": "static",
+            "addressable": true,
+            "packagePath": "/"
         },
         {
-            "path": "launch.html",
-            "addressable": true
-        },              
-        {
-            "path": "bower_components/vss-web-extension-sdk/lib/VSS.SDK.min.js",
-            "addressable": true
-        }        
+            "path": "node_modules/vss-web-extension-sdk/lib",
+            "addressable": true,
+            "packagePath": "lib"
+        }
     ],
     "contributions": [
         {
@@ -65,6 +56,7 @@
             "type": "ms.vss-web.hub",
             "description": "Inspector hub to the Build hub group that shows items associated with a build",
             "targets": [
+                "ms.vss-build-web.build-release-hub-group",
                 "ms.vss-build-web.build-hub-group"
             ],
             "properties": {

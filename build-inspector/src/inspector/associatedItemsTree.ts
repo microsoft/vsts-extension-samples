@@ -1,6 +1,4 @@
-﻿/// <reference path='../../typings/main.d.ts' />
-
-import Controls = require("VSS/Controls");
+﻿import Controls = require("VSS/Controls");
 import TreeView = require("VSS/Controls/TreeView");
 
 export const enum NodeItemType {

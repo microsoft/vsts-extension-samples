@@ -5,9 +5,6 @@ node_modules/
 # Custom extension manifest
 extension-*.json
 
-# vset (NPM Package) settings
-settings.vset.json
-
 # VSIX Packages (vset output)
 *.vsix
 
