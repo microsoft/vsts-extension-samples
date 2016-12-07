@@ -1,13 +1,13 @@
 {
     "manifestVersion": 1,
     "id": "samples-build-inspector",
-    "version": "0.2.3",
+    "version": "0.3.0",
     "name": "Build Inspector",
     "description": "A simple extension that demonstrates how to show details for a Visual Studio Team Services resource.",
     "publisher": "fabrikam",
     "public": false,
     "icons": {
-        "default": "images/fabrikam-logo.png"
+        "default": "dist/images/fabrikam-logo.png"
     },
     "scopes": ["vso.build", "vso.work", "vso.code"],
     "tags": [
@@ -23,28 +23,8 @@
     ],
     "files": [
         {
-            "path": "css",
-            "addressable": true          
-        },
-        {
-            "path": "images",
-            "addressable": true          
-        },
-        {
             "path": "dist",
-            "addressable": true
-        },
-        {
-            "path": "items.html",
-            "addressable": true
-        },
-        {
-            "path": "launch.html",
-            "addressable": true
-        },              
-        {
-            "path": "bower_components/vss-web-extension-sdk/lib/VSS.SDK.min.js",
-            "addressable": true
+            "addressable": true          
         }        
     ],
     "contributions": [

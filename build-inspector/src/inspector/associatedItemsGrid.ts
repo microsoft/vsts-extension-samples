@@ -1,6 +1,4 @@
-﻿/// <reference path='../../typings/main.d.ts' />
-
-import Controls = require("VSS/Controls");
+﻿import Controls = require("VSS/Controls");
 import TFS_Build_Contracts = require("TFS/Build/Contracts");
 import TFS_Wit_Contracts = require("TFS/WorkItemTracking/Contracts");
 import Grids = require("VSS/Controls/Grids");
