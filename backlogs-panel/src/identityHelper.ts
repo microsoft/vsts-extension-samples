@@ -1,4 +1,4 @@
-import { IIdentity } from "scripts/model";
+import { IIdentity } from "./model";
 import * as Identities from "VSS/Identities/Picker/RestClient";
 import * as VssService from "VSS/Service";
 import * as Q from "q";

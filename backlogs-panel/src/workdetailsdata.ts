@@ -1,5 +1,3 @@
-/// <reference path='../typings/tsd.d.ts' />
-
 import Q = require("q");
 
 import TFS_Wit_Contracts = require("TFS/WorkItemTracking/Contracts");
@@ -14,8 +12,8 @@ import Git_RestClient = require("TFS/VersionControl/GitRestClient");
 
 import VSS_Extension_Service = require("VSS/SDK/Services/ExtensionData");
 
-import { IdentityHelper } from "scripts/identityHelper";
-import { IModel, IIdentity, IPullrequest } from "scripts/model";
+import { IdentityHelper } from "./identityHelper";
+import { IModel, IIdentity, IPullrequest } from "./model";
 
 export enum PullRequestVoteStatus {
     APPROVE = 10,

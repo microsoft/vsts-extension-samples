@@ -1,4 +1,3 @@
-/// <reference path='../typings/tsd.d.ts' />
 import VCContracts = require("TFS/VersionControl/Contracts");
 
 export interface IIdentity {

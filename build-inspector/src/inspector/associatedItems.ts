@@ -1,7 +1,6 @@
-/// <reference path='../../typings/main.d.ts' />
+/// <reference types="q" />
 
-import AssociatedItemsView = require("inspector/associatedItemsView");
-
+import AssociatedItemsView = require("./associatedItemsView");
 import VSS_Common_Contracts = require("VSS/WebApi/Contracts");
 import TFS_Build_Contracts = require("TFS/Build/Contracts");
 import TFS_Build_Client = require("TFS/Build/RestClient");

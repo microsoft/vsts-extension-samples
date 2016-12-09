@@ -1,5 +1,3 @@
-/// <reference path='../../typings/tsd.d.ts' />
-
 import * as React from "react";
 
 export class SpinnerComponent extends React.Component<void, void> {

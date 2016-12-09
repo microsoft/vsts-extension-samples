@@ -1,0 +1,27 @@
+{
+  "name": "data-storage",
+  "version": "1.0.0",
+  "description": "Explore how to store settings and documents using the provided data storage service.",
+  "scripts": {
+    "build": "tsc -p .",
+    "postbuild": "npm run package",
+    "package": "tfx extension create",
+    "clean": "rimraf ./dist && rimraf ./*.vsix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Microsoft/vsts-extension-samples/tree/master/data-storage"
+  },
+  "author": "Microsoft",
+  "devDependencies": {
+    "ncp": "^2.0.0",
+    "rimraf": "^2.5.4",
+    "tfx-cli": "^0.3.45",
+    "typescript": "^2.1.4"
+  },
+  "dependencies": {
+    "@types/jquery": "^2.0.34",
+    "@types/q": "0.0.32",
+    "vss-web-extension-sdk": "^1.109.0"
+  }
+}

@@ -1,6 +1,4 @@
-﻿/// <reference path='../../typings/main.d.ts' />
-
-import Utils_String = require("VSS/Utils/String");
+﻿import Utils_String = require("VSS/Utils/String");
 import Controls = require("VSS/Controls");
 import VCContracts = require("TFS/VersionControl/Contracts");
 import GitHttpClient = require("TFS/VersionControl/GitRestClient");

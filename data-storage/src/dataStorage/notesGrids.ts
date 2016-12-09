@@ -1,8 +1,6 @@
-/// <reference path='../../typings/main.d.ts' />
-
 import Utils_Core = require("VSS/Utils/Core");
 import Grids = require("VSS/Controls/Grids");
-import Notes_Contracts = require("dataStorage/notesContracts");
+import Notes_Contracts = require("./notesContracts");
 
 
 var delegate = Utils_Core.delegate;

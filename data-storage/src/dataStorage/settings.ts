@@ -1,5 +1,3 @@
-/// <reference path='../../typings/main.d.ts' />
-
 import Extension_Data = require("VSS/SDK/Services/ExtensionData");
 import Q = require("q");
 

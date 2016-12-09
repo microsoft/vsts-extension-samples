@@ -1,12 +1,10 @@
-/// <reference path='../typings/tsd.d.ts' />
-
 import * as React from "react";
 
-import { IModel, IIdentity, IPullrequest } from "scripts/model";
-import { WorkDetailsData } from "scripts/workdetailsdata";
-import { AssignedComponent } from "scripts/components/assignedto";
-import { DevDetailsComponent } from "scripts/components/devdetails";
-import { SpinnerComponent } from "scripts/components/spinner";
+import { IModel, IIdentity, IPullrequest } from "./model";
+import { WorkDetailsData } from "./workdetailsdata";
+import { AssignedComponent } from "./components/assignedto";
+import { DevDetailsComponent } from "./components/devdetails";
+import { SpinnerComponent } from "./components/spinner";
 
 export interface IMainComponentProps extends React.Props<void> {
 }

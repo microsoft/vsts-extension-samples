@@ -1,10 +1,8 @@
-﻿/// <reference path='../typings/tsd.d.ts' />
-
-import * as React from "react";
+﻿import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import { MainComponent } from "scripts/main";
-import { IWorkItemInfo } from "scripts/interfaces";
+import { MainComponent } from "./main";
+import { IWorkItemInfo } from "./interfaces";
 
 let element = document.getElementById("main");
 let mainComponent: MainComponent; 

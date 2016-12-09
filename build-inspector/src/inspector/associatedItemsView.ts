@@ -1,8 +1,6 @@
-﻿/// <reference path='../../typings/main.d.ts' />
-
-import AssociatedItemsTree = require("inspector/associatedItemsTree");
-import AssociatedItemsGrid = require("inspector/associatedItemsGrid");
-import AssociatedItemContent = require("inspector/associatedItemContent");
+﻿import AssociatedItemsTree = require("./associatedItemsTree");
+import AssociatedItemsGrid = require("./associatedItemsGrid");
+import AssociatedItemContent = require("./associatedItemContent");
 
 import NavigationServices = require("VSS/Navigation/Services");
 import Controls = require("VSS/Controls");

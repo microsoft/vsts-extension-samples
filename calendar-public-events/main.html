@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Public Events</title>
-    <script src="bower_components/vss-web-extension-sdk/lib/VSS.SDK.min.js"></script>
+    <script src="lib/VSS.SDK.min.js"></script>
 </head>
 
 <body>
@@ -12,13 +12,14 @@
             usePlatformScripts: true,
             moduleLoaderConfig: { 
                 paths: { 
-                    "PublicEvents": "dist/PublicEvents" 
+                    "PublicEvents": "scripts" 
                 } 
             }
         });
         
         VSS.require( [ "PublicEvents/PublicEventsSource" ], function (PubEvents) {
-            VSS.register("public-events-source", function (context) {
+            var context = VSS.getExtensionContext();
+            VSS.register(context.publisherId + "." + context.extensionId + "." + "public-events-source", function (context) {
                 return new PubEvents.PublicEventsSource();
             });
             VSS.notifyLoadSucceeded();

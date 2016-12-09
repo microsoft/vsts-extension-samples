@@ -1,9 +1,7 @@
-/// <reference path='../../typings/tsd.d.ts' />
-
 import * as React from "react";
-import { IDetailsWidgetProps } from "scripts/interfaces";
-import { IIdentity } from "scripts/model";
-import { BaseWidgetComponent } from "scripts/components/widgetbase";
+import { IDetailsWidgetProps } from "../interfaces";
+import { IIdentity } from "../model";
+import { BaseWidgetComponent } from "./widgetbase";
 
 // 'AssignedComponent' to render assignedTo field of a workitem
 export class AssignedComponent extends BaseWidgetComponent<void> {

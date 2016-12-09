@@ -35,11 +35,13 @@
         },    
         {
             "path": "dist",
-            "addressable": true
+            "addressable": true,
+            "packagePath": "scripts"
         },     
         {
-            "path": "bower_components/vss-web-extension-sdk/lib/VSS.SDK.min.js",
-            "addressable": true
+            "path": "node_modules/vss-web-extension-sdk/lib",
+            "addressable": true,
+            "packagePath": "lib"
         }    
     ],    
     "contributions": [    

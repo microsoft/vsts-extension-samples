@@ -1,5 +1,3 @@
-/// <reference path='../../typings/main.d.ts' />
-
 import Utils_Core = require("VSS/Utils/Core");
 import Utils_String = require("VSS/Utils/String");
 import Service = require("VSS/Service");
@@ -7,7 +5,7 @@ import Utils_UI = require("VSS/Utils/UI");
 import Controls = require("VSS/Controls");
 import Notifications = require("VSS/Controls/Notifications");
 import Dialogs = require("VSS/Controls/Dialogs");
-import Notes_Contracts = require("dataStorage/notesContracts");
+import Notes_Contracts = require("./notesContracts");
 
 var domElem = Utils_UI.domElem;
 

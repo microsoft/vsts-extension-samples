@@ -1,17 +1,15 @@
-/// <reference path='../../typings/main.d.ts' />
-
 import VSS = require("VSS/VSS");
 import Utils_Core = require("VSS/Utils/Core");
-import Notes_Contracts = require("dataStorage/notesContracts");
-import Notes_Dialogs = require("dataStorage/notesDialogs");
-import Notes_Grids = require("dataStorage/notesGrids");
-import Notes_Services = require("dataStorage/notesServices");
 import Service = require("VSS/Service");
 import Controls = require("VSS/Controls");
 import Notifications = require("VSS/Controls/Notifications");
 import Dialogs = require("VSS/Controls/Dialogs");
 import Menus = require("VSS/Controls/Menus");
 import Navigation = require("VSS/Controls/Navigation");
+import Notes_Contracts = require("./notesContracts");
+import Notes_Dialogs = require("./notesDialogs");
+import Notes_Grids = require("./notesGrids");
+import Notes_Services = require("./notesServices");
 
 
 var delegate = Utils_Core.delegate;

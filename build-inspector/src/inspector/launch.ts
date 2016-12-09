@@ -1,8 +1,7 @@
-/// <reference path='../../typings/main.d.ts' />
-
 var showCommitsMenu = (function () {
     "use strict";
-    return <IContributedMenuSource>{
+    return <IContributedMenuSource> {
+        getMenuItems: null,
         execute: function (actionContext: any): void {
             // Get the Web Context to create the uri to navigate to
             var vsoContext = VSS.getWebContext();
