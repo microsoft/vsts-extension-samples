@@ -1,14 +1,14 @@
 {
     "manifestVersion": 1,
     "id": "vsts-sample-backlogs-panel",
-    "version": "0.1.0",
+    "version": "0.1.4",
     "name": "Details panel",
     "scopes": [ "vso.work" ],
     "description": "Sample backlog panel extension that appears on all the backlog levels.",
     "publisher": "ms-samples",
     "public": false,
     "icons": {
-        "default": "img/logo.png"
+        "default": "images/logo.png"
     },
     "targets": [
         {
@@ -37,16 +37,26 @@
     },
     "files": [
         {
-            "path": "img",
+            "path": "images",
+            "addressable": true
+        },
+        {
+            "path": "css",
             "addressable": true
         },
         {
             "path": "dist",
-            "addressable": true
+            "addressable": true,
+            "packagePath": "scripts"
         },
         {
             "path": "index.html",
             "addressable": true
+        },
+        {
+            "path": "node_modules/vss-web-extension-sdk/lib",
+            "addressable": true,
+            "packagePath": "lib"
         }
     ],
     "categories": [

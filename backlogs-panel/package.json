@@ -1,13 +1,15 @@
 {
   "devDependencies": {
-    "grunt": "^1.0.1",
-    "grunt-cli": "^1.2.0",
-    "grunt-contrib-clean": "^1.0.0",
-    "grunt-contrib-copy": "^1.0.0",
-    "grunt-exec": "~1.0.0",
-    "grunt-ts": "6.0.0-beta.3",
+    "ncp": "^2.0.0",
+    "rimraf": "^2.5.4",
     "tfx-cli": "^0.3.45",
     "typescript": "^2.1.4"
+  },
+  "scripts": {
+    "build": "tsc -p .",
+    "postbuild": "npm run package",
+    "package": "tfx extension create",
+    "clean": "rimraf ./dist && rimraf ./*.vsix"
   },
   "name": "tags-mru",
   "private": true,
@@ -17,8 +19,5 @@
     "@types/react": "^0.14.54",
     "@types/react-dom": "^0.14.19",
     "vss-web-extension-sdk": "^1.109.0"
-  },
-  "scripts": {
-    "build": "grunt"
   }
 }

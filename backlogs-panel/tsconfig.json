@@ -10,7 +10,7 @@
         ]
     },
     "include": [
-        "scripts/**/*.ts",
-        "scripts/**/*.tsx"
+        "src/**/*.ts",
+        "src/**/*.tsx"
     ]
 }
