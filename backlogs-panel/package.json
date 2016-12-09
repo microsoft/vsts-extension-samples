@@ -6,7 +6,7 @@
     "grunt-contrib-copy": "^1.0.0",
     "grunt-exec": "~1.0.0",
     "grunt-ts": "6.0.0-beta.3",
-    "tfx-cli": "^0.3.44",
+    "tfx-cli": "^0.3.45",
     "typescript": "^2.1.4"
   },
   "name": "tags-mru",

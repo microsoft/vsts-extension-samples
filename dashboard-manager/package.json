@@ -4,7 +4,7 @@
   "description": "manage dashboards",
   "author": "arsaveli",
   "devDependencies": {
-    "tfx-cli": "*",
+    "tfx-cli": "^0.3.45",
     "bower": "*"
   },
   "scripts": {
