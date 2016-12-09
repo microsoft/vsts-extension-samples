@@ -27,7 +27,8 @@
     "yargs": "^6.5.0"
   },
   "dependencies": {
+    "@types/q": "0.0.32",
     "office-ui-fabric-react": "^0.74.0",
-    "vss-web-extension-sdk": "^1.108.0"
+    "vss-web-extension-sdk": "^1.109.0"
   }
 }

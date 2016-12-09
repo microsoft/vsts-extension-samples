@@ -1,5 +1,4 @@
-/// <reference path='../@types/react-amd-module/index.d.ts' />
-/// <reference path='../typings/tsd.d.ts' />
+/// <reference types="vss-web-extension-sdk" />
 
 import * as Q from 'q';
 import { getClient, WorkItemTrackingHttpClient } from 'TFS/WorkItemTracking/RestClient';
