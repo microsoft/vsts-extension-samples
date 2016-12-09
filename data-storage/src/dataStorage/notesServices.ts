@@ -1,7 +1,6 @@
-/// <reference path='../../typings/main.d.ts' />
 import Service = require("VSS/Service");
-import Notes_Contracts = require("dataStorage/notesContracts");
 import Extension_Data = require("VSS/SDK/Services/ExtensionData");
+import Notes_Contracts = require("./notesContracts");
 
 /**
  * Service layer for interacting with Notes Http Client

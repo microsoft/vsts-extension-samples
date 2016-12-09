@@ -1,15 +1,16 @@
 {
     "compilerOptions": {
         "module": "amd",
+        "moduleResolution": "node",
         "target": "es5",
-        "removeComments": true,
-        "sourceMap": false,
-        "rootDir": "src",
-        "outDir": "dist"
+        "outDir": "dist/",
+        "types": [
+            "vss-web-extension-sdk",
+            "q",
+            "jquery"
+        ]
     },
-    "exclude": [
-        "node_modules",
-        "typings",
-        "bower_components"
+    "include": [
+        "src/**/*.ts"
     ]
 }
