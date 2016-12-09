@@ -10,7 +10,7 @@
         },
         exec: {
             package: {
-                command: "tfx extension create --manifest-globs vss-extension.json",
+                command: "tfx extension create --manifests vss-extension.json",
                 stdout: true,
                 stderr: true
             }

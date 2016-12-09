@@ -1,8 +1,6 @@
-/// <reference path='../typings/tsd.d.ts' />
-
 import * as React from "react";
 import { WorkItem } from "TFS/WorkItemTracking/Contracts";
-import { IModel } from "scripts/model";
+import { IModel } from "./model";
 
 export interface IWorkItemInfo {
    workItemId: number;

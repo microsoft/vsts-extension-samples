@@ -1,9 +1,7 @@
-/// <reference path='../../typings/tsd.d.ts' />
-
 import * as React from "react";
-import { IDetailsWidgetProps } from "scripts/interfaces";
-import { BaseWidgetComponent } from "scripts/components/widgetbase";
-import { IPullrequest, IPullRequestState } from "scripts/model";
+import { IDetailsWidgetProps } from "../interfaces";
+import { BaseWidgetComponent } from "./widgetbase";
+import { IPullrequest, IPullRequestState } from "../model";
 
 import VCContracts = require("TFS/VersionControl/Contracts");
 
