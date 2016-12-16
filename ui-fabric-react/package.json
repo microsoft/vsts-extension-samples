@@ -16,6 +16,7 @@
   "devDependencies": {
     "@types/react": "^0.14.48",
     "@types/react-dom": "^0.14.18",
+    "@types/q": "0.0.32",
     "gulp": "^3.9.1",
     "gulp-rename": "^1.2.2",
     "gulp-template": "^4.0.0",
@@ -28,6 +29,6 @@
   },
   "dependencies": {
     "office-ui-fabric-react": "^0.74.0",
-    "vss-web-extension-sdk": "^1.108.0"
+    "vss-web-extension-sdk": "^2.109.0"
   }
 }

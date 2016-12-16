@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         "module": "amd",
-        "moduleResolution": "classic",
+        "moduleResolution": "node",
         "target": "es5",
         "noImplicitAny": false,
         "jsx": "react",
