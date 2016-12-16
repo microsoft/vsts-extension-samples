@@ -18,6 +18,6 @@
     "@types/q": "0.0.32",
     "@types/react": "^0.14.54",
     "@types/react-dom": "^0.14.19",
-    "vss-web-extension-sdk": "^1.109.0"
+    "vss-web-extension-sdk": "^2.109.0"
   }
 }
