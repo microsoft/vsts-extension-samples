@@ -31,7 +31,7 @@ npm install
 
 ### Compile TypeScript Samples
 
-Once the package is installed, simply run `tsc`. You can also run `npm run build`, which ensures the correct version of the TypeScript compiler is used. This will also generate the extension package.
+Once the package is installed, simply run `tsc`. You can alternatively run `npm run build`, which ensures the correct version of the TypeScript compiler is used. This will also generate the extension package.
 
 ### Try the extension in Visual Studio Team Services
 
