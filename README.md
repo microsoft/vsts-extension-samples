@@ -7,41 +7,31 @@ Samples to help jump-start your development of [extensions for Visual Studio Tea
 If you plan to package any of the sample extensions, get:
 
 1. [Node.js](https://nodejs.org)
-2. [Bower](http://bower.io/) (`npm install -g bower`)
-3. [Team Foundation command line interface](https://github.com/Microsoft/tfs-cli)(`npm install -g tfx-cli`)
+2. [Team Foundation command line interface](https://github.com/Microsoft/tfs-cli) (`npm install -g tfx-cli`)
+3. If the extension uses bower (look for bower.json), [Bower](https://npmjs.com/package/bower) (`npm install -g bower`)
 
 If you plan to compile any of the sample extensions, get:
 
-3. TypeScript 1.7 or higher (`npm install -g typescript`)
-3. Typings (`npm install -g typings`) (manages TypeScript declare files)
+1. TypeScript (`npm install -g typescript`)
 
 ### Get the web extension SDK
 
-Each web extension sample has a `bower.json` file, which references third-party libraries used by the sample, including the [Visual Studio Services Web Extension SDK](https://github.com/Microsoft/vss-web-extension-sdk). This JavaScript file is required by all web extensions.
+Each web extension sample has a `bower.json` or `package.json` file, which references third-party libraries used by the sample, including the [Visual Studio Services Web Extension SDK](https://github.com/Microsoft/vss-web-extension-sdk). This SDK JavaScript file is required by all web extensions.
 
 From the directory of the sample, run:
 
+If there is a bower.json file present
 ```
 bower install
 ```
-
-### Get TypeScript declare files and compile
-
-Each sample written in [TypeScript](https://github.com/Microsoft/vss-web-extension-sdk) has a `typings.json` file, which references the TypeScript declare files the sample needs to compile. This includes the declare files for Visual Studio Services and Team Foundation types.
-
-From the directory of a sample written in TypeScript, run:
-
+or if there is only a package.json file present
 ```
-typings install
+npm install
 ```
 
-Each sample written in TypeScript has a `tsconfig.json` file, which defines the necessary TypeScript compiler settings for the sample.
+### Compile TypeScript Samples
 
-From the same directory, run:
-
-```
-tsc
-```
+Once the package is installed, simply run `tsc`. You can also run `npm run build`, which ensures the correct version of the TypeScript compiler is used. This will also generate the extension package.
 
 ### Try the extension in Visual Studio Team Services
 
