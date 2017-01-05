@@ -1,7 +1,7 @@
 {
     "manifestVersion": 1,
     "id": "samples-contributions-guide",
-    "version": "0.1.29",
+    "version": "0.1.32",
     "name": "Contributions Guide",
     "description": "Building an extension for Visual Studio Team Services? See the places where you can extend and enhance the user's web experience with an extension ---- right from within the web experience.",
     "publisher": "ms-samples",
@@ -443,6 +443,22 @@
             }
         },
         {
+            "id": "showProperties_25",
+            "type": "ms.vss-web.action",
+            "description": "Shows the target properties for pull request details action menu.",
+            "targets": [
+                "ms.vss-code-web.pull-request-action-menu"
+            ],
+            "properties": {
+                "text": "Custom pull request details action",
+                "title": "ms.vss-code-web.pull-request-action-menu",
+                "icon": "images/show-properties.png",
+                "group": "actions",
+                "uri": "main.html",
+                "registeredObjectId": "showProperties"
+            }
+        },
+        {
             "id": "queries-hub-tab",
             "type": "ms.vss-web.tab",
             "description": "Adds a tab to the Queries hub",
@@ -647,6 +663,20 @@
                 "title": "Web Context (ms.vss-work-web.iteration-backlog-tabs)",
                 "uri": "context.html",
                 "dynamic": true
+            }
+        },
+        {
+            "id": "pull-request-details-tab",
+            "type": "ms.vss-web.tab", 
+            "description": "Adds a tab to the Pull Request Details page.",
+            "targets": [
+                "ms.vss-code-web.pr-tabs"
+            ],
+            "properties": {
+                "name": "PR Details Tab",
+                "title": "PR Details Tab",
+                "uri": "context.html",
+                "action": "PR Details Tab"
             }
         }
     ]
