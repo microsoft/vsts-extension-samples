@@ -1,0 +1,13 @@
+{
+  "name": "contributions-guide",
+  "version": "1.0.0",
+  "description": "See available places to contribute new capabilities to Team Services.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Microsoft/vsts-extension-samples/tree/master/contributions-guide"
+  },
+  "author": "Microsoft",
+  "dependencies": {
+    "vss-web-extension-sdk": "^2.109.0"
+  }
+}

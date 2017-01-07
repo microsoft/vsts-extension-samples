@@ -1,6 +1,6 @@
 This extension is designed to help extension developers discover the various components of Visual Studio Team Services that can be targeted by contributions from third party extensions, as well as the context data that is available at each target.
 
-[Learn more](https://www.visualstudio.com/integrate/extensions/reference/targets/overview) about the supported extensibility targets.
+[Learn more](https://www.visualstudio.com/docs/integrate/extensions/reference/targets/overview) about the supported extensibility targets.
 
 ## See where you can extend
 
