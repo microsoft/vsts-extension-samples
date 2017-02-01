@@ -1,7 +1,7 @@
 {
     "manifestVersion": 1,
     "id": "samples-contributions-guide",
-    "version": "0.1.34",
+    "version": "0.1.36",
     "name": "Contributions Guide",
     "description": "Building an extension for Visual Studio Team Services? See the places where you can extend and enhance the user's web experience with an extension ---- right from within the web experience.",
     "publisher": "ms-samples",
@@ -473,26 +473,26 @@
             }
         },
         {
-            "id": "project-hub-group",
+            "id": "project-level-hub-group",
             "type": "ms.vss-web.hub-group",
-            "description": "Adds a hub group at the project/team-level",
+            "description": "Hub group at the project/team level",
             "targets": [
                 "ms.vss-web.project-hub-groups-collection"
             ],
             "properties": {
-                "name": "Group (project)",
+                "name": "Custom Hub Group",
                 "order": 100
             }
         },
         {
-            "id": "project-hub-group-hub",
+            "id": "custom-hub",
             "type": "ms.vss-web.hub",
-            "description": "Adds a hub to the contributed project-level hub group",
+            "description": "Hub under the custom project-level hub group.",
             "targets": [
                 ".project-hub-group"
             ],
             "properties": {
-                "name": "Hub (Project)",
+                "name": "Custom Hub",
                 "order": 100,
                 "uri": "context.html"
             }
@@ -500,12 +500,12 @@
         {
             "id": "home-hub",
             "type": "ms.vss-web.hub",
-            "description": "Adds a hub to the project-level Home hub group",
+            "description": "Custom hub under the Dashboards/Home hub group",
             "targets": [
                 "ms.vss-web.home-hub-group"
             ],
             "properties": {
-                "name": "Home Hub (Project)",
+                "name": "Custom Home Hub",
                 "order": 100,
                 "uri": "context.html"
             }
@@ -513,12 +513,12 @@
         {
             "id": "code-hub",
             "type": "ms.vss-web.hub",
-            "description": "Adds a hub to the Code hub group",
+            "description": "Custom hub under the Code hub group",
             "targets": [
                 "ms.vss-code-web.code-hub-group"
             ],
             "properties": {
-                "name": "Code Hub",
+                "name": "Custom Code Hub",
                 "order": 100,
                 "uri": "context.html"
             }
@@ -526,25 +526,25 @@
         {
             "id": "work-hub",
             "type": "ms.vss-web.hub",
-            "description": "Adds a hub to the Work hub group",
+            "description": "Custom hub under the Work hub group",
             "targets": [
                 "ms.vss-work-web.work-hub-group"
             ],
             "properties": {
-                "name": "Work Hub",
+                "name": "Custom Work Hub",
                 "order": 100,
                 "uri": "context.html"
             }
         },
         {
-            "id": "build-hub",
+            "id": "build-release-hub",
             "type": "ms.vss-web.hub",
-            "description": "Adds a hub to the Build hub group",
+            "description": "Custom hub under the Build & Release hub group",
             "targets": [
-                "ms.vss-build-web.build-hub-group"
+                "ms.vss-build-web.build-release-hub-group"
             ],
             "properties": {
-                "name": "Build Hub",
+                "name": "Custom Build Hub",
                 "order": 100,
                 "uri": "context.html"
             }
@@ -552,38 +552,25 @@
         {
             "id": "test-hub",
             "type": "ms.vss-web.hub",
-            "description": "Adds a hub to the Test hub group",
+            "description": "Custom hub under the Test hub group",
             "targets": [
                 "ms.vss-test-web.test-hub-group"
             ],
             "properties": {
-                "name": "Test Hub",
+                "name": "Custom Test Hub",
                 "order": 100,
                 "uri": "context.html"
             }
         },
         {
-            "id": "account-admin-hub",
+            "id": "collection-level-admin-hub",
             "type": "ms.vss-web.hub",
-            "description": "Adds a hub to the account-level admin hubs",
-            "targets": [
-                "ms.vss-web.account-admin-hub-group"
-            ],
-            "properties": {
-                "name": "Admin Hub",
-                "order": 100,
-                "uri": "context.html"
-            }
-        },
-        {
-            "id": "collection-admin-hub",
-            "type": "ms.vss-web.hub",
-            "description": "Adds a hub to the collection-level admin hubs",
+            "description": "Custom collection/account level admin/settings hub",
             "targets": [
                 "ms.vss-web.collection-admin-hub-group"
             ],
             "properties": {
-                "name": "Admin Hub",
+                "name": "Custom Admin Hub",
                 "order": 100,
                 "uri": "context.html"
             }
@@ -591,12 +578,12 @@
         {
             "id": "project-admin-hub",
             "type": "ms.vss-web.hub",
-            "description": "Adds a hub to the project-level admin hubs",
+            "description": "Custom project-level admin hub",
             "targets": [
                 "ms.vss-web.project-admin-hub-group"
             ],
             "properties": {
-                "name": "Admin Hub",
+                "name": "Custom Admin Hub",
                 "order": 100,
                 "uri": "context.html"
             }
