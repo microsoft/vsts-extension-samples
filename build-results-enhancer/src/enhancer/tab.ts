@@ -31,6 +31,7 @@ export class InfoTab extends Controls.BaseControl {
 					// 			var link = taskAttachment._links.self.href;
 					// 			var attachmentName = taskAttachment.name;
 					// 			// do some thing here
+					//			// see how to get auth https://www.visualstudio.com/en-us/docs/report/analytics/building-extension-against-analytics-service
 					// 		}
 					// 	});
 					// });
