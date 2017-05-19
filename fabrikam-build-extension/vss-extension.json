@@ -3,7 +3,7 @@
     "id": "fabrikam-build-extension",
     "name": "Fabrikam Build Tools",
     "version": "0.0.1",
-    "publisher": "fabrikam7",
+    "publisher": "fabrikam",
     "targets": [{
         "id": "Microsoft.VisualStudio.Services"
     }],
