@@ -1,0 +1,91 @@
+﻿{
+    "id": "android",
+    "name": "My Custom Andriod Template",
+    "category": "Build2",
+    "iconTaskId": "DF857559-8715-46EB-A74E-AC98B9178AA0",
+    "description": "Build your Android projects, run tests, sign and align Android App Package files. This template requires the Android SDK to be installed on the build agent.",
+    "template": {
+        "buildNumberFormat": "$(date:yyyyMMdd)$(rev:.r)",
+        "build": [{
+                "enabled": true,
+                "inputs": {
+                    "wrapperScript": "$(Parameters.wrapperScript)",
+                    "tasks": "$(Parameters.tasks)"
+                },
+                "task": {
+                    "id": "8D8EEBD8-2B94-4C97-85AF-839254CC6DA4",
+                    "versionSpec": "1.*"
+                }
+            },
+            {
+                "enabled": true,
+                "inputs": {
+                    "files": "**/*.apk",
+                    "jarsign": "false",
+                    "zipalign": "false"
+                },
+                "task": {
+                    "id": "80F3F6A0-82A6-4A22-BA7A-E5B8C541B9B9",
+                    "versionSpec": "1.*"
+                }
+            },
+            {
+                "enabled": true,
+                "alwaysRun": true,
+                "inputs": {
+                    "SourceFolder": "$(build.sourcesdirectory)",
+                    "Contents": "**/*.apk",
+                    "TargetFolder": "$(build.artifactstagingdirectory)"
+                },
+                "task": {
+                    "id": "5bfb729a-a7c8-4a78-a7c3-8d717bb7c13c",
+                    "versionSpec": "2.*"
+                }
+            },
+            {
+                "enabled": true,
+                "alwaysRun": true,
+                "inputs": {
+                    "PathtoPublish": "$(build.artifactstagingdirectory)",
+                    "ArtifactName": "drop",
+                    "ArtifactType": "Container"
+                },
+                "task": {
+                    "id": "2ff763a7-ce83-4e1f-bc89-0ae63477cebe",
+                    "versionSpec": "1.*"
+                }
+            }
+        ],
+        "options": [{
+            "definition": {
+                "id": "5D58CC01-7C75-450C-BE18-A388DDB129EC"
+            },
+            "enabled": true,
+            "inputs": {}
+        }],
+        "variables": {
+            "system.debug": {
+                "value": "false",
+                "allowOverride": true
+            }
+        },
+        "triggers": [],
+        "processParameters": {
+            "inputs": [{
+                    "name": "wrapperScript",
+                    "label": "{GradleWrapper}",
+                    "defaultValue": "gradlew",
+                    "required": true,
+                    "type": "filePath"
+                },
+                {
+                    "name": "tasks",
+                    "label": "{GradleTasks}",
+                    "defaultValue": "build",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        }
+    }
+}

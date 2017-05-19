@@ -1,0 +1,58 @@
+{
+    "manifestVersion": 1,
+    "id": "fabrikam-build-extension",
+    "name": "Fabrikam Build Tools",
+    "version": "0.0.1",
+    "publisher": "fabrikam",
+    "targets": [{
+        "id": "Microsoft.VisualStudio.Services"
+    }],
+    "description": "Tools for building with Fabrikam. Includes two build tasks and one template.",
+    "categories": [
+        "Build and release"
+    ],
+    "icons": {
+        "default": "images/extension-icon.png"
+    },
+    "files": [{
+            "path": "MyPlainTask1"
+        },
+        {
+            "path": "MyPlainTask2"
+        },
+        {
+            "path": "Template1"
+        }
+    ],
+    "contributions": [{
+            "id": "MyPlainTask1",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "MyPlainTask1"
+            }
+        },
+        {
+            "id": "MyPlainTask2",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "MyPlainTask2"
+            }
+        },
+        {
+            "id": "Template1",
+            "type": "ms.vss-build.template",
+            "targets": [
+                "ms.vss-build.templates"
+            ],
+            "properties": {
+                "name": "Template1"
+            }
+        }
+    ]
+}
