@@ -1,7 +1,7 @@
 {
     "manifestVersion": 1,
     "id": "l2-actions-sample",
-    "version": "0.1.8",
+    "version": "0.1.9",
     "publisher": "ms-samples",
     "name": "Header L2 Actions Sample",
     "description": "Sample actions for header l2 section",
@@ -22,7 +22,7 @@
     "contributions": [
         {
             "id": "l2-search-engines",
-            "type": "ms.vss-tfs-web.hub-actions-menu",
+            "type": "ms.vss-tfs-web.hub-action-provider",
             "targets": [
                 "ms.vss-code-web.code-hub-group"
             ],
@@ -34,7 +34,7 @@
         },
         {
             "id": "l2-dialog-opener",
-            "type": "ms.vss-tfs-web.hub-actions-menu",
+            "type": "ms.vss-tfs-web.hub-action-provider",
             "targets": [
                 "ms.vss-code-web.files-hub-git"
             ],
