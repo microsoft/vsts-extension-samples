@@ -1,0 +1,66 @@
+{
+    "manifestVersion": 1,
+    "extensionId": "helloworld",
+    "name": "Hello World",
+    "version": "0.1.0",
+    "publisher": "contoso",
+    "description": "It's a wonderful world.",
+    "public": true,
+    "galleryFlags": [
+        "Preview"
+    ],
+    "icons": {
+        "default": "images/helloWorld_logo.png",
+        "large": "images/helloWorld_logo_large.png"
+    },
+    "categories": [
+        "Build and release"
+    ],
+    "tags": [
+        "hello",
+        "world"
+    ],
+    "links": {
+        "support": {
+            "uri": "http://aka.ms/sample-vsts-task-extension"
+        },
+        "home": {
+            "uri": "http://aka.ms/sample-vsts-task-extension"
+        }
+    },
+    "branding": {
+        "color": "#12ab34",
+        "theme": "light"
+    },
+    "content": {
+        "details": {
+            "path": "helloWorld.md"
+        }
+    },
+    "files": [
+        {
+            "path": "tasks/helloWorld"
+        },
+        {
+            "path": "images",
+            "addressable": true
+        }
+    ],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "contoso-helloworld-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "tasks/helloWorld"
+            }
+        }
+    ]
+}

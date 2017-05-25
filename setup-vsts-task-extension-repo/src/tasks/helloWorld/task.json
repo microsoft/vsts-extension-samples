@@ -1,0 +1,44 @@
+{
+    "id": "D8084778-EFA3-420B-8179-A4F442E5A67D",
+    "name": "HelloWorld",
+    "friendlyName": "Hello World",
+    "description": "It's a wonderful world.",
+	"helpMarkDown": "[More Information](http://aka.ms/sample-vsts-task)",
+    "category": "Utility",
+	"visibility": [
+        "Build",
+        "Release"
+    ],
+    "author": "Contoso Ltd.",
+    "version": {
+        "Major": 0,
+        "Minor": 1,
+        "Patch": 0
+    },
+    "demands": [],
+    "inputs": [
+        {
+            "name": "greeting",
+            "type": "string",
+            "label": "Greeting",
+            "defaultValue": "Hello",
+            "required": "true",
+            "helpMarkDown": "What to say? e.g. Good Morning"
+        },
+        {
+            "name": "greeted",
+            "type": "string",
+            "label": "Greeted",
+            "defaultValue": "World",
+            "required": "true",
+            "helpMarkDown": "Whom to greet? e.g. folks"
+        }
+    ],
+    "instanceNameFormat": "say $(greeting) to $(greeted)",
+    "execution": {
+        "Node": {
+            "target": "invokeHelloWorld.js",
+            "argumentFormat": ""
+        }
+    }
+}

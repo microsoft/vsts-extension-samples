@@ -1,0 +1,30 @@
+{
+  "version": "v4",
+  "repo": "borisyankov/DefinitelyTyped",
+  "ref": "master",
+  "path": "typings",
+  "bundle": "typings/tsd.d.ts",
+  "installed": {
+    "mocha/mocha.d.ts": {
+      "commit": "e69fe60f2d6377ea4fae539493997b098f52cad1"
+    },
+    "node/node.d.ts": {
+      "commit": "3030a4be536b6530c06b80081f1333dc0de4d703"
+    },
+    "shelljs/shelljs.d.ts": {
+      "commit": "3030a4be536b6530c06b80081f1333dc0de4d703"
+    },
+    "sinon/sinon.d.ts": {
+      "commit": "95b7178e0ef33b4b88327676418b4cc3ad61df0f"
+    },
+    "assertion-error/assertion-error.d.ts": {
+      "commit": "95b7178e0ef33b4b88327676418b4cc3ad61df0f"
+    },
+    "chai/chai.d.ts": {
+      "commit": "95b7178e0ef33b4b88327676418b4cc3ad61df0f"
+    },
+    "sinon-chai/sinon-chai.d.ts": {
+      "commit": "95b7178e0ef33b4b88327676418b4cc3ad61df0f"
+    }
+  }
+}
