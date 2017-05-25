@@ -4,9 +4,6 @@
         "moduleResolution": "node",
         "target": "es5",
         "noImplicitAny": false,
-        "sourceMap": false,
-        "paths": {
-            "OfficeFabric/*": ["node_modules/office-ui-fabric-react/lib-amd/*"]
-        }
+        "sourceMap": false
     }
 }
