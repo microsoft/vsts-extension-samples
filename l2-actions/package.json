@@ -7,7 +7,7 @@
     "compile": "tsc -p .",
     "build": "npm run compile",
     "postbuild": "npm run package",
-    "package": "tfx extension create"
+    "package": "tfx extension create --rev-version"
   },
   "keywords": [
     "samples",
