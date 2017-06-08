@@ -4,6 +4,14 @@
         "moduleResolution": "node",
         "target": "es5",
         "noImplicitAny": false,
-        "sourceMap": false
-    }
+        "sourceMap": false,
+        "outDir": "dist/",
+        "rootDir": "src/",
+        "types": [
+            "vss-web-extension-sdk"
+        ]
+    },
+    "include": [
+        "src/**/*.ts"
+    ]
 }

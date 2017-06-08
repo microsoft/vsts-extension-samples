@@ -1,6 +1,4 @@
 dist/
 node_modules/
-scripts/**/*.js
-scripts/**/*.js.map
 *.vsix
 

@@ -1,7 +1,7 @@
 {
     "manifestVersion": 1,
     "id": "l2-actions-sample",
-    "version": "0.1.9",
+    "version": "0.1.0",
     "publisher": "ms-samples",
     "name": "Header L2 Actions Sample",
     "description": "Sample actions for header l2 section",
@@ -18,6 +18,25 @@
     ],
     "categories": [
         "Developer samples"
+    ],
+    "files": [
+        {
+            "path": "dist",
+            "addressable": true
+        },
+        {
+            "path": "index.html",
+            "addressable": true
+        },
+        {
+            "path": "dialog.html",
+            "addressable": true
+        },
+        {
+            "path": "node_modules/vss-web-extension-sdk/lib",
+            "addressable": true,
+            "packagePath": "dist/vss-web-extension-sdk"
+        }
     ],
     "contributions": [
         {
@@ -48,10 +67,10 @@
             "id": "dialog-content",
             "type": "ms.vss-web.control",
             "description": "The content displayed in the dialog.",
-            "targets": [ ],
+            "targets": [],
             "properties": {
                 "uri": "dialog.html"
             }
-        }       
+        }
     ]
 }
