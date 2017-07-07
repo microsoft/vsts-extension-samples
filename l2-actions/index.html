@@ -1,0 +1,26 @@
+<html dir="ltr">
+
+<head>
+    <title>L2 actions sample</title>
+    <script src="dist/vss-web-extension-sdk/VSS.SDK.js"></script>
+    
+</head>
+
+<body>
+    <script type="text/javascript">
+        
+        VSS.init({
+            usePlatformScripts: true, 
+            usePlatformStyles: true,
+            explicitNotifyLoaded: true
+        });
+
+        VSS.require(["dist/app"], function (app) {
+            app.init();
+            VSS.notifyLoadSucceeded();
+        });    
+    
+    </script>
+</body>
+
+</html>

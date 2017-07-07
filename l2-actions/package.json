@@ -1,0 +1,26 @@
+{
+  "name": "l2-actions-sample",
+  "version": "0.1.0",
+  "description": "Sample actions for header l2 section",
+  "main": "index.html",
+  "scripts": {
+    "compile": "tsc -p .",
+    "build": "npm run compile",
+    "postbuild": "npm run package",
+    "package": "tfx extension create --rev-version"
+  },
+  "keywords": [
+    "samples",
+    "header",
+    "action"
+  ],
+  "author": "serkan-inci",
+  "license": "MIT",
+  "devDependencies": {
+    "tfx-cli": "^0.3.45",
+    "typescript": "^2.3.4"
+  },
+  "dependencies": {
+    "vss-web-extension-sdk": "^2.117.0"
+  }
+}

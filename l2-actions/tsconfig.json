@@ -4,10 +4,14 @@
         "moduleResolution": "node",
         "target": "es5",
         "noImplicitAny": false,
-        "jsx": "react",
         "sourceMap": false,
-        "paths": {
-            "OfficeFabric/*": ["node_modules/office-ui-fabric-react/lib-amd/*"]
-        }
-    }
+        "outDir": "dist/",
+        "rootDir": "src/",
+        "types": [
+            "vss-web-extension-sdk"
+        ]
+    },
+    "include": [
+        "src/**/*.ts"
+    ]
 }
