@@ -8,6 +8,7 @@
         "sourceMap": false,
         "paths": {
             "OfficeFabric/*": ["node_modules/office-ui-fabric-react/lib-amd/*"]
-        }
+        },
+        "skipLibCheck": true
     }
 }
