@@ -20,6 +20,9 @@ export class StatusSection extends Controls.BaseControl {
 				this._element.find("#status-img").attr("src", imgSource);
 				this._initBuildStatus(build);
 			});
+			// control visibility of the section
+			// setSectionVisibility is added in sprint M121
+			// sharedConfig.setSectionVisibility("fabrikam.samples-build-results-enhancer.build-status-section", false);
 		}		
 	}
 	
