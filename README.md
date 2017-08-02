@@ -1,6 +1,6 @@
-# Visual Studio Team Services Sample Extensions
+# Visual Studio Team Services (VSTS) Sample Extensions
  
-Samples to help jump-start your development of [extensions for Visual Studio Team Services](http://www.visualstudio.com/integrate/extensions/overview).
+Samples to help jump-start your development of [extensions for Visual Studio Team Services (VSTS)](http://www.visualstudio.com/integrate/extensions/overview).
 
 ## Get started
 
@@ -37,15 +37,15 @@ Once the package is installed, simply run `tsc`. You can alternatively run `npm 
 
 Most samples can be run without any modifications on [Visual Studio Team Services](https://www.visualstudio.com/products/visual-studio-team-services-vs). The steps are:
 
-0. Create a free Visual Studio [Team Services account](https://app.vssps.visualstudio.com/go/profile?account=true)
-1. Create a Visual Studio [Marketplace Publisher](https://aka.ms/vsmarketplace-publish) (all extensions are uploaded under a publisher)
-2. Verify the extension's manifest file (`vss-extension.json`) either has the `public` attribute set to `false` or is not specified (this ensures your extension is not inadvertently made available to all Team Services users)
-3. Package the extension with the ID of your publisher (run `tfx extension create --publisher MYPUBLISHERID`)
-4. Upload the produced .vsix file to the [Marketplace](https://aka.ms/vsmarketplace-manage)
-5. Share your extension with your Team Services account (right-click on the published extension and select Share)
-6. Install the extension into the account (click on the published extension's title and then click Install)
+1. Create a free [Visual Studio Team Services account](https://app.vssps.visualstudio.com/go/profile?account=true)
+1. Create a [Visual Studio Marketplace publisher](https://aka.ms/vsmarketplace-publish) (all extensions are uploaded under a publisher)
+1. Verify the extension's manifest file (`vss-extension.json`) either has the `public` attribute set to `false` or is not specified (this ensures your extension is not inadvertently made available to all VSTS users)
+1. Package the extension with the ID of your publisher (run `tfx extension create --publisher MYPUBLISHERID`)
+1. Upload the produced .vsix file to the [Marketplace](https://aka.ms/vsmarketplace-manage)
+1. Share your extension with your VSTS account (right-click on the published extension and select Share)
+1. Install the extension into the account (click on the published extension's title and then click Install)
 
-See the [full instructions](https://www.visualstudio.com/en-us/integrate/extensions/publish/overview).
+See the [full instructions](https://www.visualstudio.com/docs/integrate/extensions/publish/overview).
 
 ## Available samples
 
