@@ -4,21 +4,23 @@
     "version": "1.0.9",
     "publisher": "ms-samples",
     "name": "Office UI Fabric React Sample",
-    "description": "Sample Team Services web extension using Office UI Fabric React",
+    "description": "Sample Visual Studio Team Services web extension built with Office UI Fabric React components.",
     "public": false,
     "tags": [
         "samples",
-        "fabric",
+        "ofice-fabric",
         "ui"
     ],
-    "scopes": ["vso.work_write"],
+    "scopes": [
+        "vso.work_write"
+    ],
     "targets": [
         {
             "id": "Microsoft.VisualStudio.Services"
         }
     ],
     "categories": [
-        "Developer samples"
+        "Other"
     ],
     "contributions": [
         {
