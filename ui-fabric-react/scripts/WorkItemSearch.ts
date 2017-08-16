@@ -1,9 +1,9 @@
 /// <reference types="vss-web-extension-sdk" />
 
-import * as Q from 'q';
-import { getClient, WorkItemTrackingHttpClient } from 'TFS/WorkItemTracking/RestClient';
-import { WorkItem, WorkItemFieldReference } from 'TFS/WorkItemTracking/Contracts';
-import { ignoreCaseComparer } from 'VSS/Utils/String';
+import * as Q from "q";
+import { getClient, WorkItemTrackingHttpClient3_1 } from "TFS/WorkItemTracking/RestClient";
+import { WorkItem, WorkItemFieldReference } from "TFS/WorkItemTracking/Contracts";
+import { ignoreCaseComparer } from "VSS/Utils/String";
 
 export interface IWiqlQueryResult {
     columns: WorkItemFieldReference[];
@@ -34,9 +34,9 @@ interface IWiqlResult {
 }
 
 class WorkItemSearch implements IWorkItemSearch {
-    private _httpClient: WorkItemTrackingHttpClient;
+    private _httpClient: WorkItemTrackingHttpClient3_1;
 
-    public get httpClient(): WorkItemTrackingHttpClient {
+    public get httpClient(): WorkItemTrackingHttpClient3_1 {
         if (!this._httpClient) {
             this._httpClient = getClient();
         }
@@ -51,14 +51,29 @@ class WorkItemSearch implements IWorkItemSearch {
                 queryResult => {
                     // We got the work item ids, now get the field values
                     if (queryResult.workItems.length > 0) {
-                        return this.httpClient.getWorkItems(queryResult.workItems.map(wi => wi.id), queryResult.columns.map(wiRef => wiRef.referenceName)).then(
-                            workItems => { return <IWorkItemSearchResult>{ queryResult: { columns: queryResult.columns, workItems: workItems } }; },
-                            err => { return <IWorkItemSearchResult>{ error: err.message }; });
+                        return this.httpClient
+                            .getWorkItems(
+                                queryResult.workItems.map(wi => wi.id),
+                                queryResult.columns.map(wiRef => wiRef.referenceName),
+                            )
+                            .then(
+                                workItems => {
+                                    return <IWorkItemSearchResult>{
+                                        queryResult: { columns: queryResult.columns, workItems: workItems },
+                                    };
+                                },
+                                err => {
+                                    return <IWorkItemSearchResult>{ error: err.message };
+                                },
+                            );
                     } else {
                         return <IWorkItemSearchResult>{ queryResult: { columns: queryResult.columns, workItems: [] } };
                     }
                 },
-                err => { return <IWorkItemSearchResult>{ error: err.message }; });
+                err => {
+                    return <IWorkItemSearchResult>{ error: err.message };
+                },
+            ) as IPromise<IWorkItemSearchResult>;
         }
 
         return Q(<IWorkItemSearchResult>{ error: wiqlResult.error });
@@ -72,7 +87,9 @@ class WorkItemSearch implements IWorkItemSearch {
         if (filter && filter.keyword && filter.keyword.length >= 3) {
             let wiqlWhereClauses = [`([System.TeamProject] = @project)`];
             // Add keyword
-            wiqlWhereClauses.push(`([System.Title] CONTAINS '${filter.keyword}' OR [System.Description] CONTAINS '${filter.keyword}')`);
+            wiqlWhereClauses.push(
+                `([System.Title] CONTAINS '${filter.keyword}' OR [System.Description] CONTAINS '${filter.keyword}')`,
+            );
 
             if (filter.assignedToMe) {
                 wiqlWhereClauses.push(`([System.AssignedTo] = @me)`);
@@ -97,11 +114,12 @@ class WorkItemSearch implements IWorkItemSearch {
                     [System.Tags]
                 FROM WorkItems
                 WHERE ${wiqlWhereClauses.join(" AND ")}
-                ORDER BY [System.ChangedDate] DESC`};
+                ORDER BY [System.ChangedDate] DESC`,
+            };
         }
 
         return { error: "Specify at least 3 chars for the keyword" };
     }
 }
 
-export var Instance: IWorkItemSearch = new WorkItemSearch(); 
+export var Instance: IWorkItemSearch = new WorkItemSearch();

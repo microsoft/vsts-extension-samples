@@ -4,10 +4,16 @@
         "moduleResolution": "node",
         "target": "es5",
         "noImplicitAny": false,
+        "lib": ["es5", "es6", "dom"],
         "jsx": "react",
         "sourceMap": false,
         "paths": {
             "OfficeFabric/*": ["node_modules/office-ui-fabric-react/lib-amd/*"]
-        }
-    }
+        },
+        "baseUrl": "./",
+        "types": ["jquery", "jqueryui", "knockout", "q", "react", "react-dom", "requirejs"]
+    },
+    "include": [
+        "scripts/WorkItemSearchComponent.tsx"
+    ]
 }

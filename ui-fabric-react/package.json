@@ -3,7 +3,12 @@
   "version": "1.0.0",
   "description": "Sample Team Services web extension using Office UI Fabric React",
   "main": "index.html",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/vsts-extension-samples"
+  },
   "scripts": {
+    "build": "gulp",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -11,24 +16,34 @@
     "extension",
     "office-ui-fabric-react"
   ],
-  "author": "serkan-inci",
+  "author": "Microsoft Corporation",
+  "contributors": [
+    {
+      "name": "Serkan Inci",
+      "email": "serkani@microsoft.com"
+    },
+    {
+      "name": "Trevor Gau",
+      "email": "trgau@microsoft.com"
+    }
+  ],
   "license": "MIT",
   "devDependencies": {
-    "@types/react": "^0.14.48",
-    "@types/react-dom": "^0.14.18",
+    "@types/react": "^15.6.1",
+    "@types/react-dom": "^15.5.2",
     "@types/q": "0.0.32",
     "gulp": "^3.9.1",
     "gulp-rename": "^1.2.2",
     "gulp-template": "^4.0.0",
     "gulp-typescript": "^3.1.3",
     "gulp-webpack": "^1.5.0",
-    "tfx-cli": "^0.3.45",
-    "typescript": "^2.0.10",
-    "webpack": "^1.13.3",
+    "tfx-cli": "^0.4.9",
+    "typescript": "~2.3.4",
+    "webpack": "^1.15.0",
     "yargs": "^6.5.0"
   },
   "dependencies": {
-    "office-ui-fabric-react": "^2.21.0",
-    "vss-web-extension-sdk": "^2.109.0"
+    "office-ui-fabric-react": "^4.33.0",
+    "vss-web-extension-sdk": "~3.121.0"
   }
 }

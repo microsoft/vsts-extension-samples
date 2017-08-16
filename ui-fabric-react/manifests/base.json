@@ -1,7 +1,7 @@
 {
     "manifestVersion": 1,
     "id": "samples-ui-fabric-react",
-    "version": "1.0.9",
+    "version": "1.0.15",
     "publisher": "ms-samples",
     "name": "Office UI Fabric React Sample",
     "description": "Sample Team Services web extension using Office UI Fabric React",
@@ -32,6 +32,6 @@
                 "order": 1000,
                 "uri": "index.html"
             }
-        }       
+        }
     ]
 }
