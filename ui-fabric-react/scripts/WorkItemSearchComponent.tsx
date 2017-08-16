@@ -152,9 +152,7 @@ class WorkItemSearchComponent extends React.Component<IWorkItemSearchProps, IWor
     }
 
     private _setSearchResult(querying: boolean, result: IWorkItemSearchResult): void {
-        this.state.querying = querying;
-        this.state.result = result;
-        this.setState(this.state);
+        this.setState({querying, result});
     }
 }
 
