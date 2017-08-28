@@ -43,7 +43,7 @@
     "yargs": "^6.5.0"
   },
   "dependencies": {
-    "office-ui-fabric-react": "^4.33.0",
+    "office-ui-fabric-react": "^4.35.0",
     "vss-web-extension-sdk": "~3.121.0"
   }
 }

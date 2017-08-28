@@ -5,8 +5,7 @@ import * as ReactDOM from 'react-dom';
 // office-ui-fabric-react imports
 import { TextField } from 'OfficeFabric/components/TextField/TextField';
 import { Checkbox } from 'OfficeFabric/components/Checkbox/Checkbox';
-import { Button } from 'OfficeFabric/components/Button/Button';
-import { ButtonType } from 'OfficeFabric/components/Button/Button.Props';
+import { DefaultButton } from 'OfficeFabric/Button';
 import { Label } from 'OfficeFabric/components/Label/Label';
 import { MessageBar } from 'OfficeFabric/components/MessageBar/MessageBar';
 import { MessageBarType } from 'OfficeFabric/components/MessageBar/MessageBar.Props';
@@ -50,8 +49,8 @@ class WorkItemSearchComponent extends React.Component<IWorkItemSearchProps, IWor
                 <Checkbox label='Has links' onChange={this._onHasLinksChange.bind(this)} checked={filter.hasLinks} className="filter-check" />
             </div>
             <div className="actions">
-                <Button onClick={this._onClearClick.bind(this)} className="action-button">Clear</Button>
-                <Button onClick={this._onSearchClick.bind(this)} buttonType={ButtonType.primary} disabled={!this._canSearch(this.state)} className="action-button">Search</Button>
+                <DefaultButton onClick={this._onClearClick.bind(this)} className="action-button" split={false}>Clear</DefaultButton>
+                <DefaultButton onClick={this._onSearchClick.bind(this)}  split={false} disabled={!this._canSearch(this.state)} className="action-button">Search</DefaultButton>
             </div>
         </div>;
 
@@ -70,10 +69,13 @@ class WorkItemSearchComponent extends React.Component<IWorkItemSearchProps, IWor
             resultSection = <Label>Querying...</Label>;
         }
 
-        return <div className="work-item-search">
-            {filterSection}
-            {resultSection}
-        </div>;
+        return (
+            <div className="work-item-search">
+                {filterSection}
+                {resultSection}
+            </div>
+        );
+
     }
 
     private _canSearch(state: IWorkItemSearchState): boolean {
@@ -92,8 +94,8 @@ class WorkItemSearchComponent extends React.Component<IWorkItemSearchProps, IWor
                 WorkItemFormNavigationService.getService().then(svc => {
                     svc.openWorkItem(item["System.Id"]);
                 });
-            } }
-            />
+            }}
+        />
     }
 
     private _getDefaultState(): IWorkItemSearchState {
@@ -152,7 +154,7 @@ class WorkItemSearchComponent extends React.Component<IWorkItemSearchProps, IWor
     }
 
     private _setSearchResult(querying: boolean, result: IWorkItemSearchResult): void {
-        this.setState({querying, result});
+        this.setState({ querying, result });
     }
 }
 
