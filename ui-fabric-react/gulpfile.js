@@ -53,7 +53,11 @@ else {
             moduleLoaderConfig: {
                 paths: {
                     "OfficeFabric": "node_modules/office-ui-fabric-react/lib-amd",
-                    "@microsoft/load-themed-styles": "node_modules/office-ui-fabric-react/node_modules/@microsoft/load-themed-styles/lib-amd/index"
+                    "@microsoft/load-themed-styles": "node_modules/office-ui-fabric-react/node_modules/@microsoft/load-themed-styles/lib-amd/index",
+                    "tslib": "node_modules/office-ui-fabric-react/node_modules/tslib/tslib",
+                    "prop-types": "node_modules/office-ui-fabric-react/node_modules/prop-types/prop-types",
+                    "glamor": "node_modules/office-ui-fabric-react/node_modules/@uifabric/styling/node_modules/glamor/umd/index",
+                    "rtl-css-js": "node_modules/office-ui-fabric-react/node_modules/@uifabric/styling/node_modules/rtl-css-js/dist/index.umd"
                 }
             }
         });

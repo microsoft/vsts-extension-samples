@@ -11,7 +11,7 @@
             "OfficeFabric/*": ["node_modules/office-ui-fabric-react/lib-amd/*"]
         },
         "baseUrl": "./",
-        "types": ["jquery", "jqueryui", "knockout", "q", "react", "react-dom", "requirejs"]
+        "types": ["q", "react", "react-dom"]
     },
     "include": [
         "scripts/WorkItemSearchComponent.tsx"
