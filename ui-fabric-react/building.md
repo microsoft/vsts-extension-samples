@@ -54,9 +54,11 @@ During development it can be faster to run your own web server on your local mac
 1. Update the `baseUri` property in `manifests/local.json` to point to your local web server. For example: `http://mymachine:8080/ui-officefabric`.
 2. Run `node_modules/.bin/gulp --local`
 
-This will create a extension package (.vsix file) in the `dist` folder.
+This will create a extension package (.vsix file) in the `dist` folder. This package must be published to the marketplace and shared with a VSTS instance.
 
-In local model, updates to HTML or CSS files do not require re-packaging or re-publishing the extension since content is served locally. Changes to TypeScript files requires compilation:
+In local model, updates to HTML or CSS files do not require re-packaging or re-publishing the extension since content is served locally. Just load the VSTS instance that you shared your package with and your plugin will be served locally.
+
+Changes to TypeScript files requires compilation:
 
 ```
 node_modules/.bin/tsc
