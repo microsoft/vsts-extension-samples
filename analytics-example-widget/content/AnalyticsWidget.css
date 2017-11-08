@@ -1,0 +1,13 @@
+.widget-component{
+    height: calc(100% - 20px);
+    width: calc(100% - 20px);
+    position: absolute;
+}
+.chart-component {
+    height: calc(100% - 20px); /*Trim space for header */
+}
+
+.chart-component>div,
+.chart-component .chart-layout-container {
+    height: 100%;
+}

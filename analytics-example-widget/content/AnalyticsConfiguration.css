@@ -1,0 +1,31 @@
+.bowtie.widget-config-component div {
+    padding-bottom: 10px;
+}
+
+.react-container{
+    height:700px;
+}
+
+
+.widget-config-component select {
+    width: 399px;    
+    height: 32px;
+}
+
+.widget-config-component select.project-picker {
+    width: 184px;
+}
+
+.widget-config-component select.team-picker {
+    width: 205px;
+    margin-left: 10px;
+}
+
+
+.widget-config-component .field-filter select,
+.widget-config-component .field-filter-header span {
+    width:100px;
+    margin-right:10px;
+    display: inline-block;
+}
+

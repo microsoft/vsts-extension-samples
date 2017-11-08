@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+    <html xmlns="http://www.w3.org/1999/xhtml">
+        <head>
+            <script type="text/javascript" src="../lib/VSS.SDK.min.js"></script>            
+            <script type="text/javascript">
+                VSS.init({
+                    explicitNotifyLoaded: true,
+                    usePlatformStyles: true,
+                    configureModuleLoader: true
+                });
+                //The widget configuration entry point integrates the experience as a VSTS Widget Configuration.
+                VSS.require(["../dist/config/WidgetConfiguration"], function () {
+                    // Loading succeeded
+                    VSS.notifyLoadSucceeded();
+                });
+            </script>
+            <link rel="stylesheet" href="AnalyticsConfiguration.css"></link>
+        </head>
+        <body>
+            <div class="react-container"></div>
+        </body>
+    </html>

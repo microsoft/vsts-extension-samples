@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="../lib/VSS.SDK.min.js"></script>
+    <script type="text/javascript">
+        VSS.init({
+            explicitNotifyLoaded: true,
+            usePlatformStyles: true,
+            configureModuleLoader: true
+        });
+        //The widget entry point integrates the view experience as a VSTS Widget.
+        VSS.require(["../dist/widget/Widget"], function () {            
+            VSS.notifyLoadSucceeded();
+        });
+    </script>
+    <link rel="stylesheet" type="text/css" href="AnalyticsWidget.css"></link>
+</head>
+<body>
+    <div class="widget react-container"> 
+    </div>
+</body>
+</html>
