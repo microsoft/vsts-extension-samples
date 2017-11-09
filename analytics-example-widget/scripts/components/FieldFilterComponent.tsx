@@ -19,8 +19,13 @@ export class FieldFilterComponent extends React.Component<FieldFilterConfigurati
         for (let i = 0; i < this.props.fieldFilterRowValues.length; i++) {
             let rowProps = this.props.fieldFilterRowValues[i];
             content.push(<FieldFilterRowComponent {...rowProps}></FieldFilterRowComponent>);
-        }
-        content.push(<a className="add-filter-row-button" onClick={()=>{this.props.addRow()}}>Add</a>);
+        }        
+        content.push(
+        <a className="add-filter-row-button" onClick={()=>{this.props.addRow();}}>
+            <span role="button" className="bowtie-icon bowtie-math-plus"></span>
+            <span className="text">Add criteria</span>
+        </a>
+        );
         
         return <div className="field-filter">
             {content}
@@ -54,7 +59,7 @@ export class FieldFilterRowComponent extends React.Component<FieldFilterRowData,
                 initialSelectionId={this.props.settings.value}
                 onChange={(value:string)=>{this.props.updateValue(value);}}></Picker>
 
-            <a className="remove-filter-row-button" onClick={()=>{this.props.removeRow();}}>Remove</a>
+            <a className="remove-filter-row-button " onClick={()=>{this.props.removeRow();}}><span role="button" className="bowtie-icon bowtie-edit-delete"></span></a>
         </div>;
     }
 }

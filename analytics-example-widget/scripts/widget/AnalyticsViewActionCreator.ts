@@ -22,7 +22,7 @@ import { ChartOptionFactory } from "./ChartOptionFactory";
 export class AnalyticsViewActionCreator extends ActionCreator<QueryViewState>{
     private configuration: AnalyticsWidgetSettings;
     private results: QueryViewState;
-    private size: ViewSize;//TODO: This part is contradictory... Need to funnel size over to the Chart Component.    
+    private size: ViewSize;
     private suppressAnimation: boolean;
 
     constructor(actions: ActionsBase, configuration: AnalyticsWidgetSettings, size: ViewSize, suppressAnimation: boolean) {
@@ -36,7 +36,8 @@ export class AnalyticsViewActionCreator extends ActionCreator<QueryViewState>{
     }
 
     public requestData(): IPromise<QueryViewState> {
-        let context = VSS.getWebContext();
+        let context = VSS.getWebContext();    
+        this.results.isLoading = true;    
 
         if (!areSettingsValid(this.configuration)) {
             return this.packErrorMessage("This widget is not properly configured yet.");

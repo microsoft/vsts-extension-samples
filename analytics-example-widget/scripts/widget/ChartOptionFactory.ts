@@ -42,7 +42,7 @@ export class ChartOptionFactory {
             })
             .sort((a, b) => {
                 return a.localeCompare(b);
-            }); //TODO: Sort by Field Type.
+            });
     }
 
     public generateChart(size: ViewSize, queryResults: GroupedWorkItemAggregation[], dates: AnalyticsDate[], suppressAnimation: boolean): CommonChartOptions {

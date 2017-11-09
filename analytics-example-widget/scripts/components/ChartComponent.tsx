@@ -12,13 +12,19 @@ export class ChartComponentProps {
 }
 
 /**
- * 
+ * This Component class deals with Interop to the existing VSTS Charting API, which consumes a parent JQuery element to render.
+ * As the chart Service Promise has latency to fulfill, there is an async risk with rendering here, currently.
+ * Chart SDK will be updated to directly support this scenario. 
  */
 export class ChartComponent extends React.Component<ChartComponentProps, any> {    
-    //TODO: This is a temporary workaround to compensate for lack of dispose handler on Chart object, which is resolved with M126 binaries.
-    //  After chart + dispose API exposed in updated public API, code associated with this can be removed.
+    private chartServicePromise: IPromise<Chart_Service.IChartsService> = Chart_Service.ChartsService.getService();
+    // NOTE: The state variables here are temporary workarounds to compensate for lack of public dispose handler from Chart Service API, which is resolved with M126 binaries.
+    // After chart + dispose API are exposed in updated public API, code associated with this can be removed.    
+    private $wrappedContainer: JQuery;
     
-    private isMounted:boolean=false;    
+    //Track mount state, due to async chart creation.
+    private isMounted: boolean;
+
 
     public render() {
         return (
@@ -27,14 +33,14 @@ export class ChartComponent extends React.Component<ChartComponentProps, any> {
     }
 
     public componentDidMount(): void {
-        this.isMounted=true;
+        this.isMounted = true;
         this.ensureChartIsInstantiated(this.props.chartOptions);
 
     }
 
-    public componentWillUnmount(): void {        
-        this.ensureChartIsDisposed();
-        this.isMounted=false;
+    public componentWillUnmount(): void {
+        this.ensurePriorInstancesAreCleared();
+        this.isMounted = false;
     }
 
     public componentDidUpdate(): void {
@@ -42,26 +48,32 @@ export class ChartComponent extends React.Component<ChartComponentProps, any> {
     }
 
     private ensureChartIsInstantiated(chartOptions: Chart_Contracts.CommonChartOptions) {
-        Chart_Service.ChartsService.getService().then((chartService)=>{
-            this.ensureChartIsDisposed();
+        //Due to asynchronous nature of chart rendering in relation to REACT events, some safety checks are needed, until public API can correct for async flow. 
+        this.chartServicePromise.then((chartService) => {
+            this.ensurePriorInstancesAreCleared();
 
-            if (this.isMounted) {
+            if(this.isMounted){
                 let container = ReactDOM.findDOMNode(this);
-                let $wrappedContainer = $(container);
+                if(container){
+                    this.$wrappedContainer = $(container);
 
-                if (chartOptions) {            
-                    chartOptions = this.updateChartOptions(chartOptions);
-                    chartService.createChart($wrappedContainer, chartOptions);            
+                    if (chartOptions) {
+                        chartOptions = this.updateChartOptions(chartOptions);
+                        chartService.createChart(this.$wrappedContainer, chartOptions);
+                    }
                 }
             }
         });
     }
 
-    private ensureChartIsDisposed(): void {
-        //TODO: Use Chart control dispose API, once it is available on public contract.
-        if(this.isMounted){
-            $(ReactDOM.findDOMNode(this)).empty();        
-        }        
+    /**
+     * This step is neccessary to remove the chart content
+     */
+    private ensurePriorInstancesAreCleared(): void {
+        if (this.$wrappedContainer) {
+            //Remove children of this component.
+            this.$wrappedContainer.empty();
+        }
     }
 
     /** Extensibility hook for derived type to modify chart options. */

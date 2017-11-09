@@ -39,7 +39,6 @@ export interface ConfigOptions {
     metadata: MetadataInformation;
 }
 
-//TODO: Fold values to be bundled with allowed values, on pattern of FieldFilterConfigurationState
 export interface AnalyticsConfigState extends State {
     configOptions: ConfigOptions;
     configuration: AnalyticsWidgetSettings;

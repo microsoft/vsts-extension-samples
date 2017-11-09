@@ -45,7 +45,9 @@ export class AnalyticsConfigActionCreator extends ActionCreator<AnalyticsConfigS
                 typeFields: [],
                 fieldFilter: {
                     fieldFilterRowValues: [],
-                    addRow: () => { this.addFieldFilterRow(); }
+                    addRow: () => {
+                        this.addFieldFilterRow();
+                    }
                 }
             },
             configuration: configuration
@@ -137,7 +139,7 @@ export class AnalyticsConfigActionCreator extends ActionCreator<AnalyticsConfigS
             this.state.configOptions.fieldFilter.fieldFilterRowValues.forEach(o => {
                 if (o.settings.fieldReferenceName == fieldName) {
                     o.suggestedValues = this.sortAllowedValues(results);
-                    o.settings.value = o.suggestedValues[0];
+                    o.settings.value = (o.suggestedValues.length > 0) ? o.suggestedValues[0] : null;
                 }
             });
             return this.state;
@@ -150,11 +152,13 @@ export class AnalyticsConfigActionCreator extends ActionCreator<AnalyticsConfigS
         return state as IPromise<AnalyticsConfigState>;
     }
 
-    /** Notify */
-    public notifyListenersOfStateChange(state: AnalyticsConfigState): void {
+    /** Notify the contained UI to update state and signal to the parent config(which will pass a state change event to Dashboard, if the config is valid) */
+    public notifyListenersOfStateChange(state: AnalyticsConfigState, notifyParentOfConfigChange: boolean = true): void {
         this.exposeLatestFilters(state);
         super.notifyListenersOfStateChange(state);
-        this.onConfigurationChange(state.configuration);
+        if (notifyParentOfConfigChange) {
+            this.onConfigurationChange(state.configuration);
+        }
     }
 
 
@@ -197,13 +201,24 @@ export class AnalyticsConfigActionCreator extends ActionCreator<AnalyticsConfigS
 
     private sortAllowedValues(results: PopularValueQueryResults[]): string[] {
         //Ensure the values are exposed as sorted strings
-        return results.map(o => "" + o.Value)
+        return results.map(o => {
+            return (o.Value != null) ? "" + o.Value : "";
+        })
             .sort((a, b) => { return a.localeCompare(b); });
     }
 
+    /**
+     * Filters for accepted types, and discards irrelevant system fields.
+     * @param field 
+     */
     private isAcceptedField(field: WorkItemTypeField) {
-        //TODO: Filter for irrelevant field types.
-        return field.FieldType === "String" || field.FieldType === "Integer" || field.FieldType === "Float";
+        return ((field.FieldType === "String" ||
+            field.FieldType === "Integer" ||
+            field.FieldType === "Double")
+            &&
+            (field.FieldName !== "Rev" &&
+                field.FieldName !== "ID" &&
+                field.FieldName !== "Title"));
     }
 
 
@@ -272,9 +287,6 @@ export class AnalyticsConfigActionCreator extends ActionCreator<AnalyticsConfigS
         rowData.allowedFields = fields;
         rowData.allowedOperators = allowedOperators;
 
-
-        //TODO: UI reaction decision on mismatched fields
-        //Currently, if options don't cover this type, reset the row.
         if (!rowData.settings.fieldReferenceName || rowData.allowedFields.map(o => o.FieldName).indexOf(rowData.settings.fieldReferenceName) < 0) {
             rowData.settings.fieldReferenceName = fields[0].FieldReferenceName;
             rowData.settings.operator = null;
@@ -365,11 +377,11 @@ export class AnalyticsConfigActionCreator extends ActionCreator<AnalyticsConfigS
         let priorState = row.settings.fieldReferenceName;
         row.settings.fieldReferenceName = field.FieldReferenceName;
         row.settings.fieldType = field.FieldType;
+        row.settings.value = null;
+        this.notifyListenersOfStateChange(this.state);
+
         return getService(CacheableQueryService).getCacheableQueryResult(new MetadataQuery(this.state.configuration.projectId, MetadataQuery.WorkItemSnapshot)).then(metadata => {
             row.settings.fieldQueryName = mapReferenceNameForQuery(field.FieldReferenceName, metadata);
-
-
-            this.notifyListenersOfStateChange(this.state);
 
             if (priorState != field.FieldReferenceName) {
                 this.loadSuggestedFieldValues(this.state.configuration.projectId, this.state.configuration.teamId, this.state.configuration.workItemType, field.FieldReferenceName).then(() => {

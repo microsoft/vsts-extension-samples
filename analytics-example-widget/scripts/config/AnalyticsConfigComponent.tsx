@@ -40,10 +40,7 @@ export class AnalyticsConfigComponent extends ComponentBase<QueryConfigProps, An
                 <label>Filters</label>
                 {this.createFieldsPicker()}
             </div>
-
-            <div>
-                <label>Aggregate on</label>
-            </div>
+            
         </div>;
 
     }
@@ -59,7 +56,6 @@ export class AnalyticsConfigComponent extends ComponentBase<QueryConfigProps, An
 
         return <Picker
             className="project-picker"
-            waterMarkText="Loading"
 
             itemValues={itemValues}
             initialSelectionId={initialSelectionId}
@@ -80,8 +76,7 @@ export class AnalyticsConfigComponent extends ComponentBase<QueryConfigProps, An
         }
 
         return <Picker
-            className="team-picker"
-            waterMarkText="Please select a Project first"
+            className="team-picker"            
             itemValues={itemValues}
             initialSelectionId={initialSelectionId}
             getItemId={(item: Team) => item.TeamId}
@@ -104,8 +99,7 @@ export class AnalyticsConfigComponent extends ComponentBase<QueryConfigProps, An
         }
 
         return <Picker
-            className="type-picker"
-            waterMarkText="Please select a Project first"
+            className="type-picker"            
             itemValues={itemValues}
             initialSelectionId={initialSelectionId}
             getItemId={(typeName: string) => typeName}

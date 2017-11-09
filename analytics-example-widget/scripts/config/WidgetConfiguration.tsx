@@ -35,7 +35,7 @@ class WidgetConfiguration {
             return WidgetHelpers.WidgetStatusHelper.Failure(e);
         }
 
-        //After all initial loading is done, signal to framework about final sizing
+        //After all initial loading is done, signal to framework about sizing
         VSS.resize();
         return WidgetHelpers.WidgetStatusHelper.Success();
     }
@@ -54,13 +54,19 @@ class WidgetConfiguration {
 
     // Responsible for packaging up current state for notification to the config context.
     private onChange(settings: AnalyticsWidgetSettings): void {
-        this.settings = settings;
+        //Notify parent of config resize, if the # of custom fields has changed
+        if(this.settings && (this.settings.fields.length != settings.fields.length)){
+            VSS.resize(); 
+        }
 
-        //If Settings are valid, notify the widget to repaint.
+        this.settings = settings;
+        
+
+        //If Settings are valid, notify the widget to repaint.        
         if (areSettingsValid(this.settings)) {
             var eventName = WidgetHelpers.WidgetEvent.ConfigurationChange;
             var eventArgs = WidgetHelpers.WidgetEvent.Args(this.getCustomSettings());
-            this.widgetConfigurationContext.notify(eventName, eventArgs);
+            this.widgetConfigurationContext.notify(eventName, eventArgs);            
         }
     }   
 }

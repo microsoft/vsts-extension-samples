@@ -8,8 +8,6 @@ import { Store } from "VSS/Flux/Store";
 export interface PickerProps<T> {
     /** Used for presentational styling */
     className: string;
-    /** Used to provide guidance when no selection is active. */
-    waterMarkText?: string;
 
     itemValues: T[];
     initialSelectionId: string;
@@ -29,8 +27,8 @@ export class Picker<T> extends React.Component<PickerProps<T>, {}> {
     selectedItem: T;
     public render(): JSX.Element {
         let defaultValue = this.props.initialSelectionId != null ? this.props.initialSelectionId : undefined;
-        //placeholder={this.props.waterMarkText}
-        return (<select className={this.props.className} value={defaultValue} onChange={(event: React.FormEvent<HTMLSelectElement>) => this.onSelected(event)} >{this.getOptions()}</select>);
+        let classes = (this.props.itemValues.length == 0) ? this.props.className + " is-empty" : this.props.className;
+        return (<select className={classes} value={defaultValue} onChange={(event: React.FormEvent<HTMLSelectElement>) => this.onSelected(event)} >{this.getOptions()}</select>);
 
     }
 

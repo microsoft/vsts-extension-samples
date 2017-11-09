@@ -23,7 +23,8 @@ export function areSettingsValid(widgetSettings:AnalyticsWidgetSettings): boolea
             o.fieldReferenceName != null &&
             o.fieldType != null &&
             o.operator != null &&
-            o.value != null)
+            o.value != null &&
+            (o.value != "" || o.fieldType == "String")) //Do not allow empty string when dealing with value types.
     );
 }
 

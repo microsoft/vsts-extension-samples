@@ -41,10 +41,9 @@ export class PopularValueQuery implements ICacheableQuery<PopularValueQueryResul
 
                 let entity = "WorkItemSnapshot";
                 let teamFilter = `Teams/any(t:t/TeamSK eq ${this.popularValueQueryOptions.teamId})`;
-                let typeFilter = `(WorkItemType eq '${this.popularValueQueryOptions.workItemType}')`;
-                let timeFilter = `(DateValue ge 2017-09-01Z and DateValue le 2017-11-28Z)`;
+                let typeFilter = `(WorkItemType eq '${this.popularValueQueryOptions.workItemType}')`;                
 
-                let filter = `${teamFilter} and ${typeFilter} and ${timeFilter}`;
+                let filter = `${teamFilter} and ${typeFilter}`;
                 let fieldQueryingname = mapReferenceNameForQuery(this.popularValueQueryOptions.fieldName, result);
                 let groupFields = `${fieldQueryingname}`;
                 let aggregation = `$count as Frequency`;
