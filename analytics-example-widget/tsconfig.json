@@ -9,6 +9,5 @@
         "baseUrl": "./dist",
         "lib": [ "es6", "dom" ],
         "jsx" :"react"
-
     }
 }

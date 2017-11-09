@@ -217,8 +217,9 @@ export class AnalyticsConfigActionCreator extends ActionCreator<AnalyticsConfigS
             field.FieldType === "Double")
             &&
             (field.FieldName !== "Rev" &&
-                field.FieldName !== "ID" &&
-                field.FieldName !== "Title"));
+            field.FieldName !== "ID" &&
+            field.FieldName !== "Title" &&
+            field.FieldName !== "Watermark"));
     }
 
 
