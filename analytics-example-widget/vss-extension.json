@@ -2,8 +2,8 @@
     "manifestVersion": 1,
     "id": "Analytics-example-widget",
     "version": "1.0.0",
-    "name": "Analytics example Widget",
-    "description": "An example Widget demonstrating VSTS Analytics and Charting services, built with Typescript and React.",
+    "name": "Analytics example widget",
+    "description": "An example widget demonstrating VSTS Analytics and Charting services, built with Typescript and React.",
     "publisher": "contoso",
     "targets": [
         {
@@ -27,7 +27,7 @@
             ],
             "properties": {
                 "name": "Analytics example widget",
-                "description": "Provides an example implementation of an analytics widget",
+                "description": "An reusable widget example of analytics and charting service.",
                 "catalogIconUrl": "images/catalogImage.png",
                 "previewImageUrl": "images/previewImage.png",
                 "isNameConfigurable": true,
