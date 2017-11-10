@@ -1,0 +1,109 @@
+{
+    "manifestVersion": 1,
+    "id": "Analytics-example-widget",
+    "version": "1.0.0",
+    "name": "Analytics example widget",
+    "description": "An example widget demonstrating VSTS Analytics and Charting services, built with Typescript and React.",
+    "publisher": "contoso",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "icons": {
+        "default": "images/logo.png"
+    },
+    "demands": [
+        "contribution/ms.vss-dashboards-web.widget-sdk-version-2",
+        "contribution/ms.vss-web.charts-service"
+    ],
+    "contributions": [
+        {
+            "id": "AnalyticsExampleWidget.Widget",
+            "type": "ms.vss-dashboards-web.widget",
+            "targets": [
+                "ms.vss-dashboards-web.widget-catalog",
+                ".AnalyticsExampleWidget.Configuration"
+            ],
+            "properties": {
+                "name": "Analytics example widget",
+                "description": "An reusable widget example of analytics and charting service.",
+                "catalogIconUrl": "images/catalogImage.png",
+                "previewImageUrl": "images/previewImage.png",
+                "isNameConfigurable": true,
+                "uri": "content/widget.html",
+                "supportedSizes": [
+                    {
+                        "rowSpan": 2,
+                        "columnSpan": 2
+                    },
+                    {
+                        "rowSpan": 1,
+                        "columnSpan": 1
+                    },   
+                    {
+                        "rowSpan": 1,
+                        "columnSpan": 2
+                    },   
+                    {
+                        "rowSpan": 2,
+                        "columnSpan": 3
+                    },
+                    {
+                        "rowSpan":2,
+                        "columnSpan": 4
+                    },
+                    {
+                        "rowSpan": 3,
+                        "columnSpan": 2
+                    },
+                    {
+                        "rowSpan": 3,
+                        "columnSpan": 3
+                    },
+                    {
+                        "rowSpan":3,
+                        "columnSpan": 4
+                    }
+                ],
+                "supportedScopes": [
+                    "project_team"
+                ]
+            }
+        },
+        {
+            "id": "AnalyticsExampleWidget.Configuration",
+            "type": "ms.vss-dashboards-web.widget-configuration",
+            "targets": [
+                "ms.vss-dashboards-web.widget-configuration"
+            ],
+            "properties": {
+                "name": "AnalyticsExampleWidget Configuration", 
+                "description": "Configures AnalyticsExampleWidget", 
+                "uri": "content/configuration.html"
+            }
+        }
+    ],
+    "files": [
+        {
+            "path": "content",
+            "addressable": true
+        },
+        {
+            "path": "images",
+            "addressable": true
+        },
+        {
+            "path": "dist",
+            "addressable": true
+        },
+        {
+            "path": "node_modules/vss-web-extension-sdk/lib",
+            "addressable": true,
+            "packagePath": "lib"
+        }
+    ],
+    "scopes": [
+        "vso.analytics"
+    ]
+}

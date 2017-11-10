@@ -1,0 +1,61 @@
+.widget-config-component > div {
+    padding-bottom: 20px;
+}
+
+.react-container {
+    height: 450px; 
+}
+
+.widget-config-component select {
+    width: 399px;    
+    height: 32px;
+}
+
+.widget-config-component select.project-picker {
+    width: 184px;
+}
+
+.widget-config-component select.team-picker {
+    width: 205px;
+    margin-left: 10px;
+}
+
+.widget-config-component .field-filter-header,
+.widget-config-component .field-filter {
+    color: #767676;
+    padding-bottom: 5px;
+}
+
+.widget-config-component .add-filter-row-button .bowtie-math-plus {
+    color: #107c10;
+}
+
+.widget-config-component .add-filter-row-button .text {
+    color: #333;
+}
+
+.widget-config-component .field-filter select,
+.widget-config-component .field-filter-header span {
+    margin-bottom: 5px;
+    margin-right:10px;
+    display: inline-block;
+}
+
+.widget-config-component .field-filter select.field-picker,
+.widget-config-component .field-filter-header span.filter-field-label {
+    width:160px;    
+}
+
+.widget-config-component .field-filter select.operation-picker,
+.widget-config-component .field-filter-header span.filter-operation-label{
+    width:80px;
+}
+
+.widget-config-component .field-filter select.value-picker,
+.widget-config-component .field-filter-header span.filter-value-label {
+    width:110px;    
+}
+
+.widget-config-component .field-filter select.value-picker.is-empty{    
+    outline: red solid 1px;
+}
