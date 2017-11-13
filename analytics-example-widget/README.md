@@ -14,3 +14,5 @@ From the repo directory:
 5. Share your extension to your test account
 6. From your account, "Manage Extensions", select "Analytics example widget" and "Install" it
 
+# More Information
+See our [documentation page](https://docs.microsoft.com/en-us/vsts/report/extend-analytics/example-analytics-widget) for more pointers on [Analytics](https://docs.microsoft.com/en-us/vsts/report/extend-analytics/), [Widgets](https://docs.microsoft.com/en-us/vsts/report/dashboards/index) and [Charting](https://docs.microsoft.com/en-us/vsts/extend/develop/add-chart).
