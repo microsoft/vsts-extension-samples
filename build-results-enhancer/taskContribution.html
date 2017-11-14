@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<head>
+    <script src="lib/VSS.SDK.min.js"></script>
+    
+    <script type="text/javascript">
+        VSS.init( { 
+            usePlatformScripts: true, 
+            moduleLoaderConfig: { 
+                paths: { 
+                    "enhancer": "scripts" 
+                } 
+            }
+        });
+        
+        VSS.ready(function() {
+        });      
+    </script>
+</head>
+
+<body>
+    <div class="task-contribution">
+         I depend on task MyPlainTask1 through a constraint.
+         I show up only if you use MyPlainTask1 task as part of your build.
+    </div>
+</body>
+</html>
