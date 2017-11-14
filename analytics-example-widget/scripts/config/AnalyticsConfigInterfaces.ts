@@ -13,6 +13,7 @@ import {FieldFilterConfigurationState} from "../common/FieldFilterContracts"
 
 import { Store } from "VSS/Flux/Store";
 import { MetadataInformation} from "../data/MetadataQuery";
+import { AggregationConfigurationState } from '../common/AggregationContracts';
 
 
 export interface QueryConfigProps extends Props {
@@ -36,10 +37,12 @@ export interface ConfigOptions {
     /** A list of tuples covering allow values for the rows. */
     fieldFilter: FieldFilterConfigurationState;
 
+    aggregation: AggregationConfigurationState;
+
     metadata: MetadataInformation;
 }
 
 export interface AnalyticsConfigState extends State {
-    configOptions: ConfigOptions;
-    configuration: AnalyticsWidgetSettings;
+    configOptions: ConfigOptions; // Current Settings in an active config.
+    configuration: AnalyticsWidgetSettings; // Loaded settings from the previous save state.
 }

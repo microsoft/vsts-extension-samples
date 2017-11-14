@@ -2,6 +2,7 @@ import { ChartTypesConstants, CommonChartOptions } from 'Charts/Contracts';
 import { ViewSize, QueryViewProps, QueryViewState } from "./AnalyticsViewContracts";
 import { GroupedWorkItemAggregation } from "../data/ViewQueries";
 import { AnalyticsDate } from "../data/AnalyticsTypes";
+import { validateGroup } from 'VSS/Controls/Validation';
 
 /**
  * Transforms query results for presentation in a chart.
@@ -31,7 +32,7 @@ export class ChartOptionFactory {
             let valueAtDate = valuesInState.find(o => {
                 return o.DateSK === date.DateSK && o.StateCategory === stateCategory;
             });
-            return valueAtDate ? valueAtDate.AggregatedValue : 0;
+            return valueAtDate && valueAtDate.AggregatedValue ? valueAtDate.AggregatedValue : 0;
         });
     }
 

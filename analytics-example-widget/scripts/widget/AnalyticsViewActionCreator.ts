@@ -24,11 +24,17 @@ export class AnalyticsViewActionCreator extends ActionCreator<QueryViewState>{
     private results: QueryViewState;
     private size: ViewSize;
     private suppressAnimation: boolean;
+    /**
+     * This is the number of days we roll backward from todays date to determine our window of time to plot.
+     * We are keeping this policy simple for the purpose of the demo.
+     */
+    private rollingPeriodLength: number;
 
     constructor(actions: ActionsBase, configuration: AnalyticsWidgetSettings, size: ViewSize, suppressAnimation: boolean) {
         super(actions);
         this.setInitialState(configuration, suppressAnimation);
         this.size = size;
+        this.rollingPeriodLength = 60;
     }
 
     public getInitialState(): QueryViewState {
@@ -43,11 +49,18 @@ export class AnalyticsViewActionCreator extends ActionCreator<QueryViewState>{
             return this.packErrorMessage("This widget is not properly configured yet.");
         }
 
+        let now : number = Date.now();
+        let endDate : Date = new Date(now);
+        let startDate : Date = new Date(now - (this.rollingPeriodLength * 1000 * 60 * 60 * 24)); // Rolling 60 day period from the current timestamp.
+
         let querySettings = {
             projectId: this.configuration.projectId,
             teamId: this.configuration.teamId,
             workItemType: this.configuration.workItemType,
             fields: this.configuration.fields,
+            startDate: startDate,
+            endDate: endDate,
+            aggregation: this.configuration.aggregation
         } as BurndownQueryOptions;
 
         return getService(CacheableQueryService).getCacheableQueryResult(new DatesQuery()).then(dates => {

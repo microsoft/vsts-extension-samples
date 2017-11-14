@@ -5,6 +5,7 @@ import { WorkItemField } from 'TFS/WorkItemTracking/Contracts';
 import { ConfigurationContext } from 'VSS/Common/Contracts/Platform';
 import { Widget } from '../widget/Widget';
 import { AnalyticsWidgetSettings, WidgetSettings } from '../Common/WidgetSettings';
+import { AggregationMode, Aggregation, AggregationConfigurationState} from '../Common/AggregationContracts';
 
 import * as Q from 'q';
 import * as React from 'react';
@@ -48,16 +49,18 @@ export class AnalyticsConfigActionCreator extends ActionCreator<AnalyticsConfigS
                     addRow: () => {
                         this.addFieldFilterRow();
                     }
+                },
+                aggregation: {
+                    aggregationModes: this.getAllowedAggregationModes(),
+                    allowedFields: []
                 }
             },
             configuration: configuration
         } as AnalyticsConfigState;
 
         if (configuration.fields != null) {
-            configuration.fields.map(o => {
-                return {
-                    settings: o
-                } as FieldFilterRowData;
+            configuration.fields.forEach(o => {
+                this.addFilterRowImpl(o); // Adds the saved field filter data to the current display.
             });
         }
         this.onConfigurationChange = onConfigurationChange;
@@ -71,6 +74,10 @@ export class AnalyticsConfigActionCreator extends ActionCreator<AnalyticsConfigS
         if (!this.state.configuration.projectId) {
             this.state.configuration.projectId = VSS.getWebContext().project.id;
             this.state.configuration.teamId = VSS.getWebContext().team.id;
+        }
+
+        if (!this.state.configuration.aggregation) {
+            this.state.configuration.aggregation = { aggregationMode: AggregationMode.count, displayName: null, queryableName: null, fieldReferenceName: null}
         }
 
         return getService(CacheableQueryService).getCacheableQueryResult(new ProjectsQuery()).then(projects => {
@@ -117,8 +124,9 @@ export class AnalyticsConfigActionCreator extends ActionCreator<AnalyticsConfigS
 
                     }
 
-                    this.state.configOptions.fields = this.filterFieldsOfType(typeFields, this.state.configuration.workItemType, projectId, this.state.configOptions.metadata);
+                    this.state.configOptions.fields = this.filterFieldsOfType(typeFields, this.state.configuration.workItemType, projectId, this.state.configOptions.metadata,(o)=>{ return this.isAcceptedFilterField(o);});
                     this.updateFieldFilterControlOptions();
+                    this.updateAggregationControlOptions();
                     return this.state;
                 }
                 this.notifyListenersOfStateChange(this.state);
@@ -135,11 +143,14 @@ export class AnalyticsConfigActionCreator extends ActionCreator<AnalyticsConfigS
             fieldName: fieldName
         };
         return getService(CacheableQueryService).getCacheableQueryResult(new PopularValueQuery(params)).then(results => {
-            //Update Fields matching the result FieldName.
+            let suggestedValues = this.sortAllowedValues(results);
+            //Update Fields matching the result FieldName.            
             this.state.configOptions.fieldFilter.fieldFilterRowValues.forEach(o => {
                 if (o.settings.fieldReferenceName == fieldName) {
-                    o.suggestedValues = this.sortAllowedValues(results);
-                    o.settings.value = (o.suggestedValues.length > 0) ? o.suggestedValues[0] : null;
+                    o.suggestedValues = suggestedValues;
+                    if (o.settings.value == null) {
+                        o.settings.value = (o.suggestedValues.length > 0) ? o.suggestedValues[0] : null;
+                    }
                 }
             });
             return this.state;
@@ -184,7 +195,7 @@ export class AnalyticsConfigActionCreator extends ActionCreator<AnalyticsConfigS
     /**
      * Returns Fields of specified type in the supplied project, which are interesting to use in a field picker scenario.
      */
-    private filterFieldsOfType(typeFields: WorkItemTypeField[], activeTypeName: string, projectId: string, metadata: MetadataInformation) {
+    private filterFieldsOfType(typeFields: WorkItemTypeField[], activeTypeName: string, projectId: string, metadata: MetadataInformation, isAcceptedField: (WorkItemTypeField)=>boolean) : WorkItemTypeField[]{
         return typeFields
             .filter((o) => {
                 //Ensure uniqueness at project-type scope, and filter for supported fields
@@ -192,7 +203,7 @@ export class AnalyticsConfigActionCreator extends ActionCreator<AnalyticsConfigS
                     && o.ProjectSK === projectId
                     && hasMetadataMapping(o.FieldReferenceName, metadata)
 
-                    && this.isAcceptedField(o)
+                    && isAcceptedField(o)
             })
             .sort((a, b) => {
                 return a.FieldName.localeCompare(b.FieldName);
@@ -208,18 +219,31 @@ export class AnalyticsConfigActionCreator extends ActionCreator<AnalyticsConfigS
     }
 
     /**
-     * Filters for accepted types, and discards irrelevant system fields.
+     * Filters for accepted filter fields, and discards irrelevant system fields.
      * @param field 
      */
-    private isAcceptedField(field: WorkItemTypeField) {
+    private isAcceptedFilterField(field: WorkItemTypeField):boolean {
         return ((field.FieldType === "String" ||
-            field.FieldType === "Integer" ||
+        field.FieldType === "Integer" ||
+        field.FieldType === "Double")
+        && !this.isNoisyField(field));
+    }
+
+    /**
+     * Filters for accepted Aggregation fields, and discards irrelevant system fields.
+     * @param field 
+     */
+    private isAcceptedAggregationField(field: WorkItemTypeField):boolean {
+        return ((field.FieldType === "Integer" ||
             field.FieldType === "Double")
-            &&
-            (field.FieldName !== "Rev" &&
-            field.FieldName !== "ID" &&
-            field.FieldName !== "Title" &&
-            field.FieldName !== "Watermark"));
+            && !this.isNoisyField(field));
+    }
+
+    private isNoisyField(field:WorkItemTypeField):boolean{
+        return (field.FieldName === "Rev" ||
+            field.FieldName === "ID" ||
+            field.FieldName === "Title" ||
+            field.FieldName === "Watermark");
     }
 
 
@@ -248,8 +272,27 @@ export class AnalyticsConfigActionCreator extends ActionCreator<AnalyticsConfigS
             this.state.configuration.workItemType = workItemType;
 
             this.updateFieldFilterControlOptions();
+            this.updateAggregationControlOptions();
             this.notifyListenersOfStateChange(this.state);
         }
+    }
+
+    public setSelectedAggregationMode(mode: AggregationMode) {
+        if (this.state.configuration.aggregation && mode == this.state.configuration.aggregation.aggregationMode) {
+            return;
+        }
+
+        this.state.configuration.aggregation = { aggregationMode: mode, displayName: null, queryableName: null, fieldReferenceName: null}
+        this.notifyListenersOfStateChange(this.state);
+    }
+
+    public setSelectedAggregationValue(field: Aggregation) {
+        if (this.state.configuration.aggregation && field.fieldReferenceName == this.state.configuration.aggregation.fieldReferenceName) {
+            return;
+        }
+
+        this.state.configuration.aggregation = field;
+        this.notifyListenersOfStateChange(this.state);
     }
 
     public loadValues(fieldName: string) {
@@ -274,7 +317,7 @@ export class AnalyticsConfigActionCreator extends ActionCreator<AnalyticsConfigS
     }
 
     private updateFieldFilterControlOptions() {
-        let fields = this.filterFieldsOfType(this.state.configOptions.typeFields, this.state.configuration.workItemType, this.state.configuration.projectId, this.state.configOptions.metadata);
+        let fields = this.filterFieldsOfType(this.state.configOptions.typeFields, this.state.configuration.workItemType, this.state.configuration.projectId, this.state.configOptions.metadata, (o)=>{return this.isAcceptedFilterField(o)});
         let allowedOperators = this.getAllowedOperators();
 
         //Update the field Pickers to show options relevant to this type.
@@ -283,12 +326,26 @@ export class AnalyticsConfigActionCreator extends ActionCreator<AnalyticsConfigS
         });
     }
 
+    private updateAggregationControlOptions() {
+         //Filter the non integer values to get a list of values that can be Summed.
+         let fields = this.filterFieldsOfType(this.state.configOptions.typeFields, this.state.configuration.workItemType, this.state.configuration.projectId, this.state.configOptions.metadata, (o)=>{return this.isAcceptedAggregationField(o)});
+
+         this.state.configOptions.aggregation.allowedFields = fields.map(o => {
+             return {
+                 aggregationMode: AggregationMode.sum,
+                 displayName: o.FieldName,
+                 fieldReferenceName: o.FieldReferenceName,
+                 queryableName: this.getQueryableAggregationName(o.FieldReferenceName)
+             }
+         });
+    }
+
     private populateFilterRowOptions(rowData: FieldFilterRowData, fields: WorkItemTypeField[], allowedOperators: AllowedOperator[]): void {
         //Update field picker to reflect current Type.
         rowData.allowedFields = fields;
         rowData.allowedOperators = allowedOperators;
 
-        if (!rowData.settings.fieldReferenceName || rowData.allowedFields.map(o => o.FieldName).indexOf(rowData.settings.fieldReferenceName) < 0) {
+        if (!rowData.settings.fieldReferenceName || rowData.allowedFields.map(o => o.FieldReferenceName).indexOf(rowData.settings.fieldReferenceName) < 0) {
             rowData.settings.fieldReferenceName = fields[0].FieldReferenceName;
             rowData.settings.operator = null;
             rowData.settings.value = null;
@@ -357,9 +414,11 @@ export class AnalyticsConfigActionCreator extends ActionCreator<AnalyticsConfigS
             this.updateFieldFilterValueState(position, value);
         };
 
-        let fields = this.filterFieldsOfType(this.state.configOptions.typeFields, this.state.configuration.workItemType, this.state.configuration.projectId, this.state.configOptions.metadata);
-        let allowedOperators = this.getAllowedOperators();
-        this.populateFilterRowOptions(row, fields, allowedOperators);
+        if (this.state.configOptions.typeFields.length && this.state.configOptions.metadata) {
+            let fields = this.filterFieldsOfType(this.state.configOptions.typeFields, this.state.configuration.workItemType, this.state.configuration.projectId, this.state.configOptions.metadata, (o)=>{return this.isAcceptedFilterField(o)});
+            let allowedOperators = this.getAllowedOperators();
+            this.populateFilterRowOptions(row, fields, allowedOperators);
+        }
 
         return row;
     }
@@ -397,7 +456,6 @@ export class AnalyticsConfigActionCreator extends ActionCreator<AnalyticsConfigS
      */
     public updateFieldFilterOperatorState(rowIndex: number, operator: string) {
         let settings = this.state.configOptions.fieldFilter.fieldFilterRowValues[rowIndex].settings;
-        let priorState = settings.operator;
         settings.operator = operator;
         this.notifyListenersOfStateChange(this.state);
     }
@@ -407,7 +465,6 @@ export class AnalyticsConfigActionCreator extends ActionCreator<AnalyticsConfigS
      */
     public updateFieldFilterValueState(rowIndex: number, value: string) {
         let settings = this.state.configOptions.fieldFilter.fieldFilterRowValues[rowIndex].settings;
-        let priorState = settings.value;
         settings.value = value;
         this.notifyListenersOfStateChange(this.state);
     }
@@ -417,5 +474,13 @@ export class AnalyticsConfigActionCreator extends ActionCreator<AnalyticsConfigS
         this.state.configOptions.fieldFilter.fieldFilterRowValues.forEach((o, i) => {
             this.state.configuration.fields[i] = o.settings;
         })
+    }
+
+    private getQueryableAggregationName(fieldReferenceName: string): string {
+        return this.state.configOptions.metadata.fieldMappings.find(o => o.referenceName == fieldReferenceName).queryableName;
+    }
+
+    private getAllowedAggregationModes(): string[] {
+        return [AggregationMode.count.toString(), AggregationMode.sum.toString()];
     }
 }
