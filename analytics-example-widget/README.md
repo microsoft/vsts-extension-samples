@@ -1,7 +1,7 @@
 # Introduction 
 The purpose of this example is to provide a working VSTS Widget Extension, exercising Charting and Analytics data, implemented in Typescript with a React UI model. It provides a configurable trend chart against work item tracking data, scoped to a project, team, work item type, with support for custom filtering of results.
 
-![Illustration of Analytics widget, with chart and configuration view.](extend-analytics-widget.png)
+![Illustration of Analytics widget, with chart and configuration view.](extend-analytics-widget.PNG)
 
 
 # Getting Started
