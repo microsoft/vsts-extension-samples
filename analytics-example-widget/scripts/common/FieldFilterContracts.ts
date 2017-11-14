@@ -1,9 +1,13 @@
 import { WorkItemTypeField } from "../data/AnalyticsTypes";
 
+/**
+ * Describes state for rendering Field filter configuration component.
+ */
 export interface FieldFilterConfigurationState {
     fieldFilterRowValues: FieldFilterRowData[];
     addRow: () => void;
 }
+
 /**
  * Describes operators supported in the field filter.
  */

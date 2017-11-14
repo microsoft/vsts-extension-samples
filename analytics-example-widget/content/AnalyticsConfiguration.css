@@ -59,3 +59,20 @@
 .widget-config-component .field-filter select.value-picker.is-empty{    
     outline: red solid 1px;
 }
+
+.widget-config-component select.aggregation-picker {
+    width: 175px;
+    display: inline-block;
+}
+
+.widget-config-component select.sum-field-picker {
+    width: 190px;
+    display: inline-block;
+}
+
+.widget-config-component .sum-conjunction {
+    display: inline-block;
+    width: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
