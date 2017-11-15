@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<head>
+    <script src="lib/VSS.SDK.min.js"></script>
+    
+    <script type="text/javascript">
+        VSS.init( { 
+            usePlatformScripts: true, 
+            moduleLoaderConfig: { 
+                paths: { 
+                    "enhancer": "scripts" 
+                } 
+            }
+        });
+        
+        VSS.ready(function() {
+        });      
+    </script>
+</head>
+
+<body>
+    <div class="task-contribution">
+         I depend on task D9BAFED4-0B18-4F58-968D-86655B4D2CE9 https://github.com/Microsoft/vsts-tasks/tree/master/Tasks/CmdLine through a constraint.
+         I show up only if you use CmdLine task as part of your build.
+    </div>
+</body>
+</html>
