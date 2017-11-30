@@ -11,7 +11,7 @@
     "package": "tfx extension create",
     "clean": "rimraf ./dist && rimraf ./*.vsix"
   },
-  "name": "tags-mru",
+  "name": "backlogs-panel",
   "private": true,
   "version": "0.0.0",
   "dependencies": {
