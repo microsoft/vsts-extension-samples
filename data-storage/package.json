@@ -5,7 +5,7 @@
   "scripts": {
     "build": "tsc -p .",
     "postbuild": "npm run package",
-    "package": "tfx extension create",
+    "package": "tfx extension create --rev-version",
     "clean": "rimraf ./dist && rimraf ./*.vsix"
   },
   "repository": {
@@ -16,12 +16,12 @@
   "devDependencies": {
     "ncp": "^2.0.0",
     "rimraf": "^2.5.4",
-    "tfx-cli": "^0.3.45",
-    "typescript": "^2.1.4"
+    "tfx-cli": "~0.4.10",
+    "typescript": "~2.5.2"
   },
   "dependencies": {
-    "@types/jquery": "^2.0.34",
+    "@types/jquery": "~2.0.34",
     "@types/q": "0.0.32",
-    "vss-web-extension-sdk": "^2.109.0"
+    "vss-web-extension-sdk": "^4.125.2"
   }
 }

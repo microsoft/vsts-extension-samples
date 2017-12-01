@@ -1,21 +1,24 @@
 {
     "manifestVersion": 1.0,
     "id": "samples-data-storage",
-    "version": "0.1.0",
+    "version": "0.1.4",
     "name": "Data Storage Sample",
     "description": "Explore how to store settings and documents using the provided data storage service.",
-    "publisher": "Fabrikam",
+    "publisher": "ms-samples",
     "icons": {
         "default": "images/fabrikam-logo.png"
     },
     "categories": [
         "Developer samples"
-    ],  
+    ],
     "targets": [
         {
             "id": "Microsoft.VisualStudio.Services"
         }
-    ], 
+    ],
+    "scopes": [
+        "vso.notification_publish"
+    ],
     "files": [
         {
             "path": "css",
@@ -28,23 +31,23 @@
         {
             "path": "settings.html",
             "addressable": true
-        },  
+        },
         {
             "path": "notes.html",
             "addressable": true
-        },    
+        },
         {
             "path": "dist",
             "addressable": true,
             "packagePath": "scripts"
-        },     
+        },
         {
             "path": "node_modules/vss-web-extension-sdk/lib",
             "addressable": true,
             "packagePath": "lib"
-        }    
-    ],    
-    "contributions": [    
+        }
+    ],
+    "contributions": [
         {
             "id": "data-storage-hub-group",
             "type": "ms.vss-web.hub-group",
@@ -56,7 +59,7 @@
                 "name": "Data Storage",
                 "order": 50
             }
-        },   
+        },
         {
             "id": "settings-hub",
             "type": "ms.vss-web.hub",
@@ -71,7 +74,6 @@
             }
         },
         {
-            
             "id": "notes-hub",
             "type": "ms.vss-web.hub",
             "description": "Adds an 'Notes' hub to the Home hub group which shows how to use the extension data document apis.",
@@ -83,6 +85,81 @@
                 "order": 2,
                 "uri": "notes.html"
             }
-        }  
+        },
+        {
+            "id": "note-event",
+            "type": "ms.vss-notifications.event-type",
+            "targets": [
+                "ms.vss-extmgmt-web.extensions-event-publisher",
+                "ms.vss-extmgmt-web.extensions-event-category"
+            ],
+            "properties": {
+                "name": "Note event",
+                "description": "Event that represents when a note is added, updated, or deleted.",
+                "customSubscriptionsAllowed": true,
+                "hasInitiator": true,
+                "icon": "bowtie-packages",
+                "supportedScopes": [
+                    "project",
+                    "collection"
+                ],
+                "roles": [
+                    {
+                        "id": "initiator",
+                        "name": "Initiator"
+                    },
+                    {
+                        "id": "team",
+                        "name": "Team"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "note-event-email-template",
+            "type": "ms.vss-notifications.email-template",
+            "targets": [
+                ".note-event"
+            ],
+            "includes": [
+                "ms.vss-notifications.standard-email-template"
+            ],
+            "properties": {
+                "sourceTemplate": "ms.vss-notifications.standard-email-template",
+                "inputs": {
+                    "email-subject": "[{{ event.team.name }}] Note {{{ event.action }}} by {{ event.user.name }}",
+                    "summary": "{{ event.user.name }} {{ event.action }} note {{ event.note.title }}",
+                    "hero": {
+                        "title": "Note {{{ event.action }}} in {{ event.team.name }}",
+                        "message": "{{ event.note.title }}",
+                        "action": {
+                            "title": "Open notes",
+                            "url": "{{{ event.links.web }}}"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "id": "note-event-subscription",
+            "type": "ms.vss-notifications.subscription",
+            "targets": [
+                "ms.vss-notifications.default-subscription-collection"
+            ],
+            "properties": {
+                "description": "A note was added or deleted by a team member",
+                "filter": {
+                    "type": "Actor",
+                    "eventType": "ms-samples.samples-data-storage.note-event",
+                    "inclusions": [
+                        "team"
+                    ],
+                    "exclusions": [
+                        "initiator"
+                    ],
+                    "criteria": {}
+                }
+            }
+        }
     ]
 }
