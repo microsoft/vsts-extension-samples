@@ -1,7 +1,7 @@
 {
     "manifestVersion": 1,
     "id": "samples-contributions-guide",
-    "version": "0.1.36",
+    "version": "0.1.37",
     "name": "Contributions Guide",
     "description": "Building an extension for Visual Studio Team Services? See the places where you can extend and enhance the user's web experience with an extension ---- right from within the web experience.",
     "publisher": "ms-samples",
@@ -403,7 +403,7 @@
             ],
             "properties": {
                 "text": "",
-                "title": "ms.vss-work-web.backlog-item-menu (Custom sprint board pivot filter menu item action)",
+                "title": "ms.vss-work-web.sprint-board-pivot-filter-menu (Custom sprint board pivot filter menu item action)",
                 "icon": "images/show-properties.png",
                 "group": "actions",
                 "uri": "main.html",
@@ -419,7 +419,7 @@
             ],
             "properties": {
                 "text": "",
-                "title": "ms.vss-work-web.backlog-item-menu (Custom backlog board pivot filter menu item action)",
+                "title": "ms.vss-work-web.backlog-board-pivot-filter-menu (Custom backlog board pivot filter menu item action)",
                 "icon": "images/show-properties.png",
                 "group": "actions",
                 "uri": "main.html",
