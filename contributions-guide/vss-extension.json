@@ -1,7 +1,7 @@
 {
     "manifestVersion": 1,
     "id": "samples-contributions-guide",
-    "version": "0.1.37",
+    "version": "0.1.38",
     "name": "Contributions Guide",
     "description": "Building an extension for Visual Studio Team Services? See the places where you can extend and enhance the user's web experience with an extension ---- right from within the web experience.",
     "publisher": "ms-samples",
@@ -664,6 +664,50 @@
                 "title": "PR Details Tab",
                 "uri": "context.html",
                 "action": "PR Details Tab"
+            }
+        },
+        {
+            "id": "sample-pr-status-menu",
+            "type": "ms.vss-web.menu",
+            "description": "Status menu for status with genre 'fabricam-ci-service' and name 'ci-build'",
+            "targets": [
+                "ms.vss-code-web.pull-request-status-menu"
+            ],
+            "properties": {
+                "statusGenre": "fabricam-ci-service",
+                "statusName": "ci-build"
+            }
+        },
+        {
+            "id": "statusMenuItem_1",
+            "type": "ms.vss-web.action",
+            "description": "Executes custom action for the status",
+            "targets": [
+                ".sample-pr-status-menu"
+            ],
+            "properties": {
+                "text": "Custom status action",
+                "title": "ms.vss-code-web.pull-request-status-menu",
+                "icon": "css://bowtie-icon bowtie-status-run-outline",
+                "group": "actions",
+                "uri": "main.html",
+                "registeredObjectId": "statusCustomAction"
+            }
+        },
+        {
+            "id": "statusMenuItem_2",
+            "type": "ms.vss-web.action",
+            "description": "Executes custom action for the status",
+            "targets": [
+                ".sample-pr-status-menu"
+            ],
+            "properties": {
+                "text": "Another custom status action",
+                "title": "ms.vss-code-web.pull-request-status-menu",
+                "icon": "images/show-properties.png",
+                "group": "actions",
+                "uri": "main.html",
+                "registeredObjectId": "statusCustomAction"
             }
         }
     ]
