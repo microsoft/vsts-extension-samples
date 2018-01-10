@@ -34,8 +34,8 @@ VSS.register("showProperties", function (context) {
 VSS.register("statusCustomAction", function (context) {
     return {
         execute: function (context) {
-            let statusName = context.status.context.genre + "/" + context.status.context.name;
-            let prId = context.pullRequest.pullRequestId;
+            var statusName = context.status.context.genre + "/" + context.status.context.name;
+            var prId = context.pullRequest.pullRequestId;
             alert("Execute custom action for status " + statusName + " on pull request " + prId);
         }
     };

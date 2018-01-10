@@ -683,7 +683,7 @@
             "type": "ms.vss-web.action",
             "description": "Executes custom action for the status",
             "targets": [
-                "ms-samples.samples-contributions-guide.sample-pr-status-menu"
+                ".sample-pr-status-menu"
             ],
             "properties": {
                 "text": "Custom status action",
@@ -699,7 +699,7 @@
             "type": "ms.vss-web.action",
             "description": "Executes custom action for the status",
             "targets": [
-                "ms-samples.samples-contributions-guide.sample-pr-status-menu"
+                ".sample-pr-status-menu"
             ],
             "properties": {
                 "text": "Another custom status action",
