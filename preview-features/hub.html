@@ -1,0 +1,38 @@
+<html>
+<head>
+    <title>Preview Features Sample</title>
+    <script src="node_modules/vss-web-extension-sdk/lib/VSS.SDK.js"></script>
+    <style>
+        h2 {
+            font-weight: 400;
+        }
+
+        pre {
+            font-size: 14px;
+            line-height: 1.3em;
+        }
+        </style>
+</head>
+
+<body style="padding-left: 20px; padding-top: 20px; overflow-y: auto; background-color: #eee">
+    
+    <h2>Web Context</h2>
+    <pre id="context-display"></pre>
+    
+    <div id="configuration" style="display:none">
+        <h2>Configuration</h2>
+        <pre id="configuration-display"></pre>
+    </div>
+    <script type="text/javascript">
+        VSS.init({explicitNotifyLoaded: false, usePlatformScripts: true, usePlatformStyles: true })
+
+        // Show context info when ready
+        VSS.ready(function () {
+            var context = VSS.getWebContext();
+            
+            document.getElementById("context-display").textContent = JSON.stringify(context, null, 4);
+        });
+
+    </script>
+</body>
+</html>

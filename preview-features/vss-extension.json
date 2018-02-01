@@ -1,0 +1,117 @@
+{
+    "manifestVersion": 1,
+    "id": "preview-features-sample",
+    "version": "0.2.0",
+    "name": "Preview Features Sample",
+    "description": "Sample extension for VSTS that demonstrates how to let users and admins control the availability of contributions, like hubs, menu items, and more using preview features.",
+    "publisher": "ms-samples",
+    "public": false,
+    "categories": [
+        "Developer samples"
+    ],
+    "links": {
+        "learn": {
+            "uri": "https://github.com/Microsoft/vsts-extension-samples"
+        }
+    },
+    "icons": {
+        "default": "images/fabrikam-logo.png"
+    },
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services",
+            "version": "[15.0,]"
+        }
+    ],
+    "content": {
+        "details": {
+            "path": "readme.md"
+        }
+    }, 
+    "branding": {
+        "color": "rgb(190, 39, 3)",
+        "theme": "dark"
+    },       
+    "files": [
+        {
+            "path": "hub.html",
+            "addressable": true
+        },       
+        {
+            "path": "node_modules/vss-web-extension-sdk/lib",
+            "addressable": true
+        }    
+    ],
+    "contributions": [
+        {
+            "id": "code-hub",
+            "type": "ms.vss-web.hub",
+            "description": "This project-level hub is only visible in projects where the admin of that project has enabled 'Feature 3'.",
+            "targets": [
+                "ms.vss-code-web.code-hub-group"
+            ],
+            "properties": {
+                "name": "Preview Hub",
+                "order": 100,
+                "uri": "hub.html"
+            },
+            "constraints": [
+                {
+                    "name": "Feature",
+                    "properties": {
+                        "featureId": "ms-samples.preview-features-sample.feature3"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "feature1",
+            "type": "ms.vss-web.feature",
+            "description": "Example of a user-controlled preview feature. Individual users can manage this feature.",
+            "targets": [ "ms.vss-web.managed-features" ],
+            "properties": {
+                "name": "Feature 1",
+                "userConfigurable": true,
+                "hostConfigurable": false,
+                "links": {
+                    "learn": {
+                        "uri": "https://www.microsoft.com"
+                    }
+                }
+            }
+        },
+        {
+            "id": "feature2",
+            "type": "ms.vss-web.feature",
+            "description": "Example of an account-level, admin-controlled preview feature. This feature can be toggled on or off for the entire account.",
+            "targets": [ "ms.vss-web.managed-features" ],
+            "properties": {
+                "name": "Feature 2",
+                "userConfigurable": false,
+                "hostConfigurable": true,
+                "links": {
+                    "learn": {
+                        "uri": "https://www.microsoft.com"
+                    }
+                }
+            }
+        },
+        {
+            "id": "feature3",
+            "type": "ms.vss-web.feature",
+            "description": "Example of a preview feature that is managed at the project level by project admins.",
+            "targets": [ "ms.vss-web.managed-features" ],
+            "properties": {
+                "name": "Feature 3",
+                "userConfigurable": false,
+                "hostConfigurable": true,
+                "hostScopes": [ "project" ],
+                "links": {
+                    "learn": {
+                        "uri": "https://www.microsoft.com"
+                    }
+                }
+            }
+        }
+    ]
+}

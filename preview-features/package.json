@@ -1,0 +1,13 @@
+{
+  "name": "preview-features-sample",
+  "version": "1.0.0",
+  "description": "VSTS extension demonstrating preview features.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Microsoft/vsts-extension-samples/tree/master/preview-features"
+  },
+  "author": "Microsoft",
+  "dependencies": {
+    "vss-web-extension-sdk": "^5.127.0"
+  }
+}
