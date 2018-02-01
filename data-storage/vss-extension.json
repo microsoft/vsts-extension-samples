@@ -1,7 +1,7 @@
 {
     "manifestVersion": 1.0,
     "id": "samples-data-storage",
-    "version": "0.1.5",
+    "version": "0.1.6",
     "name": "Data Storage Sample",
     "description": "Explore how to store settings and documents using the provided data storage service.",
     "publisher": "ms-samples",
@@ -11,6 +11,7 @@
     "categories": [
         "Developer samples"
     ],
+    "public": true,
     "targets": [
         {
             "id": "Microsoft.VisualStudio.Services"

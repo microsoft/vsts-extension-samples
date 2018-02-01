@@ -22,6 +22,6 @@
   "dependencies": {
     "@types/jquery": "~2.0.34",
     "@types/q": "0.0.32",
-    "vss-web-extension-sdk": "^4.125.2"
+    "vss-web-extension-sdk": "^4.126.2"
   }
 }
