@@ -34,7 +34,7 @@ if (isBundled) {
             usePlatformStyles: true
         });
 
-        VSS.require(["scripts/Bundle"], function (Bundle) {
+        VSS.require(["scripts/bundle"], function (Bundle) {
             Bundle.init("work-item-search-view");
         });    
     `;
