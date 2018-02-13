@@ -1,7 +1,7 @@
 {
     "manifestVersion": 1.0,
     "id": "samples-work-item-form",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "name": "Work Item Form Sample",
     "description": "Explore how to extend the work item form with new sections, actions, and more.",
     "public": false,

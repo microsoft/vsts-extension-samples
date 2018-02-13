@@ -1,7 +1,7 @@
 {
     "manifestVersion": 1,
     "id": "preview-features-sample",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "name": "Preview Features Sample",
     "description": "Sample extension for VSTS that demonstrates how to let users and admins control the availability of contributions, like hubs, menu items, and more using preview features.",
     "publisher": "ms-samples",
