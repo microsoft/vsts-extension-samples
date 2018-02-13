@@ -1,7 +1,7 @@
 {
     "manifestVersion": 1,
     "id": "samples-calendar-public-events",
-    "version": "0.1.4",
+    "version": "0.1.5",
     "name": "Team Calendar US Public Events",
     "description": "See public United States events and holidays on the Team Calendar extension for Visual Studio Team Services.",
     "publisher": "fabrikam",

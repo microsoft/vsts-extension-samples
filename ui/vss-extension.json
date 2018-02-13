@@ -1,7 +1,7 @@
 {
     "manifestVersion": 1.0,
     "id": "samples-ui",
-    "version": "0.1.7",
+    "version": "0.1.8",
     "name": "UI Controls (Sample)",
     "description": "Explore different UI controls, including menus, toolbars, custom controls, and more.",
     "publisher": "fabrikam",

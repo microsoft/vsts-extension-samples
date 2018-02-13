@@ -1,7 +1,7 @@
 {
     "manifestVersion": 1,
     "id": "vsts-sample-backlogs-panel",
-    "version": "0.1.4",
+    "version": "0.1.5",
     "name": "Details panel",
     "scopes": [ "vso.work" ],
     "description": "Sample backlog panel extension that appears on all the backlog levels.",

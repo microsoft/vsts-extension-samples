@@ -1,7 +1,7 @@
 {
     "manifestVersion": 1,
     "id": "samples-build-results-enhancer",
-    "version": "0.2.12",
+    "version": "0.2.13",
     "name": "Build Results Enhancer",
     "description": "A simple extension that demonstrates how to extend build summary page.",
     "publisher": "fabrikam",
