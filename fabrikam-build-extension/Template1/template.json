@@ -1,6 +1,6 @@
 {
     "id": "android",
-    "name": "My Custom Andriod Template",
+    "name": "My Custom Android Template",
     "category": "Build",
     "iconTaskId": "DF857559-8715-46EB-A74E-AC98B9178AA0",
     "description": "Build your Android projects, run tests, sign and align Android App Package files. This template requires the Android SDK to be installed on the build agent.",
