@@ -709,6 +709,22 @@
                 "uri": "main.html",
                 "registeredObjectId": "statusCustomAction"
             }
+        },
+        {
+            "id": "backlogRightPanelExtensions",
+            "type": "ms.vss-work-web.backlog-panel",
+            "description": "Shows the target properties for backlog toolpane",
+            "targets": [
+                "ms.vss-work-web.portfolio-backlog-toolpane",
+                "ms.vss-work-web.requirement-backlog-toolpane",
+                "ms.vss-work-web.iteration-backlog-toolpane"
+            ],
+            "properties": {
+                "title": "Toolpane extension",
+                "name": "Toolpane extension",
+                "icon": "images/show-properties.png",
+                "uri": "context.html"
+            }
         }
     ]
 }
