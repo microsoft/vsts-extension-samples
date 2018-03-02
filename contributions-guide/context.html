@@ -29,9 +29,9 @@
 
         // We need to register the new contribution if this extension host is reused
         function registerContribution(contribution) {
+            updateConfiguration(VSS.getConfiguration());
+            document.getElementById("configuration").style.display = "block";
             if (contribution.type === "ms.vss-web.tab") {
-                updateConfiguration(VSS.getConfiguration());
-                document.getElementById("configuration").style.display = "block";
 
                 // Register the fully-qualified contribution id here.
                 // Because we're using the contribution id, we do NOT need to define a registeredObjectId in the extension manfiest.
