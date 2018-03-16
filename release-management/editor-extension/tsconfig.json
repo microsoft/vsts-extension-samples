@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "module": "amd",
+        "outDir": "scripts/",
+        "moduleResolution": "node",
+        "target": "es5",
+        "types": [
+            "vss-web-extension-sdk"
+        ]
+    },
+    "include": [
+        "*.ts"
+    ]
+}

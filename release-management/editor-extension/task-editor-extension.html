@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Hello World</title>
+    <script src="lib/VSS.SDK.js"></script>
+</head>
+<body style="height:100%">
+    <script type="text/javascript">VSS.init({
+        usePlatformScripts: true,
+        usePlatformStyles: true,
+        explicitNotifyLoaded: true
+    });
+    VSS.require(["scripts/editorExtension"], function (editorExtension) { });
+    </script>
+    
+    <div class="grid-container" style="height:100%; overflow:auto">
+        <table class="edit-parameters-grid">
+            <thead>
+                <tr>
+                    <td></td>
+                    <td class="name">Name</td>
+                    <td class="value">Value</td>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: parameters">
+                <tr>
+                    <td style="width: 20px;">
+                        <a href="#" data-bind="click: $parent.remove, style: {display: 'block'}" style="display: block;">
+                            <span class="bowtie-icon bowtie-edit-delete" title="Remove"></span>
+                        </a>
+                    </td>
+                    <td><input type="text" class="name-input" data-bind="value: name, valueUpdate: 'afterkeydown'"></td>
+                    <td><input type="text" class="value-input" data-bind="value: value, valueUpdate: 'afterkeydown'"></td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <td colspan="3" class="add-button">
+                        <a href="#" data-bind="click: add" title="Add">
+                            <span class="bowtie-icon bowtie-math-plus"></span> Add 
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+    </body>
+</body>
+</html>

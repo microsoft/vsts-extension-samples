@@ -1,0 +1,60 @@
+{
+    "manifestVersion": 1,
+    "id": "task-editor-extension",
+    "version": "0.1.0",
+    "name": "Sample extension showing task editor extension",
+    "description": "A sample Visual Studio Services extension.",
+    "publisher": "openalm2",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+            }
+        ],
+    "icons": {
+        "default": "images/icon.png"
+     },
+    "contributions": [
+        {
+            "id": "my-task-editor-extension",
+            "type": "ms.vss-distributed-task.task-input-editor",
+            "targets": [ "ms.vss-distributed-task.task-input-editors" ],
+            "properties": {
+                "name": "Editor extension for my custom object",
+                "uri": "task-editor-extension.html"
+            }
+        },
+        {
+            "id": "my-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+              "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+              "name": "Tasks/TestTask"
+            }
+      }
+
+    ],
+    "scopes": [
+        "vso.work"
+    ],
+    "files": [
+        {
+            "path": "task-editor-extension.html", "addressable": true
+        },
+        {
+            "path": "scripts", "addressable": true
+        },
+        {
+            "path": "Tasks", "addressable": true
+        },
+        {
+            "path": "images/icon.png", "addressable": true
+        },
+        {
+            "path": "node_modules/vss-web-extension-sdk/lib",
+            "addressable": true,
+            "packagePath": "lib"
+        }
+    ]
+}
