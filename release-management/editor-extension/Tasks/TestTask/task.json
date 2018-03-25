@@ -1,0 +1,42 @@
+{
+    "id": "c2a64099-7b8a-40f7-aca2-fcaadfbc8757",
+    "name": "MyTestTask",
+    "friendlyName": "Task Editor Extension Task",
+    "description": "Task Editor Extension Task",
+    "helpMarkDown": "Editor Extension Task",
+    "category": "Build",
+    "visibility": [
+      "Build",
+      "Release"
+    ],
+    "author": "Microsoft Corporation",
+    "version": {
+      "Major": 0,
+      "Minor": 3,
+      "Patch": 0
+    },
+    "demands": [
+    ],
+    "minimumAgentVersion": "1.95.0",
+    "inputs": [
+      {
+        "name": "input",
+        "type": "multiLine",
+        "label": "Sample Input",
+        "defaultValue": "",
+        "required": true,
+        "helpMarkDown": "Click .. to edit the value.",
+        "properties": {
+            "editorExtension": "openalm2.task-editor-extension.my-task-editor-extension"
+        }
+      }
+    ],
+      "instanceNameFormat": "Sample task",
+      "execution": {
+        "PowerShell": {
+          "target": "$(currentDirectory)\\Main.ps1",
+          "argumentFormat": "",
+          "workingDirectory": "$(currentDirectory)"
+        }
+  }
+  }
