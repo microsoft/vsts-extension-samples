@@ -1,6 +1,6 @@
 # Visual Studio Team Services (VSTS) Sample Extensions
  
-Samples to help jump-start your development of [extensions for Visual Studio Team Services (VSTS)](http://www.visualstudio.com/integrate/extensions/overview).
+Samples to help jump-start your development of [extensions for Visual Studio Team Services (VSTS)](http://www.visualstudio.com/team-services/extend).
 
 ## Get started
 
