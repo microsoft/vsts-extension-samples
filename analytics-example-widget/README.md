@@ -15,7 +15,7 @@ npm install -g typescript
 2. Override the publisher in vss-extension.json with your publisher Id. [Learn to create a publisher](https://docs.microsoft.com/en-us/vsts/extend/publish/integration?view=vsts#steps
 )
 3. (Command Line: Build your extension) `tsc`
-3. (Command Line: Create your extension) `tfx extension create --manifest-globs vss-extension.json --rev-version`
+3. (Command Line: Create your extension) `.\node_modules\.bin\tfx extension create --manifest-globs vss-extension.json --rev-version`
 4. Publish your extension from Marketplace 
 5. Share your extension to your test VSTS account
 6. Install the widget: from your VSTS account, click "Manage Extensions", select "Analytics example widget" and "Install" it
