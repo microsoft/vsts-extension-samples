@@ -17,5 +17,7 @@
     "gallery-publish": "tfx extension publish --rev-version --token YOURPERSONALAUTHTOKENHERE",
     "clean": "rimraf ./dist && rimraf ./*.vsix"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "tfx-cli": "^0.5.10"
+  }
 }
