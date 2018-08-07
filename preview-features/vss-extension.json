@@ -1,13 +1,13 @@
 {
     "manifestVersion": 1,
     "id": "preview-features-sample",
-    "version": "0.2.1",
+    "version": "0.3.2",
     "name": "Preview Features Sample",
     "description": "Sample extension for VSTS that demonstrates how to let users and admins control the availability of contributions, like hubs, menu items, and more using preview features.",
     "publisher": "ms-samples",
     "public": false,
     "categories": [
-        "Developer samples"
+        "Code"
     ],
     "links": {
         "learn": {
@@ -44,14 +44,56 @@
     ],
     "contributions": [
         {
-            "id": "code-hub",
+            "id": "hub1",
             "type": "ms.vss-web.hub",
-            "description": "This project-level hub is only visible in projects where the admin of that project has enabled 'Feature 3'.",
+            "description": "This hub is only visible to users that have enabled the 'Feature 1' preview feature.",
             "targets": [
                 "ms.vss-code-web.code-hub-group"
             ],
             "properties": {
-                "name": "Preview Hub",
+                "name": "Preview Hub (1)",
+                "order": 100,
+                "uri": "hub.html"
+            },
+            "constraints": [
+                {
+                    "name": "Feature",
+                    "properties": {
+                        "featureId": "ms-samples.preview-features-sample.feature1"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "hub2",
+            "type": "ms.vss-web.hub",
+            "description": "This hub is only visible when the account admin has enabled the 'Feature 2' preview feature.",
+            "targets": [
+                "ms.vss-code-web.code-hub-group"
+            ],
+            "properties": {
+                "name": "Preview Hub (2)",
+                "order": 100,
+                "uri": "hub.html"
+            },
+            "constraints": [
+                {
+                    "name": "Feature",
+                    "properties": {
+                        "featureId": "ms-samples.preview-features-sample.feature2"
+                    }
+                }
+            ]
+        },        
+        {
+            "id": "hub3",
+            "type": "ms.vss-web.hub",
+            "description": "This hub is only visible in projects where the admin of that project has enabled the 'Feature 3' preview feature.",
+            "targets": [
+                "ms.vss-code-web.code-hub-group"
+            ],
+            "properties": {
+                "name": "Preview Hub (3)",
                 "order": 100,
                 "uri": "hub.html"
             },
