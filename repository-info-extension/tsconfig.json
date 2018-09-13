@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "module": "amd",
+        "sourceMap": false
+    },
+    "exclude": [
+        "node_modules"
+    ]
+}
