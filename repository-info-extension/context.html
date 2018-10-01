@@ -19,11 +19,7 @@
     
     <h2>Repository Information</h2>
     <pre id="context-display"></pre>
-    
-    <div id="configuration" style="display:none">
-        <h2>Configuration</h2>
-        <pre id="configuration-display"></pre>
-    </div>
+
     <script type="text/javascript">
         VSS.init({
             usePlatformScripts: true, 
@@ -31,10 +27,17 @@
         });
 
         VSS.require(["scripts/app"], function (app) {
-            app.execute("repository-info-view");
+            app.execute();
         });
     </script>
 
-    <div id="repository-info-view"></div>
+    <div id="repository-info-view">
+        <h3>ID</h2>
+        <p id="repository-id"></p>
+        <h3>Name</h2>
+        <p id="repository-name"></p>
+        <h3>URL</h2>
+        <p id="repository-url"></p>
+    </div>
 </body>
 </html>
