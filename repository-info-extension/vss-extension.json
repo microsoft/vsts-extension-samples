@@ -7,7 +7,8 @@
     "publisher": "ms-samples",
     "public": true,
     "categories": [
-        "Developer samples"
+        "Developer samples",
+        "Code"
     ],
     "links": {
         "learn": {
@@ -51,9 +52,9 @@
     ],
     "contributions": [
         {
-            "id": "code-hub",
+            "id": "repository-info-hub",
             "type": "ms.vss-web.hub",
-            "description": "Custom hub under the Code hub group",
+            "description": "Custom hub in the Code hub group that displays information about the currently active Git repository.",
             "targets": [
                 "ms.vss-code-web.code-hub-group"
             ],
