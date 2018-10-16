@@ -10,4 +10,4 @@ This extension is built using NodeJS with the [typescript](https://github.com/Mi
 
 ## Screenshot
 
-![hub](images/hub-content.png)
+![hub](images/hub-content.PNG)
