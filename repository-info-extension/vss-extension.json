@@ -34,7 +34,7 @@
     },       
     "files": [
         {
-            "path": "scripts",
+            "path": "scripts/app.js",
             "addressable": true
         },
         {
