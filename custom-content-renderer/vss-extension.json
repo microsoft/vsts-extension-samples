@@ -1,0 +1,64 @@
+{
+    "manifestVersion": 1,
+    "id": "custom-content-renderer",
+    "version": "0.1.61",
+    "name": "Custom Content Renderer",
+    "description": "Build a custom content renderer for VSTS source files.",
+    "publisher": "ms-samples",
+    "public": false,
+    "categories": [
+        "Developer samples"
+    ],
+    "links": {
+        "learn": {
+            "uri": "https://github.com/Microsoft/vso-extension-samples"
+        }
+    },
+    "icons": {
+        "default": "images/fabrikam-logo.png"
+    },
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "content": {
+        "details": {
+            "path": "details.md"
+        }
+    }, 
+    "branding": {
+        "color": "rgb(190, 39, 3)",
+        "theme": "dark"
+    },       
+    "files": [
+        {
+            "path": "scripts",
+            "addressable": true
+        },      
+        {
+            "path": "render.html",
+            "addressable": true
+        },     
+        {
+            "path": "node_modules/vss-web-extension-sdk/lib",
+            "addressable": true
+        }    
+    ],
+    "contributions": [
+        {
+            "id": "showRenderer",
+            "type": "ms.vss-web.action",
+            "description": "Shows a custom renderer for source files",
+            "targets": [
+                "ms.vss-code-web.content-renderer-collection"
+            ],
+            "properties": {
+                "uri": "render.html",
+                "text": "Custom content renderer",
+                "fileExtensions": ["txt"],
+                "title": "ms.vss-code-web.content-renderer-collection"
+            }
+        }
+    ]
+}

@@ -1,0 +1,13 @@
+{
+  "name": "custom-content-renderer",
+  "version": "1.0.0",
+  "description": "See how to create a custom content renderer in source control.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Microsoft/vsts-extension-samples/tree/master/custom-content-renderer"
+  },
+  "author": "Microsoft",
+  "dependencies": {
+    "vss-web-extension-sdk": "^2.109.0"
+  }
+}
