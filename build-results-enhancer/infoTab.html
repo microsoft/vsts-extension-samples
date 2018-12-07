@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<head>
+    <script src="bower_components/vss-web-extension-sdk/lib/VSS.SDK.min.js"></script>
+    
+    <script type="text/javascript">
+        VSS.init( { 
+            usePlatformScripts: true, 
+            moduleLoaderConfig: { 
+                paths: { "enhancer": "dist/enhancer" } 
+            } 
+        });
+        
+        VSS.ready(function() {
+            require(["enhancer/tab"], function () { });
+        });   
+    </script>
+    
+    <style>
+    .build-info {
+        padding: 10px;
+    }     
+    </style>
+</head>
+
+<body>
+    <div class="build-info">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus purus nec libero sollicitudin pharetra. Sed eros leo, venenatis non nulla eu, eleifend ullamcorper purus. Integer ac erat felis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vitae luctus lacus. Donec facilisis posuere nulla non viverra. Ut convallis diam fermentum, finibus urna sit amet, euismod nisi.
+
+Aenean tincidunt pellentesque nisl, a sodales justo pretium in. Suspendisse potenti. In hac habitasse platea dictumst. Praesent at aliquam nisl. In imperdiet hendrerit ultrices. Phasellus ipsum velit, mattis at aliquet et, tincidunt fringilla ipsum. Nulla facilisi. Maecenas ac accumsan mauris. Morbi euismod enim id nunc sagittis scelerisque. Praesent sit amet mi sollicitudin, condimentum nisi in, bibendum nunc. Ut et nulla elementum, pharetra sapien id, imperdiet augue.
+
+Vestibulum euismod nec metus nec lobortis. Mauris congue nibh ut semper efficitur. Proin tincidunt turpis vel vestibulum suscipit. Aenean consectetur vel diam ut varius. Donec ut erat lacus. In consectetur ex elit, lacinia pharetra eros volutpat vitae. Fusce fermentum at felis egestas ultricies.
+
+Suspendisse sit amet laoreet est. Aenean lobortis ut elit id lobortis. Fusce viverra mollis blandit. Etiam vitae justo tempus, tristique enim eget, sodales ipsum. Sed cursus, elit ut laoreet pretium, tortor lacus sodales massa, quis vulputate urna nisi a lorem. Etiam felis diam, viverra ullamcorper tincidunt vel, mattis sed odio. Sed malesuada et purus vitae ullamcorper. Nam lectus orci, pharetra sed ultrices sit amet, hendrerit quis mi. Donec vulputate metus id feugiat pretium. Maecenas placerat lorem enim, quis porta enim accumsan ut. Morbi sagittis sodales arcu, vitae commodo quam euismod vitae. Curabitur scelerisque tellus non mi sagittis, a auctor ante malesuada. Ut vulputate tristique lectus, vel fringilla augue rhoncus id.
+
+Quisque lacinia venenatis mi, vitae scelerisque est feugiat sed. Vivamus ac nunc rutrum, volutpat metus ultricies, mollis elit. Morbi tristique consequat pharetra. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit tincidunt interdum. Etiam mattis turpis et sagittis lobortis. Integer a ipsum sit amet lacus placerat commodo. Vestibulum vel mauris egestas risus varius accumsan vitae id est.
+
+Morbi sit amet molestie elit, at blandit massa. Morbi finibus suscipit lobortis. Praesent auctor id lectus a auctor. Sed non cursus est. Fusce molestie fringilla diam non commodo. Mauris venenatis porttitor mattis. Fusce vitae dui ex. Aliquam scelerisque molestie mi, at laoreet mauris vestibulum non. Nulla facilisi.
+
+Nunc ultrices luctus nisl eu elementum. Integer sed sapien sapien. Sed feugiat mattis scelerisque. Praesent vitae enim orci. Aenean at est leo. Nullam libero ante, porttitor a vulputate nec, faucibus sed enim. Nam aliquet erat et metus venenatis blandit. Cras pretium magna diam, eu molestie mi porttitor at.
+
+Vivamus eu luctus enim. Ut sed dui dignissim, pharetra dolor vel, tristique arcu. Integer tincidunt eros sit amet varius suscipit. Sed eget luctus sapien, id dapibus justo. Vivamus sagittis congue leo dignissim vestibulum. Nam sed leo laoreet, eleifend eros sit amet, ullamcorper nunc. Phasellus ut elit quis nunc lacinia sagittis sed nec neque. Sed convallis ornare lacus ut ultricies. Quisque sit amet scelerisque nibh, in hendrerit augue.
+
+Duis blandit, erat et condimentum pharetra, magna odio fringilla odio, non finibus arcu ligula eget sapien. In lorem orci, venenatis id vehicula at, luctus vehicula nunc. Donec id molestie sem. Suspendisse at justo tortor. Aliquam eu lorem a nibh pellentesque posuere. Sed porta neque quis lorem feugiat aliquam. Suspendisse dapibus viverra metus ac consectetur. Morbi molestie neque et erat blandit viverra. Phasellus vestibulum auctor ex at maximus. Nulla ac ultricies risus, eu pretium dui. Aliquam blandit turpis at lacus varius, nec mattis turpis pharetra.
+
+Nulla auctor bibendum dolor, eget aliquet magna facilisis ut. Mauris eget libero elit. Fusce facilisis erat erat, tincidunt sagittis est fringilla vitae. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus dictum risus tortor, vitae maximus est porta quis. Pellentesque ex orci, consequat eu justo id, fermentum suscipit ipsum. Duis porta interdum elit at porta. Cras molestie gravida dui, non volutpat turpis tristique et. Mauris eu enim gravida, vehicula ante vel, molestie nulla. Ut libero lorem, pretium eget erat quis, pulvinar venenatis lectus. Aliquam varius risus id libero egestas, dapibus suscipit libero blandit. Fusce sed erat a lectus porttitor sollicitudin sit amet at mi. Quisque nulla dolor, lobortis vitae elementum nec, volutpat sed ligula. Aenean erat dui, posuere vitae ex quis, aliquam consectetur justo. Ut ac volutpat erat.
+
+Maecenas sed massa id lacus condimentum vulputate. Curabitur scelerisque lacus mauris, dignissim malesuada leo pretium vitae. Sed sed quam eu quam pulvinar dignissim id quis elit. Praesent porttitor, magna sit amet interdum ultricies, lorem ante accumsan odio, a consequat massa magna ac justo. Donec vel nisl id turpis congue convallis. Aliquam pretium, tortor at rhoncus vestibulum, est erat ullamcorper nisi, ac eleifend turpis felis sed urna. Nullam porta sollicitudin nulla, non ultrices felis volutpat ut. Nullam cursus feugiat felis sit amet euismod. Suspendisse sem lectus, efficitur et venenatis at, pharetra egestas justo. Sed fringilla aliquam velit eu varius. Phasellus in viverra leo. Donec nisi lectus, hendrerit id leo non, mollis pellentesque enim. Sed justo augue, congue eget mi sed, aliquet fringilla orci. Donec rutrum, purus nec consectetur vestibulum, massa justo aliquam diam, eu fermentum massa nulla ac mi. Vivamus scelerisque pharetra augue, a dictum lectus convallis a.  
+    </div>
+</body>
+</html>

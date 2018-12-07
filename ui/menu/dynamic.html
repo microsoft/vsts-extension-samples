@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dynamic menu sample</title>
+</head>
+<body>
+    <div>Users will never see this page.</div>
+
+    <script src="../bower_components/vss-web-extension-sdk/lib/VSS.SDK.min.js"></script>
+
+    <script>
+        VSS.init({ 
+            usePlatformScripts: true,
+            explicitNotifyLoaded: true,
+            moduleLoaderConfig: { 
+                paths: { 
+                    "menu": "menu/scripts" 
+                } 
+            }
+        });
+            
+        // Wait for the SDK to be initialized
+        VSS.ready(function () {
+            require(["menu/contributedItems"], function (ItemsView ) {
+			     VSS.notifyLoadSucceeded();	
+			});
+        });
+    </script>
+</body>
+</html>

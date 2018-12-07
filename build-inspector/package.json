@@ -1,0 +1,27 @@
+{
+  "name": "build-inspector",
+  "version": "1.0.0",
+  "description": "A simple extension that demonstrates how to show details for a Visual Studio Team Services resource.",
+  "scripts": {
+    "build": "tsc -p . && ncp ./node_modules/vss-web-extension-sdk/lib ./dist/lib && ncp ./launch.html ./dist/launch.html && ncp ./items.html ./dist/items.html && ncp ./css ./dist/css && ncp ./images ./dist/images",
+    "postbuild": "npm run package",
+    "package": "tfx extension create",
+    "clean": "rimraf ./dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Microsoft/vsts-extension-samples/tree/master/build-inspector"
+  },
+  "author": "Microsoft",
+  "devDependencies": {
+    "ncp": "^2.0.0",
+    "rimraf": "^2.5.4",
+    "tfx-cli": "^0.3.44",
+    "typescript": "^2.1.4"
+  },
+  "dependencies": {
+    "@types/jquery": "^2.0.34",
+    "@types/q": "0.0.32",
+    "vss-web-extension-sdk": "^1.108.0"
+  }
+}

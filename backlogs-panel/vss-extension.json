@@ -1,0 +1,73 @@
+{
+    "manifestVersion": 1,
+    "id": "vsts-sample-backlogs-panel",
+    "version": "0.1.0",
+    "name": "Details panel",
+    "scopes": [ "vso.work" ],
+    "description": "Sample backlog panel extension that appears on all the backlog levels.",
+    "publisher": "ms-samples",
+    "public": false,
+    "icons": {
+        "default": "img/logo.png"
+    },
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "tags": [
+        "Sample"
+    ],
+    "content": {
+        "details": {
+            "path": "details.md"
+        }
+    },
+    "links": {
+        "learn": {
+            "uri": "https://github.com/Microsoft/vsts-backlog-panel"
+        },
+        "issues": {
+            "uri": "https://github.com/Microsoft/vsts-backlog-panel/issues"
+        }
+    },
+    "branding": {
+        "color": "rgb(220, 235, 252)",
+        "theme": "light"
+    },
+    "files": [
+        {
+            "path": "img",
+            "addressable": true
+        },
+        {
+            "path": "dist",
+            "addressable": true
+        },
+        {
+            "path": "index.html",
+            "addressable": true
+        }
+    ],
+    "categories": [
+        "Integrate"
+    ],
+    "contributions": [
+        {
+            "id": "detailsPanel",
+            "type": "ms.vss-work-web.backlog-panel",
+            "description": "Adds a details panel to Product and Iteration backlog pages",
+            "targets": [
+                "ms.vss-work-web.requirement-backlog-toolpane",
+                "ms.vss-work-web.portfolio-backlog-toolpane",
+                "ms.vss-work-web.iteration-backlog-toolpane"
+            ],
+            "properties": {
+                "title": "Details panel",
+                "name": "Details panel",
+                "uri": "index.html",
+                "registeredObjectId": "detailsPanelObject"
+            }
+        }
+    ]
+}

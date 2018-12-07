@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+	<html xmlns="http://www.w3.org/1999/xhtml">
+		<head>        					
+			<script src="bower_components/vss-web-extension-sdk/lib/VSS.SDK.min.js"></script>      
+			<script type="text/javascript">
+				VSS.init({                        
+					explicitNotifyLoaded: true,
+					usePlatformStyles: true
+				});
+               
+				VSS.require("TFS/Dashboards/WidgetHelpers", function (WidgetHelpers) {
+					VSS.register("HelloWorldWidget.Configuration", function () {   
+						var $queryDropdown = $("#query-path-dropdown");
+						
+						return {
+							load: function (widgetSettings, widgetConfigurationContext) {
+								var settings = JSON.parse(widgetSettings.customSettings.data);
+								if (settings && settings.queryPath) {
+									 $queryDropdown.val(settings.queryPath);
+								 }
+
+								 $queryDropdown.on("change", function () {
+									 var customSettings = {
+										data: JSON.stringify({
+												queryPath: $queryDropdown.val()
+											})
+									};
+									 var eventName = WidgetHelpers.WidgetEvent.ConfigurationChange;
+									 var eventArgs = WidgetHelpers.WidgetEvent.Args(customSettings);
+									 widgetConfigurationContext.notify(eventName, eventArgs);
+
+								 });
+ 		
+								return WidgetHelpers.WidgetStatusHelper.Success();
+							},
+							onSave: function() {
+								var customSettings = {
+									data: JSON.stringify({
+											queryPath: $queryDropdown.val()
+										})
+								};
+								return WidgetHelpers.WidgetConfigurationSave.Valid(customSettings);
+							}
+						}
+					});
+					VSS.notifyLoadSucceeded();
+				});
+			</script>  		
+		</head>
+		<body>
+			<div class="container">
+				<fieldset>
+					<label class="label">Query: </label>
+					<select id="query-path-dropdown" style="margin-top:10px">						
+						<option value="Shared Queries/Feedback">Shared Queries/Feedback</option>
+						<option value="Shared Queries/My Bugs">Shared Queries/My Bugs</option>
+						<option value="Shared Queries/My Tasks">Shared Queries/My Tasks</option>											
+					</select>
+				</fieldset>		
+			</div>
+		</body>
+	</html>

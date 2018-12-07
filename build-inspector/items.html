@@ -2,23 +2,27 @@
 <head>
     <title>Associated Items</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/main.css" />
-    <script src="sdk/scripts/VSS.SDK.js"></script>
+    <script src="bower_components/vss-web-extension-sdk/lib/VSS.SDK.min.js"></script>
+    <link rel="stylesheet" href="css/main.css" />    
 </head>
 <body>
     <script type="text/javascript">
         // Initialize the VSS sdk
         VSS.init({
-            usePlatformScripts: true
+            usePlatformScripts: true,
+            usePlatformStyles: true,            
+            moduleLoaderConfig: {
+                paths: {
+                    "inspector": "dist/inspector"
+                }
+            }
         });
 
-        // Wait for the SDK to be initialized
-        VSS.ready(function () {
-            require(["scripts/items"], function (items) { });
-        });
+        // Wait for the SDK to be initialized then load a script
+        VSS.require(["inspector/associatedItems"], function (items) { });
     </script>
     <div class="hub-view explorer">
-        <div class=" splitter horizontal hub-splitter">
+        <div class="splitter horizontal hub-splitter">
             <div class="leftPane">
                 <div class="left-hub-content">
                     <div id="tree-container"></div>

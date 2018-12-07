@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+	<html xmlns="http://www.w3.org/1999/xhtml">
+		<head>        					
+			<script src="../bower_components/vss-web-extension-sdk/lib/VSS.SDK.min.js"></script>      
+			<script src="scripts/sample-configuration.js"></script>	
+		</head>
+		<body>
+			<div class="widget-configuration">
+			
+				<div class="single-line-text-input" id="name-input">
+					<label>Your name</label>
+					<input type="text" value="Contoso"></input>
+					<span class="validation-error">
+						<span class="icon-error-exclamation"></span>
+						<span class="validation-error-text"></span>
+					</span>
+				</div>
+				
+				<div class="dropdown" id="query-path-dropdown">
+					<label>Drop down</label>
+					<div class="wrapper">
+						<select>						
+							<option value="Shared Queries/Feedback">Shared Queries/Feedback</option>
+							<option value="Shared Queries/My Bugs">Shared Queries/My Bugs</option>
+							<option value="Shared Queries/My Tasks">Shared Queries/My Tasks</option>	
+							<option value="Fake Query">Fake Query</option>								
+						</select>
+					</div>
+					<span class="validation-error">
+						<span class="icon-error-exclamation"></span>
+						<span class="validation-error-text"></span>
+					</span>
+				</div>	
+				
+				<fieldset class="checkbox" id="select-results">
+					<legend>Select results to display</legend>					
+					<input type="checkbox" id="check-option1" value="id" name="check" checked="true">
+					<label for="check-option1">Query ID</label><br/>					
+					<input type="checkbox" id="check-option2" value="name" name="check" checked="true">
+					<label for="check-option2">Query Name</label><br/>		
+					<input type="checkbox" id="check-option3" value="createdBy" name="check" checked="true">
+					<label for="check-option3">Created By</label><br/>		
+					<span class="validation-error">
+						<span class="icon-error-exclamation"></span>
+						<span class="validation-error-text"></span>
+					</span>
+				</fieldset>		
+				
+				<fieldset class="radio" id="display-options">
+					<legend>Display as </legend>
+					<input type="radio" id="radio-option1" value="ordered" name="radio" checked="true">
+					<label for="radio-option1">Ordered List</label><br/>
+					<input type="radio" id="radio-option2" value="unordered" name="radio">
+					<label for="radio-option2">Unordered List</label><br/>					
+					<span class="validation-error">
+						<span class="icon-error-exclamation"></span>
+						<span class="validation-error-text"></span>
+					</span>
+				</fieldset>
+				
+				<div class="multi-line-text-input">
+					<label>Comments</label>
+					<textarea></textarea>					
+				</div>
+			</div>
+		</body>
+	</html>

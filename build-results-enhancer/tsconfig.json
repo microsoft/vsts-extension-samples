@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "module": "amd",
+        "target": "es5",
+        "outDir": "dist/",
+        "rootDir": "src/"
+    },
+    "files": [
+        "src/enhancer/dump.ts",
+        "src/enhancer/status.ts",
+        "src/enhancer/tab.ts"
+    ]
+}

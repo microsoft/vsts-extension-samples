@@ -1,0 +1,134 @@
+{
+    "manifestVersion": 1.0,
+    "id": "samples-work-item-form",
+    "version": "0.1.1",
+    "name": "Work Item Form Sample",
+    "description": "Explore how to extend the work item form with new sections, actions, and more.",
+    "public": false,
+    "publisher": "fabrikam",
+    "icons": {
+        "default": "images/fabrikam-logo.png"
+    },
+    "tags": [
+        "Sample"
+    ],
+    "categories": [
+        "Developer samples"
+    ],  
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "scopes": [
+        "vso.work", 
+        "vso.work_write"
+    ],
+    "files": [
+        {
+            "path": "images",
+            "addressable": true          
+        }, 
+        {
+            "path": "workItemGroup.html",
+            "addressable": true
+        }, 
+        {
+            "path": "workItemPage.html",
+            "addressable": true
+        }, 
+        {
+            "path": "workItemService.html",
+            "addressable": true
+        },        
+        {
+            "path": "workItemToolbarButton.html",
+            "addressable": true
+        },                                            
+        {
+            "path": "workItemNotifications.html",
+            "addressable": true
+        },
+        {
+            "path": "bower_components/vss-web-extension-sdk/lib/VSS.SDK.min.js",
+            "addressable": true
+        }        
+    ],
+    "contributions": [
+        {
+            "id": "work-item-form-service",
+            "type": "ms.vss-web.hub",
+            "description": "Adds a 'WorkItem Service' hub to the 'Sample UI' hub group to show usage of the work item service.",
+            "targets": [
+                ".sample-ui-group"
+            ],
+            "properties": {
+                "name": "WorkItem Service",
+                "order": 110,
+                "uri": "workItemService.html"
+            }
+        },
+        {
+            "id": "sample-work-item-menu",
+            "type": "ms.vss-web.action",
+            "description": "Sample toolbar item which updates the title of a work item",
+            "targets": [
+                "ms.vss-work-web.work-item-context-menu"
+            ],
+            "properties": {
+                "text": "Try me!",
+                "title": "Updates the title of the work item from the extension",
+                "toolbarText": "Try me!",
+                "icon": "images/show-properties.png",
+                "uri": "workItemToolbarButton.html"
+            }
+        },
+        {
+            "id": "sample-work-item-form-observer",
+            "type": "ms.vss-work-web.work-item-notifications",
+            "description": "Gets events about the current work item form for the 'Try Me!' toolbar button",
+            "targets": [
+                "ms.vss-work-web.work-item-form"
+            ],
+            "properties": {
+                "uri": "workItemToolbarButton.html"
+            }
+        },
+        {
+            "id": "sample-work-item-form-notifications",
+            "type": "ms.vss-work-web.work-item-notifications",
+            "description": "Gets events about the current work item form",
+            "targets": [
+                "ms.vss-work-web.work-item-form"
+            ],
+            "properties": {
+                "uri": "workItemNotifications.html"
+            }
+        },
+        {
+            "id": "sample-work-item-form-page",
+            "type": "ms.vss-work-web.work-item-form-page",
+            "description": "Custom work item form page",
+            "targets": [
+                "ms.vss-work-web.work-item-form"
+            ],
+            "properties": {
+                "name": "My Page",
+                "uri": "workItemPage.html"
+            }
+        },
+        {
+            "id": "sample-work-item-form-group",
+            "type": "ms.vss-work-web.work-item-form-group",
+            "description": "Custom work item form group",
+            "targets": [
+                "ms.vss-work-web.work-item-form"
+            ],
+            "properties": {
+                "name": "My Group",
+                "uri": "workItemGroup.html",
+                "height": 600
+            }
+        }
+    ]
+}

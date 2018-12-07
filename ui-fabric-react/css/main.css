@@ -1,0 +1,21 @@
+.filter-section {
+    margin-bottom: 20px;
+}
+
+.filter-section .filters {
+    display:inline-block;
+}
+
+.filter-section .filters .filter-check {
+    margin-right: 20px;
+    display: inline-block;
+} 
+
+.filter-section .actions {
+    float:right;
+    text-align: right;
+}
+
+.filter-section .actions .action-button {
+    margin-left: 10px;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Deployment status</title>
+    <script src="bower_components/vss-web-extension-sdk/lib/VSS.SDK.js"></script>
+    <script type="text/javascript">VSS.init({ usePlatformScripts: true });</script>
+    <script src="scripts/main.js"></script>
+    <script type="text/javascript">VSS.notifyLoadSucceeded();</script>
+    <style>
+        #environments {
+            overflow: auto;
+        }
+
+        .environment {
+            width: 140px;
+            height: 140px;
+            float: left;
+            padding-left: 20px;
+            padding-top: 20px;
+            margin: 5px;
+            border-radius: 70px;
+        }
+
+        .succeeded {
+            background-color: green;
+        }
+
+        .failed {
+            background-color: red;
+        }
+
+        .pending {
+            background-color: #eee;
+        }
+
+        .running {
+            background-color: #ADD8E6;
+        }
+    </style>
+</head>
+<body>
+    <div id="environments"></div>
+</body>
+</html>

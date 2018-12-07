@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Work item form observer sample</title>
+    <script src="bower_components/vss-web-extension-sdk/lib/VSS.SDK.min.js"></script>
+    <style>
+        .open-existing-work-item, .open-existing-work-item {
+            margin: 20px;
+        }
+        .work-item-types {
+            width: 200px;
+            display: inline-block;
+            margin-left: 5px;
+            margin-right: 5px;
+            vertical-align: bottom;
+        }
+        #existing-wit-id {
+            border: 1px solid #DDD;
+        }
+    </style>
+</head>
+<body>
+    <div class="open-existing-work-item">
+        <label for="existing-wit-id">Existing work item id:</label>
+        <input id="existing-wit-id" value="1" />
+        <input type="button" id="existing-wit-button" value="Open..." />
+    </div>
+    
+    <div class="open-existing-work-item">
+        <label for="new-work-item-type">New work item type:</label>
+        <div class="work-item-types"></div>
+        <input type="button" id="new-wit-button" value="New..." />
+    </div>
+    
+    <script type="text/javascript">
+        VSS.init({ usePlatformScripts: true, explicitNotifyLoaded: true });
+        VSS.require([
+            "TFS/WorkItemTracking/Services",
+            "TFS/WorkItemTracking/RestClient",
+            "VSS/Controls",
+            "VSS/Controls/Combos"], function(_WorkItemServices, _WorkItemRestClient, _Controls, _Combos) {
+                
+            VSS.notifyLoadSucceeded();
+            
+            var workItemTypesCombo;
+            
+            var witClient = _WorkItemRestClient.getClient();
+            witClient.getWorkItemTypes(VSS.getWebContext().project.name).then(function(workItemTypes) {
+                workItemTypesCombo = _Controls.create(_Combos.Combo, $(".work-item-types"), {
+                    source: $.map(workItemTypes, function(wiType) { return wiType.name })
+                });
+                if (workItemTypes.length > 0) {
+                    workItemTypesCombo.setText(workItemTypes[0].name);
+                }
+            });
+            
+            $("#existing-wit-button").click(function() {
+                var workItemId = parseInt($("#existing-wit-id").val());
+                if (workItemId > 0) {
+                    _WorkItemServices.WorkItemFormNavigationService.getService().then(function (workItemNavSvc) {
+                        workItemNavSvc.openWorkItem(workItemId);
+                    });
+                }
+            });
+            
+            $("#new-wit-button").click(function() {
+                var workItemType = workItemTypesCombo ? workItemTypesCombo.getText() : "";
+                if (workItemType) {
+                    _WorkItemServices.WorkItemFormNavigationService.getService().then(function (workItemNavSvc) {
+                        workItemNavSvc.openNewWorkItem(workItemType, { 
+                            "Title": "Opened a work item from the Work Item Nav Service",
+                            "Tags": "extension;wit-service", 
+                            "System.AssignedTo": VSS.getWebContext().user.name,
+                            "priority": 1
+                        });
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

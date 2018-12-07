@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Data storage service sample</title>
+    <script src="bower_components/vss-web-extension-sdk/lib/VSS.SDK.min.js"></script> 
+    <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+    <script type="text/javascript">
+        // Initialize the VSS SDK
+        VSS.init({
+            usePlatformScripts: true,
+            moduleLoaderConfig: {
+                paths: {
+                    "dataStorage": "dist/dataStorage"
+                }
+            }
+        });
+
+        // Wait for the SDK to be initialized
+        VSS.ready(function () {
+            require(["dataStorage/notes"], function () { });
+            VSS.notifyLoadSucceeded();
+        });
+    </script>
+    <div class="hub-progress pageProgressIndicator"></div>
+    <div id="vss-extension">        
+        <div class="note-content">
+            <div class="notes-toolbar-container"></div>
+            <div class="notes-grid-container"></div>
+        </div>
+    </div>
+</body>
+</html>

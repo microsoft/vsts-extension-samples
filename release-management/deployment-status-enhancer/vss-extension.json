@@ -1,0 +1,67 @@
+{
+  "manifestVersion": 1,
+  "id": "rm-deployment-status-enhancer-summary",
+  "version": "0.1.8",
+  "name": "RM deployment status - summary",
+  "description": "RM summary section extension sample",
+  "publisher": "openalm2",
+  "public":  false,
+  "links": {
+    "learn": {
+      "uri": "https://github.com/Microsoft/vso-extension-samples"
+    }
+  },
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "contributions": [
+    {
+      "id": "rm-summary-section-sample",
+      "type": "ms.vss-releaseManagement-web.release-summary-section",
+      "targets": [ "ms.vss-releaseManagement-web.release-details-summary-tab" ],
+      "properties": {
+        "name": "Deployment status",
+        "uri": "index.html",
+        "order": "99"
+      }
+    },
+    {
+      "id": "rm-tab-sample",
+      "type": "ms.vss-releaseManagement-web.release-summary-tab",
+      "targets": [ "ms.vss-releaseManagement-web.release-details-view" ],
+      "properties": {
+        "name": "Deployment status",
+        "uri": "index.html",
+        "order": "99"
+      }
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "images/screenshot1.png"
+    },
+    {
+      "path": "images/screenshot2.png"
+    }
+  ],
+  "files": [
+    {
+      "path": "index.html",
+      "addressable": true
+    },
+    {
+      "path": "scripts",
+      "addressable": true
+    },
+    {
+      "path": "bower_components/vss-web-extension-sdk/lib/VSS.SDK.min.js",
+      "addressable": true
+    },
+    {
+      "path": "bower_components/vss-web-extension-sdk/lib/VSS.SDK.js",
+      "addressable": true
+    }
+  ]
+}

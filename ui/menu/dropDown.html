@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<head>
+    <title>Dropdown menu sample</title>
+    <meta charset="UTF-8">  
+    <script src="../bower_components/vss-web-extension-sdk/lib/VSS.SDK.min.js"></script>
+</head>
+<body>
+    <script type="text/javascript">
+        // Initialize the VSS sdk
+        VSS.init({
+            usePlatformScripts: true,
+            moduleLoaderConfig: { 
+                paths: { 
+                    "menu": "menu/scripts" 
+                } 
+            }
+        });
+
+        // Wait for the SDK to be initialized
+        VSS.ready(function () {
+            require(["menu/dropDown"], function (ItemsView ) {
+				
+			});
+        });
+    </script>
+    <div class="hub-view explorer">
+        <div class=" splitter horizontal hub-splitter">
+            <div class="leftPane">
+                <div class="left-hub-content">
+                    <div class="menu-container"></div>
+                </div>
+            </div>
+            <div class="handleBar"></div>
+            <div class="rightPane">
+                <div class="hub-title"></div>
+                <div class="right-hub-content">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

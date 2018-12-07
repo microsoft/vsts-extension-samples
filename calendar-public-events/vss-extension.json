@@ -1,0 +1,51 @@
+{
+    "manifestVersion": 1,
+    "id": "samples-calendar-public-events",
+    "version": "0.1.4",
+    "name": "Team Calendar US Public Events",
+    "description": "See public United States events and holidays on the Team Calendar extension for Visual Studio Team Services.",
+    "publisher": "fabrikam",
+    "public": false,
+    "icons": {
+        "default": "images/fabrikam-logo.png"
+    },
+    "categories": [
+        "Developer samples"
+    ],  
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "files": [
+        {
+            "path": "images",
+            "addressable": true          
+        },
+        {
+            "path": "dist",
+            "addressable": true
+        },
+        {
+            "path": "main.html",
+            "addressable": true
+        },                    
+        {
+            "path": "bower_components/vss-web-extension-sdk/lib/VSS.SDK.min.js",
+            "addressable": true
+        }        
+    ],
+    "contributions": [
+        {
+            "id": "public-events-source",
+            "type": "ms-devlabs.team-calendar.calendar-event-source",
+            "description": "Team Calendar event source for public U.S. events and holidays.",
+            "targets": [
+                "ms-devlabs.team-calendar.calendar-event-sources"
+            ],
+            "properties": {
+                "uri": "main.html"
+            }
+        }
+    ]
+}

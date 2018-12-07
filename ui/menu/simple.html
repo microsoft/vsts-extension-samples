@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<head>
+    <title>Menu sample</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/main.css" />
+    <script src="../bower_components/vss-web-extension-sdk/lib/VSS.SDK.min.js"></script>
+</head>
+<body>
+    <script type="text/javascript">
+        // Initialize the VSS sdk
+        VSS.init({
+            usePlatformScripts: true,
+            moduleLoaderConfig: { 
+                paths: { 
+                    "menu": "menu/scripts" 
+                } 
+            }
+        });
+
+        // Wait for the SDK to be initialized
+        VSS.ready(function () {
+            require(["VSS/Controls", "VSS/Controls/Menus"], function (VssUiControls, MenuControls ) {
+				var _menu = VssUiControls.create(MenuControls.MenuBar, $("div.menu-container"), {
+					items: createToolbarItems()
+				});
+				MenuControls.menuManager.attachExecuteCommand(onToolbarItemClick);
+			
+			
+				function createToolbarItems(){
+					return [
+					{ id: "refresh-items", title: "Refresh", icon: "icon-refresh", showText: false, groupId: "icon" },
+					{ id: "clear-items", text: "Clear", title: "Clear", showText: true, noIcon: true, groupId: "text" },
+					{ id: "start-items", text: "Start", title: "Start", showText: true, noIcon: true, disabled: true, groupId: "text" },
+					{ id: "stop-items", text: "Stop", title: "Stop", showText: true, noIcon: true, disabled: true, groupId: "text" },
+					{ id: "help-items", text: "Help", title: "Help", showText: true, noIcon: true, groupId: "text" }
+					];
+				}
+				
+				function onToolbarItemClick(sender, args) {
+					var command = args.get_commandName(), commandArgument = args.get_commandArgument(), that = this, result = false;
+					switch (command) {
+						case "refresh-items":
+							alert("refresh");
+							break;
+						case "clear-items":
+							alert("clear");
+							break;
+						case "start-items":
+							alert("start");
+							break;
+						case "stop-items":
+							alert("stop");
+							break;
+						case "help-items":
+							alert("help");
+							break;
+						default:
+							result = true;
+							break;
+					}
+					return result;
+				};
+			});
+        });
+    </script>
+    <div class="hub-view explorer">
+        <div class=" splitter horizontal hub-splitter">
+            <div class="leftPane">
+                <div class="left-hub-content">
+                    <div class="menu-container"></div>
+                </div>
+            </div>
+            <div class="handleBar"></div>
+            <div class="rightPane">
+                <div class="hub-title"></div>
+                <div class="right-hub-content">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

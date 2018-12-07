@@ -1,19 +1,61 @@
 {
     "manifestVersion": 1,
     "id": "samples-contributions-guide",
-    "version": "0.1.0",
+    "version": "0.1.29",
     "name": "Contributions Guide",
-    "description": "Discover all the places in Visual Studio Online you can extend, including hubs, toolbars, and context menus, and more.",
-    "baseUri": "https://localhost",
-    "publisher": "fabrikam",
+    "description": "Building an extension for Visual Studio Team Services? See the places where you can extend and enhance the user's web experience with an extension ---- right from within the web experience.",
+    "publisher": "ms-samples",
+    "public": false,
+    "categories": [
+        "Developer samples"
+    ],
+    "links": {
+        "learn": {
+            "uri": "https://github.com/Microsoft/vso-extension-samples"
+        }
+    },
     "icons": {
         "default": "images/fabrikam-logo.png"
     },
-    "tags": [
-        "Sample"
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
     ],
-    "categories": [
-        "Sync and integration"
+    "content": {
+        "details": {
+            "path": "details.md"
+        }
+    }, 
+    "branding": {
+        "color": "rgb(190, 39, 3)",
+        "theme": "dark"
+    },       
+    "files": [
+        {
+            "path": "scripts",
+            "addressable": true
+        },
+        {
+            "path": "images",
+            "addressable": true
+        },
+        {
+            "path": "context.html",
+            "addressable": true
+        },       
+        {
+            "path": "contextForm.html",
+            "addressable": true
+        },       
+        {
+            "path": "main.html",
+            "addressable": true
+        },     
+        {
+            "path": "bower_components/vss-web-extension-sdk/lib",
+            "addressable": true
+        }    
     ],
     "contributions": [
         {
@@ -385,6 +427,36 @@
             }
         },
         {
+            "id": "showProperties_24",
+            "type": "ms.vss-web.action",
+            "description": "Shows the target properties for work item query results toolbar menu.",
+            "targets": [
+                "ms.vss-work-web.work-item-query-results-toolbar-menu"
+            ],
+            "properties": {
+                "text": "Custom query results toolbar menu",
+                "title": "ms.vss-work-web.work-item-query-results-toolbar-menu (Custom query results toolbar action)",
+                "icon": "images/show-properties.png",
+                "group": "actions",
+                "uri": "main.html",
+                "registeredObjectId": "showProperties"
+            }
+        },
+        {
+            "id": "queries-hub-tab",
+            "type": "ms.vss-web.tab",
+            "description": "Adds a tab to the Queries hub",
+            "targets": [
+                "ms.vss-work-web.query-tabs"
+            ],
+            "properties": {
+                "uri": "context.html",
+                "title": "Web Context (ms.vss-work-web.query-tabs)",
+                "name": "Web Context",
+                "dynamic": true
+            }
+        },
+        {
             "id": "project-hub-group",
             "type": "ms.vss-web.hub-group",
             "description": "Adds a hub group at the project/team-level",
@@ -520,6 +592,61 @@
             "targets": [ ],
             "properties": {
                 "uri": "contextForm.html"
+            }
+        },
+        {
+            "id": "build-info-tab",
+            "type": "ms.vss-build-web.build-results-tab",
+            "description": "A tab contributing to build results view",
+            "targets": [
+                "ms.vss-build-web.build-results-view"
+            ],
+            "properties": {
+                "name": "Build Info",                
+                 "uri": "context.html"                
+            }
+        },
+        {
+            "id": "build-status-section",
+            "type": "ms.vss-build-web.build-results-section",
+            "description": "A section contributing to our own new tab and also to existing build 'summary' tab",
+            "targets": [
+                ".build-info-tab",
+                "ms.vss-build-web.build-results-summary-tab"
+            ],
+            "properties": {
+                 "name": "Build Status",                
+                 "uri": "context.html",
+                 "order": 20,
+                 "height": 500               
+            }
+        },
+        {
+            "id": "product-backlog-tab",
+            "type": "ms.vss-web.tab",
+            "description": "Adds a tab to the Product Backlog page.",
+            "targets": [
+                "ms.vss-work-web.product-backlog-tabs"
+            ],
+            "properties": {
+                "name": "Web Context",
+                "title": "Web Context (ms.vss-work-web.product-backlog-tabs)",
+                "uri": "context.html",
+                "dynamic": true
+            }
+        },
+        {
+            "id": "iteration-backlog-tab",
+            "type": "ms.vss-web.tab",
+            "description": "Adds a tab to the Iteration Backlog page.",
+            "targets": [
+                "ms.vss-work-web.iteration-backlog-tabs"
+            ],
+            "properties": {
+                "name": "Web Context",
+                "title": "Web Context (ms.vss-work-web.iteration-backlog-tabs)",
+                "uri": "context.html",
+                "dynamic": true
             }
         }
     ]

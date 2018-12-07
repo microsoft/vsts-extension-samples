@@ -1,0 +1,109 @@
+{
+    "manifestVersion": 1,
+    "id": "samples-charts",
+    "version": "1.0.0",
+    "name": "Interactive Charts in VSTS",
+    "description": "Samples of interactive charts from the Chart SDK.",
+    "publisher": "Fabrikam",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "icons": {
+        "default": "img/logo.png"
+    },
+    "demands": ["contribution/ms.vss-dashboards-web.widget-sdk-version-2", "contribution/ms.vss-web.charts-service"],
+    "contributions": [
+        {
+            "id": "SimplePieChart",
+            "type": "ms.vss-dashboards-web.widget",
+            "targets": [
+                "ms.vss-dashboards-web.widget-catalog"
+            ],
+            "properties": {
+                "name": "Sample Pie Chart",
+                "description": "A simple pie chart widget with no configuration and hard-coded data.",
+                "catalogIconUrl": "img/CatalogIcon.png",
+                "uri": "SimplePieChart.html",
+                "supportedSizes": [
+                    {
+                        "rowSpan": 2,
+                        "columnSpan": 2
+                    }
+                ],
+                "supportedScopes": [
+                    "project_team"
+                ]
+            }
+        },
+        {
+            "id": "StackedAreaChart",
+            "type": "ms.vss-dashboards-web.widget",
+            "targets": [
+                "ms.vss-dashboards-web.widget-catalog"
+            ],
+            "properties": {
+                "name": "Sample Stacked Area Chart",
+                "description": "A stacked area chart widget with no configuration and hard-coded data.",
+                "catalogIconUrl": "img/CatalogIcon.png",
+                "uri": "StackedAreaChart.html",
+                "supportedSizes": [
+                    {
+                        "rowSpan": 2,
+                        "columnSpan": 2
+                    }
+                ],
+                "supportedScopes": [
+                    "project_team"
+                ]
+            }
+        }, 
+        {
+            "id": "PivotTable",
+            "type": "ms.vss-dashboards-web.widget",
+            "targets": [
+                "ms.vss-dashboards-web.widget-catalog"
+            ],
+            "properties": {
+                "name": "Sample Pivot Table",
+                "description": "A Pivot Table widget with no configuration and hard-coded data.",
+                "catalogIconUrl": "img/CatalogIcon.png",
+                "uri": "PivotTable.html",
+                "supportedSizes": [
+                    {
+                        "rowSpan": 2,
+                        "columnSpan": 2
+                    }
+                ],
+                "supportedScopes": [
+                    "project_team"
+                ]
+            }
+        }
+    ],
+    "files": [
+        {
+            "path": "SimplePieChart.html",
+            "addressable": true
+        },
+        {
+            "path": "StackedAreaChart.html",
+            "addressable": true
+        },
+        {
+            "path": "PivotTable.html",
+            "addressable": true
+        },
+        {
+            "path": "bower_components/vss-web-extension-sdk/lib/VSS.SDK.min.js",
+            "addressable": true
+        },
+        {
+            "path": "img",
+            "addressable": true
+        }
+    ],
+    "scopes": [
+    ]
+}

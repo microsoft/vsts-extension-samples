@@ -1,0 +1,8 @@
+{
+  "ambientDependencies": {
+    "Q": "github:DefinitelyTyped/DefinitelyTyped/q/Q.d.ts#4de74cb527395c13ba20b438c3a7a419ad931f1c",
+    "jquery": "github:DefinitelyTyped/DefinitelyTyped/jquery/jquery.d.ts#470954c4f427e0805a2d633636a7c6aa7170def8",
+    "knockout": "github:DefinitelyTyped/DefinitelyTyped/knockout/knockout.d.ts#4de74cb527395c13ba20b438c3a7a419ad931f1c",
+    "vss": "github:microsoft/vss-web-extension-sdk/typings/vss.d.ts"
+  }
+}

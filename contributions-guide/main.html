@@ -7,10 +7,11 @@
 <body>
     <div>Users will never see this page.</div>
 
-    <script src="sdk/scripts/VSS.SDK.js"></script>
+    <script src="bower_components/vss-web-extension-sdk/lib/VSS.SDK.min.js"></script> 
+    
     <script src="scripts/main.js"></script>
     <script>
-        VSS.init({ usePlatformScripts: true });
+        VSS.init({ usePlatformScripts: true, usePlatformStyles: true });
     </script>
 </body>
 </html>

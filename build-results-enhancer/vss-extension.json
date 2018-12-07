@@ -1,0 +1,95 @@
+{
+    "manifestVersion": 1,
+    "id": "samples-build-results-enhancer",
+    "version": "0.2.2",
+    "name": "Build Results Enhancer",
+    "description": "A simple extension that demonstrates how to extend build summary page.",
+    "publisher": "fabrikam",
+    "public": false,
+    "icons": {
+        "default": "images/fabrikam-logo.png"
+    },    
+    "tags": [
+        "Build"
+    ],
+     "scopes": [
+        "vso.build_execute"
+    ],
+    "categories": [
+        "Developer samples"
+    ],   
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "files": [
+        {
+            "path": "images",
+            "addressable": true          
+        },
+        {
+            "path": "dist",
+            "addressable": true
+        },
+        {
+            "path": "buildDumpSection.html",
+            "addressable": true
+        },
+        {
+            "path": "infoTab.html",
+            "addressable": true
+        },
+        {
+            "path": "statusSection.html",
+            "addressable": true
+        },                      
+        {
+            "path": "bower_components/vss-web-extension-sdk/lib/VSS.SDK.min.js",
+            "addressable": true
+        }        
+    ],
+    "contributions": [
+        {
+            "id": "build-info-tab",
+            "type": "ms.vss-build-web.build-results-tab",
+            "description": "A tab contributing to build results view",
+            "targets": [
+                "ms.vss-build-web.build-results-view"
+            ],
+            "properties": {
+                "name": "Custom Tab",
+                 "uri": "infoTab.html"
+            }
+        },
+        {
+            "id": "build-status-section",
+            "type": "ms.vss-build-web.build-results-section",
+            "description": "A section contributing to our own new tab and also to existing build 'summary' tab",
+            "targets": [
+                ".build-info-tab",
+                "ms.vss-build-web.build-results-summary-tab"
+            ],
+            "properties": {
+                 "name": "Custom Section",
+                 "uri": "statusSection.html",
+                 "order": 20,
+                 "height": 500
+            }
+        },
+        {
+            "id": "build-variables-section",
+            "type": "ms.vss-build-web.build-results-section",
+            "description": "A section contributing to our own new tab",
+            "targets": [
+                ".build-info-tab"
+            ],
+            "properties": {
+                 "name": "Custom Section 2",
+                 "uri": "buildDumpSection.html",
+                 "order": 10,
+                 "height": 500
+            }
+        }
+    ]
+}
