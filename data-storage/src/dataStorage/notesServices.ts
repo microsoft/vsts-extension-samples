@@ -1,6 +1,7 @@
 import Service = require("VSS/Service");
 import Extension_Data = require("VSS/SDK/Services/ExtensionData");
 import Notes_Contracts = require("./notesContracts");
+import Utils_Notifications = require("./notesNotificationUtils");
 
 /**
  * Service layer for interacting with Notes Http Client
@@ -36,10 +37,13 @@ export class NotesService extends Service.VssService {
             const scopeType = note.userOnly ? "User" : "Default";
             extensionDataService.createDocument("Notes", note, {scopeType: scopeType}).then((savedNote: Notes_Contracts.Note) => {
                 this._addNote(savedNote);
+
+                Utils_Notifications.publishEvent(note, "added");
+
                 if ($.isFunction(successCallback)) {
                     successCallback(savedNote);
                 }
-            },  (reason: any) => {
+            }, (reason: any) => {
                 if ($.isFunction(this._failureCallback)) {
                     this._failureCallback(reason);
                 }
@@ -57,6 +61,9 @@ export class NotesService extends Service.VssService {
             const scopeType = note.userOnly ? "User" : "Default";
             extensionDataService.deleteDocument("Notes", note.id, {scopeType: scopeType}).then(() => {
                 this._removeNote(note);
+
+                Utils_Notifications.publishEvent(note, "deleted");
+
                 if ($.isFunction(successCallback)) {
                     successCallback();
                 }
