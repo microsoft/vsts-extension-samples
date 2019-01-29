@@ -1,7 +1,7 @@
 {
     "manifestVersion": 1.0,
     "id": "samples-data-storage",
-    "version": "0.2.5",
+    "version": "0.2.6",
     "name": "Data Storage Sample",
     "description": "Explore how to store settings and documents using the provided data storage service, and to send email notifications.",
     "publisher": "ms-samples",

@@ -13,16 +13,6 @@ export function publishEvent(note: Notes_Contracts.Note, action: string) {
 
     const notificationEvent = <VSS_Common_Contracts.VssNotificationEvent>{
         eventType: VSS.getExtensionContext().publisherId + "." + VSS.getExtensionContext().extensionId + "." + "note-event",
-        actors: [
-            {
-                id: VSS.getWebContext().user.id,
-                role: "initiator"
-            },
-            {
-                id: VSS.getWebContext().team.id,
-                role: "team"
-            }
-        ], 
         data: {
             note: note,
             action: action,
@@ -47,6 +37,23 @@ export function publishEvent(note: Notes_Contracts.Note, action: string) {
             }
         ]
     };
+
+    notificationEvent.actors = [
+        {
+            id: VSS.getWebContext().user.id,
+            role: "initiator"
+        }
+    ];
+
+    // Include the team as an actor on non-user (i.e non-personal) notes
+    if (!note.userOnly) {
+        notificationEvent.actors.push(
+            {
+                id: VSS.getWebContext().team.id,
+                role: "team"
+            }
+        );
+    }
 
     const notificationsClient = Service.getClient(Notification_Rest_Client.NotificationHttpClient4, undefined, ExtensionManagementServiceInstaceTypeId);
     return notificationsClient.publishEvent(notificationEvent);

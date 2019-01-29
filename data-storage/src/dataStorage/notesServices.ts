@@ -38,10 +38,7 @@ export class NotesService extends Service.VssService {
             extensionDataService.createDocument("Notes", note, {scopeType: scopeType}).then((savedNote: Notes_Contracts.Note) => {
                 this._addNote(savedNote);
 
-                // Publish a notification about the new note
-                if (!note.userOnly) {
-                    Utils_Notifications.publishEvent(note, "added")
-                }
+                Utils_Notifications.publishEvent(note, "added");
 
                 if ($.isFunction(successCallback)) {
                     successCallback(savedNote);
@@ -65,10 +62,7 @@ export class NotesService extends Service.VssService {
             extensionDataService.deleteDocument("Notes", note.id, {scopeType: scopeType}).then(() => {
                 this._removeNote(note);
 
-                // Publish a notification about the deleted note
-                if (!note.userOnly) {
-                    Utils_Notifications.publishEvent(note, "deleted")
-                }
+                Utils_Notifications.publishEvent(note, "deleted");
 
                 if ($.isFunction(successCallback)) {
                     successCallback();
