@@ -1,3 +1,6 @@
+# Note: This version of the SDK is deprecated. Please see the new SDK Samples at https://github.com/microsoft/azure-devops-extension-sample/tree/master/src/Samples 
+# Documentation for the new SDK is at: https://developer.microsoft.com/en-us/azure-devops/develop/extensions
+
 # Visual Studio Team Services (VSTS) Sample Extensions
  
 Samples to help jump-start your development of [extensions for Visual Studio Team Services (VSTS)](http://www.visualstudio.com/integrate/extensions/overview).
