@@ -8,7 +8,7 @@ This sample demonstrates how you can give admins and users the ability to contro
 
 3. Your users are asking for the ability to hide parts of your extension from certain users or projects
 
-To learn about how users and admins manage preview features, see [Enable preview features](https://docs.microsoft.comvsts/project/navigation/preview-features?view=vsts&tabs=new-nav).
+To learn about how users and admins manage preview features, see [Enable preview features](https://docs.microsoft.com/en-us/azure/devops/project/navigation/preview-features?view=azure-devops&tabs=new-nav).
 
 ## How to contribute a preview feature
 
