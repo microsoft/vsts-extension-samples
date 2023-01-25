@@ -23,7 +23,7 @@ export class ChartComponent extends React.Component<ChartComponentProps, any> {
     private $wrappedContainer: JQuery;
     
     //Track mount state, due to async chart creation.
-    private isMounted: boolean;
+    private isChartMounted: boolean;
 
 
     public render() {
@@ -33,14 +33,14 @@ export class ChartComponent extends React.Component<ChartComponentProps, any> {
     }
 
     public componentDidMount(): void {
-        this.isMounted = true;
+        this.isChartMounted = true;
         this.ensureChartIsInstantiated(this.props.chartOptions);
 
     }
 
     public componentWillUnmount(): void {
         this.ensurePriorInstancesAreCleared();
-        this.isMounted = false;
+        this.isChartMounted = false;
     }
 
     public componentDidUpdate(): void {
@@ -52,7 +52,7 @@ export class ChartComponent extends React.Component<ChartComponentProps, any> {
         this.chartServicePromise.then((chartService) => {
             this.ensurePriorInstancesAreCleared();
 
-            if(this.isMounted){
+            if(this.isChartMounted){
                 let container = ReactDOM.findDOMNode(this);
                 if(container){
                     this.$wrappedContainer = $(container);
