@@ -1,7 +1,7 @@
 {
     "manifestVersion": 1.0,
     "id": "samples-ui",
-    "version": "0.1.8",
+    "version": "0.3.4",
     "name": "UI Controls (Sample)",
     "description": "Explore different UI controls, including menus, toolbars, custom controls, and more.",
     "publisher": "fabrikam",
@@ -36,7 +36,8 @@
             "addressable": true
         },
         {
-            "path": "bower_components/vss-web-extension-sdk/lib/VSS.SDK.min.js",
+            "path": "node_modules/vss-web-extension-sdk/lib/VSS.SDK.min.js",
+            "packagePath": "lib/VSS.SDK.min.js",
             "addressable": true
         }
     ],
@@ -137,6 +138,30 @@
             "targets": [],
             "properties": {
                 "uri": "compare-to-form.html"
+            }
+        },
+        {
+            "id": "simple-hub-help-menu-item",
+            "type": "ms.vss-web.menu-item",            
+            "targets": [ ".simple-menu-hub" ],
+            "description": "Help menu item that appears when the Simple hub is active.",
+            "properties": {
+              "name": "My custom topic (Simple hub)",
+              "href": "https://go.microsoft.com/fwlink/?LinkId=825593",
+              "groupKey": "getting-started",
+              "menuId": "ms.vss-tfs-web.help-menu"
+            }
+        },
+        {
+            "id": "sample-ui-app-help-menu-item",
+            "type": "ms.vss-web.menu-item",
+            "targets": [ ".sample-hub-group" ],
+            "description": "Help menu item that appears when any hub is active under the Samples hub group.",
+            "properties": {
+              "name": "My custom topic (Sample UI app)",
+              "href": "https://go.microsoft.com/fwlink/?LinkId=825593",
+              "groupKey": "getting-started",
+              "menuId": "ms.vss-tfs-web.help-menu"
             }
         }
     ]

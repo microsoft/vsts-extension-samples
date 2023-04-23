@@ -1,0 +1,25 @@
+{
+  "name": "samples-ui",
+  "version": "1.0.0",
+  "description": "Sample Visual Studio Team Services web extension",
+  "main": "index.html",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/vsts-extension-samples"
+  },
+  "scripts": {
+    "build": "tfx extension create --rev-version"
+  },
+  "keywords": [
+    "vsts",
+    "extension"
+  ],
+  "author": "Microsoft Corporation",
+  "license": "MIT",
+  "devDependencies": {
+    "tfx-cli": "*"
+  },
+  "dependencies": {
+    "vss-web-extension-sdk": "^5.127.0"
+  }
+}
