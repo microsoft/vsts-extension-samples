@@ -1,0 +1,38 @@
+{
+    "id": "1272a058-d4f5-407b-b6c6-815cf9ee59d6",
+    "name": "HelloWorld",
+    "friendlyName": "HelloWorld",
+    "description": "Hello World!",
+    "helpMarkDown": "[More Information](http://go.microsoft.com/fwlink/?LinkID=613723)",
+    "category": "Build",
+    "visibility": [
+                "Build",
+                "Release"
+                  ],
+    "author": "Microsoft Corporation",
+    "demands": [
+    ],
+    "version": {
+        "Major": 1,
+        "Minor": 0,
+        "Patch":0 
+    },
+   "minimumAgentVersion": "1.90.0",
+   "instanceNameFormat": "Hello $(name)",
+   "inputs": [
+        { 
+            "name": "name", 
+            "type": "string", 
+            "label": "Name", 
+            "defaultValue": "World", 
+            "required": true,
+            "helpMarkDown": "Say hello to."
+        }
+    ],
+    "execution": {
+        "Node": {
+            "target": "hello.js",
+            "argumentFormat": ""
+        }
+    }
+}
