@@ -110,7 +110,7 @@
             "id": "feature1",
             "type": "ms.vss-web.feature",
             "description": "Example of a user-controlled preview feature. Individual users can manage this feature.",
-            "targets": [ "ms.vss-web.managed-features" ],
+            "targets": [ "ms.vss-web.managed-features", "ms.vss-web.managed-features-onprem" ],
             "properties": {
                 "name": "Feature 1",
                 "userConfigurable": true,
@@ -126,7 +126,7 @@
             "id": "feature2",
             "type": "ms.vss-web.feature",
             "description": "Example of an account-level, admin-controlled preview feature. This feature can be toggled on or off for the entire account.",
-            "targets": [ "ms.vss-web.managed-features" ],
+            "targets": [ "ms.vss-web.managed-features", "ms.vss-web.managed-features-onprem" ],
             "properties": {
                 "name": "Feature 2",
                 "userConfigurable": false,
@@ -142,7 +142,7 @@
             "id": "feature3",
             "type": "ms.vss-web.feature",
             "description": "Example of a preview feature that is managed at the project level by project admins.",
-            "targets": [ "ms.vss-web.managed-features" ],
+            "targets": [ "ms.vss-web.managed-features", "ms.vss-web.managed-features-onprem" ],
             "properties": {
                 "name": "Feature 3",
                 "userConfigurable": false,
