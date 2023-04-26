@@ -1,4 +1,4 @@
-VSS.register("sample-action-provider", {
+VSS.register("fabrikam.samples-ui.sample-action-provider", {
     execute: function (actionArgs) {
         alert("execute: " + (JSON.stringify(actionArgs) || "").substr(0, 100));
     },
