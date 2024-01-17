@@ -1,3 +1,10 @@
+<b>IMPORTANT</b>: This repository is archived and will be deleted in the future. 
+Please don't rely on the code in this repository when building Azure DevOps extensions. Instead, please refer to the updated Azure DevOps sample extension here:
+
+https://github.com/microsoft/azure-devops-extension-sample
+
+____________________________
+
 # Visual Studio Team Services (VSTS) Sample Extensions
  
 Samples to help jump-start your development of [extensions for Visual Studio Team Services (VSTS)](http://www.visualstudio.com/integrate/extensions/overview).
