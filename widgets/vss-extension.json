@@ -240,7 +240,7 @@
             "type": "ms.vss-dashboards-web.widget",
             "targets": [
                 "ms.vss-dashboards-web.widget-catalog",
-                ".HelloWorldWidget.Configuration"
+                "fabrikam.vsts-extensions-myExtensions.HelloWorldWidget.Configurationn"
             ],
             "properties": {
                 "name": "Hello World Widget 3 (with config)",
