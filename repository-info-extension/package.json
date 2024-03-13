@@ -1,0 +1,13 @@
+{
+  "name": "repository-info-extension",
+  "version": "1.0.0",
+  "description": "Provides an example for accessing the currently selected repository from an extension.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Microsoft/vsts-extension-samples/tree/master/repository-info-extension"
+  },
+  "author": "Microsoft",
+  "dependencies": {
+    "vss-web-extension-sdk": "^5.140.0"
+  }
+}

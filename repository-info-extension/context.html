@@ -1,0 +1,43 @@
+<html>
+<head>
+    <title>Repository Information</title>
+    <script src="node_modules/vss-web-extension-sdk/lib/VSS.SDK.js"></script>
+    <style>
+        h2 {
+            font-weight: 400;
+        }
+
+        pre {
+            font-size: 14px;
+            line-height: 1.3em;
+        }
+
+        </style>
+</head>
+
+<body style="padding-left: 20px; padding-top: 20px; overflow-y: auto; background-color: #eee">
+    
+    <h2>Repository Information</h2>
+    <pre id="context-display"></pre>
+
+    <script type="text/javascript">
+        VSS.init({
+            usePlatformScripts: true, 
+            usePlatformStyles: true
+        });
+
+        VSS.require(["scripts/app"], function (app) {
+            app.execute();
+        });
+    </script>
+
+    <div id="repository-info-view">
+        <h3>ID</h2>
+        <p id="repository-id"></p>
+        <h3>Name</h2>
+        <p id="repository-name"></p>
+        <h3>URL</h2>
+        <p id="repository-url"></p>
+    </div>
+</body>
+</html>
